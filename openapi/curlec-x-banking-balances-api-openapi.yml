@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills X Banking Balances API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: X Banking Balances
+  description: Fetch RazorpayX account balances
+paths:
+  /banking_balances:
+    get:
+      operationId: fetchBankingBalances
+      summary: Fetch RazorpayX banking balances
+      tags:
+      - X Banking Balances
+      parameters:
+      - name: account_type
+        in: query
+        schema:
+          type: string
+          enum:
+          - current_account
+          - fixed_deposit
+          - razorpayx_lite
+        description: 'Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`.'
+      - name: bank_code
+        in: query
+        schema:
+          type: string
+        description: First 4 characters of IFSC
+      responses:
+        '200':
+          description: Banking balances
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entity:
+                    type: string
+                  count:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BankingBalance'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      description: Fetch balance details for RazorpayX current accounts or RazorpayX Lite accounts.
+components:
+  schemas:
+    BankingBalance:
+      type: object
+      description: RazorpayX banking account balance.
+      properties:
+        entity:
+          type: string
+          enum:
+          - banking_balance
+        currency:
+          type: string
+        account_number:
+          type: string
+        account_type:
+          type: string
+          enum:
+          - current_account
+          - fixed_deposit
+          - razorpayx_lite
+        bank_name:
+          type: string
+        bank_code:
+          type: string
+          description: First 4 characters of IFSC
+        amount:
+          type: integer
+          description: Total balance in paise
+        available_amount:
+          type: integer
+          description: Available balance in paise
+        refreshed_at:
+          type: integer
+          description: Unix timestamp of last refresh
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+  responses:
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

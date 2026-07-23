@@ -1,0 +1,499 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Bills
+  description: Razorpay Billme digital receipts and bills for retail, food & beverage, events, and ecommerce.
+paths:
+  /bills:
+    post:
+      operationId: createBill
+      summary: Create a bill
+      description: Create a digital bill/receipt for a customer. Supports retail, food & beverage, events, and ecommerce use cases. Used for Razorpay Billme digital receipts.
+      tags:
+      - Bills
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - business_type
+              - customer
+              properties:
+                business_type:
+                  type: string
+                  enum:
+                  - ecommerce
+                  - retail
+                  - food_and_beverage
+                  - events
+                business_category:
+                  type: string
+                customer:
+                  type: object
+                  required:
+                  - contact
+                  properties:
+                    contact:
+                      type: string
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    customer_id:
+                      type: string
+                receipt_timestamp:
+                  type: integer
+                receipt_number:
+                  type: string
+                receipt_type:
+                  type: string
+                  enum:
+                  - tax_invoice
+                  - sales_invoice
+                  - bill_of_supply
+                  - credit_note
+                  - debit_note
+                receipt_delivery:
+                  type: string
+                  enum:
+                  - digital
+                  - print
+                  - digital_and_print
+                store_code:
+                  type: string
+                order_number:
+                  type: string
+                line_items:
+                  type: array
+                  items:
+                    type: object
+                receipt_summary:
+                  type: object
+                taxes:
+                  type: array
+                  items:
+                    type: object
+                payments:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: Bill created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+  /bills/{bill_id}:
+    patch:
+      operationId: updateBill
+      summary: Update a bill
+      description: Update an existing digital bill. Can update customer details, line items, receipt summary, and other fields.
+      tags:
+      - Bills
+      security:
+      - basicAuth: []
+      parameters:
+      - name: bill_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Bill ID with prefix bill_
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bill'
+      responses:
+        '200':
+          description: Bill updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      operationId: deleteBill
+      summary: Delete a bill
+      description: Delete a digital bill/receipt.
+      tags:
+      - Bills
+      security:
+      - basicAuth: []
+      parameters:
+      - name: bill_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Bill ID with prefix bill_
+      responses:
+        '200':
+          description: Bill deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Empty object on success.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '404':
+          $ref: '#/components/responses/404'
+components:
+  schemas:
+    Bill:
+      type: object
+      description: A Razorpay Billme digital receipt/bill. Used for retail, food & beverage, events, ecommerce, and other use cases.
+      properties:
+        id:
+          type: string
+          description: Bill ID with prefix bill_
+        business_type:
+          type: string
+          enum:
+          - ecommerce
+          - retail
+          - food_and_beverage
+          - events
+        business_category:
+          type: string
+        customer:
+          type: object
+          properties:
+            contact:
+              type: string
+            name:
+              type: string
+            email:
+              type: string
+            customer_id:
+              type: string
+            addresses:
+              type: array
+              items:
+                type: object
+        employee:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        loyalty:
+          type: object
+          properties:
+            points:
+              type: integer
+            redeemed_points:
+              type: integer
+        store_code:
+          type: string
+        receipt_timestamp:
+          type: integer
+          description: Unix timestamp of the transaction
+        receipt_number:
+          type: string
+        receipt_type:
+          type: string
+          enum:
+          - tax_invoice
+          - sales_invoice
+          - bill_of_supply
+          - credit_note
+          - debit_note
+        receipt_delivery:
+          type: string
+          enum:
+          - digital
+          - print
+          - digital_and_print
+        tags:
+          type: object
+        bar_code_number:
+          type: string
+        qr_code_number:
+          type: string
+        billing_pos_number:
+          type: string
+        pos_category:
+          type: string
+        order_number:
+          type: string
+        order_service_type:
+          type: string
+          enum:
+          - dine_in
+          - takeaway
+          - delivery
+        delivery_status_url:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              quantity:
+                type: number
+              unit_amount:
+                type: integer
+              unit:
+                type: string
+              hsn_code:
+                type: string
+              product_code:
+                type: string
+              total_amount:
+                type: integer
+              taxes:
+                type: array
+                items:
+                  type: object
+              sub_items:
+                type: array
+                items:
+                  type: object
+              tags:
+                type: object
+        receipt_summary:
+          type: object
+          properties:
+            total_quantity:
+              type: number
+            sub_total_amount:
+              type: integer
+            currency:
+              type: string
+            net_payable_amount:
+              type: integer
+            payment_status:
+              type: string
+            discounts:
+              type: array
+              items:
+                type: object
+            taxes:
+              type: array
+              items:
+                type: object
+        taxes:
+          type: array
+          items:
+            type: object
+        payments:
+          type: array
+          items:
+            type: object
+            properties:
+              method:
+                type: string
+              currency:
+                type: string
+              amount:
+                type: integer
+              payment_reference_id:
+                type: string
+              financier_data:
+                type: object
+        event:
+          type: object
+          description: Event details for events business type
+        irn:
+          type: string
+          description: Invoice Reference Number for GST e-invoicing
+        receipt_url:
+          type: string
+        created_at:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

@@ -1,0 +1,413 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills X Contacts API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: X Contacts
+  description: RazorpayX payout recipients — create, fetch, update contacts
+paths:
+  /contacts:
+    post:
+      operationId: createContact
+      summary: Create a contact
+      description: Create a payout recipient contact. Returns existing contact if all identifying fields (name, email, contact, type) match an existing record.
+      tags:
+      - X Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  minLength: 3
+                  maxLength: 50
+                email:
+                  type: string
+                  format: email
+                contact:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - vendor
+                  - customer
+                  - employee
+                  - self
+                reference_id:
+                  type: string
+                  maxLength: 40
+                notes:
+                  type: object
+      responses:
+        '200':
+          description: Contact created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XContact'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      operationId: listContacts
+      summary: List contacts
+      tags:
+      - X Contacts
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+        description: Filter by contact name (partial match supported).
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: Filter by contact email address.
+      - name: contact
+        in: query
+        schema:
+          type: string
+        description: Filter by contact phone number.
+      - name: reference_id
+        in: query
+        schema:
+          type: string
+        description: Filter by your unique reference ID for the contact (max 40 chars).
+      - name: from
+        in: query
+        schema:
+          type: integer
+        description: Unix timestamp filter
+      - name: to
+        in: query
+        schema:
+          type: integer
+        description: Unix timestamp. Only contacts created before this timestamp are returned.
+      - name: count
+        in: query
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+        description: 'Number of contacts to return. Default: 10. Maximum: 100.'
+      - name: skip
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: 'Number of contacts to skip. Use for pagination. Default: 0.'
+      responses:
+        '200':
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entity:
+                    type: string
+                  count:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/XContact'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      description: Filter and list all contacts. Supports filtering by name, email, phone number, reference ID, and active status.
+  /contacts/{contact_id}:
+    parameters:
+    - name: contact_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the contact (e.g. `cont_00000000000001`).
+    get:
+      operationId: fetchContact
+      summary: Fetch a contact
+      tags:
+      - X Contacts
+      responses:
+        '200':
+          description: Contact details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XContact'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '404':
+          $ref: '#/components/responses/404'
+      description: Fetch details of a specific contact by its ID.
+    patch:
+      operationId: updateContact
+      summary: Update or activate/deactivate a contact
+      tags:
+      - X Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                contact:
+                  type: string
+                type:
+                  type: string
+                reference_id:
+                  type: string
+                notes:
+                  type: object
+                active:
+                  type: boolean
+      responses:
+        '200':
+          description: Updated contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XContact'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      description: 'Update contact details or activate/deactivate a contact. Set `active: false` to deactivate.'
+components:
+  schemas:
+    XContact:
+      type: object
+      description: RazorpayX payout recipient. Created before sending payouts.
+      properties:
+        id:
+          type: string
+          description: Contact ID (cont_*)
+        entity:
+          type: string
+          enum:
+          - contact
+        name:
+          type: string
+          minLength: 3
+          maxLength: 50
+        email:
+          type: string
+          format: email
+        contact:
+          type: string
+          description: Phone number
+        type:
+          type: string
+          enum:
+          - vendor
+          - customer
+          - employee
+          - self
+          description: Built-in types only via API; custom types must be created on Dashboard first
+        reference_id:
+          type: string
+          maxLength: 40
+          description: External reference (must be unique per merchant)
+        batch_id:
+          type: string
+        active:
+          type: boolean
+        notes:
+          type: object
+        created_at:
+          type: integer
+          description: Unix timestamp
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

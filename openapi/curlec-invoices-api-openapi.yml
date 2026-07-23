@@ -1,0 +1,705 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills Invoices API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Invoices
+  description: Invoices and payment pages for one-time or partial-payment collection. Create in draft, issue to the customer, and track payment status. Cannot be used for GST invoices (use the Dashboard for those). Maximum 50 line items per invoice.
+paths:
+  /invoices:
+    post:
+      operationId: createInvoice
+      summary: Create an invoice
+      description: Create an invoice or payment page. Set type='invoice' for a formal invoice or type='link' for a simple payment page. The invoice is created in draft state; call POST /invoices/{id}/issue to send it to the customer. Cannot be used to create GST invoices (use the Dashboard for those). Maximum 50 line items per invoice.
+      tags:
+      - Invoices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - invoice
+                  - link
+                  description: 'invoice: formal invoice; link: payment page.'
+                description:
+                  type: string
+                customer_id:
+                  type: string
+                  description: Existing customer ID (cust_*). Provide this OR customer object, not both.
+                customer:
+                  type: object
+                  description: Inline customer details. Used when no customer_id is available.
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    contact:
+                      type: string
+                line_items:
+                  type: array
+                  maxItems: 50
+                  description: Invoice line items. Each item must have name and amount (in paise), or an item_id to reference a catalog item.
+                  items:
+                    type: object
+                    properties:
+                      item_id:
+                        type: string
+                        description: Reference a catalog item. Populates name, amount, currency automatically.
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      amount:
+                        type: integer
+                        description: Price in paise.
+                      quantity:
+                        type: integer
+                        default: 1
+                      currency:
+                        type: string
+                        default: INR
+                currency:
+                  type: string
+                  default: INR
+                receipt:
+                  type: string
+                  description: Your internal reference number.
+                comment:
+                  type: string
+                terms:
+                  type: string
+                  description: Payment terms shown on the invoice.
+                partial_payment:
+                  type: boolean
+                  description: Allow customer to pay a partial amount initially.
+                first_payment_min_amount:
+                  type: integer
+                  description: Minimum first payment amount in paise. Required when partial_payment=true.
+                expire_by:
+                  type: integer
+                  description: Unix timestamp after which the invoice expires. Must be at least 15 minutes in the future.
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Invoice created in draft state.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+    get:
+      operationId: listInvoices
+      summary: List all invoices
+      description: Retrieve a list of invoices. Filter by type, status, customer, payment, or subscription. Returns up to 100 per call.
+      tags:
+      - Invoices
+      parameters:
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum:
+          - invoice
+          - link
+        description: Filter by invoice type.
+      - name: payment_id
+        in: query
+        schema:
+          type: string
+        description: Filter invoices by the payment ID used to pay them.
+      - name: customer_id
+        in: query
+        schema:
+          type: string
+        description: Filter by customer ID (cust_*).
+      - name: subscription_id
+        in: query
+        schema:
+          type: string
+        description: Fetch all invoices generated for a subscription (sub_*).
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Collection of invoices.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /invoices/{id}:
+    get:
+      operationId: fetchInvoice
+      summary: Fetch an invoice
+      description: Get full details of a specific invoice including status, line items, and payment information.
+      tags:
+      - Invoices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Invoice ID (inv_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Invoice details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    patch:
+      operationId: updateInvoice
+      summary: Update an invoice
+      description: 'Update invoice fields. Updatable fields depend on current status: draft=all fields; issued=partial_payment, receipt, comment, terms, notes, expire_by; paid/cancelled/expired=notes only.'
+      tags:
+      - Invoices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Invoice ID (inv_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                receipt:
+                  type: string
+                comment:
+                  type: string
+                terms:
+                  type: string
+                partial_payment:
+                  type: boolean
+                expire_by:
+                  type: integer
+                notes:
+                  $ref: '#/components/schemas/Notes'
+                line_items:
+                  type: array
+                  description: Replaces existing line items. Draft status only.
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: Updated invoice.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    delete:
+      operationId: deleteInvoice
+      summary: Delete a draft invoice
+      description: Permanently delete a draft invoice. Only invoices in draft status can be deleted.
+      tags:
+      - Invoices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Invoice ID (inv_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Invoice deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Empty object on success.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /invoices/{id}/issue:
+    post:
+      operationId: issueInvoice
+      summary: Issue an invoice
+      description: Transition a draft invoice to issued status, sending a notification to the customer with the payment link. Once issued, line items cannot be changed.
+      tags:
+      - Invoices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Invoice ID (inv_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Invoice issued. short_url is now active.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /invoices/{id}/cancel:
+    post:
+      operationId: cancelInvoice
+      summary: Cancel an invoice
+      description: Cancel a draft or issued invoice. Cancelled invoices cannot be paid and cannot be reinstated.
+      tags:
+      - Invoices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Invoice ID (inv_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Invoice cancelled.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /invoices/{id}/notify_by/{medium}:
+    post:
+      operationId: sendInvoiceNotification
+      summary: Send invoice notification
+      description: Send or resend the invoice payment link to the customer via SMS or email.
+      tags:
+      - Invoices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Invoice ID (inv_*).
+        schema:
+          type: string
+      - name: medium
+        in: path
+        required: true
+        description: Notification channel.
+        schema:
+          type: string
+          enum:
+          - sms
+          - email
+      responses:
+        '200':
+          description: Notification sent.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  schemas:
+    InvoiceLineItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Line item ID. Prefix: li_'
+        item_id:
+          type: string
+          description: Referenced catalog item ID (item_*). Null for ad-hoc line items.
+        name:
+          type: string
+        description:
+          type: string
+        amount:
+          type: integer
+          description: Total line amount in paise (unit_amount × quantity).
+        unit_amount:
+          type: integer
+          description: Per-unit price in paise.
+        quantity:
+          type: integer
+          default: 1
+        currency:
+          type: string
+          default: INR
+        type:
+          type: string
+          enum:
+          - invoice
+          - payment_page
+    Invoice:
+      type: object
+      description: An invoice or payment page sent to a customer for payment. Cannot be used to create GST invoices (those must be created via the Dashboard).
+      properties:
+        id:
+          type: string
+          description: 'Invoice ID. Prefix: inv_'
+        entity:
+          type: string
+          enum:
+          - invoice
+        type:
+          type: string
+          enum:
+          - invoice
+          - link
+          description: 'invoice: a formal invoice document. link: a payment page / payment link.'
+        status:
+          type: string
+          enum:
+          - draft
+          - issued
+          - partially_paid
+          - paid
+          - cancelled
+          - expired
+          - deleted
+          description: Invoice lifecycle status. draft→issued→paid/partially_paid/cancelled/expired.
+        invoice_number:
+          type: string
+          description: Auto-generated invoice number (e.g. INV-001).
+        customer_id:
+          type: string
+          description: Customer ID (cust_*).
+        customer:
+          type: object
+          description: Inline customer details snapshot at time of invoice creation.
+        order_id:
+          type: string
+          description: Associated order ID (order_*).
+        line_items:
+          type: array
+          maxItems: 50
+          description: Up to 50 line items.
+          items:
+            $ref: '#/components/schemas/InvoiceLineItem'
+        payment_id:
+          type: string
+          description: Payment ID (pay_*) of the successful payment, if paid.
+        currency:
+          type: string
+          default: INR
+        gross_amount:
+          type: integer
+          description: Sum of all line item amounts before tax (paise).
+        tax_amount:
+          type: integer
+          description: Total tax amount (paise).
+        taxable_amount:
+          type: integer
+          description: Taxable base amount (paise).
+        amount:
+          type: integer
+          description: Total invoice amount including tax (paise).
+        amount_paid:
+          type: integer
+          description: Amount received so far (paise). Relevant for partial_payment invoices.
+        amount_due:
+          type: integer
+          description: Remaining amount due (paise).
+        short_url:
+          type: string
+          description: Hosted payment page URL to send to the customer.
+        partial_payment:
+          type: boolean
+          description: If true, customer can pay any amount ≥ first_payment_min_amount.
+        first_payment_min_amount:
+          type: integer
+          description: Minimum amount for the first partial payment (paise). Required when partial_payment=true.
+        receipt:
+          type: string
+          description: Your internal reference number.
+        description:
+          type: string
+        comment:
+          type: string
+          description: Internal comment (not shown on invoice).
+        terms:
+          type: string
+          description: Payment terms shown on the invoice.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        expire_by:
+          type: integer
+          description: Unix timestamp after which the invoice expires and cannot be paid.
+        issued_at:
+          type: integer
+        paid_at:
+          type: integer
+        cancelled_at:
+          type: integer
+        expired_at:
+          type: integer
+        created_at:
+          type: integer
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

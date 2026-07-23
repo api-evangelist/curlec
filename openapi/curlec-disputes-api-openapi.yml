@@ -1,0 +1,491 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills Disputes API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Disputes
+  description: Disputes (chargebacks) are raised by customers via their bank. You can accept (lose) or contest (challenge with evidence) each dispute. Monitor respond_by timestamp — missing the deadline forfeits the dispute.
+paths:
+  /disputes:
+    get:
+      operationId: fetchAllDisputes
+      summary: Fetch all disputes
+      description: Retrieve a list of all payment disputes. Use expand[]=payment or expand[]=transaction.settlement for additional context.
+      tags:
+      - Disputes
+      parameters:
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      - name: expand[]
+        in: query
+        description: 'Expand sub-entities. Supported: payment, transaction.settlement.'
+        schema:
+          type: string
+          enum:
+          - payment
+          - transaction.settlement
+      responses:
+        '200':
+          description: Collection of disputes.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Dispute'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /disputes/{id}:
+    get:
+      operationId: fetchDispute
+      summary: Fetch dispute by ID
+      description: Retrieve full details of a specific dispute including submitted evidence.
+      tags:
+      - Disputes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Dispute ID (disp_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Dispute details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dispute'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /disputes/{id}/accept:
+    post:
+      operationId: acceptDispute
+      summary: Accept a dispute
+      description: Accept a dispute, acknowledging it as lost. This is irreversible — the dispute status changes to 'lost' and the disputed amount is deducted from your balance. Only accept if you do not wish to contest.
+      tags:
+      - Disputes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Dispute ID (disp_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Dispute accepted. Status changes to 'lost'.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dispute'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /disputes/{id}/contest:
+    patch:
+      operationId: contestDispute
+      summary: Contest a dispute
+      description: Submit evidence to challenge a dispute. Use action=draft to save without submitting, or action=submit to send for bank review (triggers payment.dispute.under_review webhook). At least one evidence document is required when submitting. You can contest partial amounts by specifying amount.
+      tags:
+      - Disputes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Dispute ID (disp_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - draft
+                  - submit
+                  description: 'draft: save evidence without submitting. submit: send for bank review. Minimum one document required for submit.'
+                amount:
+                  type: integer
+                  description: Amount being contested (paise). Defaults to full dispute amount.
+                summary:
+                  type: string
+                  description: Your explanation of why the dispute should be resolved in your favour. Max 1000 characters.
+                shipping_proof:
+                  type: array
+                  items:
+                    type: string
+                  description: Document IDs proving product shipment.
+                billing_proof:
+                  type: array
+                  items:
+                    type: string
+                cancellation_proof:
+                  type: array
+                  items:
+                    type: string
+                customer_communication:
+                  type: array
+                  items:
+                    type: string
+                proof_of_service:
+                  type: array
+                  items:
+                    type: string
+                explanation_letter:
+                  type: array
+                  items:
+                    type: string
+                refund_confirmation:
+                  type: array
+                  items:
+                    type: string
+                access_activity_log:
+                  type: array
+                  items:
+                    type: string
+                refund_cancellation_policy:
+                  type: array
+                  items:
+                    type: string
+                term_and_conditions:
+                  type: array
+                  items:
+                    type: string
+                others:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: Dispute contested. Status changes to 'under_review' on submit.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dispute'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  responses:
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    DisputeEvidence:
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: Contested amount in currency subunits.
+        summary:
+          type: string
+          description: Your explanation of why the dispute should be resolved in your favour. Max 1000 characters.
+        shipping_proof:
+          type: array
+          items:
+            type: string
+          description: Document IDs proving product shipment.
+        billing_proof:
+          type: array
+          items:
+            type: string
+          description: Order confirmation document IDs.
+        cancellation_proof:
+          type: array
+          items:
+            type: string
+        customer_communication:
+          type: array
+          items:
+            type: string
+        proof_of_service:
+          type: array
+          items:
+            type: string
+        explanation_letter:
+          type: array
+          items:
+            type: string
+        refund_confirmation:
+          type: array
+          items:
+            type: string
+        access_activity_log:
+          type: array
+          items:
+            type: string
+        refund_cancellation_policy:
+          type: array
+          items:
+            type: string
+        term_and_conditions:
+          type: array
+          items:
+            type: string
+        others:
+          type: array
+          items:
+            type: object
+        submitted_at:
+          type:
+          - integer
+          - 'null'
+          description: Unix timestamp of last evidence submission. Null for drafts.
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
+    Dispute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique dispute identifier. Prefix: disp_'
+        entity:
+          type: string
+          enum:
+          - dispute
+        payment_id:
+          type: string
+          description: The payment against which the dispute was raised (pay_*).
+        amount:
+          type: integer
+          description: Disputed amount in currency subunits.
+        currency:
+          type: string
+        amount_deducted:
+          type: integer
+          description: Amount deducted from your balance when dispute is lost.
+        reason_code:
+          type: string
+          description: Code identifying the dispute reason.
+        reason_description:
+          type: string
+          description: Human-readable explanation of the dispute cause.
+        respond_by:
+          type: integer
+          description: Unix timestamp by which you must respond. Missing this forfeits the dispute.
+        status:
+          type: string
+          enum:
+          - open
+          - under_review
+          - won
+          - lost
+          - closed
+          description: 'open: action required. under_review: evidence submitted, awaiting bank decision. won: resolved in your favour. lost: resolved against you. closed: resolved without chargeback.'
+        phase:
+          type: string
+          enum:
+          - fraud
+          - retrieval
+          - chargeback
+          - pre_arbitration
+          - arbitration
+          description: Escalation stage of the dispute process.
+        created_at:
+          type: integer
+        evidence:
+          $ref: '#/components/schemas/DisputeEvidence'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

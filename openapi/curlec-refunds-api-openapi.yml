@@ -1,0 +1,497 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills Refunds API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Refunds
+  description: Refunds return captured payment amounts to customers. Normal refunds take 5-7 business days. Instant (optimum) refunds settle immediately but may fall back to normal. Use X-Refund-Idempotency header to safely retry without duplicates.
+paths:
+  /payments/{id}/refund:
+    post:
+      operationId: createRefund
+      summary: Create a refund
+      description: Initiate a full or partial refund for a captured payment. Use speed=normal (default, 5-7 business days) or speed=optimum for instant refund (falls back to normal if unavailable). Use the X-Refund-Idempotency header with a unique key (>=10 chars) to safely retry without duplicate refunds.
+      tags:
+      - Refunds
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Payment ID to refund (pay_*). Payment must be captured.
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  description: Refund amount in paise. Omit to refund the full payment amount.
+                speed:
+                  type: string
+                  enum:
+                  - normal
+                  - optimum
+                  default: normal
+                  description: 'normal: 5-7 business days. optimum: instant if available, falls back to normal.'
+                notes:
+                  $ref: '#/components/schemas/Notes'
+                receipt:
+                  type: string
+                  description: Your internal reference identifier.
+            example:
+              amount: 50000
+              speed: normal
+              receipt: refund_receipt_001
+      responses:
+        '200':
+          description: Refund initiated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      x-idempotency:
+        header: X-Refund-Idempotency
+        description: Unique key (>=10 chars, alphanumeric/hyphens/underscores). Same key + same payload = same result. Different payload = BAD_REQUEST. 409 Conflict = prior request still processing, retry.
+  /payments/{payment_id}/refunds:
+    get:
+      operationId: fetchPaymentRefunds
+      summary: Fetch refunds for a payment
+      description: Retrieve all refunds issued against a specific payment.
+      tags:
+      - Refunds
+      parameters:
+      - name: payment_id
+        in: path
+        required: true
+        description: Payment ID (pay_*).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Collection of refunds for the payment.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /payments/{payment_id}/refunds/{refund_id}:
+    get:
+      operationId: fetchPaymentRefund
+      summary: Fetch a specific refund for a payment
+      description: Retrieve a specific refund by its ID scoped to a particular payment.
+      tags:
+      - Refunds
+      parameters:
+      - name: payment_id
+        in: path
+        required: true
+        description: Payment ID (pay_*).
+        schema:
+          type: string
+      - name: refund_id
+        in: path
+        required: true
+        description: Refund ID (rfnd_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Refund details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /refunds:
+    get:
+      operationId: fetchAllRefunds
+      summary: Fetch all refunds
+      description: Retrieve a paginated list of all refunds across payments. Maximum 100 per call.
+      tags:
+      - Refunds
+      parameters:
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Collection of refunds.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Refund'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /refunds/{id}:
+    get:
+      operationId: fetchRefund
+      summary: Fetch refund by ID
+      description: Retrieve full details and current status of a specific refund.
+      tags:
+      - Refunds
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Refund ID (rfnd_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Refund details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    patch:
+      operationId: updateRefund
+      summary: Update a refund
+      description: Update the notes field of a refund. Only notes can be modified.
+      tags:
+      - Refunds
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Refund ID (rfnd_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - notes
+              properties:
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Updated refund.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  schemas:
+    Refund:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique refund identifier. Prefix: rfnd_'
+        entity:
+          type: string
+          enum:
+          - refund
+        amount:
+          type: integer
+          description: Refund amount in paise.
+        currency:
+          type: string
+        payment_id:
+          type: string
+          description: The original payment ID (pay_*).
+        notes:
+          $ref: '#/components/schemas/Notes'
+        receipt:
+          type: string
+          description: Your internal reference identifier.
+        acquirer_data:
+          type: object
+          description: 'Bank reference numbers for tracking: RRN (UPI/netbanking), ARN (cards), UTR (NEFT/RTGS).'
+          properties:
+            arn:
+              type: string
+            rrn:
+              type: string
+            utr:
+              type: string
+        created_at:
+          type: integer
+        batch_id:
+          type: string
+          description: Set if refund was part of a batch upload.
+        status:
+          type: string
+          enum:
+          - pending
+          - processed
+          - failed
+          description: 'pending: being processed. processed: credited to customer. failed: refund failed.'
+        speed_requested:
+          type: string
+          enum:
+          - normal
+          - optimum
+          description: 'normal: 5-7 business days. optimum: instant if available, falls back to normal.'
+        speed_processed:
+          type: string
+          enum:
+          - instant
+          - normal
+          description: Actual processing mode used.
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

@@ -1,0 +1,421 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills Instant Settlements API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Instant Settlements
+  description: On-demand settlements let you transfer your available Razorpay balance to your bank account immediately, outside the normal settlement cycle. Fees apply. Requires Instant Settlements to be enabled on your account.
+paths:
+  /settlements/ondemand:
+    post:
+      operationId: createInstantSettlement
+      summary: Create an instant settlement
+      description: Request an on-demand (instant) settlement of your available Razorpay balance to your bank account. Fees apply. Use settle_full_balance=true to settle everything available, or specify an amount.
+      tags:
+      - Instant Settlements
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - amount
+              properties:
+                amount:
+                  type: integer
+                  description: Settlement amount in paise.
+                settle_full_balance:
+                  type: boolean
+                  description: Set true to settle the full available balance. Overrides amount.
+                  default: false
+                description:
+                  type: string
+                  description: Custom reference note. Max 30 alphanumeric characters.
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Instant settlement initiated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstantSettlement'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+    get:
+      operationId: fetchAllInstantSettlements
+      summary: Fetch all instant settlements
+      description: Retrieve a list of all on-demand instant settlements. Use expand[]=ondemand_payouts to include individual payout records inline.
+      tags:
+      - Instant Settlements
+      parameters:
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      - name: expand[]
+        in: query
+        description: Set to ondemand_payouts to include payout details.
+        schema:
+          type: string
+          enum:
+          - ondemand_payouts
+      responses:
+        '200':
+          description: Collection of instant settlements.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/InstantSettlement'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /settlements/ondemand/{id}:
+    get:
+      operationId: fetchInstantSettlement
+      summary: Fetch instant settlement by ID
+      description: Retrieve details of a specific on-demand instant settlement. Use expand[]=ondemand_payouts to include payout records.
+      tags:
+      - Instant Settlements
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Instant settlement ID (setlod_*).
+        schema:
+          type: string
+      - name: expand[]
+        in: query
+        description: Set to ondemand_payouts to include payout details.
+        schema:
+          type: string
+          enum:
+          - ondemand_payouts
+      responses:
+        '200':
+          description: Instant settlement details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstantSettlement'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  schemas:
+    InstantSettlement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique instant settlement identifier. Prefix: setlod_'
+        entity:
+          type: string
+          enum:
+          - settlement.ondemand
+        amount_requested:
+          type: integer
+          description: Settlement amount requested (paise).
+        amount_settled:
+          type: integer
+          description: Total amount transferred minus fees and tax (paise).
+        amount_pending:
+          type: integer
+          description: Portion of requested amount yet to be settled (paise).
+        amount_reversed:
+          type: integer
+          description: Amount returned to PG balance (paise).
+        fees:
+          type: integer
+          description: Combined fees and tax deducted (paise).
+        tax:
+          type: integer
+          description: Tax on fee component (paise).
+        currency:
+          type: string
+        settle_full_balance:
+          type: boolean
+          description: If true, settles maximum available balance.
+        status:
+          type: string
+          enum:
+          - created
+          - initiated
+          - partially_processed
+          - processed
+          - reversed
+        description:
+          type: string
+          description: Custom reference note. Max 30 alphanumeric characters.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+        ondemand_payouts:
+          type: object
+          description: Collection of individual payout records for this instant settlement.
+          properties:
+            entity:
+              type: string
+              enum:
+              - collection
+            count:
+              type: integer
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/InstantSettlementPayout'
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    InstantSettlementPayout:
+      type: object
+      properties:
+        id:
+          type: string
+        entity:
+          type: string
+          enum:
+          - settlement.ondemand_payout
+        initiated_at:
+          type: integer
+        processed_at:
+          type: integer
+        reversed_at:
+          type: integer
+        amount:
+          type: integer
+        amount_settled:
+          type: integer
+        fees:
+          type: integer
+        tax:
+          type: integer
+        utr:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - initiated
+          - processed
+          - reversed
+        created_at:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

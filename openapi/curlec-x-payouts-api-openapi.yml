@@ -1,0 +1,638 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills X Payouts API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: X Payouts
+  description: Disbursements via NEFT, RTGS, IMPS, UPI, card — includes composite and approval flows
+paths:
+  /payouts:
+    post:
+      operationId: createPayout
+      summary: Create a payout
+      description: Disburse funds via NEFT, RTGS, IMPS, UPI, or card. Supports standard payouts (fund_account_id), composite payouts (contact + fund account inline), card payouts (PCI DSS required), and mobile number payouts (resolved via NPCI mapper). Idempotency header X-Payout-Idempotency (UUID v4, 4–36 chars) is mandatory since March 15, 2025. Never generate a new idempotency key while a payout is in 'processing' state.
+      tags:
+      - X Payouts
+      parameters:
+      - name: X-Payout-Idempotency
+        in: header
+        required: true
+        schema:
+          type: string
+          minLength: 4
+          maxLength: 36
+        description: UUID v4 idempotency key. Mandatory since March 15, 2025.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - account_number
+              - amount
+              - currency
+              - mode
+              - purpose
+              properties:
+                account_number:
+                  type: string
+                  description: Razorpay X account number to debit
+                fund_account_id:
+                  type: string
+                  description: Required for standard payouts; omit for composite
+                fund_account:
+                  type: object
+                  description: Inline fund account for composite payout
+                amount:
+                  type: integer
+                  minimum: 100
+                  description: Amount in paise
+                currency:
+                  type: string
+                  enum:
+                  - INR
+                mode:
+                  type: string
+                  enum:
+                  - NEFT
+                  - RTGS
+                  - IMPS
+                  - UPI
+                  - card
+                  - amazonpay
+                  description: Case-sensitive
+                purpose:
+                  type: string
+                  enum:
+                  - refund
+                  - cashback
+                  - payout
+                  - salary
+                  - utility bill
+                  - vendor bill
+                narration:
+                  type: string
+                  maxLength: 30
+                reference_id:
+                  type: string
+                  maxLength: 40
+                notes:
+                  type: object
+                queue_if_low_balance:
+                  type: boolean
+                  description: 'true: queue payout when account balance is insufficient (default: false)'
+      responses:
+        '200':
+          description: Payout created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      operationId: listPayouts
+      summary: List payouts
+      tags:
+      - X Payouts
+      parameters:
+      - name: account_number
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The RazorpayX account number (Customer Identifier from Dashboard → My Account & Settings → Banking). Required to scope results to a specific account.
+      - name: contact_id
+        in: query
+        schema:
+          type: string
+        description: Filter payouts by the contact ID of the recipient.
+      - name: fund_account_id
+        in: query
+        schema:
+          type: string
+        description: Filter payouts by fund account ID.
+      - name: from
+        in: query
+        schema:
+          type: integer
+        description: Unix timestamp. Only payouts created from this timestamp onwards are returned.
+      - name: to
+        in: query
+        schema:
+          type: integer
+        description: Unix timestamp. Only payouts created before this timestamp are returned.
+      - name: count
+        in: query
+        schema:
+          type: integer
+          default: 25
+        description: 'Number of payouts to return. Default: 10. Maximum: 100.'
+      - name: skip
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: 'Number of payouts to skip. Use for pagination. Default: 0.'
+      responses:
+        '200':
+          description: List of payouts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entity:
+                    type: string
+                    enum:
+                    - collection
+                  count:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payout'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      description: List payouts for a given RazorpayX account. Filter by contact, fund account, date range, or status.
+  /payouts/{payout_id}:
+    parameters:
+    - name: payout_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the payout (e.g. `pout_00000000000001`).
+    get:
+      operationId: fetchPayout
+      summary: Fetch a payout
+      tags:
+      - X Payouts
+      responses:
+        '200':
+          description: Payout details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '404':
+          $ref: '#/components/responses/404'
+      description: Fetch details of a specific payout by its ID.
+  /payouts/{payout_id}/cancel:
+    parameters:
+    - name: payout_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the payout to cancel.
+    post:
+      operationId: cancelPayout
+      summary: Cancel a queued payout
+      description: Only payouts in 'queued' status can be cancelled.
+      tags:
+      - X Payouts
+      responses:
+        '200':
+          description: Payout cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+  /payouts/{payout_id}/approve:
+    parameters:
+    - name: payout_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the payout to approve.
+    post:
+      operationId: approvePayout
+      summary: Approve a payout (workflow enabled)
+      description: Requires Payouts Approval workflow enabled and Technology Partner status with OAuth.
+      tags:
+      - X Payouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remarks:
+                  type: string
+      responses:
+        '200':
+          description: Payout approved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+  /payouts/{payout_id}/reject:
+    parameters:
+    - name: payout_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the payout to reject.
+    post:
+      operationId: rejectPayout
+      summary: Reject a payout (workflow enabled)
+      description: Requires Payouts Approval workflow enabled and Technology Partner status with OAuth.
+      tags:
+      - X Payouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remarks:
+                  type: string
+      responses:
+        '200':
+          description: Payout rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+components:
+  schemas:
+    FundAccount:
+      type: object
+      description: Payout destination linked to a Contact. Immutable after creation.
+      properties:
+        id:
+          type: string
+          description: Fund account ID (fa_*)
+        entity:
+          type: string
+          enum:
+          - fund_account
+        contact_id:
+          type: string
+        account_type:
+          type: string
+          enum:
+          - bank_account
+          - vpa
+          - card
+          - wallet
+        active:
+          type: boolean
+        batch_id:
+          type: string
+        bank_account:
+          type: object
+          properties:
+            ifsc:
+              type: string
+            bank_name:
+              type: string
+            name:
+              type: string
+            account_number:
+              type: string
+        vpa:
+          type: object
+          properties:
+            username:
+              type: string
+            handle:
+              type: string
+            address:
+              type: string
+        card:
+          type: object
+          properties:
+            last4:
+              type: string
+            network:
+              type: string
+            type:
+              type: string
+            issuer:
+              type: string
+            input_type:
+              type: string
+              enum:
+              - razorpay_token
+              - service_provider_token
+              - raw
+        created_at:
+          type: integer
+        wallet:
+          type: object
+          description: Amazon Pay wallet details. Required when account_type=wallet.
+          properties:
+            provider:
+              type: string
+              enum:
+              - amazonpay
+            phone:
+              type: string
+              description: 10-digit phone with country code, e.g. +919876543210
+            email:
+              type: string
+              format: email
+            name:
+              type: string
+              minLength: 4
+              maxLength: 120
+              description: 'Wallet holder name. Case-sensitive. Supported: a-z, A-Z, 0-9, space, '', -, _, /, (, ), .'
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    Payout:
+      type: object
+      description: RazorpayX payout disbursement. Idempotency header X-Payout-Idempotency required since March 15, 2025.
+      properties:
+        id:
+          type: string
+          description: Payout ID (pout_*)
+        entity:
+          type: string
+          enum:
+          - payout
+        fund_account_id:
+          type: string
+        fund_account:
+          $ref: '#/components/schemas/FundAccount'
+        amount:
+          type: integer
+          minimum: 100
+          description: Amount in paise (min 100)
+        currency:
+          type: string
+          enum:
+          - INR
+        fees:
+          type: integer
+        tax:
+          type: integer
+        mode:
+          type: string
+          enum:
+          - NEFT
+          - RTGS
+          - IMPS
+          - UPI
+          - card
+          - amazonpay
+          description: Transfer mode — case-sensitive. amazonpay limited to ₹10,000 per transaction; no custom narration allowed.
+        utr:
+          type: string
+          description: Unique Transaction Reference from bank
+        reference_id:
+          type: string
+          maxLength: 40
+        debit_account_number:
+          type: string
+        narration:
+          type: string
+          maxLength: 30
+        purpose:
+          type: string
+          enum:
+          - refund
+          - cashback
+          - payout
+          - salary
+          - utility bill
+          - vendor bill
+        fee_type:
+          type: string
+        status:
+          type: string
+          enum:
+          - queued
+          - pending
+          - rejected
+          - processing
+          - processed
+          - cancelled
+          - reversed
+          - failed
+        status_details:
+          type: object
+          properties:
+            description:
+              type: string
+            source:
+              type: string
+            reason:
+              type: string
+        batch_id:
+          type: string
+        notes:
+          type: object
+        created_at:
+          type: integer
+        queue_if_low_balance:
+          type: boolean
+          description: 'true: queue payout when account balance is insufficient. false (default): fail immediately.'
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

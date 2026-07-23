@@ -1,0 +1,684 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills Payment Links API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Payment Links
+  description: Payment Links are shareable URLs to collect payments without a website. Share via SMS, email, or any channel. Supports partial payments, expiry, reminders, UPI-only mode, offers, and transfers to linked accounts.
+paths:
+  /payment_links:
+    post:
+      operationId: createPaymentLink
+      summary: Create a payment link
+      description: Create a shareable payment link to collect payments via SMS and email. Supports standard links (all payment methods) and UPI-only links (set upi_link=true). UPI links are not available in test mode. Partial payments are not supported for UPI links. Links expire after 6 months by default.
+      tags:
+      - Payment Links
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - amount
+              properties:
+                amount:
+                  type: integer
+                  description: 'Amount in smallest currency unit (paise for INR). Example: 50000 for ₹500.'
+                currency:
+                  type: string
+                  default: INR
+                  description: ISO 4217 currency code. UPI links support INR only.
+                upi_link:
+                  type: boolean
+                  default: false
+                  description: Set true to create a UPI-only Payment Link. Not available in test mode.
+                accept_partial:
+                  type: boolean
+                  description: Enable partial payments. Not supported for UPI links.
+                first_min_partial_amount:
+                  type: integer
+                  description: Minimum first partial payment amount in paise.
+                expire_by:
+                  type: integer
+                  description: Unix timestamp for link expiry. Max 6 months from creation. Must be at least 15 minutes in the future.
+                reference_id:
+                  type: string
+                  description: Your unique tracking reference. Max 40 characters. Must be unique.
+                description:
+                  type: string
+                  description: Brief description shown on the payment page. Max 2048 characters.
+                customer:
+                  type: object
+                  description: Customer contact details. Not auto-populated on checkout — customer must enter manually.
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    contact:
+                      type: string
+                notify:
+                  type: object
+                  description: Notification handlers. Set true for Razorpay to send, false to handle yourself.
+                  properties:
+                    sms:
+                      type: boolean
+                    email:
+                      type: boolean
+                reminder_enable:
+                  type: boolean
+                  description: Send automatic payment reminders.
+                callback_url:
+                  type: string
+                  description: Redirect URL after payment completion.
+                callback_method:
+                  type: string
+                  enum:
+                  - get
+                  description: Required when callback_url is set.
+                notes:
+                  $ref: '#/components/schemas/Notes'
+                options:
+                  type: object
+                  description: Checkout and payment page customization.
+                  properties:
+                    checkout:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Custom business name displayed on checkout.
+                        theme:
+                          type: object
+                          properties:
+                            hide_topbar:
+                              type: boolean
+                              description: Hide the checkout top bar to prevent method switching.
+                        method:
+                          type: object
+                          description: Enable or disable specific payment methods.
+                          properties:
+                            card:
+                              type: boolean
+                            netbanking:
+                              type: boolean
+                            upi:
+                              type: boolean
+                            wallet:
+                              type: boolean
+                        config:
+                          type: object
+                          description: Advanced checkout display configuration (blocks, sequence, preferences).
+                          properties:
+                            display:
+                              type: object
+                              properties:
+                                blocks:
+                                  type: object
+                                  description: Custom payment method groupings with names and instruments.
+                                sequence:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: Display order of payment method blocks.
+                                preferences:
+                                  type: object
+                                  properties:
+                                    show_default_blocks:
+                                      type: boolean
+                        partial_payment:
+                          type: object
+                          description: Rename partial payment labels (for localisation).
+                          properties:
+                            min_amount_label:
+                              type: string
+                            partial_amount_label:
+                              type: string
+                            partial_amount_description:
+                              type: string
+                            full_amount_label:
+                              type: string
+                    hosted_page:
+                      type: object
+                      description: Customise labels on the payment details section of the hosted page.
+                      properties:
+                        label:
+                          type: object
+                          description: Map of field names to custom label text. Supports localisation (Hindi, Tamil, etc.).
+                          properties:
+                            PAYMENT FOR:
+                              type: string
+                            RECEIPT NO.:
+                              type: string
+                            AMOUNT PAYABLE:
+                              type: string
+                            EXPIRES ON:
+                              type: string
+                            DUE:
+                              type: string
+                            PAID:
+                              type: string
+                            AMOUNT PAID:
+                              type: string
+                            ISSUED TO:
+                              type: string
+                    order:
+                      type: object
+                      description: Order-level options including offers and transfers.
+                      properties:
+                        offers:
+                          type: array
+                          items:
+                            type: string
+                          description: Offer IDs to apply. Do not combine with accept_partial.
+                        transfers:
+                          type: array
+                          description: Auto-transfer payments to linked accounts.
+                          items:
+                            type: object
+                            properties:
+                              account:
+                                type: string
+                                description: Linked account ID.
+                              amount:
+                                type: integer
+                              currency:
+                                type: string
+                              notes:
+                                $ref: '#/components/schemas/Notes'
+            example:
+              amount: 50000
+              currency: INR
+              description: 'Payment for Order #1234'
+              customer:
+                name: Aisha Sharma
+                email: aisha@example.com
+                contact: '+919876543210'
+              notify:
+                sms: true
+                email: true
+              reminder_enable: true
+      responses:
+        '200':
+          description: Payment link created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentLink'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+    get:
+      operationId: fetchAllPaymentLinks
+      summary: Fetch all payment links
+      description: Retrieve all payment links. Filter by payment_id or reference_id to narrow results.
+      tags:
+      - Payment Links
+      parameters:
+      - name: payment_id
+        in: query
+        description: Filter by associated payment ID.
+        schema:
+          type: string
+      - name: reference_id
+        in: query
+        description: Filter by your custom reference number.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of payment links.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payment_links:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PaymentLink'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /payment_links/{id}:
+    get:
+      operationId: fetchPaymentLink
+      summary: Fetch payment link by ID
+      description: Retrieve full details of a specific payment link.
+      tags:
+      - Payment Links
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Payment Link ID (plink_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Payment link details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentLink'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    patch:
+      operationId: updatePaymentLink
+      summary: Update a payment link
+      description: Update an existing payment link. Updates are only allowed when the link is in 'created' or 'partially_paid' status.
+      tags:
+      - Payment Links
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Payment Link ID (plink_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reference_id:
+                  type: string
+                  description: Add or update unique reference number. Max 40 characters.
+                expire_by:
+                  type: integer
+                  description: Updated expiry Unix timestamp.
+                reminder_enable:
+                  type: boolean
+                accept_partial:
+                  type: boolean
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Updated payment link.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentLink'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /payment_links/{id}/cancel:
+    post:
+      operationId: cancelPaymentLink
+      summary: Cancel a payment link
+      description: Cancel a payment link. Only links in 'created' status can be cancelled. Paid, partially paid, and already expired links cannot be cancelled.
+      tags:
+      - Payment Links
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Payment Link ID (plink_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Payment link cancelled. Status changes to 'cancelled'.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentLink'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /payment_links/{id}/notify_by/{medium}:
+    post:
+      operationId: resendPaymentLinkNotification
+      summary: Send or resend payment link notification
+      description: Send or resend a payment link notification to the customer via SMS or email.
+      tags:
+      - Payment Links
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Payment Link ID (plink_*).
+        schema:
+          type: string
+      - name: medium
+        in: path
+        required: true
+        description: Notification medium.
+        schema:
+          type: string
+          enum:
+          - sms
+          - email
+      responses:
+        '200':
+          description: Notification sent.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  schemas:
+    PaymentLink:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique payment link identifier. Prefix: plink_'
+        entity:
+          type: string
+          enum:
+          - payment_link
+        amount:
+          type: integer
+          description: 'Payment amount in smallest currency unit (paise for INR). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit (e.g. 295.991 KWD → 295990). Zero-decimal currencies (JPY): pass value as-is.'
+        amount_paid:
+          type: integer
+          description: Total amount paid by customer.
+        currency:
+          type: string
+          default: INR
+          description: ISO 4217 currency code. UPI Payment Links only support INR.
+        accept_partial:
+          type: boolean
+          description: Allow partial payments. Not supported for UPI links.
+        first_min_partial_amount:
+          type: integer
+          description: Minimum amount required for the first partial payment.
+        description:
+          type: string
+          description: Brief description. Max 2048 characters.
+        reference_id:
+          type: string
+          description: Your unique tracking reference. Max 40 characters. Must be unique per link.
+        expire_by:
+          type: integer
+          description: 'Unix timestamp when link expires. Default: 6 months from creation. Must be at least 15 minutes in the future.'
+        expired_at:
+          type: integer
+          description: Unix timestamp when link actually expired.
+        cancelled_at:
+          type: integer
+          description: Unix timestamp when link was cancelled.
+        status:
+          type: string
+          enum:
+          - created
+          - partially_paid
+          - expired
+          - cancelled
+          - paid
+          description: 'created: awaiting payment. partially_paid: one or more partial payments received. expired: past expiry with no full payment. cancelled: manually cancelled. paid: fully paid.'
+        upi_link:
+          type: boolean
+          description: true if this is a UPI Payment Link, false for standard.
+        short_url:
+          type: string
+          description: Shareable short URL for the payment link.
+        callback_url:
+          type: string
+          description: Redirect URL after payment completion.
+        callback_method:
+          type: string
+          enum:
+          - get
+        customer:
+          type: object
+          description: Customer contact details. These are not auto-populated on the checkout page — customer must enter them manually.
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+            contact:
+              type: string
+        notify:
+          type: object
+          properties:
+            sms:
+              type: boolean
+              description: 'true: Razorpay sends SMS notification. false: merchant handles.'
+            email:
+              type: boolean
+              description: 'true: Razorpay sends email notification. false: merchant handles.'
+        reminder_enable:
+          type: boolean
+          description: Send automatic payment reminders.
+        payments:
+          type: array
+          description: Captured payment records. Populated only after successful payment capture.
+          items:
+            type: object
+            properties:
+              amount:
+                type: integer
+              payment_id:
+                type: string
+              plink_id:
+                type: string
+              method:
+                type: string
+                enum:
+                - netbanking
+                - card
+                - wallet
+                - upi
+                - emi
+                - bank_transfer
+              status:
+                type: string
+                enum:
+                - captured
+              created_at:
+                type: integer
+              updated_at:
+                type: integer
+        notes:
+          $ref: '#/components/schemas/Notes'
+        order_id:
+          type: string
+        user_id:
+          type: string
+          description: Identifier for the user role that created the link.
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

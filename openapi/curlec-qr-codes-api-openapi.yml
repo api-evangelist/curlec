@@ -1,0 +1,651 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills QR Codes API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: QR Codes
+  description: QR Codes enable offline and digital payment collection. Customers scan with any UPI or card app. Supports fixed-amount and variable-amount codes, single-use and multiple-use modes.
+paths:
+  /payments/qr_codes:
+    post:
+      operationId: createQrCode
+      summary: Create a QR code
+      description: Create a UPI QR code for accepting digital payments. Only upi_qr type is supported (on-demand feature; requires merchant activation). single_use QR codes require fixed_amount=true and close_by maximum is 45 days. multiple_use QR codes have no expiry restriction.
+      tags:
+      - QR Codes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              - name
+              - usage
+              - fixed_amount
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - upi_qr
+                  description: QR code type. Only upi_qr is supported (on-demand feature requiring merchant activation).
+                name:
+                  type: string
+                  description: Label for the QR code.
+                usage:
+                  type: string
+                  enum:
+                  - single_use
+                  - multiple_use
+                  description: 'single_use: auto-closes after first successful payment (requires fixed_amount=true). multiple_use: stays open for multiple payments.'
+                fixed_amount:
+                  type: boolean
+                  description: 'true: fixed amount QR (required for single_use). false: customer enters amount at scan time.'
+                payment_amount:
+                  type: integer
+                  description: Fixed payment amount in paise. Required when fixed_amount=true.
+                description:
+                  type: string
+                customer_id:
+                  type: string
+                  description: Associate QR code with a customer (cust_*).
+                close_by:
+                  type: integer
+                  description: Unix timestamp for auto-close. Maximum 45 days from creation for single_use.
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: QR code created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCode'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+    get:
+      operationId: fetchAllQrCodes
+      summary: Fetch all QR codes
+      description: Retrieve all QR codes. Filter by customer_id or payment_id.
+      tags:
+      - QR Codes
+      parameters:
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      - name: customer_id
+        in: query
+        description: Filter by customer ID (cust_*).
+        schema:
+          type: string
+      - name: payment_id
+        in: query
+        description: Filter QR codes associated with a specific payment.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection of QR codes.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/QrCode'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /payments/qr_codes/{id}:
+    get:
+      operationId: fetchQrCode
+      summary: Fetch QR code by ID
+      description: Retrieve details of a specific QR code including payment counts and status.
+      tags:
+      - QR Codes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: QR code ID (qr_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: QR code details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCode'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    patch:
+      operationId: updateQrCode
+      summary: Update a QR code
+      description: Update the notes field of a QR code. Only notes can be modified after creation.
+      tags:
+      - QR Codes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: QR code ID (qr_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - notes
+              properties:
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Updated QR code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCode'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /payments/qr_codes/{id}/close:
+    post:
+      operationId: closeQrCode
+      summary: Close a QR code
+      description: Deactivate a QR code to stop accepting new payments. Once closed, the QR code cannot be reopened.
+      tags:
+      - QR Codes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: QR code ID (qr_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: QR code closed. Status changes to 'closed'.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCode'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /payments/qr_codes/{id}/payments:
+    get:
+      operationId: fetchQrCodePayments
+      summary: Fetch payments for a QR code
+      description: Retrieve all payments made against a specific QR code.
+      tags:
+      - QR Codes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: QR code ID (qr_*).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Collection of payments for the QR code.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Payment'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  schemas:
+    UpiDetails:
+      type: object
+      properties:
+        payer_account_type:
+          type: string
+        vpa:
+          type: string
+          description: 'Customer UPI VPA (Virtual Payment Address). Example: user@upi.'
+        flow:
+          type: string
+          description: 'UPI flow used: collect, intent, or in_app.'
+    AcquirerData:
+      type: object
+      properties:
+        rrn:
+          type: string
+          description: Bank RRN (Retrieval Reference Number).
+        authentication_reference_number:
+          type: string
+        bank_transaction_id:
+          type: string
+        transaction_id:
+          type: string
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    QrCode:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique QR code identifier. Prefix: qr_'
+        entity:
+          type: string
+          enum:
+          - qr_code
+        name:
+          type: string
+          description: Label for the QR code.
+        description:
+          type: string
+        image_url:
+          type: string
+          description: Hosted URL of the QR code image.
+        payment_amount:
+          type: integer
+          description: Fixed payment amount in paise. Null for variable-amount QR codes.
+        status:
+          type: string
+          enum:
+          - active
+          - closed
+        usage_type:
+          type: string
+          enum:
+          - single_use
+          - multiple_use
+        close_by:
+          type: integer
+          description: Unix timestamp when the QR code will auto-close.
+        closed_at:
+          type: integer
+          description: Unix timestamp when the QR code was closed.
+        close_reason:
+          type: string
+          enum:
+          - on_demand
+          - paid
+          description: Why the QR code was closed.
+        customer_id:
+          type: string
+          description: Associated customer ID (cust_*).
+        payments_amount_received:
+          type: integer
+          description: Total amount received via this QR code (paise).
+        payments_count_received:
+          type: integer
+          description: Number of payments received.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    CardDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Card token identifier (card_*).
+        entity:
+          type: string
+        name:
+          type: string
+          description: Cardholder name.
+        last4:
+          type: string
+          description: Last 4 digits of the card number.
+        network:
+          type: string
+          description: 'Card network. Examples: Visa, MasterCard, RuPay, Amex.'
+        type:
+          type: string
+          description: 'Card type: credit or debit.'
+        issuer:
+          type: string
+          description: 4-character code of the issuing bank.
+        emi:
+          type: boolean
+          description: Whether EMI is available on this card.
+        sub_type:
+          type: string
+          description: Card sub-type (e.g. consumer, corporate).
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique payment identifier. Prefix: pay_'
+        entity:
+          type: string
+          enum:
+          - payment
+        amount:
+          type: integer
+          description: Payment amount in paise.
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - authorized
+          - captured
+          - refunded
+          - failed
+          description: 'created: initiated. authorized: bank approved, not yet captured. captured: funds collected. refunded: fully refunded. failed: transaction failed.'
+        order_id:
+          type: string
+          description: Associated order ID (order_*).
+        invoice_id:
+          type: string
+        international:
+          type: boolean
+        method:
+          type: string
+          enum:
+          - card
+          - netbanking
+          - wallet
+          - emi
+          - upi
+        amount_refunded:
+          type: integer
+          description: Total refunded amount in paise.
+        refund_status:
+          type: string
+          enum:
+          - 'null'
+          - partial
+          - full
+        captured:
+          type: boolean
+        description:
+          type: string
+        card_id:
+          type: string
+        card:
+          $ref: '#/components/schemas/CardDetails'
+        bank:
+          type: string
+          description: 'Bank code for netbanking. Example: HDFC.'
+        wallet:
+          type: string
+          description: 'Wallet name. Examples: paytm, mobikwik.'
+        vpa:
+          type: string
+        upi:
+          $ref: '#/components/schemas/UpiDetails'
+        email:
+          type: string
+        contact:
+          type: string
+        customer_id:
+          type: string
+        token_id:
+          type: string
+        notes:
+          $ref: '#/components/schemas/Notes'
+        fee:
+          type: integer
+          description: Razorpay fee charged (paise).
+        tax:
+          type: integer
+          description: GST on the fee (paise).
+        error_code:
+          type: string
+        error_description:
+          type: string
+        error_source:
+          type: string
+        error_step:
+          type: string
+        error_reason:
+          type: string
+        acquirer_data:
+          $ref: '#/components/schemas/AcquirerData'
+        created_at:
+          type: integer
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

@@ -1,0 +1,734 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills Subscriptions API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Subscriptions
+  description: Recurring billing subscriptions. Customers must authorize a payment mandate (UPI Autopay, NACH, or card-on-file) via the short_url before charges begin. Supports pause/resume, plan changes, add-ons, and indefinite billing cycles.
+paths:
+  /subscriptions:
+    post:
+      operationId: createSubscription
+      summary: Create a subscription
+      description: Subscribe a customer to a plan. Returns a short_url that the customer MUST open to authorize the payment mandate (UPI Autopay, NACH, or card-on-file). The subscription will not charge until the mandate is authorized. Set notify_info to send the auth link via SMS/email automatically. Requires Subscriptions feature enabled on your Razorpay account.
+      tags:
+      - Subscriptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - plan_id
+              - total_count
+              properties:
+                plan_id:
+                  type: string
+                  description: Plan ID (plan_*) to subscribe the customer to.
+                total_count:
+                  type: integer
+                  description: Total number of billing cycles. Use 0 for indefinite (no fixed end).
+                quantity:
+                  type: integer
+                  default: 1
+                  description: Number of plan units billed per cycle.
+                customer_notify:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: 1 to have Razorpay notify customer via SMS/email on each charge event.
+                start_at:
+                  type: integer
+                  description: Unix timestamp for the first charge. Defaults to subscription creation time.
+                expire_by:
+                  type: integer
+                  description: Unix timestamp deadline for the customer to authorize the mandate.
+                addons:
+                  type: array
+                  description: One-time charges added to the first billing cycle only.
+                  items:
+                    type: object
+                    properties:
+                      item:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          amount:
+                            type: integer
+                            description: Addon amount in paise.
+                          currency:
+                            type: string
+                            default: INR
+                offer_id:
+                  type: string
+                  description: Offer/coupon ID to apply to the subscription.
+                notify_info:
+                  type: object
+                  description: If provided, Razorpay sends the mandate auth link directly to the customer.
+                  properties:
+                    notify_phone:
+                      type: string
+                      description: Customer phone number to send SMS.
+                    notify_email:
+                      type: string
+                      description: Customer email address to send the link.
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Subscription created. Send short_url to the customer for mandate authorization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+    get:
+      operationId: listSubscriptions
+      summary: List all subscriptions
+      description: Retrieve all subscriptions. Filter by plan_id or status. Returns up to 100 per call.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: plan_id
+        in: query
+        schema:
+          type: string
+        description: Filter by plan ID.
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Collection of subscriptions.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Collection'
+                - properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Subscription'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /subscriptions/{id}:
+    get:
+      operationId: fetchSubscription
+      summary: Fetch a subscription
+      description: Get current status and full details of a subscription.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscription details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    patch:
+      operationId: updateSubscription
+      summary: Update a subscription
+      description: Update plan, quantity, or schedule future changes for a subscription. Use schedule_change_at='now' for immediate effect (creates a new billing cycle) or 'cycle_end' to defer until the current cycle ends. Cannot change plan mid-cycle without creating a new cycle.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plan_id:
+                  type: string
+                  description: New plan ID to switch to.
+                quantity:
+                  type: integer
+                remaining_count:
+                  type: integer
+                  description: Override remaining billing cycles.
+                schedule_change_at:
+                  type: string
+                  enum:
+                  - now
+                  - cycle_end
+                  description: When changes take effect. 'now' starts a new cycle immediately; 'cycle_end' defers to end of current cycle.
+                customer_notify:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Subscription updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /subscriptions/{id}/cancel:
+    post:
+      operationId: cancelSubscription
+      summary: Cancel a subscription
+      description: Cancel an active or authenticated subscription. Use cancel_at_cycle_end=1 to continue service until the end of the current cycle before cancelling.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cancel_at_cycle_end:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: 1 = cancel at end of current cycle; 0 = cancel immediately.
+      responses:
+        '200':
+          description: Subscription cancelled.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /subscriptions/{id}/pause:
+    post:
+      operationId: pauseSubscription
+      summary: Pause a subscription
+      description: Pause an active subscription. No charges will be attempted while paused. Resume with POST /subscriptions/{id}/resume.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pause_at:
+                  type: string
+                  enum:
+                  - now
+                  - cycle_end
+                  description: When to pause. 'now' = immediately; 'cycle_end' = after current cycle.
+      responses:
+        '200':
+          description: Subscription paused.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /subscriptions/{id}/resume:
+    post:
+      operationId: resumeSubscription
+      summary: Resume a paused subscription
+      description: Resume a paused subscription. Charging resumes on the next scheduled cycle.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resume_at:
+                  type: string
+                  enum:
+                  - now
+                  description: When to resume. Currently only 'now' is supported.
+      responses:
+        '200':
+          description: Subscription resumed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /subscriptions/{id}/retrieve_scheduled_changes:
+    get:
+      operationId: fetchSubscriptionScheduledChanges
+      summary: Fetch scheduled changes
+      description: Retrieve any pending plan or quantity changes scheduled for the next billing cycle.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scheduled changes for the subscription.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  entity:
+                    type: string
+                  change_scheduled_at:
+                    type: integer
+                  status:
+                    type: string
+                  subscription_id:
+                    type: string
+                  plan_id:
+                    type: string
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /subscriptions/{id}/cancel_scheduled_changes:
+    post:
+      operationId: cancelSubscriptionScheduledChanges
+      summary: Cancel scheduled changes
+      description: Cancel any pending plan or quantity changes that were scheduled for the next billing cycle.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scheduled changes cancelled.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /subscriptions/{sub_id}/{offer_id}:
+    delete:
+      operationId: deleteSubscriptionOffer
+      summary: Delete an offer from a subscription
+      description: Remove an applied offer/coupon from a subscription. The offer will no longer apply from the next billing cycle.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: sub_id
+        in: path
+        required: true
+        description: Subscription ID (sub_*).
+        schema:
+          type: string
+      - name: offer_id
+        in: path
+        required: true
+        description: Offer ID to remove.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Offer removed from subscription.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Empty object on success.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  schemas:
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Subscription:
+      type: object
+      description: A recurring billing subscription linking a customer to a plan. Requires customer mandate authorization via short_url before charges can be collected.
+      properties:
+        id:
+          type: string
+          description: 'Subscription ID. Prefix: sub_'
+        entity:
+          type: string
+          enum:
+          - subscription
+        plan_id:
+          type: string
+          description: Associated plan ID (plan_*).
+        status:
+          type: string
+          enum:
+          - created
+          - authenticated
+          - active
+          - pending
+          - halted
+          - cancelled
+          - completed
+          - expired
+          - paused
+          description: Subscription lifecycle status. created→authenticated (mandate authorized)→active→completed/cancelled/expired. pending=charge retry scheduled; halted=multiple failures; paused=temporarily stopped.
+        current_start:
+          type: integer
+          description: Unix timestamp of current billing cycle start.
+        current_end:
+          type: integer
+          description: Unix timestamp of current billing cycle end.
+        ended_at:
+          type: integer
+          description: Unix timestamp when subscription ended (cancelled/completed/expired).
+        quantity:
+          type: integer
+          default: 1
+          description: Number of plan units billed per cycle.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        charge_at:
+          type: integer
+          description: Unix timestamp of next scheduled charge attempt.
+        start_at:
+          type: integer
+          description: Unix timestamp of first charge. Defaults to subscription creation time.
+        end_at:
+          type: integer
+          description: Unix timestamp after which no more charges will be attempted.
+        auth_attempts:
+          type: integer
+          description: Number of mandate authorization attempts.
+        total_count:
+          type: integer
+          description: Total billing cycles. 0 = indefinite.
+        paid_count:
+          type: integer
+          description: Number of billing cycles successfully charged.
+        remaining_count:
+          type: integer
+          description: Remaining billing cycles.
+        customer_notify:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: 1 = Razorpay sends SMS/email notifications to customer on each charge.
+        short_url:
+          type: string
+          description: Mandate authorization URL. Must be sent to the customer to activate the subscription.
+        has_scheduled_changes:
+          type: boolean
+          description: True if a plan/quantity change is scheduled for the next cycle.
+        change_scheduled_at:
+          type: string
+          enum:
+          - now
+          - cycle_end
+          description: When scheduled changes take effect.
+        source:
+          type: string
+          description: Source that created the subscription (e.g., api, dashboard).
+        offer_id:
+          type: string
+          description: Offer/coupon applied to the subscription.
+        expire_by:
+          type: integer
+          description: Unix timestamp by which the customer must authorize the mandate.
+        created_at:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'

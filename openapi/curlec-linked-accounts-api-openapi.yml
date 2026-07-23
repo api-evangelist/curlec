@@ -1,0 +1,850 @@
+openapi: 3.0.0
+info:
+  title: Razorpay Bills Linked Accounts API
+  version: 1.0.0
+  description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
+  termsOfService: https://razorpay.com/terms/
+  contact:
+    name: Razorpay Support
+    url: https://razorpay.com/support/
+    email: support@razorpay.com
+  license:
+    name: Proprietary
+    url: https://razorpay.com/terms/
+  x-logo:
+    url: https://razorpay.com/favicon.png
+  x-auth-environments:
+    test:
+      keyPrefix: rzp_test_
+      description: Test mode — keys prefixed rzp_test_. Same API endpoint (https://api.razorpay.com/v1). No real money movement. Use test card numbers from https://razorpay.com/docs/payments/payments/test-card-details/.
+    live:
+      keyPrefix: rzp_live_
+      description: Live mode — keys prefixed rzp_live_. Real money movement. Requires KYC and business activation on the Razorpay Dashboard.
+servers:
+- url: https://api.razorpay.com/v1
+  description: Production
+security:
+- basicAuth: []
+- oauth2:
+  - read_only
+tags:
+- name: Linked Accounts
+  description: Sub-merchant accounts (Linked Accounts) created under a Route marketplace. Includes account creation, stakeholder KYC, and Route product activation. Uses /v2/ API base path. Only one stakeholder is allowed per Linked Account. email and business_type cannot be changed after creation.
+paths:
+  /v2/accounts:
+    post:
+      operationId: createLinkedAccount
+      summary: Create a Linked Account
+      description: Create a sub-merchant (Linked Account) under a Route marketplace. The account type must be 'route'. Email and business_type cannot be changed after creation. Only one stakeholder is allowed per Linked Account.
+      tags:
+      - Linked Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - profile
+              - type
+              properties:
+                email:
+                  type: string
+                  description: Contact email. Cannot be changed after creation.
+                phone:
+                  type: string
+                  description: Phone number with country code.
+                legal_business_name:
+                  type: string
+                business_type:
+                  type: string
+                  enum:
+                  - route
+                  description: Cannot be changed after creation.
+                type:
+                  type: string
+                  enum:
+                  - route
+                profile:
+                  type: object
+                  properties:
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    addresses:
+                      type: object
+                legal_info:
+                  type: object
+                  properties:
+                    pan:
+                      type: string
+                    gst:
+                      type: string
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Linked Account created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /v2/accounts/{account_id}:
+    get:
+      operationId: fetchLinkedAccount
+      summary: Fetch a Linked Account
+      description: 'Retrieve the details of a Linked Account by its ID. Also used in Partners API to fetch sub-merchant account details (authentication: OAuth access_token).'
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        description: Linked Account ID (acc_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Linked Account details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    patch:
+      operationId: updateLinkedAccount
+      summary: Update a Linked Account
+      description: Update mutable fields of a Linked Account. email and business_type cannot be changed after creation.
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        description: Linked Account ID (acc_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                legal_business_name:
+                  type: string
+                profile:
+                  type: object
+                legal_info:
+                  type: object
+                contact_name:
+                  type: string
+                contact_info:
+                  type: object
+                apps:
+                  type: object
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Linked Account updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccount'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /v2/accounts/{account_id}/stakeholders:
+    post:
+      operationId: createStakeholder
+      summary: Create a Stakeholder
+      description: Add a business owner or director to a Linked Account. Only one stakeholder is allowed per Route Linked Account. PAN 4th character must be 'P' (individual PAN).
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        description: Unique identifier of the linked merchant account (e.g. `acc_00000000000001`).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - email
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                percentage_ownership:
+                  type: number
+                relationship:
+                  type: object
+                  properties:
+                    director:
+                      type: boolean
+                    executive:
+                      type: boolean
+                phone:
+                  type: object
+                addresses:
+                  type: object
+                kyc:
+                  type: object
+                  properties:
+                    pan:
+                      type: string
+                      description: Individual PAN. 4th character must be P.
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Stakeholder created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stakeholder'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /v2/accounts/{account_id}/stakeholders/{stakeholder_id}:
+    patch:
+      operationId: updateStakeholder
+      summary: Update a Stakeholder
+      description: Update stakeholder information for a Linked Account.
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        description: Linked Account ID (acc_*).
+        schema:
+          type: string
+      - name: stakeholder_id
+        in: path
+        required: true
+        description: Stakeholder ID (sth_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                percentage_ownership:
+                  type: number
+                relationship:
+                  type: object
+                phone:
+                  type: object
+                addresses:
+                  type: object
+                kyc:
+                  type: object
+                notes:
+                  $ref: '#/components/schemas/Notes'
+      responses:
+        '200':
+          description: Stakeholder updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stakeholder'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+  /v2/accounts/{account_id}/products:
+    post:
+      operationId: requestProductConfig
+      summary: Request Route product configuration
+      description: 'Request activation of the Route product for a Linked Account. Submits the account for review and KYC. Activation progresses: requested → under_review → activated.'
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        description: Linked Account ID (acc_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - product_name
+              properties:
+                product_name:
+                  type: string
+                  enum:
+                  - route
+                tnc_accepted:
+                  type: boolean
+                  description: Set to true to accept Razorpay TnC on behalf of the sub-merchant.
+                applicable_identified:
+                  type: boolean
+      responses:
+        '200':
+          description: Product configuration created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductConfiguration'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '429':
+          $ref: '#/components/responses/429'
+  /v2/accounts/{account_id}/products/{product_id}:
+    get:
+      operationId: fetchProductConfig
+      summary: Fetch product configuration
+      description: Retrieve the current product configuration and activation status for a Linked Account.
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        description: Linked Account ID (acc_*).
+        schema:
+          type: string
+      - name: product_id
+        in: path
+        required: true
+        description: Product configuration ID (acc_prd_*).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Product configuration details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductConfiguration'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    patch:
+      operationId: updateProductConfig
+      summary: Update product configuration
+      description: Update settlement details or other configuration for a Route product on a Linked Account.
+      tags:
+      - Linked Accounts
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        description: Linked Account ID (acc_*).
+        schema:
+          type: string
+      - name: product_id
+        in: path
+        required: true
+        description: Product configuration ID (acc_prd_*).
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                settlements:
+                  type: object
+                  properties:
+                    account_number:
+                      type: string
+                    ifsc_code:
+                      type: string
+                    beneficiary_name:
+                      type: string
+                tnc_accepted:
+                  type: boolean
+      responses:
+        '200':
+          description: Product configuration updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductConfiguration'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  schemas:
+    ProductConfiguration:
+      type: object
+      description: 'Route product configuration for a Linked Account. Controls settlement account details and tracks activation status. Prefix: acc_prd_'
+      properties:
+        id:
+          type: string
+          description: 'Product configuration ID. Prefix: acc_prd_'
+        account_id:
+          type: string
+          description: Linked Account ID this configuration belongs to.
+        product_name:
+          type: string
+          enum:
+          - route
+          description: Product name. Always 'route' for Route product.
+        activation_status:
+          type: string
+          enum:
+          - requested
+          - needs_clarification
+          - under_review
+          - activated
+          - suspended
+          description: Current activation status. Progresses from requested → under_review → activated. needs_clarification requires additional info from the merchant.
+        tnc:
+          type: object
+          properties:
+            id:
+              type: string
+            accepted:
+              type: boolean
+            accepted_at:
+              type: integer
+              description: Unix timestamp when TnC was accepted.
+        requested_configuration:
+          type: object
+          description: Configuration details provided during activation request.
+        active_configuration:
+          type: object
+          properties:
+            settlements:
+              type: object
+              properties:
+                account_number:
+                  type: string
+                  description: Bank account number for settlements.
+                ifsc_code:
+                  type: string
+                  description: IFSC code of the settlement bank.
+                beneficiary_name:
+                  type: string
+                  description: Account holder name.
+        requirements:
+          type: array
+          description: List of pending requirements needed for activation.
+          items:
+            type: object
+            properties:
+              field_reference:
+                type: string
+              resolution_url:
+                type: string
+              status:
+                type: string
+              reason_code:
+                type: string
+        requested_at:
+          type: integer
+          description: Unix timestamp when product was requested.
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Stakeholder:
+      type: object
+      description: 'A business owner or director associated with a Linked Account. Only one stakeholder is allowed per Route Linked Account. Prefix: sth_'
+      properties:
+        id:
+          type: string
+          description: 'Stakeholder ID. Prefix: sth_'
+        entity:
+          type: string
+          enum:
+          - stakeholder
+        name:
+          type: string
+          description: Full name of the stakeholder.
+        email:
+          type: string
+          description: Email address.
+        percentage_ownership:
+          type: number
+          description: Ownership percentage (0-100).
+        relationship:
+          type: object
+          properties:
+            director:
+              type: boolean
+              description: True if the stakeholder is a company director.
+            executive:
+              type: boolean
+              description: True if the stakeholder is an executive.
+        phone:
+          type: object
+          properties:
+            primary:
+              type: object
+              properties:
+                number:
+                  type: string
+                country_code:
+                  type: string
+            secondary:
+              type: object
+              properties:
+                number:
+                  type: string
+                country_code:
+                  type: string
+        addresses:
+          type: object
+          properties:
+            residential:
+              type: object
+              properties:
+                street:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                postal_code:
+                  type: string
+                country:
+                  type: string
+        kyc:
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Individual PAN. 4th character must be 'P'.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    LinkedAccount:
+      type: object
+      description: 'A sub-merchant (Linked Account) created under a Route marketplace account. Linked Accounts can receive transfers and settlements. Prefix: acc_'
+      properties:
+        id:
+          type: string
+          description: 'Account ID. Prefix: acc_'
+        type:
+          type: string
+          enum:
+          - route
+          description: Account type. Always 'route' for Route marketplace accounts.
+        status:
+          type: string
+          enum:
+          - created
+          - suspended
+          description: Account status.
+        email:
+          type: string
+          description: Contact email. Cannot be updated after creation.
+        phone:
+          type: string
+          description: Contact phone number with country code (e.g., +919876543210).
+        legal_business_name:
+          type: string
+          description: Registered legal name of the business.
+        business_type:
+          type: string
+          enum:
+          - route
+          description: Business type. Cannot be updated after creation.
+        profile:
+          type: object
+          properties:
+            category:
+              type: string
+              description: Business category (e.g., healthcare, education, ecommerce).
+            subcategory:
+              type: string
+              description: Business subcategory.
+            addresses:
+              type: object
+              properties:
+                registered:
+                  type: object
+                  properties:
+                    street1:
+                      type: string
+                    street2:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    postal_code:
+                      type: string
+                    country:
+                      type: string
+                operation:
+                  type: object
+                  properties:
+                    street1:
+                      type: string
+                    street2:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    postal_code:
+                      type: string
+                    country:
+                      type: string
+        legal_info:
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Business PAN number.
+            gst:
+              type: string
+              description: GST number (22 chars).
+        contact_name:
+          type: string
+          description: Name of the primary contact person.
+        contact_info:
+          type: object
+          properties:
+            chargeback:
+              type: object
+              properties:
+                email:
+                  type: string
+                phone:
+                  type: string
+                policy_url:
+                  type: string
+            refund:
+              type: object
+              properties:
+                email:
+                  type: string
+                phone:
+                  type: string
+                policy_url:
+                  type: string
+            support:
+              type: object
+              properties:
+                email:
+                  type: string
+                phone:
+                  type: string
+                policy_url:
+                  type: string
+        apps:
+          type: object
+          properties:
+            websites:
+              type: array
+              items:
+                type: string
+            android:
+              type: array
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                  name:
+                    type: string
+            ios:
+              type: array
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                  name:
+                    type: string
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Razorpay API key pair. Use key_id as the username and key_secret as the password. Encode as Base64(key_id:key_secret). Keys are environment-scoped (Test vs Live). Obtain keys at https://dashboard.razorpay.com/app/keys. Keys are case-sensitive.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://mcp.razorpay.com/authorize
+          tokenUrl: https://mcp.razorpay.com/token
+          refreshUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+        clientCredentials:
+          tokenUrl: https://mcp.razorpay.com/token
+          scopes:
+            read_only: Read-only access to Razorpay account data (payments, orders, refunds, payouts, subscriptions, invoices)
+externalDocs:
+  description: Razorpay API Documentation
+  url: https://razorpay.com/docs/api/
+x-tagGroups:
+- name: Core Payments
+  tags:
+  - Orders
+  - Payments
+  - Refunds
+  - Payment Downtimes
+- name: Payment Collection
+  tags:
+  - Payment Links
+  - QR Codes
+- name: Billing & Subscriptions
+  tags:
+  - Items
+  - Invoices
+  - Plans
+  - Subscriptions
+- name: Customer Management
+  tags:
+  - Customers
+  - Documents
+- name: Finance & Reconciliation
+  tags:
+  - Settlements
+  - Instant Settlements
+  - Disputes
+- name: Route & Marketplace
+  tags:
+  - Linked Accounts
+  - Transfers
+- name: Smart Collect
+  tags:
+  - Virtual Accounts
+- name: Partners & Onboarding
+  tags:
+  - Partner Accounts
+  - Partner Products
+  - Partner Stakeholders
+  - Partner Documents
+  - Partner Webhooks
+- name: Bills
+  tags:
+  - Bills
+- name: RazorpayX
+  tags:
+  - X Contacts
+  - X Fund Accounts
+  - X Account Validation
+  - X Banking Balances
+  - X Payouts
+  - X Payout Links
+  - X Transactions
+x-rateLimit:
+  description: Razorpay does not publish specific rate limits. If you receive HTTP 429, implement exponential backoff with jitter and retry. Add randomisation to avoid thundering-herd effects.
+  throttleStatus: 429
+  strategy: exponential backoff with jitter
+x-pagination:
+  description: All list endpoints return at most 100 records per call (1000 for settlement recon). Use count and skip together to paginate. Date range filters (from/to) use Unix timestamps in seconds.
+  example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
+x-amountEncoding:
+  description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'
