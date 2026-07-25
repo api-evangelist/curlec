@@ -1,0 +1,39 @@
+{
+  "$comment": "RFC 9727 API Catalog (application/linkset+json). This is a discovery index — it points to the full OpenAPI spec. It is NOT the spec itself.",
+  "linkset": [
+    {
+      "anchor": "https://razorpay.com",
+      "item": [
+        {
+          "href": "https://razorpay.com/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://razorpay.com/openapi.json",
+          "type": "application/openapi+json",
+          "title": "Razorpay REST API — OpenAPI 3.0"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://razorpay.com/docs/api/",
+          "type": "text/html",
+          "title": "Razorpay API Reference"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://status.razorpay.com/",
+          "type": "text/html"
+        }
+      ],
+      "type": [
+        {
+          "href": "https://schema.org/FinancialService"
+        }
+      ]
+    }
+  ]
+}

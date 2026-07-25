@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+spec_type: Webhooks
+source: https://curlec.com/docs/webhooks/
+note: >-
+  Curlec (Razorpay) documents webhooks but does not publish an AsyncAPI document. This is the
+  captured webhook catalog. Webhooks are HTTP POST with a JSON payload delivered to a merchant-
+  configured endpoint, with separate URLs for Test and Live modes.
+delivery:
+  transport: http-post
+  content_type: application/json
+  modes: [test, live]
+  configuration: Dashboard -> Settings -> Webhooks (per mode)
+signature:
+  header: X-Razorpay-Signature
+  algorithm: HMAC-SHA256
+  detail: >-
+    Compute HMAC-SHA256 over the raw request body using the webhook secret and compare to the
+    X-Razorpay-Signature header. Always use the raw (unparsed) body.
+docs:
+- https://curlec.com/docs/webhooks/
+- https://curlec.com/docs/webhooks/payments/
+- https://curlec.com/docs/webhooks/orders/
+- https://curlec.com/docs/webhooks/subscriptions/
+- https://curlec.com/docs/webhooks/payment-links/
+events:
+  payments:
+  - payment.authorized
+  - payment.captured
+  - payment.failed
+  - payment.downtime.started
+  - payment.downtime.updated
+  - payment.downtime.resolved
+  orders:
+  - order.paid
+  subscriptions:
+  - subscription.charged
+events_note: >-
+  Verified event names from the Curlec webhook docs. The full catalog also spans refunds,
+  settlements, disputes, payment links, invoices, virtual accounts and RazorpayX payouts —
+  see the per-product webhook reference pages listed under docs.

@@ -1,0 +1,33 @@
+generated: '2026-07-18'
+method: searched
+source: https://curlec.com/docs/api/sandbox-setup/
+docs:
+- https://curlec.com/docs/api/sandbox-setup/
+- https://curlec.com/docs/payments/dashboard/test-live-modes/
+- https://curlec.com/docs/payments/payments/test-card-upi-details/
+test_live_separation:
+  model: Separate API key pairs per mode; the mode is inferred from the key used.
+  key_generation: Dashboard -> Account & Settings -> API Keys -> Generate Key (per mode)
+  test_key_prefix: rzp_test_
+  live_key_prefix: rzp_live_
+  note: >-
+    Key prefixes reflect the widely-documented Razorpay convention (rzp_test_ / rzp_live_); the
+    Curlec dashboard generates a distinct key pair for Test and Live modes.
+test_mode:
+  behavior: >-
+    A simulation mode with no real money movement. Card payments surface a mock bank page with
+    Success and Failure buttons to replicate the live authorization experience.
+  input_guidance: >-
+    Use a published test card, any random CVV, and any future expiry date. Then choose Success or
+    Failure on the mock bank page to drive the outcome.
+test_cards:
+  published: true
+  reference: https://curlec.com/docs/payments/payments/test-card-upi-details/
+  captured_values: []
+  note: >-
+    Curlec publishes a List of Test Cards (domestic and international) plus test UPI details on the
+    reference page, but the values are rendered client-side and were not machine-extractable here.
+    No test card numbers are recorded to avoid fabrication — consult the reference URL for the
+    verbatim list.
+time_simulation: null
+fixtures: null

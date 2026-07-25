@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/curlec-razorpay-openapi.json
+docs: https://curlec.com/docs/
+standards:
+- id: oauth2
+  conforms: true
+  evidence: openapi securitySchemes declares oauth2 (Authorization Code + PKCE, Client Credentials) via the Razorpay MCP server
+- id: http-basic-auth
+  conforms: true
+  evidence: openapi securitySchemes basicAuth (RFC 7617) is the primary REST auth
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a Razorpay-specific `error` object, not application/problem+json
+- id: rfc8414-oauth-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server published (for the MCP server)
+- id: rfc9727-api-catalog
+  conforms: true
+  evidence: /.well-known/api-catalog (application/linkset+json) published
+- id: pci-dss
+  conforms: true
+  evidence: Razorpay is PCI DSS Level 1 certified; Curlec card handling runs on the same certified infrastructure
+- id: pdpa-my
+  conforms: true
+  evidence: Privacy policy states compliance with Malaysia's Personal Data Protection Act 2010 (PDPA)
+- id: idempotency
+  conforms: partial
+  evidence: X-Transfer-Idempotency header on the Transfers API (24h); not a universal idempotency contract
+- id: pagination
+  conforms: true
+  evidence: consistent offset pagination (count/skip/from/to) across list operations
+compliance_program:
+  certifications: [PCI DSS Level 1]
+  regulatory: [PDPA 2010 (Malaysia), RBI-authorised (Razorpay group)]
+  reference: https://razorpay.com/security/

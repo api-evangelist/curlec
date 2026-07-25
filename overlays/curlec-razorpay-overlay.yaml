@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Razorpay Curlec REST API
+  version: 1.0.0
+extends: openapi/curlec-razorpay-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: curlec
+    x-apievangelist-brand: Razorpay Curlec (Malaysia)
+    x-apievangelist-baseurl: https://api.razorpay.com/v1
+    x-apievangelist-agent-ready: true
+    x-apievangelist-mcp-server: https://mcp.razorpay.com/mcp
+- target: $.info
+  update:
+    x-apievangelist-conventions: conventions/curlec-conventions.yml
+    x-apievangelist-errors: errors/curlec-problem-types.yml
+    x-apievangelist-data-model: data-model/curlec-data-model.yml
+    x-apievangelist-webhooks: asyncapi/curlec-webhooks.yml
+- target: $.components.securitySchemes.basicAuth
+  update:
+    x-apievangelist-note: >-
+      Environment-scoped key_id:key_secret; test keys rzp_test_, live keys rzp_live_.

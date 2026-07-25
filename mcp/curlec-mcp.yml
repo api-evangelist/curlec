@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+status: published
+source: https://razorpay.com/agents.md
+note: >-
+  Curlec (Razorpay) operates an official hosted, remote MCP server. Discovered via
+  curlec.com/.well-known/oauth-authorization-server and razorpay.com/agents.md. OAuth 2.0
+  (Authorization Code + PKCE S256 for user-delegated, Client Credentials for server-to-server;
+  tokens expire in 3600s; Dynamic Client Registration supported). Current published scope is
+  read_only.
+server:
+  name: razorpay
+  transport: http
+  url: https://mcp.razorpay.com/mcp
+  auth:
+    type: oauth2
+    authorization_endpoint: https://mcp.razorpay.com/authorize
+    token_endpoint: https://mcp.razorpay.com/token
+    registration_endpoint: https://mcp.razorpay.com/register
+    grant_types: [authorization_code, client_credentials, refresh_token]
+    code_challenge_methods: [S256]
+    scopes: [read_only]
+  docs: https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md
+capabilities:
+  agents_md: https://razorpay.com/agents.md
+  ai_plugin: well-known/curlec-ai-plugin.json
+tools_reference: >-
+  The MCP server exposes payment/order/refund/payout/invoice actions grounded in the Razorpay
+  REST API operations catalogued in openapi/curlec-razorpay-openapi.json (136 operations).

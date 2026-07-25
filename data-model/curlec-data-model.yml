@@ -1,0 +1,154 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curlec-razorpay-openapi.json
+entities:
+- AccountDocument
+- AcquirerData
+- BankTransfer
+- BankingBalance
+- Bill
+- CardDetails
+- Collection
+- Customer
+- Dispute
+- DisputeEvidence
+- Document
+- DowntimeInstrument
+- Error
+- FundAccount
+- FundAccountValidation
+- InstantSettlement
+- InstantSettlementPayout
+- Invoice
+- InvoiceLineItem
+- Item
+- LinkedAccount
+- Notes
+- Order
+- PartnerAccount
+- PartnerProductConfiguration
+- PartnerStakeholder
+- PartnerWebhook
+- Payment
+- PaymentDowntime
+- PaymentLink
+- Payout
+- PayoutLink
+- Plan
+- ProductConfiguration
+- QrCode
+- Refund
+- Reversal
+- Settlement
+- SettlementReconRecord
+- Stakeholder
+- StakeholderDocument
+- Subscription
+- Transfer
+- UpiDetails
+- VirtualAccount
+- XContact
+- XTransaction
+id_prefixes:
+  Order: order_
+  Payment: pay_
+  Refund: rfnd_
+  Customer: cust_
+  Invoice: inv_
+  PaymentLink: plink_
+  QrCode: qr_
+  Plan: plan_
+  Subscription: sub_
+  Settlement: setl_
+  Dispute: disp_
+  Item: item_
+  VirtualAccount: va_
+  Transfer: trf_
+  XContact: cont_
+  FundAccount: fa_
+  Payout: pout_
+  PayoutLink: poutlk_
+  LinkedAccount: acc_
+id_prefixes_note: Prefixes are the widely-documented Razorpay entity id conventions;
+  verify against the object reference.
+relationships:
+- from: Payment
+  type: belongs_to
+  to: Order
+  via: order_id
+- from: Payment
+  type: belongs_to
+  to: Customer
+  via: customer_id
+- from: Payment
+  type: belongs_to
+  to: Invoice
+  via: invoice_id
+- from: Refund
+  type: belongs_to
+  to: Payment
+  via: payment_id
+- from: SettlementReconRecord
+  type: belongs_to
+  to: Settlement
+  via: settlement_id
+- from: SettlementReconRecord
+  type: belongs_to
+  to: Order
+  via: order_id
+- from: SettlementReconRecord
+  type: belongs_to
+  to: Payment
+  via: payment_id
+- from: Dispute
+  type: belongs_to
+  to: Payment
+  via: payment_id
+- from: PaymentLink
+  type: belongs_to
+  to: Order
+  via: order_id
+- from: QrCode
+  type: belongs_to
+  to: Customer
+  via: customer_id
+- from: Invoice
+  type: belongs_to
+  to: Customer
+  via: customer_id
+- from: Invoice
+  type: belongs_to
+  to: Order
+  via: order_id
+- from: Invoice
+  type: belongs_to
+  to: Payment
+  via: payment_id
+- from: Subscription
+  type: belongs_to
+  to: Plan
+  via: plan_id
+- from: VirtualAccount
+  type: belongs_to
+  to: Customer
+  via: customer_id
+- from: BankTransfer
+  type: belongs_to
+  to: Payment
+  via: payment_id
+- from: FundAccount
+  type: belongs_to
+  to: XContact
+  via: contact_id
+- from: Payout
+  type: belongs_to
+  to: FundAccount
+  via: fund_account_id
+- from: PayoutLink
+  type: belongs_to
+  to: XContact
+  via: contact_id
+- from: PayoutLink
+  type: belongs_to
+  to: FundAccount
+  via: fund_account_id

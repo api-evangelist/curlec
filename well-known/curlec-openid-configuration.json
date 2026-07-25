@@ -1,0 +1,7 @@
+{
+  "$comment": "Razorpay does not provide OpenID Connect identity services. Razorpay is a payment platform, not an identity provider. This file is retained only to prevent broken discovery lookups.",
+  "error": "not_supported",
+  "error_description": "Razorpay does not operate as an OpenID Connect identity provider. For API authentication, use HTTP Basic Auth with Razorpay API keys (key_id:key_secret). For agent/MCP OAuth access, see the OAuth authorization server at https://mcp.razorpay.com/.well-known/oauth-authorization-server",
+  "documentation": "https://razorpay.com/agents.md",
+  "api_keys": "https://dashboard.razorpay.com/app/keys"
+}

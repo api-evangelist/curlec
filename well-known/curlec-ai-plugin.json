@@ -1,0 +1,19 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Razorpay",
+  "name_for_model": "razorpay",
+  "description_for_human": "Accept payments, issue refunds, create invoices, and manage payouts using Razorpay — India's leading payment platform.",
+  "description_for_model": "Use Razorpay to create payment orders and links, fetch payment status, issue full or partial refunds, create payouts to bank accounts or UPI, and generate invoices. Supports INR and 120+ international currencies. Authentication uses API key (Basic Auth with key_id:key_secret). Sandbox available at https://api.razorpay.com/v1 with test keys.",
+  "auth": {
+    "type": "user_http",
+    "authorization_type": "basic"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://razorpay.com/.well-known/api-catalog.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://razorpay.com/favicon.png",
+  "contact_email": "contact@razorpay.com",
+  "legal_info_url": "https://razorpay.com/terms/"
+}

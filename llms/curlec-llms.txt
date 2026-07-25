@@ -1,0 +1,53 @@
+# Curlec (Razorpay Curlec)
+
+> Curlec is a Malaysian online payment solution and part of Razorpay. It lets businesses accept one-time and recurring payments — Payment Gateway, Payment Links, Payment Pages, Payment Buttons, hosted Checkout, DuitNow, FPX, cards, e-wallets, plus Subscriptions and direct-debit recurring billing — on the shared Razorpay REST API (https://api.razorpay.com/v1). Auth is HTTP Basic (key_id:key_secret). An official hosted MCP server (mcp.razorpay.com) provides OAuth agent access.
+
+## APIs
+
+- [Razorpay Curlec REST API docs](https://curlec.com/docs/api/): Orders, Payments, Refunds, Settlements, Disputes, Customers, Invoices, Plans, Subscriptions, Payment Links, QR Codes, Virtual Accounts, Transfers, and RazorpayX payouts.
+- Base URL: https://api.razorpay.com/v1
+
+## Specs
+
+- [OpenAPI 3.0 (Razorpay)](https://razorpay.com/openapi.json): 136 operations, 47 schemas.
+- Local copy: openapi/curlec-razorpay-openapi.json
+- Overlay (AE enhancements): overlays/curlec-razorpay-overlay.yaml
+
+## Docs
+
+- [Developer docs](https://curlec.com/docs/)
+- [API understanding (versioning, rate limits, pagination)](https://curlec.com/docs/api/understand/)
+- [Authentication](https://curlec.com/docs/api/authentication/)
+- [Sandbox setup](https://curlec.com/docs/api/sandbox-setup/)
+- [Webhooks](https://curlec.com/docs/webhooks/)
+- [API changelog](https://curlec.com/docs/api/changelog/)
+- [Server SDKs](https://curlec.com/docs/payments/server-integration/)
+
+## Agents
+
+- [Agents guide (agents.md)](https://razorpay.com/agents.md) — saved at skills/curlec-agents.md
+- MCP server: https://mcp.razorpay.com/mcp (OAuth 2.0, PKCE S256, read_only)
+- Agent skills: skills/_index.yml
+
+## Artifacts
+
+- Authentication: authentication/curlec-authentication.yml
+- OAuth scopes: scopes/curlec-scopes.yml
+- Conventions (idempotency, pagination): conventions/curlec-conventions.yml
+- Error catalog: errors/curlec-problem-types.yml
+- Data model: data-model/curlec-data-model.yml
+- Webhooks: asyncapi/curlec-webhooks.yml
+- Packages / SDKs: packages/curlec-packages.yml
+- Lifecycle: lifecycle/curlec-lifecycle.yml
+- Conformance: conformance/curlec-conformance.yml
+- Sandbox: sandbox/curlec-sandbox.yml
+- Components: components/curlec-components.yml
+
+## Company
+
+- [Website](https://curlec.com)
+- [Pricing](https://curlec.com/pricing/)
+- [Dashboard / Sign up](https://dashboard.curlec.com/)
+- [Status](https://status.razorpay.com/)
+- [GitHub (Razorpay)](https://github.com/razorpay)
+- [Postman public workspace](https://www.postman.com/razorpaydev/workspace/razorpay-public-workspace/)

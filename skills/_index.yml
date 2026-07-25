@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: generated
+note: >-
+  Generated Agent Skills grounded in verified operationIds from
+  openapi/curlec-razorpay-openapi.json. The provider also publishes its own agent guide,
+  saved verbatim as curlec-agents.md (method: searched).
+skills:
+- file: curlec-agents.md
+  name: Razorpay Agent Skills (provider-published)
+  method: searched
+  source: https://razorpay.com/agents.md
+- file: curlec-accept-payment.md
+  name: Accept a payment with Razorpay Curlec
+  api: openapi/curlec-razorpay-openapi.json
+  operations: [createOrder, fetchOrder, fetchPayment, capturePayment]
+- file: curlec-issue-refund.md
+  name: Issue and track a refund
+  api: openapi/curlec-razorpay-openapi.json
+  operations: [fetchPayment, createRefund, fetchPaymentRefunds, fetchRefund]
+- file: curlec-recurring-subscription.md
+  name: Set up a recurring subscription
+  api: openapi/curlec-razorpay-openapi.json
+  operations: [createPlan, createCustomer, createSubscription, fetchSubscription]

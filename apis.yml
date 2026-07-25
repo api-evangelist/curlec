@@ -1,7 +1,16 @@
 aid: curlec
 name: Curlec
-description: Curlec is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Curlec (Razorpay Curlec) is a Malaysian online payment solution and part of Razorpay,
+  the RBI-authorised full-stack payment platform. Curlec lets businesses in Malaysia accept
+  one-time and recurring payments through a Payment Gateway, Payment Links, Payment Pages,
+  Payment Buttons, hosted Checkout, DuitNow real-time payments, FPX online banking, cards
+  and e-wallets, plus Subscriptions and direct-debit recurring billing. It runs on the shared
+  Razorpay REST API (https://api.razorpay.com/v1) — a RESTful, JSON, Basic-Auth API covering
+  Orders, Payments, Refunds, Settlements, Disputes, Customers, Invoices, Plans, Subscriptions,
+  Payment Links, QR Codes, Virtual Accounts, Transfers/Route, and the RazorpayX business-banking
+  and payouts suite. Curlec exposes official server SDKs, webhooks, a sandbox test mode, a public
+  Postman workspace, and an official hosted MCP server for AI-agent access.
 url: https://raw.githubusercontent.com/api-evangelist/curlec/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,17 +18,652 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://curlec.com/favicon.ico
 tags:
 - Company
-apis: []
+- Payments
+- Payment Gateway
+- Recurring Payments
+- Subscriptions
+- Direct Debit
+- FinTech
+- Malaysia
+- DuitNow
+- FPX
+- Webhooks
+- Razorpay
+apis:
+- aid: curlec:curlec-bills-api
+  name: Curlec Bills API
+  description: >-
+    Razorpay Billme digital receipts and bills for retail, food & beverage, events, and ecommerce.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Bills
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-bills-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-customers-api
+  name: Curlec Customers API
+  description: >-
+    Customer profiles store contact information for recurring billing, saved cards, and personalised checkout.
+    Each email+contact combination must be unique.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-customers-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-disputes-api
+  name: Curlec Disputes API
+  description: >-
+    Disputes (chargebacks) are raised by customers via their bank. You can accept (lose) or contest (challenge
+    with evidence) each dispute. Monitor respond_by timestamp — missing the deadline forfeits the dispute.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Disputes
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-disputes-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-documents-api
+  name: Curlec Documents API
+  description: >-
+    Document uploads for dispute evidence. Upload JPEG, PNG, or PDF files and receive a document ID to
+    reference in dispute contest submissions.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-documents-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-instant-settlements-api
+  name: Curlec Instant Settlements API
+  description: >-
+    On-demand settlements let you transfer your available Razorpay balance to your bank account immediately,
+    outside the normal settlement cycle. Fees apply. Requires Instant Settlements to be enabled on your
+    account.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Instant Settlements
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-instant-settlements-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-invoices-api
+  name: Curlec Invoices API
+  description: >-
+    Invoices and payment pages for one-time or partial-payment collection. Create in draft, issue to the
+    customer, and track payment status. Cannot be used for GST invoices (use the Dashboard for those).
+    Maximum 50 line items per invoice.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-items-api
+  name: Curlec Items API
+  description: >-
+    Reusable catalog items that can be referenced in invoice line items. Defining items once avoids repeating
+    price and description on each invoice.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-items-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-linked-accounts-api
+  name: Curlec Linked Accounts API
+  description: >-
+    Sub-merchant accounts (Linked Accounts) created under a Route marketplace. Includes account creation,
+    stakeholder KYC, and Route product activation. Uses /v2/ API base path. Only one stakeholder is allowed
+    per Linked Account. email and business_type cannot be changed after creation.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Linked Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-linked-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-orders-api
+  name: Curlec Orders API
+  description: >-
+    Orders are the starting point for accepting a payment. Create an order with the amount and currency,
+    pass the order_id to Razorpay Checkout, then verify the payment signature after success.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-orders-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-partner-accounts-api
+  name: Curlec Partner Accounts API
+  description: >-
+    Sub-merchant account lifecycle management via Partners API (Aggregator/Platform model). Uses OAuth
+    access_token authentication.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Partner Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-partner-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-partner-documents-api
+  name: Curlec Partner Documents API
+  description: Upload and fetch KYC documents for sub-merchant accounts and their stakeholders.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Partner Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-partner-documents-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-partner-stakeholders-api
+  name: Curlec Partner Stakeholders API
+  description: >-
+    Manage stakeholders (directors/executives) for sub-merchant accounts. Multiple stakeholders allowed
+    per account.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Partner Stakeholders
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-partner-stakeholders-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-partner-webhooks-api
+  name: Curlec Partner Webhooks API
+  description: >-
+    Configure webhooks for sub-merchant accounts to receive payment events. Maximum 30 per account.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Partner Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-partner-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-payment-downtimes-api
+  name: Curlec Payment Downtimes API
+  description: >-
+    Scheduled and live downtime information for card, netbanking, and UPI. Poll or subscribe to payment.downtime
+    webhooks to detect degraded methods and adjust your checkout UI.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Payment Downtimes
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-payment-downtimes-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-payment-links-api
+  name: Curlec Payment Links API
+  description: >-
+    Payment Links are shareable URLs to collect payments without a website. Share via SMS, email, or any
+    channel. Supports partial payments, expiry, reminders, UPI-only mode, offers, and transfers to linked
+    accounts.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Payment Links
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-payment-links-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-payments-api
+  name: Curlec Payments API
+  description: >-
+    A payment is created when a customer completes checkout. Payments can be auto-captured or manually
+    captured. Fetch payment details to reconcile and diagnose failures.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-payments-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-plans-api
+  name: Curlec Plans API
+  description: >-
+    Billing plan definitions for recurring subscriptions. A plan sets the billing period, interval, and
+    per-cycle charge. Plans are reusable across multiple subscriptions and cannot be modified after creation.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-plans-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-qr-codes-api
+  name: Curlec QR Codes API
+  description: >-
+    QR Codes enable offline and digital payment collection. Customers scan with any UPI or card app. Supports
+    fixed-amount and variable-amount codes, single-use and multiple-use modes.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - QR Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-qr-codes-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-refunds-api
+  name: Curlec Refunds API
+  description: >-
+    Refunds return captured payment amounts to customers. Normal refunds take 5-7 business days. Instant
+    (optimum) refunds settle immediately but may fall back to normal. Use X-Refund-Idempotency header
+    to safely retry without duplicates.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-settlements-api
+  name: Curlec Settlements API
+  description: >-
+    Settlements represent batch transfers of collected payment funds to your bank account. Use the recon
+    endpoint for transaction-level reconciliation reports mapping each payment, refund, and adjustment
+    to its settlement.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Settlements
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-settlements-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-subscriptions-api
+  name: Curlec Subscriptions API
+  description: >-
+    Recurring billing subscriptions. Customers must authorize a payment mandate (UPI Autopay, NACH, or
+    card-on-file) via the short_url before charges begin. Supports pause/resume, plan changes, add-ons,
+    and indefinite billing cycles.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-transfers-api
+  name: Curlec Transfers API
+  description: >-
+    Fund transfers from a merchant, payment, or order to a Linked Account (Route). Supports payment-based
+    splits, direct on-demand transfers, settlement hold controls, and full/partial reversals. INR only,
+    minimum ₹100. Direct transfers support idempotency via X-Transfer-Idempotency header.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Transfers
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-transfers-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-virtual-accounts-api
+  name: Curlec Virtual Accounts API
+  description: >-
+    Virtual bank accounts and UPI VPAs that accept NEFT/RTGS/IMPS/UPI payments (Smart Collect). Each incoming
+    payment creates a BankTransfer entity. Supports Third Party Validation (TPV) to restrict payers, and
+    VPA receivers (Smart Collect 2.0). Auto-closes after 90 days of inactivity.
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - Virtual Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-virtual-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-x-account-validation-api
+  name: Curlec X Account Validation API
+  description: Penny drop and reverse penny drop bank/VPA validation
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - X Account Validation
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-x-account-validation-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-x-banking-balances-api
+  name: Curlec X Banking Balances API
+  description: Fetch RazorpayX account balances
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - X Banking Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-x-banking-balances-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-x-contacts-api
+  name: Curlec X Contacts API
+  description: RazorpayX payout recipients — create, fetch, update contacts
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - X Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-x-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-x-fund-accounts-api
+  name: Curlec X Fund Accounts API
+  description: Payout destination accounts (bank, VPA, card) linked to contacts
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - X Fund Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-x-fund-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-x-payout-links-api
+  name: Curlec X Payout Links API
+  description: Payout links for recipients without saved fund accounts
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - X Payout Links
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-x-payout-links-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-x-payouts-api
+  name: Curlec X Payouts API
+  description: Disbursements via NEFT, RTGS, IMPS, UPI, card — includes composite and approval flows
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - X Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-x-payouts-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+- aid: curlec:curlec-x-transactions-api
+  name: Curlec X Transactions API
+  description: >-
+    Fetch RazorpayX transaction records — credits (bank_transfer inflows) and debits (payout outflows)
+  humanURL: https://curlec.com/docs/api/
+  baseURL: https://api.razorpay.com/v1
+  tags:
+  - X Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/curlec-x-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://curlec.com/docs/api/
+  - type: Authentication
+    url: authentication/curlec-authentication.yml
+  - type: OAuthScopes
+    url: scopes/curlec-scopes.yml
+common:
+- type: DomainSecurity
+  url: security/curlec-domain-security.yml
+- type: Website
+  url: https://curlec.com
+- type: DeveloperPortal
+  url: https://curlec.com/docs/
+- type: Documentation
+  url: https://curlec.com/docs/
+- type: APIReference
+  url: https://curlec.com/docs/api/
+- type: GettingStarted
+  url: https://curlec.com/docs/payments/
+- type: Authentication
+  url: https://curlec.com/docs/api/authentication/
+- type: Support
+  url: https://curlec.com/blog/knowledge-base/
+- type: Blog
+  url: https://curlec.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/razorpay
+- type: Pricing
+  url: https://curlec.com/pricing/
+- type: SignUp
+  url: https://dashboard.curlec.com/
+- type: Login
+  url: https://dashboard.curlec.com/
+- type: TermsOfService
+  url: https://curlec.com/blog/s/terms-of-use/
+- type: PrivacyPolicy
+  url: https://curlec.com/blog/s/privacy/
+- type: StatusPage
+  url: https://status.razorpay.com/
+- type: ChangeLog
+  url: https://curlec.com/docs/api/changelog/
+- type: Postman
+  url: https://www.postman.com/razorpaydev/workspace/razorpay-public-workspace/
+- type: Webhooks
+  url: asyncapi/curlec-webhooks.yml
+- type: MCPServer
+  url: mcp/curlec-mcp.yml
+- type: WellKnown
+  url: well-known/curlec-well-known.yml
+- type: Packages
+  url: packages/curlec-packages.yml
+- type: SDKs
+  url: packages/curlec-packages.yml
+- type: Idempotency
+  url: conventions/curlec-conventions.yml
+- type: Conventions
+  url: conventions/curlec-conventions.yml
+- type: ErrorCatalog
+  url: errors/curlec-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/curlec-lifecycle.yml
+- type: Conformance
+  url: conformance/curlec-conformance.yml
+- type: Compliance
+  url: conformance/curlec-conformance.yml
+- type: Sandbox
+  url: sandbox/curlec-sandbox.yml
+- type: DataModel
+  url: data-model/curlec-data-model.yml
+- type: ChangeLog
+  url: changelog/curlec-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/curlec-agentic-access.yml
+- type: Overlay
+  url: overlays/curlec-razorpay-overlay.yaml
+- type: LLMsTxt
+  url: llms/curlec-llms.txt
+- type: Components
+  url: components/curlec-components.yml
+- type: Deprecation
+  url: https://curlec.com/docs/api/changelog/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-common:
-- type: Website
-  url: https://curlec.com
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

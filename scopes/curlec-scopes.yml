@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curlec-razorpay-openapi.json
+schemes:
+- name: oauth2
+  source: openapi/curlec-razorpay-openapi.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://mcp.razorpay.com/authorize
+    tokenUrl: https://mcp.razorpay.com/token
+  - flow: clientCredentials
+    tokenUrl: https://mcp.razorpay.com/token
+  description: OAuth 2.0 via the Razorpay MCP server (mcp.razorpay.com). Supports Authorization
+    Code with PKCE (S256) for user-delegated access and Client Credentials for server-to-server
+    access. Tokens expire in 3600 seconds. Dynamic Client Registration available at the registration
+    endpoint. For integration setup see https://razorpay.com/docs/build/llm-docs/mcp-server/oauth.md.
+scopes:
+- scope: read_only
+  description: Read-only access to Razorpay account data (payments, orders, refunds, payouts,
+    subscriptions, invoices)
+  flows:
+  - authorizationCode
+  - clientCredentials
+  sources:
+  - openapi/curlec-razorpay-openapi.json

@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: searched
+source: https://curlec.com/docs/api/understand/
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://curlec.com/docs/api/understand/
+  policy: >-
+    All Razorpay Curlec APIs are backwards-compatible. New fields and endpoints are added without
+    breaking existing integrations; deprecated parameters receive warning notices before removal.
+deprecation:
+  policy_url: https://curlec.com/docs/api/changelog/
+  sunset_header: false
+  detail: >-
+    Deprecations are communicated through the API changelog and warning notices on deprecated
+    parameters rather than RFC 8594 Sunset/Deprecation headers.
+status_page: https://status.razorpay.com/
+changelog: https://curlec.com/docs/api/changelog/
+sla:
+  url: null
+  note: No public numeric uptime SLA published for Curlec; enterprise SLAs are contractual.
+deprecated_operations: []

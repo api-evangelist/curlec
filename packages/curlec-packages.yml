@@ -1,0 +1,50 @@
+generated: '2026-07-18'
+method: searched
+source: https://curlec.com/docs/payments/server-integration/
+note: >-
+  Curlec runs on the Razorpay REST API and directs developers to Razorpay's official
+  first-party server SDKs. These are the libraries the Curlec docs install-and-integrate
+  guides reference for each language.
+packages:
+- language: javascript
+  registry: npm
+  name: razorpay
+  url: https://www.npmjs.com/package/razorpay
+  install: npm install razorpay
+  official: true
+- language: python
+  registry: pypi
+  name: razorpay
+  url: https://pypi.org/project/razorpay/
+  install: pip install razorpay
+  official: true
+- language: php
+  registry: packagist
+  name: razorpay/razorpay
+  url: https://packagist.org/packages/razorpay/razorpay
+  install: composer require razorpay/razorpay
+  official: true
+- language: java
+  registry: maven
+  name: com.razorpay:razorpay-java
+  url: https://central.sonatype.com/artifact/com.razorpay/razorpay-java
+  install: implementation 'com.razorpay:razorpay-java'
+  official: true
+- language: ruby
+  registry: rubygems
+  name: razorpay
+  url: https://rubygems.org/gems/razorpay
+  install: gem install razorpay
+  official: true
+- language: dotnet
+  registry: nuget
+  name: Razorpay
+  url: https://www.nuget.org/packages/razorpay
+  install: dotnet add package Razorpay
+  official: true
+- language: go
+  registry: pkg.go.dev
+  name: github.com/razorpay/razorpay-go
+  url: https://pkg.go.dev/github.com/razorpay/razorpay-go
+  install: go get github.com/razorpay/razorpay-go
+  official: true

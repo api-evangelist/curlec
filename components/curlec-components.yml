@@ -1,0 +1,30 @@
+generated: '2026-07-18'
+method: searched
+source: https://curlec.com/docs/payments/payment-gateway/web-integration/standard/
+note: >-
+  Curlec ships client-side, embeddable payment surfaces on top of the Razorpay Checkout stack.
+  These are distinct from the server SDKs in packages/.
+families:
+- name: Standard Checkout
+  kind: embedded-modal
+  loader: https://checkout.razorpay.com/v1/checkout.js
+  detail: >-
+    Drop-in JavaScript checkout that renders a Razorpay-hosted, PCI-scoped payment modal
+    configured with key, order_id, amount, and handler callbacks.
+  docs: https://curlec.com/docs/payments/payment-gateway/web-integration/standard/
+- name: Hosted Checkout
+  kind: hosted-page
+  detail: Razorpay-hosted checkout page redirect flow (no PCI scope on the merchant).
+  docs: https://curlec.com/docs/payments/payment-gateway/web-integration/hosted/
+- name: Payment Button
+  kind: embed-snippet
+  detail: Copy-paste HTML/JS button that opens checkout without server code.
+  docs: https://curlec.com/docs/payments/payment-button/
+- name: Payment Pages
+  kind: hosted-page
+  detail: No-code hosted payment pages for collecting one-time and recurring payments.
+  docs: https://curlec.com/docs/payments/payment-pages/
+- name: Payment Links
+  kind: hosted-link
+  detail: Shareable hosted payment links (also fully API-driven).
+  docs: https://curlec.com/docs/payments/payment-links/

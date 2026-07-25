@@ -1,0 +1,56 @@
+generated: '2026-07-18'
+method: searched
+source: https://curlec.com/docs/api/understand/
+spec_source: openapi/curlec-razorpay-openapi.json
+authentication:
+  style: http-basic
+  detail: >-
+    HTTP Basic Auth. Username = key_id, password = key_secret, sent as
+    Authorization: Basic base64(key_id:key_secret). Keys are environment-scoped (Test vs Live).
+  oauth: >-
+    OAuth 2.0 is available only via the Razorpay MCP server (mcp.razorpay.com) for agent access,
+    not for the direct REST API.
+  see: authentication/curlec-authentication.yml
+idempotency:
+  supported: true
+  mechanism: header
+  header: X-Transfer-Idempotency
+  scope: Direct Transfers API
+  retention: 24 hours
+  behavior: >-
+    Retrying with the same idempotency key within 24 hours returns the original transfer
+    instead of creating a duplicate. Idempotency is scoped to the Transfers/Route surface in the
+    OpenAPI; the broader Razorpay REST API relies on client-supplied receipt/reference identifiers
+    (e.g. Orders `receipt`) for de-duplication rather than a universal idempotency header.
+  source: openapi/curlec-razorpay-openapi.json (X-Transfer-Idempotency parameter)
+pagination:
+  style: offset
+  params:
+    count: Number of entities to fetch. Default 10, maximum 100.
+    skip: Number of entities to skip. Default 0.
+    from: Unix timestamp — entities created after this time.
+    to: Unix timestamp — entities created before this time.
+  response_fields:
+    entity: collection
+    count: number of items returned
+    items: array of entities
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.razorpay.com/v1
+  policy: >-
+    APIs are backwards-compatible; deprecated parameters receive warning notices before removal.
+  see: lifecycle/curlec-lifecycle.yml
+rate_limiting:
+  signal: HTTP 429
+  headers_documented: false
+  guidance: Retry with exponential or stepped backoff plus jitter to avoid thundering herd.
+error_envelope:
+  wrapper: error
+  fields: [code, description, source, step, reason, field]
+  see: errors/curlec-problem-types.yml
+metadata:
+  field: notes
+  detail: Most entities accept a `notes` object (key-value pairs, up to 15 keys) for custom metadata.
+amounts:
+  convention: Amounts are integers in the smallest currency subunit (e.g. sen for MYR, paise for INR).

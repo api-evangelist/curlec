@@ -1,0 +1,17 @@
+generated: '2026-07-18'
+method: searched
+source: https://curlec.com/docs/api/changelog/
+scheme: dated
+current_version: v1
+tracks:
+- name: Payments Changelog
+  url: https://curlec.com/docs/api/changelog/
+- name: RazorpayX Changelog
+  url: https://curlec.com/docs/api/changelog/
+window: since 2024-01
+entries: []
+entries_note: >-
+  Curlec/Razorpay maintains a dated API changelog (Payments and RazorpayX tracks) covering
+  changes since January 2024. Individual dated entries are rendered client-side and were not
+  machine-extractable here; the live changelog URL is the source of truth. No entries are
+  fabricated.

@@ -1,0 +1,63 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curlec-razorpay-openapi.json
+format: razorpay-error-object
+note: Razorpay/Curlec does not use RFC 9457 application/problem+json. Errors are returned
+  as a JSON object with a top-level `error` member.
+envelope:
+  wrapper: error
+  fields:
+  - code
+  - description
+  - source
+  - step
+  - reason
+  - field
+  - metadata
+  example:
+    error:
+      code: BAD_REQUEST_ERROR
+      description: The amount must be atleast 100
+      source: business
+      step: payment_initiation
+      reason: input_validation_failed
+      field: amount
+error_codes:
+- BAD_REQUEST_ERROR
+- GATEWAY_ERROR
+- SERVER_ERROR
+problems:
+- status: 400
+  code: BAD_REQUEST_ERROR
+  title: Bad request
+  description: The request has invalid, missing, or malformed parameters. Inspect
+    error.field and error.description.
+  occurs_on_ops: 96
+- status: 401
+  code: AUTHENTICATION_ERROR
+  title: Authentication failed
+  description: Missing or invalid HTTP Basic Auth credentials (key_id:key_secret),
+    or keys used against the wrong (test vs live) environment.
+  occurs_on_ops: 136
+- status: 404
+  code: NOT_FOUND
+  title: Resource not found
+  description: The requested entity id does not exist for this account.
+  occurs_on_ops: 79
+- status: 429
+  code: RATE_LIMIT_ERROR
+  title: Too many requests
+  description: The request rate limiter was tripped. Back off with exponential/stepped
+    retry and jitter.
+  occurs_on_ops: 136
+- status: 500
+  code: SERVER_ERROR
+  title: Server error
+  description: An unexpected error occurred on the Razorpay side. Safe to retry idempotently.
+  occurs_on_ops: 39
+- status: 502
+  code: GATEWAY_ERROR
+  title: Gateway error
+  description: The upstream bank / payment gateway returned an error (error.source=gateway).
+  occurs_on_ops: null
+docs: https://curlec.com/docs/api/errors/
