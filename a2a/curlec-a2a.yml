@@ -1,0 +1,37 @@
+generated: '2026-07-28'
+method: probed
+source: https://curlec.com/.well-known/agent-card.json
+description: 'A2A Agent Card observed at /.well-known/agent-card.json on curlec.com. Grade is measured
+  against the A2A 1.0.0 AgentCard object: ''conformant'' passes every structural check, ''near-conformant''
+  is correctly shaped but omits optional fields, ''flavored'' fails a hard check and is an agent card
+  in spirit rather than in schema. Provider-published by construction — served from the provider''s own
+  host; nothing here is derived or generated.'
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: curlec.com
+conformance:
+  spec: A2A 1.0.0
+  grade: flavored
+  protocol_version: null
+  preferred_transport: null
+  deviations:
+  - no-protocolVersion
+  - no-preferredTransport
+card:
+  name: Razorpay
+  description: Razorpay is an RBI-authorised full-stack payment platform for businesses in India, Malaysia
+    (via Curlec), Singapore, and the USA. Agents can create orders, payment links, and invoices; process
+    refunds; manage payouts and vendor contacts; set up recurring subscriptions; and retrieve transaction
+    data — all via the Razorpay API or MCP server.
+  url: https://razorpay.com
+  version: 1.0.0
+  documentation_url: https://razorpay.com/docs/
+  skills: 8
+  file: curlec-agent-card.json
+x-evidence:
+  fetched: '2026-07-28'
+  url: https://curlec.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  note: Verbatim body saved alongside this manifest. No field inferred.

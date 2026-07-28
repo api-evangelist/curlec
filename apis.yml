@@ -581,6 +581,10 @@ apis:
   - type: OAuthScopes
     url: scopes/curlec-scopes.yml
 common:
+- type: AgentCard
+  url: a2a/curlec-a2a.yml
+  name: A2A Agent Card
+  description: Agent Card served at /.well-known/agent-card.json (flavored against A2A 1.0.0).
 - type: DomainSecurity
   url: security/curlec-domain-security.yml
 - type: Website
