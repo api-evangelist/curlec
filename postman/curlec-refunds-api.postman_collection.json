@@ -1,0 +1,1989 @@
+{
+  "info": {
+    "_postman_id": "496f0ba2-c9bc-42cf-beb5-307612831aa4",
+    "name": "Razorpay Bills Refunds API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:31.000Z",
+    "updatedAt": "2026-07-28T01:28:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-496f0ba2-c9bc-42cf-beb5-307612831aa4"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "refund",
+              "item": [
+                {
+                  "name": "Create a refund",
+                  "id": "611950dd-e510-429c-8698-56494d801834",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<integer>\",\n  \"speed\": \"normal\",\n  \"notes\": {\n    \"nullad7\": \"<string>\",\n    \"magna64e\": \"<string>\",\n    \"ex09\": \"<string>\",\n    \"Ut2\": \"<string>\",\n    \"velit_5\": \"<string>\",\n    \"officia_8\": \"<string>\",\n    \"irure_5\": \"<string>\",\n    \"in_6\": \"<string>\",\n    \"nostrud46\": \"<string>\",\n    \"incididunt_2\": \"<string>\",\n    \"quis_a7\": \"<string>\",\n    \"esseaf\": \"<string>\",\n    \"ullamco_bd7\": \"<string>\"\n  },\n  \"receipt\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:id/refund",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":id",
+                        "refund"
+                      ],
+                      "variable": [
+                        {
+                          "id": "38f3c270-4cc7-4425-b0d1-1ab48b2b2cc3",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Payment ID to refund (pay_*). Payment must be captured."
+                        }
+                      ]
+                    },
+                    "description": "Initiate a full or partial refund for a captured payment. Use speed=normal (default, 5-7 business days) or speed=optimum for instant refund (falls back to normal if unavailable). Use the X-Refund-Idempotency header with a unique key (>=10 chars) to safely retry without duplicate refunds."
+                  },
+                  "response": [
+                    {
+                      "id": "1b9cbc81-4c96-4152-952f-ab0a4de0bb25",
+                      "name": "Refund initiated.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"speed\": \"normal\",\n  \"notes\": {\n    \"nullad7\": \"<string>\",\n    \"magna64e\": \"<string>\",\n    \"ex09\": \"<string>\",\n    \"Ut2\": \"<string>\",\n    \"velit_5\": \"<string>\",\n    \"officia_8\": \"<string>\",\n    \"irure_5\": \"<string>\",\n    \"in_6\": \"<string>\",\n    \"nostrud46\": \"<string>\",\n    \"incididunt_2\": \"<string>\",\n    \"quis_a7\": \"<string>\",\n    \"esseaf\": \"<string>\",\n    \"ullamco_bd7\": \"<string>\"\n  },\n  \"receipt\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/refund",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "refund"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"refund\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"notes\": {\n    \"tempor6\": \"<string>\",\n    \"ad_2\": \"<string>\",\n    \"do_\": \"<string>\",\n    \"dolorf1\": \"<string>\",\n    \"euee\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"ut_f9\": \"<string>\",\n    \"elit_0\": \"<string>\",\n    \"ex759\": \"<string>\",\n    \"dolor_ad\": \"<string>\",\n    \"exercitation_9_c\": \"<string>\",\n    \"do_f95\": \"<string>\"\n  },\n  \"receipt\": \"<string>\",\n  \"acquirer_data\": {\n    \"arn\": \"<string>\",\n    \"rrn\": \"<string>\",\n    \"utr\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"batch_id\": \"<string>\",\n  \"status\": \"pending\",\n  \"speed_requested\": \"normal\",\n  \"speed_processed\": \"instant\"\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-1b9cbc81-4c96-4152-952f-ab0a4de0bb25"
+                    },
+                    {
+                      "id": "25792ffe-6ff5-439d-a1e2-96b238984bc5",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"speed\": \"normal\",\n  \"notes\": {\n    \"nullad7\": \"<string>\",\n    \"magna64e\": \"<string>\",\n    \"ex09\": \"<string>\",\n    \"Ut2\": \"<string>\",\n    \"velit_5\": \"<string>\",\n    \"officia_8\": \"<string>\",\n    \"irure_5\": \"<string>\",\n    \"in_6\": \"<string>\",\n    \"nostrud46\": \"<string>\",\n    \"incididunt_2\": \"<string>\",\n    \"quis_a7\": \"<string>\",\n    \"esseaf\": \"<string>\",\n    \"ullamco_bd7\": \"<string>\"\n  },\n  \"receipt\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/refund",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "refund"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-25792ffe-6ff5-439d-a1e2-96b238984bc5"
+                    },
+                    {
+                      "id": "66baef6c-f751-4d0e-938b-22c3cbaf10a9",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"speed\": \"normal\",\n  \"notes\": {\n    \"nullad7\": \"<string>\",\n    \"magna64e\": \"<string>\",\n    \"ex09\": \"<string>\",\n    \"Ut2\": \"<string>\",\n    \"velit_5\": \"<string>\",\n    \"officia_8\": \"<string>\",\n    \"irure_5\": \"<string>\",\n    \"in_6\": \"<string>\",\n    \"nostrud46\": \"<string>\",\n    \"incididunt_2\": \"<string>\",\n    \"quis_a7\": \"<string>\",\n    \"esseaf\": \"<string>\",\n    \"ullamco_bd7\": \"<string>\"\n  },\n  \"receipt\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/refund",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "refund"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-66baef6c-f751-4d0e-938b-22c3cbaf10a9"
+                    },
+                    {
+                      "id": "ced3932a-1b78-4ba7-8027-d8f639699fb1",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"speed\": \"normal\",\n  \"notes\": {\n    \"nullad7\": \"<string>\",\n    \"magna64e\": \"<string>\",\n    \"ex09\": \"<string>\",\n    \"Ut2\": \"<string>\",\n    \"velit_5\": \"<string>\",\n    \"officia_8\": \"<string>\",\n    \"irure_5\": \"<string>\",\n    \"in_6\": \"<string>\",\n    \"nostrud46\": \"<string>\",\n    \"incididunt_2\": \"<string>\",\n    \"quis_a7\": \"<string>\",\n    \"esseaf\": \"<string>\",\n    \"ullamco_bd7\": \"<string>\"\n  },\n  \"receipt\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/refund",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "refund"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-ced3932a-1b78-4ba7-8027-d8f639699fb1"
+                    },
+                    {
+                      "id": "ebcce874-0776-4e52-abdb-fe67f361f079",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"speed\": \"normal\",\n  \"notes\": {\n    \"nullad7\": \"<string>\",\n    \"magna64e\": \"<string>\",\n    \"ex09\": \"<string>\",\n    \"Ut2\": \"<string>\",\n    \"velit_5\": \"<string>\",\n    \"officia_8\": \"<string>\",\n    \"irure_5\": \"<string>\",\n    \"in_6\": \"<string>\",\n    \"nostrud46\": \"<string>\",\n    \"incididunt_2\": \"<string>\",\n    \"quis_a7\": \"<string>\",\n    \"esseaf\": \"<string>\",\n    \"ullamco_bd7\": \"<string>\"\n  },\n  \"receipt\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/refund",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "refund"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-ebcce874-0776-4e52-abdb-fe67f361f079"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-611950dd-e510-429c-8698-56494d801834"
+                }
+              ],
+              "id": "eb263bea-5e43-40eb-a655-2c67ff78faee",
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-eb263bea-5e43-40eb-a655-2c67ff78faee"
+            }
+          ],
+          "id": "4232c3d9-12cd-4c54-84da-c0de3b843a67",
+          "createdAt": "2026-07-28T01:28:32.000Z",
+          "updatedAt": "2026-07-28T01:28:32.000Z",
+          "uid": "35240-4232c3d9-12cd-4c54-84da-c0de3b843a67"
+        },
+        {
+          "name": "{payment_id}",
+          "item": [
+            {
+              "name": "refunds",
+              "item": [
+                {
+                  "name": "{refund_id}",
+                  "item": [
+                    {
+                      "name": "Fetch a specific refund for a payment",
+                      "id": "f3abb299-ddf9-4d50-bcce-4b51e22ff9db",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:payment_id/refunds/:refund_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":payment_id",
+                            "refunds",
+                            ":refund_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "330bd145-a2c8-47a2-a8e6-caf9e0e3286d",
+                              "key": "payment_id",
+                              "value": "<string>",
+                              "description": "(Required) Payment ID (pay_*)."
+                            },
+                            {
+                              "id": "2f7d9174-7c85-42cf-9619-fb41e703e325",
+                              "key": "refund_id",
+                              "value": "<string>",
+                              "description": "(Required) Refund ID (rfnd_*)."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a specific refund by its ID scoped to a particular payment."
+                      },
+                      "response": [
+                        {
+                          "id": "f9274959-f7d3-43de-9900-8ab0917502d9",
+                          "name": "Refund details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/:payment_id/refunds/:refund_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                ":payment_id",
+                                "refunds",
+                                ":refund_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_id"
+                                },
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"refund\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"notes\": {\n    \"tempor6\": \"<string>\",\n    \"ad_2\": \"<string>\",\n    \"do_\": \"<string>\",\n    \"dolorf1\": \"<string>\",\n    \"euee\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"ut_f9\": \"<string>\",\n    \"elit_0\": \"<string>\",\n    \"ex759\": \"<string>\",\n    \"dolor_ad\": \"<string>\",\n    \"exercitation_9_c\": \"<string>\",\n    \"do_f95\": \"<string>\"\n  },\n  \"receipt\": \"<string>\",\n  \"acquirer_data\": {\n    \"arn\": \"<string>\",\n    \"rrn\": \"<string>\",\n    \"utr\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"batch_id\": \"<string>\",\n  \"status\": \"pending\",\n  \"speed_requested\": \"normal\",\n  \"speed_processed\": \"instant\"\n}",
+                          "createdAt": "2026-07-28T01:28:32.000Z",
+                          "updatedAt": "2026-07-28T01:28:32.000Z",
+                          "uid": "35240-f9274959-f7d3-43de-9900-8ab0917502d9"
+                        },
+                        {
+                          "id": "e4328a3d-9e1d-4797-a1e1-86437d5de06f",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/:payment_id/refunds/:refund_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                ":payment_id",
+                                "refunds",
+                                ":refund_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_id"
+                                },
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:32.000Z",
+                          "updatedAt": "2026-07-28T01:28:32.000Z",
+                          "uid": "35240-e4328a3d-9e1d-4797-a1e1-86437d5de06f"
+                        },
+                        {
+                          "id": "19e16acf-11e1-463f-bcb1-b05aeede5301",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/:payment_id/refunds/:refund_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                ":payment_id",
+                                "refunds",
+                                ":refund_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_id"
+                                },
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:32.000Z",
+                          "updatedAt": "2026-07-28T01:28:32.000Z",
+                          "uid": "35240-19e16acf-11e1-463f-bcb1-b05aeede5301"
+                        },
+                        {
+                          "id": "6fa94c73-7640-4be0-9b9d-b5a6aba1a895",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/:payment_id/refunds/:refund_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                ":payment_id",
+                                "refunds",
+                                ":refund_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_id"
+                                },
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:32.000Z",
+                          "updatedAt": "2026-07-28T01:28:32.000Z",
+                          "uid": "35240-6fa94c73-7640-4be0-9b9d-b5a6aba1a895"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-f3abb299-ddf9-4d50-bcce-4b51e22ff9db"
+                    }
+                  ],
+                  "id": "aae58a44-a72e-4ae7-a25a-2eebe001b9bd",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-aae58a44-a72e-4ae7-a25a-2eebe001b9bd"
+                },
+                {
+                  "name": "Fetch refunds for a payment",
+                  "id": "79897626-a54c-4154-92a1-282b1f91ce0c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id",
+                        "refunds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to return per call. Maximum 100. Default 10.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                          "key": "skip",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8a88f2a6-411f-451a-89fe-88d825af7fd6",
+                          "key": "payment_id",
+                          "value": "<string>",
+                          "description": "(Required) Payment ID (pay_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all refunds issued against a specific payment."
+                  },
+                  "response": [
+                    {
+                      "id": "07bcb0d2-d335-48d7-84ad-68494af079c1",
+                      "name": "Collection of refunds for the payment.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:payment_id/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":payment_id",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                              "key": "from",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                              "key": "to",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of records to return per call. Maximum 100. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"refund\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"payment_id\": \"<string>\",\n      \"notes\": {\n        \"Excepteur_9\": \"<string>\",\n        \"reprehenderit98f\": \"<string>\",\n        \"consequat_fd\": \"<string>\",\n        \"Duisa\": \"<string>\",\n        \"veniam41c\": \"<string>\",\n        \"consectetur_533\": \"<string>\",\n        \"irure_d\": \"<string>\",\n        \"quisf69\": \"<string>\",\n        \"sitee\": \"<string>\",\n        \"eiusmod_006\": \"<string>\"\n      },\n      \"receipt\": \"<string>\",\n      \"acquirer_data\": {\n        \"arn\": \"<string>\",\n        \"rrn\": \"<string>\",\n        \"utr\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"batch_id\": \"<string>\",\n      \"status\": \"failed\",\n      \"speed_requested\": \"optimum\",\n      \"speed_processed\": \"normal\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"refund\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"payment_id\": \"<string>\",\n      \"notes\": {\n        \"anim_6a9\": \"<string>\",\n        \"doloref\": \"<string>\",\n        \"ea_da\": \"<string>\",\n        \"occaecatd3\": \"<string>\",\n        \"consequat_d6d\": \"<string>\",\n        \"ind\": \"<string>\",\n        \"do2ac\": \"<string>\",\n        \"irure27f\": \"<string>\"\n      },\n      \"receipt\": \"<string>\",\n      \"acquirer_data\": {\n        \"arn\": \"<string>\",\n        \"rrn\": \"<string>\",\n        \"utr\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"batch_id\": \"<string>\",\n      \"status\": \"failed\",\n      \"speed_requested\": \"normal\",\n      \"speed_processed\": \"instant\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-07bcb0d2-d335-48d7-84ad-68494af079c1"
+                    },
+                    {
+                      "id": "5bfc48d1-ddf5-40d4-a3aa-d5419f611005",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:payment_id/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":payment_id",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                              "key": "from",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                              "key": "to",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of records to return per call. Maximum 100. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-5bfc48d1-ddf5-40d4-a3aa-d5419f611005"
+                    },
+                    {
+                      "id": "032c7c90-e3fc-4e49-b471-60ebaa693b88",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:payment_id/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":payment_id",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                              "key": "from",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                              "key": "to",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of records to return per call. Maximum 100. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-032c7c90-e3fc-4e49-b471-60ebaa693b88"
+                    },
+                    {
+                      "id": "54ac0533-a0dd-4ce7-8dfd-9ac3f1fc3f7b",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:payment_id/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":payment_id",
+                            "refunds"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                              "key": "from",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                              "key": "to",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of records to return per call. Maximum 100. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:32.000Z",
+                      "updatedAt": "2026-07-28T01:28:32.000Z",
+                      "uid": "35240-54ac0533-a0dd-4ce7-8dfd-9ac3f1fc3f7b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-79897626-a54c-4154-92a1-282b1f91ce0c"
+                }
+              ],
+              "id": "ea1ae47f-fa54-4f26-ae77-d668e7b95735",
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-ea1ae47f-fa54-4f26-ae77-d668e7b95735"
+            }
+          ],
+          "id": "8453752e-03a8-40e6-a071-2253a85ad849",
+          "createdAt": "2026-07-28T01:28:32.000Z",
+          "updatedAt": "2026-07-28T01:28:32.000Z",
+          "uid": "35240-8453752e-03a8-40e6-a071-2253a85ad849"
+        }
+      ],
+      "id": "767d7ba7-ded7-4ff7-9302-7cfaba9c83a8",
+      "createdAt": "2026-07-28T01:28:32.000Z",
+      "updatedAt": "2026-07-28T01:28:32.000Z",
+      "uid": "35240-767d7ba7-ded7-4ff7-9302-7cfaba9c83a8"
+    },
+    {
+      "name": "refunds",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Fetch refund by ID",
+              "id": "c781e264-4eef-4a09-899b-ac10ed122219",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/refunds/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refunds",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b43b7c9b-61da-4bfb-9d7a-04ee8fc96a72",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Refund ID (rfnd_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve full details and current status of a specific refund."
+              },
+              "response": [
+                {
+                  "id": "da1e2ebc-3a0c-4f24-b8ad-e2ff39d99ba0",
+                  "name": "Refund details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"refund\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"notes\": {\n    \"tempor6\": \"<string>\",\n    \"ad_2\": \"<string>\",\n    \"do_\": \"<string>\",\n    \"dolorf1\": \"<string>\",\n    \"euee\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"ut_f9\": \"<string>\",\n    \"elit_0\": \"<string>\",\n    \"ex759\": \"<string>\",\n    \"dolor_ad\": \"<string>\",\n    \"exercitation_9_c\": \"<string>\",\n    \"do_f95\": \"<string>\"\n  },\n  \"receipt\": \"<string>\",\n  \"acquirer_data\": {\n    \"arn\": \"<string>\",\n    \"rrn\": \"<string>\",\n    \"utr\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"batch_id\": \"<string>\",\n  \"status\": \"pending\",\n  \"speed_requested\": \"normal\",\n  \"speed_processed\": \"instant\"\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-da1e2ebc-3a0c-4f24-b8ad-e2ff39d99ba0"
+                },
+                {
+                  "id": "f1a22eaa-9543-41ce-80b4-8db549c961e9",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-f1a22eaa-9543-41ce-80b4-8db549c961e9"
+                },
+                {
+                  "id": "a1dd7f01-b179-41a2-ba68-1eb6d5048f74",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-a1dd7f01-b179-41a2-ba68-1eb6d5048f74"
+                },
+                {
+                  "id": "2ef7bdfa-eddc-41e1-97d4-61dff5858b33",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-2ef7bdfa-eddc-41e1-97d4-61dff5858b33"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-c781e264-4eef-4a09-899b-ac10ed122219"
+            },
+            {
+              "name": "Update a refund",
+              "id": "efc3c310-2cce-4a5c-80cc-39b9891f6c53",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"dolor_64\": \"<string>\",\n    \"sed_b5\": \"<string>\",\n    \"adipisicing28\": \"<string>\",\n    \"nisi_0b\": \"<string>\",\n    \"laboris51a\": \"<string>\",\n    \"est54\": \"<string>\",\n    \"est_d4e\": \"<string>\",\n    \"veniam_a7_\": \"<string>\",\n    \"officiac\": \"<string>\",\n    \"occaecat_67\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refunds/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refunds",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "df7c59e6-30be-4c30-98f5-381750f38858",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Refund ID (rfnd_*)."
+                    }
+                  ]
+                },
+                "description": "Update the notes field of a refund. Only notes can be modified."
+              },
+              "response": [
+                {
+                  "id": "761d502c-7b0d-4765-b731-74762191674c",
+                  "name": "Updated refund.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"dolor_64\": \"<string>\",\n    \"sed_b5\": \"<string>\",\n    \"adipisicing28\": \"<string>\",\n    \"nisi_0b\": \"<string>\",\n    \"laboris51a\": \"<string>\",\n    \"est54\": \"<string>\",\n    \"est_d4e\": \"<string>\",\n    \"veniam_a7_\": \"<string>\",\n    \"officiac\": \"<string>\",\n    \"occaecat_67\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"refund\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"notes\": {\n    \"tempor6\": \"<string>\",\n    \"ad_2\": \"<string>\",\n    \"do_\": \"<string>\",\n    \"dolorf1\": \"<string>\",\n    \"euee\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"ut_f9\": \"<string>\",\n    \"elit_0\": \"<string>\",\n    \"ex759\": \"<string>\",\n    \"dolor_ad\": \"<string>\",\n    \"exercitation_9_c\": \"<string>\",\n    \"do_f95\": \"<string>\"\n  },\n  \"receipt\": \"<string>\",\n  \"acquirer_data\": {\n    \"arn\": \"<string>\",\n    \"rrn\": \"<string>\",\n    \"utr\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"batch_id\": \"<string>\",\n  \"status\": \"pending\",\n  \"speed_requested\": \"normal\",\n  \"speed_processed\": \"instant\"\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-761d502c-7b0d-4765-b731-74762191674c"
+                },
+                {
+                  "id": "104c7843-0eba-4205-95c7-3a9419cfcdd9",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"dolor_64\": \"<string>\",\n    \"sed_b5\": \"<string>\",\n    \"adipisicing28\": \"<string>\",\n    \"nisi_0b\": \"<string>\",\n    \"laboris51a\": \"<string>\",\n    \"est54\": \"<string>\",\n    \"est_d4e\": \"<string>\",\n    \"veniam_a7_\": \"<string>\",\n    \"officiac\": \"<string>\",\n    \"occaecat_67\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-104c7843-0eba-4205-95c7-3a9419cfcdd9"
+                },
+                {
+                  "id": "a270735e-3c79-4cb7-97f2-d83406ea0b0f",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"dolor_64\": \"<string>\",\n    \"sed_b5\": \"<string>\",\n    \"adipisicing28\": \"<string>\",\n    \"nisi_0b\": \"<string>\",\n    \"laboris51a\": \"<string>\",\n    \"est54\": \"<string>\",\n    \"est_d4e\": \"<string>\",\n    \"veniam_a7_\": \"<string>\",\n    \"officiac\": \"<string>\",\n    \"occaecat_67\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-a270735e-3c79-4cb7-97f2-d83406ea0b0f"
+                },
+                {
+                  "id": "2a0f18fe-a8a1-4c38-aca1-5450bcc1f6d9",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"dolor_64\": \"<string>\",\n    \"sed_b5\": \"<string>\",\n    \"adipisicing28\": \"<string>\",\n    \"nisi_0b\": \"<string>\",\n    \"laboris51a\": \"<string>\",\n    \"est54\": \"<string>\",\n    \"est_d4e\": \"<string>\",\n    \"veniam_a7_\": \"<string>\",\n    \"officiac\": \"<string>\",\n    \"occaecat_67\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-2a0f18fe-a8a1-4c38-aca1-5450bcc1f6d9"
+                },
+                {
+                  "id": "0cf09096-1524-409a-94b8-176a2a065d49",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"dolor_64\": \"<string>\",\n    \"sed_b5\": \"<string>\",\n    \"adipisicing28\": \"<string>\",\n    \"nisi_0b\": \"<string>\",\n    \"laboris51a\": \"<string>\",\n    \"est54\": \"<string>\",\n    \"est_d4e\": \"<string>\",\n    \"veniam_a7_\": \"<string>\",\n    \"officiac\": \"<string>\",\n    \"occaecat_67\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refunds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refunds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:32.000Z",
+                  "updatedAt": "2026-07-28T01:28:32.000Z",
+                  "uid": "35240-0cf09096-1524-409a-94b8-176a2a065d49"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-efc3c310-2cce-4a5c-80cc-39b9891f6c53"
+            }
+          ],
+          "id": "e4c4850a-23a5-420a-9fb4-7a867c474615",
+          "createdAt": "2026-07-28T01:28:32.000Z",
+          "updatedAt": "2026-07-28T01:28:32.000Z",
+          "uid": "35240-e4c4850a-23a5-420a-9fb4-7a867c474615"
+        },
+        {
+          "name": "Fetch all refunds",
+          "id": "71b5168e-e01c-4c8b-a383-b0c8d354fa13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of all refunds across payments. Maximum 100 per call."
+          },
+          "response": [
+            {
+              "id": "319ffeba-6fe8-4263-8a61-6eed443b62b5",
+              "name": "Collection of refunds.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refunds"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"refund\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"payment_id\": \"<string>\",\n      \"notes\": {\n        \"Excepteur_9\": \"<string>\",\n        \"reprehenderit98f\": \"<string>\",\n        \"consequat_fd\": \"<string>\",\n        \"Duisa\": \"<string>\",\n        \"veniam41c\": \"<string>\",\n        \"consectetur_533\": \"<string>\",\n        \"irure_d\": \"<string>\",\n        \"quisf69\": \"<string>\",\n        \"sitee\": \"<string>\",\n        \"eiusmod_006\": \"<string>\"\n      },\n      \"receipt\": \"<string>\",\n      \"acquirer_data\": {\n        \"arn\": \"<string>\",\n        \"rrn\": \"<string>\",\n        \"utr\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"batch_id\": \"<string>\",\n      \"status\": \"failed\",\n      \"speed_requested\": \"optimum\",\n      \"speed_processed\": \"normal\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"refund\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"payment_id\": \"<string>\",\n      \"notes\": {\n        \"anim_6a9\": \"<string>\",\n        \"doloref\": \"<string>\",\n        \"ea_da\": \"<string>\",\n        \"occaecatd3\": \"<string>\",\n        \"consequat_d6d\": \"<string>\",\n        \"ind\": \"<string>\",\n        \"do2ac\": \"<string>\",\n        \"irure27f\": \"<string>\"\n      },\n      \"receipt\": \"<string>\",\n      \"acquirer_data\": {\n        \"arn\": \"<string>\",\n        \"rrn\": \"<string>\",\n        \"utr\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"batch_id\": \"<string>\",\n      \"status\": \"failed\",\n      \"speed_requested\": \"normal\",\n      \"speed_processed\": \"instant\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-319ffeba-6fe8-4263-8a61-6eed443b62b5"
+            },
+            {
+              "id": "0c04d135-6996-4b06-b957-c7da02aad4cb",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refunds"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-0c04d135-6996-4b06-b957-c7da02aad4cb"
+            },
+            {
+              "id": "a87eb6c2-b9a9-4fb3-9a56-91890e9884d6",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refunds"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-a87eb6c2-b9a9-4fb3-9a56-91890e9884d6"
+            },
+            {
+              "id": "b8e578a1-e979-4aa6-b441-3429fa2d4101",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/refunds?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refunds"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:32.000Z",
+              "updatedAt": "2026-07-28T01:28:32.000Z",
+              "uid": "35240-b8e578a1-e979-4aa6-b441-3429fa2d4101"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:32.000Z",
+          "updatedAt": "2026-07-28T01:28:32.000Z",
+          "uid": "35240-71b5168e-e01c-4c8b-a383-b0c8d354fa13"
+        }
+      ],
+      "id": "95f89510-e3cc-45b4-946b-120f7da40eca",
+      "createdAt": "2026-07-28T01:28:32.000Z",
+      "updatedAt": "2026-07-28T01:28:32.000Z",
+      "uid": "35240-95f89510-e3cc-45b4-946b-120f7da40eca"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

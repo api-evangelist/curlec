@@ -1,0 +1,1115 @@
+{
+  "info": {
+    "_postman_id": "ce8affa9-0b82-4876-a1bf-5e0dfff6e1f4",
+    "name": "Razorpay Bills API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:35.000Z",
+    "updatedAt": "2026-07-28T01:27:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ce8affa9-0b82-4876-a1bf-5e0dfff6e1f4"
+  },
+  "item": [
+    {
+      "name": "bills",
+      "item": [
+        {
+          "name": "{bill_id}",
+          "item": [
+            {
+              "name": "Update a bill",
+              "id": "5b02e800-d67a-49c9-979b-de6b515cee6d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/bills/:bill_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bills",
+                    ":bill_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a64901fa-a550-48af-b32a-da2147a2f62c",
+                      "key": "bill_id",
+                      "value": "<string>",
+                      "description": "(Required) Bill ID with prefix bill_"
+                    }
+                  ]
+                },
+                "description": "Update an existing digital bill. Can update customer details, line items, receipt summary, and other fields."
+              },
+              "response": [
+                {
+                  "id": "364b8d50-42fa-4869-bace-f5591730fcdd",
+                  "name": "Bill updated successfully",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-364b8d50-42fa-4869-bace-f5591730fcdd"
+                },
+                {
+                  "id": "b643cef4-abdf-4eac-9fe1-400f35ce8ade",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-b643cef4-abdf-4eac-9fe1-400f35ce8ade"
+                },
+                {
+                  "id": "cc919964-9e8e-468e-83fe-c58a2d3e0514",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-cc919964-9e8e-468e-83fe-c58a2d3e0514"
+                },
+                {
+                  "id": "a10b069c-fc74-418d-9bd9-5acc18ff531d",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-a10b069c-fc74-418d-9bd9-5acc18ff531d"
+                },
+                {
+                  "id": "d191cdd4-5d37-443f-a7e6-2d2352d3acae",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-d191cdd4-5d37-443f-a7e6-2d2352d3acae"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:35.000Z",
+              "updatedAt": "2026-07-28T01:27:35.000Z",
+              "uid": "35240-5b02e800-d67a-49c9-979b-de6b515cee6d"
+            },
+            {
+              "name": "Delete a bill",
+              "id": "1628f821-a9d0-4837-9b07-7859d8549379",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bills/:bill_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bills",
+                    ":bill_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "bdb30197-79b1-4d65-b938-54d356eb65da",
+                      "key": "bill_id",
+                      "value": "<string>",
+                      "description": "(Required) Bill ID with prefix bill_"
+                    }
+                  ]
+                },
+                "description": "Delete a digital bill/receipt."
+              },
+              "response": [
+                {
+                  "id": "dabb2965-5d5b-4b15-9009-2d3644830d0b",
+                  "name": "Bill deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-dabb2965-5d5b-4b15-9009-2d3644830d0b"
+                },
+                {
+                  "id": "eff2473d-2318-4a4b-b9ae-148df8099faf",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-eff2473d-2318-4a4b-b9ae-148df8099faf"
+                },
+                {
+                  "id": "5152eda4-32df-4f14-adf9-fc4b3b20942f",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-5152eda4-32df-4f14-adf9-fc4b3b20942f"
+                },
+                {
+                  "id": "f334699a-ac5a-40c0-81ff-6eb6e0429de8",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-f334699a-ac5a-40c0-81ff-6eb6e0429de8"
+                },
+                {
+                  "id": "153747f6-949e-471b-8667-a9f3283fb7e4",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-153747f6-949e-471b-8667-a9f3283fb7e4"
+                },
+                {
+                  "id": "1a596eb0-dc45-40f9-98fe-93f155aa12fb",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bills/:bill_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bills",
+                        ":bill_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bill_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:35.000Z",
+                  "updatedAt": "2026-07-28T01:27:35.000Z",
+                  "uid": "35240-1a596eb0-dc45-40f9-98fe-93f155aa12fb"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:35.000Z",
+              "updatedAt": "2026-07-28T01:27:35.000Z",
+              "uid": "35240-1628f821-a9d0-4837-9b07-7859d8549379"
+            }
+          ],
+          "id": "e9648cf8-c4a7-4611-a7dc-bc3bff3eca2c",
+          "createdAt": "2026-07-28T01:27:35.000Z",
+          "updatedAt": "2026-07-28T01:27:35.000Z",
+          "uid": "35240-e9648cf8-c4a7-4611-a7dc-bc3bff3eca2c"
+        },
+        {
+          "name": "Create a bill",
+          "id": "14e1b412-564f-4eb0-8774-25507f5ca4c5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"business_type\": \"retail\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"business_category\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"bill_of_supply\",\n  \"receipt_delivery\": \"digital_and_print\",\n  \"store_code\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"receipt_summary\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bills",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bills"
+              ]
+            },
+            "description": "Create a digital bill/receipt for a customer. Supports retail, food & beverage, events, and ecommerce use cases. Used for Razorpay Billme digital receipts."
+          },
+          "response": [
+            {
+              "id": "2a8e5e87-148a-4337-9377-060d04c4af8e",
+              "name": "Bill created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"business_type\": \"retail\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"business_category\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"bill_of_supply\",\n  \"receipt_delivery\": \"digital_and_print\",\n  \"store_code\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"receipt_summary\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/bills",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bills"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"business_type\": \"events\",\n  \"business_category\": \"<string>\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"employee\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"loyalty\": {\n    \"points\": \"<integer>\",\n    \"redeemed_points\": \"<integer>\"\n  },\n  \"store_code\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"tax_invoice\",\n  \"receipt_delivery\": \"print\",\n  \"tags\": {},\n  \"bar_code_number\": \"<string>\",\n  \"qr_code_number\": \"<string>\",\n  \"billing_pos_number\": \"<string>\",\n  \"pos_category\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"order_service_type\": \"takeaway\",\n  \"delivery_status_url\": \"<string>\",\n  \"line_items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_amount\": \"<integer>\",\n      \"unit\": \"<string>\",\n      \"hsn_code\": \"<string>\",\n      \"product_code\": \"<string>\",\n      \"total_amount\": \"<integer>\",\n      \"tags\": {}\n    }\n  ],\n  \"receipt_summary\": {\n    \"total_quantity\": \"<number>\",\n    \"sub_total_amount\": \"<integer>\",\n    \"currency\": \"<string>\",\n    \"net_payable_amount\": \"<integer>\",\n    \"payment_status\": \"<string>\"\n  },\n  \"payments\": [\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    },\n    {\n      \"method\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"payment_reference_id\": \"<string>\",\n      \"financier_data\": {}\n    }\n  ],\n  \"event\": {},\n  \"irn\": \"<string>\",\n  \"receipt_url\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:27:35.000Z",
+              "updatedAt": "2026-07-28T01:27:35.000Z",
+              "uid": "35240-2a8e5e87-148a-4337-9377-060d04c4af8e"
+            },
+            {
+              "id": "1cca25c6-149d-493c-a8e2-01538feac59f",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"business_type\": \"retail\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"business_category\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"bill_of_supply\",\n  \"receipt_delivery\": \"digital_and_print\",\n  \"store_code\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"receipt_summary\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/bills",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bills"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:35.000Z",
+              "updatedAt": "2026-07-28T01:27:35.000Z",
+              "uid": "35240-1cca25c6-149d-493c-a8e2-01538feac59f"
+            },
+            {
+              "id": "026043b0-68d7-44f9-8c42-66544bdfcd2e",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"business_type\": \"retail\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"business_category\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"bill_of_supply\",\n  \"receipt_delivery\": \"digital_and_print\",\n  \"store_code\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"receipt_summary\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/bills",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bills"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:35.000Z",
+              "updatedAt": "2026-07-28T01:27:35.000Z",
+              "uid": "35240-026043b0-68d7-44f9-8c42-66544bdfcd2e"
+            },
+            {
+              "id": "3f8b21a6-fda9-43e6-b784-8373019e3c0d",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"business_type\": \"retail\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"business_category\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"bill_of_supply\",\n  \"receipt_delivery\": \"digital_and_print\",\n  \"store_code\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"receipt_summary\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/bills",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bills"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:35.000Z",
+              "updatedAt": "2026-07-28T01:27:35.000Z",
+              "uid": "35240-3f8b21a6-fda9-43e6-b784-8373019e3c0d"
+            },
+            {
+              "id": "09d80c36-8b4a-4bdd-af6a-4ed2f0c32fb2",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"business_type\": \"retail\",\n  \"customer\": {\n    \"contact\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"customer_id\": \"<string>\"\n  },\n  \"business_category\": \"<string>\",\n  \"receipt_timestamp\": \"<integer>\",\n  \"receipt_number\": \"<string>\",\n  \"receipt_type\": \"bill_of_supply\",\n  \"receipt_delivery\": \"digital_and_print\",\n  \"store_code\": \"<string>\",\n  \"order_number\": \"<string>\",\n  \"receipt_summary\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/bills",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bills"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:35.000Z",
+              "updatedAt": "2026-07-28T01:27:35.000Z",
+              "uid": "35240-09d80c36-8b4a-4bdd-af6a-4ed2f0c32fb2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:35.000Z",
+          "updatedAt": "2026-07-28T01:27:35.000Z",
+          "uid": "35240-14e1b412-564f-4eb0-8774-25507f5ca4c5"
+        }
+      ],
+      "id": "2bca53bf-bc4c-4d15-82cb-3d51b3e41388",
+      "createdAt": "2026-07-28T01:27:35.000Z",
+      "updatedAt": "2026-07-28T01:27:35.000Z",
+      "uid": "35240-2bca53bf-bc4c-4d15-82cb-3d51b3e41388"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

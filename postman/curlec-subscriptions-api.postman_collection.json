@@ -1,0 +1,3186 @@
+{
+  "info": {
+    "_postman_id": "770b27a2-b0e1-4d8d-b11f-1a4bd11c587a",
+    "name": "Razorpay Bills Subscriptions API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:33.000Z",
+    "updatedAt": "2026-07-28T01:28:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-770b27a2-b0e1-4d8d-b11f-1a4bd11c587a"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "cancel",
+              "item": [
+                {
+                  "name": "Cancel a subscription",
+                  "id": "104176f4-668e-4464-a8f0-139e20b130be",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cancel_at_cycle_end\": 0\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id",
+                        "cancel"
+                      ],
+                      "variable": [
+                        {
+                          "id": "56ab12ec-9cd9-4b8f-a591-7626bbe0de8f",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Subscription ID (sub_*)."
+                        }
+                      ]
+                    },
+                    "description": "Cancel an active or authenticated subscription. Use cancel_at_cycle_end=1 to continue service until the end of the current cycle before cancelling."
+                  },
+                  "response": [
+                    {
+                      "id": "21717f2b-061b-44f6-b4df-6a08d002a4ad",
+                      "name": "Subscription cancelled.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cancel_at_cycle_end\": 0\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"subscription\",\n  \"plan_id\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"current_start\": \"<integer>\",\n  \"current_end\": \"<integer>\",\n  \"ended_at\": \"<integer>\",\n  \"quantity\": 1,\n  \"notes\": {\n    \"nulla4\": \"<string>\",\n    \"occaecat_a65\": \"<string>\",\n    \"dolore__31\": \"<string>\",\n    \"eu5c5\": \"<string>\",\n    \"nostrudb5b\": \"<string>\",\n    \"irure5\": \"<string>\",\n    \"anim30\": \"<string>\",\n    \"in1f0\": \"<string>\"\n  },\n  \"charge_at\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"auth_attempts\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"paid_count\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"customer_notify\": 1,\n  \"short_url\": \"<string>\",\n  \"has_scheduled_changes\": \"<boolean>\",\n  \"change_scheduled_at\": \"now\",\n  \"source\": \"<string>\",\n  \"offer_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-21717f2b-061b-44f6-b4df-6a08d002a4ad"
+                    },
+                    {
+                      "id": "9d7bd4bb-d233-4496-aa09-b078b932f0fa",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cancel_at_cycle_end\": 0\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-9d7bd4bb-d233-4496-aa09-b078b932f0fa"
+                    },
+                    {
+                      "id": "acc5274a-916b-4a5c-afd1-5730e5715d74",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cancel_at_cycle_end\": 0\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-acc5274a-916b-4a5c-afd1-5730e5715d74"
+                    },
+                    {
+                      "id": "7608595a-ec71-468d-af51-2e652d6674eb",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cancel_at_cycle_end\": 0\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-7608595a-ec71-468d-af51-2e652d6674eb"
+                    },
+                    {
+                      "id": "43d0c1d4-7d1f-49dd-8a38-fca700936258",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cancel_at_cycle_end\": 0\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-43d0c1d4-7d1f-49dd-8a38-fca700936258"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-104176f4-668e-4464-a8f0-139e20b130be"
+                }
+              ],
+              "id": "ed55645d-4c74-4c8a-9b4c-bc6998aed1a1",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-ed55645d-4c74-4c8a-9b4c-bc6998aed1a1"
+            },
+            {
+              "name": "pause",
+              "item": [
+                {
+                  "name": "Pause a subscription",
+                  "id": "51edc68e-5343-4cda-bc3b-ee450e5e72bd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"pause_at\": \"cycle_end\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id/pause",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id",
+                        "pause"
+                      ],
+                      "variable": [
+                        {
+                          "id": "72f604bd-1d60-4a6a-981c-7a025df7b2ff",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Subscription ID (sub_*)."
+                        }
+                      ]
+                    },
+                    "description": "Pause an active subscription. No charges will be attempted while paused. Resume with POST /subscriptions/{id}/resume."
+                  },
+                  "response": [
+                    {
+                      "id": "030962c3-6d55-4c40-81a6-dfe2defb43cf",
+                      "name": "Subscription paused.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pause_at\": \"cycle_end\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/pause",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "pause"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"subscription\",\n  \"plan_id\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"current_start\": \"<integer>\",\n  \"current_end\": \"<integer>\",\n  \"ended_at\": \"<integer>\",\n  \"quantity\": 1,\n  \"notes\": {\n    \"nulla4\": \"<string>\",\n    \"occaecat_a65\": \"<string>\",\n    \"dolore__31\": \"<string>\",\n    \"eu5c5\": \"<string>\",\n    \"nostrudb5b\": \"<string>\",\n    \"irure5\": \"<string>\",\n    \"anim30\": \"<string>\",\n    \"in1f0\": \"<string>\"\n  },\n  \"charge_at\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"auth_attempts\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"paid_count\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"customer_notify\": 1,\n  \"short_url\": \"<string>\",\n  \"has_scheduled_changes\": \"<boolean>\",\n  \"change_scheduled_at\": \"now\",\n  \"source\": \"<string>\",\n  \"offer_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-030962c3-6d55-4c40-81a6-dfe2defb43cf"
+                    },
+                    {
+                      "id": "97d97c03-1f8b-43b1-b8b3-c77d9fab69cf",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pause_at\": \"cycle_end\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/pause",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "pause"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-97d97c03-1f8b-43b1-b8b3-c77d9fab69cf"
+                    },
+                    {
+                      "id": "2e260e81-be2f-4cb2-81b1-2341a922ac8c",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pause_at\": \"cycle_end\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/pause",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "pause"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-2e260e81-be2f-4cb2-81b1-2341a922ac8c"
+                    },
+                    {
+                      "id": "1683e0da-baa9-46a1-8ae9-99db410dd7cf",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pause_at\": \"cycle_end\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/pause",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "pause"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-1683e0da-baa9-46a1-8ae9-99db410dd7cf"
+                    },
+                    {
+                      "id": "44bab09e-4db0-4b9c-91bc-619d9a9d2c96",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pause_at\": \"cycle_end\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/pause",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "pause"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-44bab09e-4db0-4b9c-91bc-619d9a9d2c96"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-51edc68e-5343-4cda-bc3b-ee450e5e72bd"
+                }
+              ],
+              "id": "a2b0d317-1484-41fc-9907-98074e21fcac",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-a2b0d317-1484-41fc-9907-98074e21fcac"
+            },
+            {
+              "name": "resume",
+              "item": [
+                {
+                  "name": "Resume a paused subscription",
+                  "id": "af9c2b2f-b232-4d7f-9c2a-9176dc4ce911",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resume_at\": \"now\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id/resume",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id",
+                        "resume"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f5ca04ff-3939-4ef9-a6c9-387293b1840e",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Subscription ID (sub_*)."
+                        }
+                      ]
+                    },
+                    "description": "Resume a paused subscription. Charging resumes on the next scheduled cycle."
+                  },
+                  "response": [
+                    {
+                      "id": "9664c68b-f33d-4be7-9683-546c74cb53e6",
+                      "name": "Subscription resumed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resume_at\": \"now\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/resume",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "resume"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"subscription\",\n  \"plan_id\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"current_start\": \"<integer>\",\n  \"current_end\": \"<integer>\",\n  \"ended_at\": \"<integer>\",\n  \"quantity\": 1,\n  \"notes\": {\n    \"nulla4\": \"<string>\",\n    \"occaecat_a65\": \"<string>\",\n    \"dolore__31\": \"<string>\",\n    \"eu5c5\": \"<string>\",\n    \"nostrudb5b\": \"<string>\",\n    \"irure5\": \"<string>\",\n    \"anim30\": \"<string>\",\n    \"in1f0\": \"<string>\"\n  },\n  \"charge_at\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"auth_attempts\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"paid_count\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"customer_notify\": 1,\n  \"short_url\": \"<string>\",\n  \"has_scheduled_changes\": \"<boolean>\",\n  \"change_scheduled_at\": \"now\",\n  \"source\": \"<string>\",\n  \"offer_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-9664c68b-f33d-4be7-9683-546c74cb53e6"
+                    },
+                    {
+                      "id": "f0085387-cf72-4865-9fd9-bc87701cd365",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resume_at\": \"now\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/resume",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "resume"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-f0085387-cf72-4865-9fd9-bc87701cd365"
+                    },
+                    {
+                      "id": "c6189ed2-818c-427b-8c6f-71394f31a0d7",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resume_at\": \"now\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/resume",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "resume"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-c6189ed2-818c-427b-8c6f-71394f31a0d7"
+                    },
+                    {
+                      "id": "9488af54-da0e-4bf0-af91-b6bb0df5377a",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resume_at\": \"now\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/resume",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "resume"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-9488af54-da0e-4bf0-af91-b6bb0df5377a"
+                    },
+                    {
+                      "id": "74ae564c-09e9-4651-884f-5cc7e488b29e",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resume_at\": \"now\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/resume",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "resume"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-74ae564c-09e9-4651-884f-5cc7e488b29e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-af9c2b2f-b232-4d7f-9c2a-9176dc4ce911"
+                }
+              ],
+              "id": "2378d63a-90d0-42f0-aa46-100cbd1031f0",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-2378d63a-90d0-42f0-aa46-100cbd1031f0"
+            },
+            {
+              "name": "retrieve_scheduled_changes",
+              "item": [
+                {
+                  "name": "Fetch scheduled changes",
+                  "id": "b764e982-26ec-464b-9942-347fc7cac9eb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id/retrieve_scheduled_changes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id",
+                        "retrieve_scheduled_changes"
+                      ],
+                      "variable": [
+                        {
+                          "id": "73b6bb0a-3d44-46a6-b5e0-2280421b125f",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Subscription ID (sub_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve any pending plan or quantity changes scheduled for the next billing cycle."
+                  },
+                  "response": [
+                    {
+                      "id": "0bb10201-2979-4107-941e-d58443ae3061",
+                      "name": "Scheduled changes for the subscription.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/retrieve_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "retrieve_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"change_scheduled_at\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"plan_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-0bb10201-2979-4107-941e-d58443ae3061"
+                    },
+                    {
+                      "id": "a889ba53-1187-4f37-84aa-8953e6027e64",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/retrieve_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "retrieve_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-a889ba53-1187-4f37-84aa-8953e6027e64"
+                    },
+                    {
+                      "id": "95b63300-ffec-4d9d-afaf-d1e5fcfc3f0e",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/retrieve_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "retrieve_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-95b63300-ffec-4d9d-afaf-d1e5fcfc3f0e"
+                    },
+                    {
+                      "id": "ab9e3e15-e874-4049-b774-c9b0e440234f",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/retrieve_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "retrieve_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-ab9e3e15-e874-4049-b774-c9b0e440234f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-b764e982-26ec-464b-9942-347fc7cac9eb"
+                }
+              ],
+              "id": "75298d97-df18-4779-b678-b669c6c660db",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-75298d97-df18-4779-b678-b669c6c660db"
+            },
+            {
+              "name": "cancel_scheduled_changes",
+              "item": [
+                {
+                  "name": "Cancel scheduled changes",
+                  "id": "b3f48955-b179-42c6-9f49-a978f0364328",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id/cancel_scheduled_changes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id",
+                        "cancel_scheduled_changes"
+                      ],
+                      "variable": [
+                        {
+                          "id": "614c44db-5397-41f0-8792-e8e7f4565573",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Subscription ID (sub_*)."
+                        }
+                      ]
+                    },
+                    "description": "Cancel any pending plan or quantity changes that were scheduled for the next billing cycle."
+                  },
+                  "response": [
+                    {
+                      "id": "9f0078e8-0f03-474a-b5a4-fb99c6f4dcca",
+                      "name": "Scheduled changes cancelled.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"subscription\",\n  \"plan_id\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"current_start\": \"<integer>\",\n  \"current_end\": \"<integer>\",\n  \"ended_at\": \"<integer>\",\n  \"quantity\": 1,\n  \"notes\": {\n    \"nulla4\": \"<string>\",\n    \"occaecat_a65\": \"<string>\",\n    \"dolore__31\": \"<string>\",\n    \"eu5c5\": \"<string>\",\n    \"nostrudb5b\": \"<string>\",\n    \"irure5\": \"<string>\",\n    \"anim30\": \"<string>\",\n    \"in1f0\": \"<string>\"\n  },\n  \"charge_at\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"auth_attempts\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"paid_count\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"customer_notify\": 1,\n  \"short_url\": \"<string>\",\n  \"has_scheduled_changes\": \"<boolean>\",\n  \"change_scheduled_at\": \"now\",\n  \"source\": \"<string>\",\n  \"offer_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-9f0078e8-0f03-474a-b5a4-fb99c6f4dcca"
+                    },
+                    {
+                      "id": "65dc38c3-efeb-4cc4-bf6b-b40fc2f80d1b",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-65dc38c3-efeb-4cc4-bf6b-b40fc2f80d1b"
+                    },
+                    {
+                      "id": "3ad0ba25-b65d-4eec-880b-7f2dc50ab9cb",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-3ad0ba25-b65d-4eec-880b-7f2dc50ab9cb"
+                    },
+                    {
+                      "id": "db59e88b-0507-4e76-9475-726b603b2e83",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-db59e88b-0507-4e76-9475-726b603b2e83"
+                    },
+                    {
+                      "id": "8ec6380a-5bfe-47b5-b97c-02f74ecec6f5",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:id/cancel_scheduled_changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":id",
+                            "cancel_scheduled_changes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-8ec6380a-5bfe-47b5-b97c-02f74ecec6f5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-b3f48955-b179-42c6-9f49-a978f0364328"
+                }
+              ],
+              "id": "fd19bd76-aa39-4eec-95ad-6ca6b7190ffe",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-fd19bd76-aa39-4eec-95ad-6ca6b7190ffe"
+            },
+            {
+              "name": "Fetch a subscription",
+              "id": "858293ae-ea1b-4018-9f8c-340897683d56",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "852b5d2e-1001-4039-b418-fef83adaa5e2",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Subscription ID (sub_*)."
+                    }
+                  ]
+                },
+                "description": "Get current status and full details of a subscription."
+              },
+              "response": [
+                {
+                  "id": "fb2e8bd1-58a2-4f58-a6a4-467b89b41236",
+                  "name": "Subscription details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"subscription\",\n  \"plan_id\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"current_start\": \"<integer>\",\n  \"current_end\": \"<integer>\",\n  \"ended_at\": \"<integer>\",\n  \"quantity\": 1,\n  \"notes\": {\n    \"nulla4\": \"<string>\",\n    \"occaecat_a65\": \"<string>\",\n    \"dolore__31\": \"<string>\",\n    \"eu5c5\": \"<string>\",\n    \"nostrudb5b\": \"<string>\",\n    \"irure5\": \"<string>\",\n    \"anim30\": \"<string>\",\n    \"in1f0\": \"<string>\"\n  },\n  \"charge_at\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"auth_attempts\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"paid_count\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"customer_notify\": 1,\n  \"short_url\": \"<string>\",\n  \"has_scheduled_changes\": \"<boolean>\",\n  \"change_scheduled_at\": \"now\",\n  \"source\": \"<string>\",\n  \"offer_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-fb2e8bd1-58a2-4f58-a6a4-467b89b41236"
+                },
+                {
+                  "id": "54b69168-8234-426d-afd3-fee26bcdf746",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-54b69168-8234-426d-afd3-fee26bcdf746"
+                },
+                {
+                  "id": "31b12113-bf3c-4731-b392-6afdc73510da",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-31b12113-bf3c-4731-b392-6afdc73510da"
+                },
+                {
+                  "id": "69698fdc-6fbf-4ce4-befc-2f5437bdc579",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-69698fdc-6fbf-4ce4-befc-2f5437bdc579"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-858293ae-ea1b-4018-9f8c-340897683d56"
+            },
+            {
+              "name": "Update a subscription",
+              "id": "19f10a51-34d2-467b-a089-1db92e3dc7f1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"schedule_change_at\": \"now\",\n  \"customer_notify\": 0,\n  \"notes\": {\n    \"ad_3\": \"<string>\",\n    \"sed68b\": \"<string>\",\n    \"dolore44\": \"<string>\",\n    \"dolor2a\": \"<string>\",\n    \"sint6a\": \"<string>\",\n    \"sint51\": \"<string>\",\n    \"sunt_325\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "22228f82-ec6e-4935-854a-2c905e5ad166",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Subscription ID (sub_*)."
+                    }
+                  ]
+                },
+                "description": "Update plan, quantity, or schedule future changes for a subscription. Use schedule_change_at='now' for immediate effect (creates a new billing cycle) or 'cycle_end' to defer until the current cycle ends. Cannot change plan mid-cycle without creating a new cycle."
+              },
+              "response": [
+                {
+                  "id": "2b004735-f53f-45b3-a3a9-5c1321007171",
+                  "name": "Subscription updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"plan_id\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"schedule_change_at\": \"now\",\n  \"customer_notify\": 0,\n  \"notes\": {\n    \"ad_3\": \"<string>\",\n    \"sed68b\": \"<string>\",\n    \"dolore44\": \"<string>\",\n    \"dolor2a\": \"<string>\",\n    \"sint6a\": \"<string>\",\n    \"sint51\": \"<string>\",\n    \"sunt_325\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"subscription\",\n  \"plan_id\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"current_start\": \"<integer>\",\n  \"current_end\": \"<integer>\",\n  \"ended_at\": \"<integer>\",\n  \"quantity\": 1,\n  \"notes\": {\n    \"nulla4\": \"<string>\",\n    \"occaecat_a65\": \"<string>\",\n    \"dolore__31\": \"<string>\",\n    \"eu5c5\": \"<string>\",\n    \"nostrudb5b\": \"<string>\",\n    \"irure5\": \"<string>\",\n    \"anim30\": \"<string>\",\n    \"in1f0\": \"<string>\"\n  },\n  \"charge_at\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"auth_attempts\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"paid_count\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"customer_notify\": 1,\n  \"short_url\": \"<string>\",\n  \"has_scheduled_changes\": \"<boolean>\",\n  \"change_scheduled_at\": \"now\",\n  \"source\": \"<string>\",\n  \"offer_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-2b004735-f53f-45b3-a3a9-5c1321007171"
+                },
+                {
+                  "id": "a37a7147-3b6b-4c32-8cfb-8b05362e8bfa",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"plan_id\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"schedule_change_at\": \"now\",\n  \"customer_notify\": 0,\n  \"notes\": {\n    \"ad_3\": \"<string>\",\n    \"sed68b\": \"<string>\",\n    \"dolore44\": \"<string>\",\n    \"dolor2a\": \"<string>\",\n    \"sint6a\": \"<string>\",\n    \"sint51\": \"<string>\",\n    \"sunt_325\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-a37a7147-3b6b-4c32-8cfb-8b05362e8bfa"
+                },
+                {
+                  "id": "1e159498-b2a2-42d1-b36b-7a46ebec4489",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"plan_id\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"schedule_change_at\": \"now\",\n  \"customer_notify\": 0,\n  \"notes\": {\n    \"ad_3\": \"<string>\",\n    \"sed68b\": \"<string>\",\n    \"dolore44\": \"<string>\",\n    \"dolor2a\": \"<string>\",\n    \"sint6a\": \"<string>\",\n    \"sint51\": \"<string>\",\n    \"sunt_325\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-1e159498-b2a2-42d1-b36b-7a46ebec4489"
+                },
+                {
+                  "id": "d9a16850-5fd0-480e-a570-1d98fa5152ec",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"plan_id\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"schedule_change_at\": \"now\",\n  \"customer_notify\": 0,\n  \"notes\": {\n    \"ad_3\": \"<string>\",\n    \"sed68b\": \"<string>\",\n    \"dolore44\": \"<string>\",\n    \"dolor2a\": \"<string>\",\n    \"sint6a\": \"<string>\",\n    \"sint51\": \"<string>\",\n    \"sunt_325\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-d9a16850-5fd0-480e-a570-1d98fa5152ec"
+                },
+                {
+                  "id": "2e132c20-3c85-47d0-a576-5577b29675fc",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"plan_id\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"schedule_change_at\": \"now\",\n  \"customer_notify\": 0,\n  \"notes\": {\n    \"ad_3\": \"<string>\",\n    \"sed68b\": \"<string>\",\n    \"dolore44\": \"<string>\",\n    \"dolor2a\": \"<string>\",\n    \"sint6a\": \"<string>\",\n    \"sint51\": \"<string>\",\n    \"sunt_325\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-2e132c20-3c85-47d0-a576-5577b29675fc"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-19f10a51-34d2-467b-a089-1db92e3dc7f1"
+            }
+          ],
+          "id": "e3ccddd7-2f55-48be-b379-631662af816f",
+          "createdAt": "2026-07-28T01:28:34.000Z",
+          "updatedAt": "2026-07-28T01:28:34.000Z",
+          "uid": "35240-e3ccddd7-2f55-48be-b379-631662af816f"
+        },
+        {
+          "name": "{sub_id}",
+          "item": [
+            {
+              "name": "{offer_id}",
+              "item": [
+                {
+                  "name": "Delete an offer from a subscription",
+                  "id": "fffb3cee-b939-4366-be65-8fb0d2ade459",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:sub_id/:offer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":sub_id",
+                        ":offer_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7aab4a4a-ec3a-4470-86ec-451f0094c3d8",
+                          "key": "sub_id",
+                          "value": "<string>",
+                          "description": "(Required) Subscription ID (sub_*)."
+                        },
+                        {
+                          "id": "fd7ef3a2-74c1-42f2-8fa6-4bebed242b92",
+                          "key": "offer_id",
+                          "value": "<string>",
+                          "description": "(Required) Offer ID to remove."
+                        }
+                      ]
+                    },
+                    "description": "Remove an applied offer/coupon from a subscription. The offer will no longer apply from the next billing cycle."
+                  },
+                  "response": [
+                    {
+                      "id": "9447e9b7-9651-4b5e-afea-d4dee06683f5",
+                      "name": "Offer removed from subscription.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:sub_id/:offer_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":sub_id",
+                            ":offer_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_id"
+                            },
+                            {
+                              "key": "offer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-9447e9b7-9651-4b5e-afea-d4dee06683f5"
+                    },
+                    {
+                      "id": "77579410-d1b9-4e11-a339-3d01f4f45222",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:sub_id/:offer_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":sub_id",
+                            ":offer_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_id"
+                            },
+                            {
+                              "key": "offer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-77579410-d1b9-4e11-a339-3d01f4f45222"
+                    },
+                    {
+                      "id": "2f7521b7-189c-4ced-b61a-2fb5ae817a9d",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:sub_id/:offer_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":sub_id",
+                            ":offer_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_id"
+                            },
+                            {
+                              "key": "offer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-2f7521b7-189c-4ced-b61a-2fb5ae817a9d"
+                    },
+                    {
+                      "id": "fc8abf06-1234-43fc-8df9-ac4be895dc61",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:sub_id/:offer_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":sub_id",
+                            ":offer_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_id"
+                            },
+                            {
+                              "key": "offer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-fc8abf06-1234-43fc-8df9-ac4be895dc61"
+                    },
+                    {
+                      "id": "620a463e-e42d-416e-b1f1-f7b13fd4564c",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:sub_id/:offer_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":sub_id",
+                            ":offer_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sub_id"
+                            },
+                            {
+                              "key": "offer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:34.000Z",
+                      "updatedAt": "2026-07-28T01:28:34.000Z",
+                      "uid": "35240-620a463e-e42d-416e-b1f1-f7b13fd4564c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:34.000Z",
+                  "updatedAt": "2026-07-28T01:28:34.000Z",
+                  "uid": "35240-fffb3cee-b939-4366-be65-8fb0d2ade459"
+                }
+              ],
+              "id": "c6d1ed8e-9aff-48a2-b0ae-d1838fff6684",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-c6d1ed8e-9aff-48a2-b0ae-d1838fff6684"
+            }
+          ],
+          "id": "5157625c-8f12-4c9d-aa90-a58406197656",
+          "createdAt": "2026-07-28T01:28:34.000Z",
+          "updatedAt": "2026-07-28T01:28:34.000Z",
+          "uid": "35240-5157625c-8f12-4c9d-aa90-a58406197656"
+        },
+        {
+          "name": "Create a subscription",
+          "id": "20852488-6b4b-4841-ba8b-1aa03b39e69b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan_id\": \"<string>\",\n  \"total_count\": \"<integer>\",\n  \"quantity\": 1,\n  \"customer_notify\": 0,\n  \"start_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"addons\": [\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    },\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    }\n  ],\n  \"offer_id\": \"<string>\",\n  \"notify_info\": {\n    \"notify_phone\": \"<string>\",\n    \"notify_email\": \"<string>\"\n  },\n  \"notes\": {\n    \"eu6_\": \"<string>\",\n    \"est_2d6\": \"<string>\",\n    \"Ut_cb\": \"<string>\",\n    \"voluptate357\": \"<string>\",\n    \"essea\": \"<string>\",\n    \"ipsum6\": \"<string>\",\n    \"est_df\": \"<string>\",\n    \"Duisa\": \"<string>\",\n    \"veniam79\": \"<string>\",\n    \"dolor_ec\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ]
+            },
+            "description": "Subscribe a customer to a plan. Returns a short_url that the customer MUST open to authorize the payment mandate (UPI Autopay, NACH, or card-on-file). The subscription will not charge until the mandate is authorized. Set notify_info to send the auth link via SMS/email automatically. Requires Subscriptions feature enabled on your Razorpay account."
+          },
+          "response": [
+            {
+              "id": "bc2eeae4-6dd0-4376-bfb7-38ab1f1f6f3a",
+              "name": "Subscription created. Send short_url to the customer for mandate authorization.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"total_count\": \"<integer>\",\n  \"quantity\": 1,\n  \"customer_notify\": 0,\n  \"start_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"addons\": [\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    },\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    }\n  ],\n  \"offer_id\": \"<string>\",\n  \"notify_info\": {\n    \"notify_phone\": \"<string>\",\n    \"notify_email\": \"<string>\"\n  },\n  \"notes\": {\n    \"eu6_\": \"<string>\",\n    \"est_2d6\": \"<string>\",\n    \"Ut_cb\": \"<string>\",\n    \"voluptate357\": \"<string>\",\n    \"essea\": \"<string>\",\n    \"ipsum6\": \"<string>\",\n    \"est_df\": \"<string>\",\n    \"Duisa\": \"<string>\",\n    \"veniam79\": \"<string>\",\n    \"dolor_ec\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"subscription\",\n  \"plan_id\": \"<string>\",\n  \"status\": \"cancelled\",\n  \"current_start\": \"<integer>\",\n  \"current_end\": \"<integer>\",\n  \"ended_at\": \"<integer>\",\n  \"quantity\": 1,\n  \"notes\": {\n    \"nulla4\": \"<string>\",\n    \"occaecat_a65\": \"<string>\",\n    \"dolore__31\": \"<string>\",\n    \"eu5c5\": \"<string>\",\n    \"nostrudb5b\": \"<string>\",\n    \"irure5\": \"<string>\",\n    \"anim30\": \"<string>\",\n    \"in1f0\": \"<string>\"\n  },\n  \"charge_at\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"auth_attempts\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"paid_count\": \"<integer>\",\n  \"remaining_count\": \"<integer>\",\n  \"customer_notify\": 1,\n  \"short_url\": \"<string>\",\n  \"has_scheduled_changes\": \"<boolean>\",\n  \"change_scheduled_at\": \"now\",\n  \"source\": \"<string>\",\n  \"offer_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-bc2eeae4-6dd0-4376-bfb7-38ab1f1f6f3a"
+            },
+            {
+              "id": "b80beb7e-2dc0-4be2-909c-7eeffd5ffdbf",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"total_count\": \"<integer>\",\n  \"quantity\": 1,\n  \"customer_notify\": 0,\n  \"start_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"addons\": [\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    },\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    }\n  ],\n  \"offer_id\": \"<string>\",\n  \"notify_info\": {\n    \"notify_phone\": \"<string>\",\n    \"notify_email\": \"<string>\"\n  },\n  \"notes\": {\n    \"eu6_\": \"<string>\",\n    \"est_2d6\": \"<string>\",\n    \"Ut_cb\": \"<string>\",\n    \"voluptate357\": \"<string>\",\n    \"essea\": \"<string>\",\n    \"ipsum6\": \"<string>\",\n    \"est_df\": \"<string>\",\n    \"Duisa\": \"<string>\",\n    \"veniam79\": \"<string>\",\n    \"dolor_ec\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-b80beb7e-2dc0-4be2-909c-7eeffd5ffdbf"
+            },
+            {
+              "id": "63c046ce-9769-4258-8af6-b20aea48064e",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"total_count\": \"<integer>\",\n  \"quantity\": 1,\n  \"customer_notify\": 0,\n  \"start_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"addons\": [\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    },\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    }\n  ],\n  \"offer_id\": \"<string>\",\n  \"notify_info\": {\n    \"notify_phone\": \"<string>\",\n    \"notify_email\": \"<string>\"\n  },\n  \"notes\": {\n    \"eu6_\": \"<string>\",\n    \"est_2d6\": \"<string>\",\n    \"Ut_cb\": \"<string>\",\n    \"voluptate357\": \"<string>\",\n    \"essea\": \"<string>\",\n    \"ipsum6\": \"<string>\",\n    \"est_df\": \"<string>\",\n    \"Duisa\": \"<string>\",\n    \"veniam79\": \"<string>\",\n    \"dolor_ec\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-63c046ce-9769-4258-8af6-b20aea48064e"
+            },
+            {
+              "id": "04614c9a-6803-4a7a-9eb8-1995b97e34a9",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"total_count\": \"<integer>\",\n  \"quantity\": 1,\n  \"customer_notify\": 0,\n  \"start_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"addons\": [\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    },\n    {\n      \"item\": {\n        \"name\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency\": \"INR\"\n      }\n    }\n  ],\n  \"offer_id\": \"<string>\",\n  \"notify_info\": {\n    \"notify_phone\": \"<string>\",\n    \"notify_email\": \"<string>\"\n  },\n  \"notes\": {\n    \"eu6_\": \"<string>\",\n    \"est_2d6\": \"<string>\",\n    \"Ut_cb\": \"<string>\",\n    \"voluptate357\": \"<string>\",\n    \"essea\": \"<string>\",\n    \"ipsum6\": \"<string>\",\n    \"est_df\": \"<string>\",\n    \"Duisa\": \"<string>\",\n    \"veniam79\": \"<string>\",\n    \"dolor_ec\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-04614c9a-6803-4a7a-9eb8-1995b97e34a9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:34.000Z",
+          "updatedAt": "2026-07-28T01:28:34.000Z",
+          "uid": "35240-20852488-6b4b-4841-ba8b-1aa03b39e69b"
+        },
+        {
+          "name": "List all subscriptions",
+          "id": "4b5f68c7-1eda-4e75-8c07-f15833badf44",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions?plan_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ],
+              "query": [
+                {
+                  "description": "Filter by plan ID.",
+                  "key": "plan_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve all subscriptions. Filter by plan_id or status. Returns up to 100 per call."
+          },
+          "response": [
+            {
+              "id": "551504cb-05f6-4c24-9559-e15cd82859e3",
+              "name": "Collection of subscriptions.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?plan_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by plan ID.",
+                      "key": "plan_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"subscription\",\n      \"plan_id\": \"<string>\",\n      \"status\": \"active\",\n      \"current_start\": \"<integer>\",\n      \"current_end\": \"<integer>\",\n      \"ended_at\": \"<integer>\",\n      \"quantity\": 1,\n      \"notes\": {\n        \"sit_2b\": \"<string>\",\n        \"est_9\": \"<string>\",\n        \"et8b8\": \"<string>\",\n        \"quib2\": \"<string>\",\n        \"minim7_\": \"<string>\",\n        \"aliqua_e3\": \"<string>\",\n        \"sunt70f\": \"<string>\",\n        \"ipsum_dc\": \"<string>\",\n        \"exercitatione8_\": \"<string>\",\n        \"minim016\": \"<string>\",\n        \"ex_6d\": \"<string>\",\n        \"qui__\": \"<string>\",\n        \"in67\": \"<string>\",\n        \"consectetur_24\": \"<string>\"\n      },\n      \"charge_at\": \"<integer>\",\n      \"start_at\": \"<integer>\",\n      \"end_at\": \"<integer>\",\n      \"auth_attempts\": \"<integer>\",\n      \"total_count\": \"<integer>\",\n      \"paid_count\": \"<integer>\",\n      \"remaining_count\": \"<integer>\",\n      \"customer_notify\": 0,\n      \"short_url\": \"<string>\",\n      \"has_scheduled_changes\": \"<boolean>\",\n      \"change_scheduled_at\": \"cycle_end\",\n      \"source\": \"<string>\",\n      \"offer_id\": \"<string>\",\n      \"expire_by\": \"<integer>\",\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"subscription\",\n      \"plan_id\": \"<string>\",\n      \"status\": \"pending\",\n      \"current_start\": \"<integer>\",\n      \"current_end\": \"<integer>\",\n      \"ended_at\": \"<integer>\",\n      \"quantity\": 1,\n      \"notes\": {\n        \"proident971\": \"<string>\",\n        \"pariatur_97\": \"<string>\",\n        \"amet_042\": \"<string>\"\n      },\n      \"charge_at\": \"<integer>\",\n      \"start_at\": \"<integer>\",\n      \"end_at\": \"<integer>\",\n      \"auth_attempts\": \"<integer>\",\n      \"total_count\": \"<integer>\",\n      \"paid_count\": \"<integer>\",\n      \"remaining_count\": \"<integer>\",\n      \"customer_notify\": 1,\n      \"short_url\": \"<string>\",\n      \"has_scheduled_changes\": \"<boolean>\",\n      \"change_scheduled_at\": \"now\",\n      \"source\": \"<string>\",\n      \"offer_id\": \"<string>\",\n      \"expire_by\": \"<integer>\",\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-551504cb-05f6-4c24-9559-e15cd82859e3"
+            },
+            {
+              "id": "09740715-8dc1-48c8-acde-cb4c6f930735",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?plan_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by plan ID.",
+                      "key": "plan_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-09740715-8dc1-48c8-acde-cb4c6f930735"
+            },
+            {
+              "id": "ec9ef17c-4a37-418a-b662-ff18188db59f",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?plan_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by plan ID.",
+                      "key": "plan_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:34.000Z",
+              "updatedAt": "2026-07-28T01:28:34.000Z",
+              "uid": "35240-ec9ef17c-4a37-418a-b662-ff18188db59f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:34.000Z",
+          "updatedAt": "2026-07-28T01:28:34.000Z",
+          "uid": "35240-4b5f68c7-1eda-4e75-8c07-f15833badf44"
+        }
+      ],
+      "id": "5d12e009-b3d8-4bb6-b30c-a7daebb65b2d",
+      "createdAt": "2026-07-28T01:28:34.000Z",
+      "updatedAt": "2026-07-28T01:28:34.000Z",
+      "uid": "35240-5d12e009-b3d8-4bb6-b30c-a7daebb65b2d"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

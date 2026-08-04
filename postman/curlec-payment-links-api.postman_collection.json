@@ -1,0 +1,1851 @@
+{
+  "info": {
+    "_postman_id": "05a27b64-52dc-4574-9f50-7f89f5073f7d",
+    "name": "Razorpay Bills Payment Links API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:12.000Z",
+    "updatedAt": "2026-07-28T01:28:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-05a27b64-52dc-4574-9f50-7f89f5073f7d"
+  },
+  "item": [
+    {
+      "name": "payment_links",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "cancel",
+              "item": [
+                {
+                  "name": "Cancel a payment link",
+                  "id": "abf00c77-74c4-4b59-a66f-6701b5a8fa6d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id",
+                        "cancel"
+                      ],
+                      "variable": [
+                        {
+                          "id": "12c48422-31fe-4709-b529-37b20ae19dc4",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Payment Link ID (plink_*)."
+                        }
+                      ]
+                    },
+                    "description": "Cancel a payment link. Only links in 'created' status can be cancelled. Paid, partially paid, and already expired links cannot be cancelled."
+                  },
+                  "response": [
+                    {
+                      "id": "f18fef51-1e0f-4af1-b369-8f4ccf55e77f",
+                      "name": "Payment link cancelled. Status changes to 'cancelled'.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment_links/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment_links",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payment_link\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"status\": \"cancelled\",\n  \"upi_link\": \"<boolean>\",\n  \"short_url\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"payments\": [\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"wallet\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"bank_transfer\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    }\n  ],\n  \"notes\": {\n    \"proidentbc\": \"<string>\",\n    \"consequata\": \"<string>\",\n    \"ipsum3\": \"<string>\",\n    \"Lorema0_\": \"<string>\",\n    \"proident_b\": \"<string>\",\n    \"id_1\": \"<string>\",\n    \"in_9\": \"<string>\",\n    \"amet122\": \"<string>\",\n    \"utea\": \"<string>\",\n    \"mollit2\": \"<string>\",\n    \"anim_0b1\": \"<string>\",\n    \"nostrud8\": \"<string>\",\n    \"doloredf\": \"<string>\"\n  },\n  \"order_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:13.000Z",
+                      "updatedAt": "2026-07-28T01:28:13.000Z",
+                      "uid": "35240-f18fef51-1e0f-4af1-b369-8f4ccf55e77f"
+                    },
+                    {
+                      "id": "5af18566-8345-41b4-9734-2e20b39bb521",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment_links/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment_links",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:13.000Z",
+                      "updatedAt": "2026-07-28T01:28:13.000Z",
+                      "uid": "35240-5af18566-8345-41b4-9734-2e20b39bb521"
+                    },
+                    {
+                      "id": "b20eda44-35df-491c-b3f9-a5ca88bcfc0e",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment_links/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment_links",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:13.000Z",
+                      "updatedAt": "2026-07-28T01:28:13.000Z",
+                      "uid": "35240-b20eda44-35df-491c-b3f9-a5ca88bcfc0e"
+                    },
+                    {
+                      "id": "1fad0d12-5c78-4bfd-9cd5-0ae3e8ca7bbc",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment_links/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment_links",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:13.000Z",
+                      "updatedAt": "2026-07-28T01:28:13.000Z",
+                      "uid": "35240-1fad0d12-5c78-4bfd-9cd5-0ae3e8ca7bbc"
+                    },
+                    {
+                      "id": "1ced6a73-850f-402b-9526-cd0892e0ebab",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment_links/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment_links",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:13.000Z",
+                      "updatedAt": "2026-07-28T01:28:13.000Z",
+                      "uid": "35240-1ced6a73-850f-402b-9526-cd0892e0ebab"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-abf00c77-74c4-4b59-a66f-6701b5a8fa6d"
+                }
+              ],
+              "id": "9e3c58e3-e267-4cb1-a9eb-b2d59d9b5678",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-9e3c58e3-e267-4cb1-a9eb-b2d59d9b5678"
+            },
+            {
+              "name": "notify_by",
+              "item": [
+                {
+                  "name": "{medium}",
+                  "item": [
+                    {
+                      "name": "Send or resend payment link notification",
+                      "id": "4e621af8-808b-4014-b2f8-a82ecfe2d7af",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment_links/:id/notify_by/:medium",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment_links",
+                            ":id",
+                            "notify_by",
+                            ":medium"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6439e44f-e88c-4ae5-a0bc-d22de6b8985f",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Payment Link ID (plink_*)."
+                            },
+                            {
+                              "id": "96e4ab59-bc12-4d86-840d-1faa48fccc28",
+                              "key": "medium",
+                              "value": "email",
+                              "description": "(Required) Notification medium."
+                            }
+                          ]
+                        },
+                        "description": "Send or resend a payment link notification to the customer via SMS or email."
+                      },
+                      "response": [
+                        {
+                          "id": "0111b965-f091-4119-ad5d-564cf9813ea7",
+                          "name": "Notification sent.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payment_links/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payment_links",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T01:28:13.000Z",
+                          "updatedAt": "2026-07-28T01:28:13.000Z",
+                          "uid": "35240-0111b965-f091-4119-ad5d-564cf9813ea7"
+                        },
+                        {
+                          "id": "c2702907-6a86-4650-a208-8e41e29067ce",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payment_links/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payment_links",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:13.000Z",
+                          "updatedAt": "2026-07-28T01:28:13.000Z",
+                          "uid": "35240-c2702907-6a86-4650-a208-8e41e29067ce"
+                        },
+                        {
+                          "id": "f456b598-9561-4e35-9649-93c84503dcb9",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payment_links/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payment_links",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:13.000Z",
+                          "updatedAt": "2026-07-28T01:28:13.000Z",
+                          "uid": "35240-f456b598-9561-4e35-9649-93c84503dcb9"
+                        },
+                        {
+                          "id": "b82d7a65-19e9-45f2-8f05-afc5e2fd3f85",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payment_links/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payment_links",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:13.000Z",
+                          "updatedAt": "2026-07-28T01:28:13.000Z",
+                          "uid": "35240-b82d7a65-19e9-45f2-8f05-afc5e2fd3f85"
+                        },
+                        {
+                          "id": "f1f03995-ba2d-4b4e-aa44-a418fd33ccaf",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payment_links/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payment_links",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:13.000Z",
+                          "updatedAt": "2026-07-28T01:28:13.000Z",
+                          "uid": "35240-f1f03995-ba2d-4b4e-aa44-a418fd33ccaf"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:13.000Z",
+                      "updatedAt": "2026-07-28T01:28:13.000Z",
+                      "uid": "35240-4e621af8-808b-4014-b2f8-a82ecfe2d7af"
+                    }
+                  ],
+                  "id": "7ff88864-29f0-4459-b3eb-32d75d0a332a",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-7ff88864-29f0-4459-b3eb-32d75d0a332a"
+                }
+              ],
+              "id": "990536d8-acd2-4989-ac9c-307fe38f72be",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-990536d8-acd2-4989-ac9c-307fe38f72be"
+            },
+            {
+              "name": "Fetch payment link by ID",
+              "id": "0ba5bc8e-056d-447b-a58a-4dcc2350764f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fee34b3d-8222-49ce-86bf-e206f3dbd055",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Payment Link ID (plink_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve full details of a specific payment link."
+              },
+              "response": [
+                {
+                  "id": "d8e4599a-9c76-4467-89a0-0759fadf143a",
+                  "name": "Payment link details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payment_link\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"status\": \"cancelled\",\n  \"upi_link\": \"<boolean>\",\n  \"short_url\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"payments\": [\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"wallet\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"bank_transfer\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    }\n  ],\n  \"notes\": {\n    \"proidentbc\": \"<string>\",\n    \"consequata\": \"<string>\",\n    \"ipsum3\": \"<string>\",\n    \"Lorema0_\": \"<string>\",\n    \"proident_b\": \"<string>\",\n    \"id_1\": \"<string>\",\n    \"in_9\": \"<string>\",\n    \"amet122\": \"<string>\",\n    \"utea\": \"<string>\",\n    \"mollit2\": \"<string>\",\n    \"anim_0b1\": \"<string>\",\n    \"nostrud8\": \"<string>\",\n    \"doloredf\": \"<string>\"\n  },\n  \"order_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-d8e4599a-9c76-4467-89a0-0759fadf143a"
+                },
+                {
+                  "id": "208f58f8-294c-4eb4-98e6-5653a205220c",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-208f58f8-294c-4eb4-98e6-5653a205220c"
+                },
+                {
+                  "id": "5ffdf222-9cb7-4bb4-b221-b979e79931cb",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-5ffdf222-9cb7-4bb4-b221-b979e79931cb"
+                },
+                {
+                  "id": "0bf92611-9f37-4937-8eb1-24f7368eb662",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-0bf92611-9f37-4937-8eb1-24f7368eb662"
+                },
+                {
+                  "id": "3a257413-d9a8-4888-b10f-08fdffd18a16",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-3a257413-d9a8-4888-b10f-08fdffd18a16"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-0ba5bc8e-056d-447b-a58a-4dcc2350764f"
+            },
+            {
+              "name": "Update a payment link",
+              "id": "f9ce406c-238f-43f2-bd64-23772d4a5e0a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"reminder_enable\": \"<boolean>\",\n  \"accept_partial\": \"<boolean>\",\n  \"notes\": {\n    \"non23\": \"<string>\",\n    \"ullamco255\": \"<string>\",\n    \"est_f8\": \"<string>\",\n    \"eiusmodec4\": \"<string>\",\n    \"irure3\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"labore98\": \"<string>\",\n    \"reprehenderitf3f\": \"<string>\",\n    \"voluptate_73a\": \"<string>\",\n    \"cillum_3b\": \"<string>\",\n    \"fugiat_f\": \"<string>\",\n    \"sint_5c8\": \"<string>\",\n    \"add1\": \"<string>\",\n    \"esse_5c4\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0c6bd21c-1a1e-4840-addb-2544439f3da4",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Payment Link ID (plink_*)."
+                    }
+                  ]
+                },
+                "description": "Update an existing payment link. Updates are only allowed when the link is in 'created' or 'partially_paid' status."
+              },
+              "response": [
+                {
+                  "id": "9d7f4d56-74ec-464b-8b51-5fe3ede28cc8",
+                  "name": "Updated payment link.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"reminder_enable\": \"<boolean>\",\n  \"accept_partial\": \"<boolean>\",\n  \"notes\": {\n    \"non23\": \"<string>\",\n    \"ullamco255\": \"<string>\",\n    \"est_f8\": \"<string>\",\n    \"eiusmodec4\": \"<string>\",\n    \"irure3\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"labore98\": \"<string>\",\n    \"reprehenderitf3f\": \"<string>\",\n    \"voluptate_73a\": \"<string>\",\n    \"cillum_3b\": \"<string>\",\n    \"fugiat_f\": \"<string>\",\n    \"sint_5c8\": \"<string>\",\n    \"add1\": \"<string>\",\n    \"esse_5c4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payment_link\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"status\": \"cancelled\",\n  \"upi_link\": \"<boolean>\",\n  \"short_url\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"payments\": [\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"wallet\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"bank_transfer\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    }\n  ],\n  \"notes\": {\n    \"proidentbc\": \"<string>\",\n    \"consequata\": \"<string>\",\n    \"ipsum3\": \"<string>\",\n    \"Lorema0_\": \"<string>\",\n    \"proident_b\": \"<string>\",\n    \"id_1\": \"<string>\",\n    \"in_9\": \"<string>\",\n    \"amet122\": \"<string>\",\n    \"utea\": \"<string>\",\n    \"mollit2\": \"<string>\",\n    \"anim_0b1\": \"<string>\",\n    \"nostrud8\": \"<string>\",\n    \"doloredf\": \"<string>\"\n  },\n  \"order_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-9d7f4d56-74ec-464b-8b51-5fe3ede28cc8"
+                },
+                {
+                  "id": "6b35da29-cc9c-4139-b8f2-1886bb55b041",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"reminder_enable\": \"<boolean>\",\n  \"accept_partial\": \"<boolean>\",\n  \"notes\": {\n    \"non23\": \"<string>\",\n    \"ullamco255\": \"<string>\",\n    \"est_f8\": \"<string>\",\n    \"eiusmodec4\": \"<string>\",\n    \"irure3\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"labore98\": \"<string>\",\n    \"reprehenderitf3f\": \"<string>\",\n    \"voluptate_73a\": \"<string>\",\n    \"cillum_3b\": \"<string>\",\n    \"fugiat_f\": \"<string>\",\n    \"sint_5c8\": \"<string>\",\n    \"add1\": \"<string>\",\n    \"esse_5c4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-6b35da29-cc9c-4139-b8f2-1886bb55b041"
+                },
+                {
+                  "id": "83085b74-43ac-4068-a529-7d6d77ea301c",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"reminder_enable\": \"<boolean>\",\n  \"accept_partial\": \"<boolean>\",\n  \"notes\": {\n    \"non23\": \"<string>\",\n    \"ullamco255\": \"<string>\",\n    \"est_f8\": \"<string>\",\n    \"eiusmodec4\": \"<string>\",\n    \"irure3\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"labore98\": \"<string>\",\n    \"reprehenderitf3f\": \"<string>\",\n    \"voluptate_73a\": \"<string>\",\n    \"cillum_3b\": \"<string>\",\n    \"fugiat_f\": \"<string>\",\n    \"sint_5c8\": \"<string>\",\n    \"add1\": \"<string>\",\n    \"esse_5c4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-83085b74-43ac-4068-a529-7d6d77ea301c"
+                },
+                {
+                  "id": "fd888d01-06d2-4388-a2bd-78ad4aa3448e",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"reminder_enable\": \"<boolean>\",\n  \"accept_partial\": \"<boolean>\",\n  \"notes\": {\n    \"non23\": \"<string>\",\n    \"ullamco255\": \"<string>\",\n    \"est_f8\": \"<string>\",\n    \"eiusmodec4\": \"<string>\",\n    \"irure3\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"labore98\": \"<string>\",\n    \"reprehenderitf3f\": \"<string>\",\n    \"voluptate_73a\": \"<string>\",\n    \"cillum_3b\": \"<string>\",\n    \"fugiat_f\": \"<string>\",\n    \"sint_5c8\": \"<string>\",\n    \"add1\": \"<string>\",\n    \"esse_5c4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-fd888d01-06d2-4388-a2bd-78ad4aa3448e"
+                },
+                {
+                  "id": "6296fc55-350f-41dc-bac5-dc1cdf83027d",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"reminder_enable\": \"<boolean>\",\n  \"accept_partial\": \"<boolean>\",\n  \"notes\": {\n    \"non23\": \"<string>\",\n    \"ullamco255\": \"<string>\",\n    \"est_f8\": \"<string>\",\n    \"eiusmodec4\": \"<string>\",\n    \"irure3\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"labore98\": \"<string>\",\n    \"reprehenderitf3f\": \"<string>\",\n    \"voluptate_73a\": \"<string>\",\n    \"cillum_3b\": \"<string>\",\n    \"fugiat_f\": \"<string>\",\n    \"sint_5c8\": \"<string>\",\n    \"add1\": \"<string>\",\n    \"esse_5c4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment_links/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment_links",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:13.000Z",
+                  "updatedAt": "2026-07-28T01:28:13.000Z",
+                  "uid": "35240-6296fc55-350f-41dc-bac5-dc1cdf83027d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-f9ce406c-238f-43f2-bd64-23772d4a5e0a"
+            }
+          ],
+          "id": "526b1ace-58b4-44dc-8445-c166f6611c1c",
+          "createdAt": "2026-07-28T01:28:13.000Z",
+          "updatedAt": "2026-07-28T01:28:13.000Z",
+          "uid": "35240-526b1ace-58b4-44dc-8445-c166f6611c1c"
+        },
+        {
+          "name": "Create a payment link",
+          "id": "7c61b425-7087-4b0e-85b7-363f4b2b824e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"upi_link\": false,\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"reference_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"notes\": {\n    \"non3\": \"<string>\",\n    \"reprehenderit0\": \"<string>\",\n    \"ut_449\": \"<string>\",\n    \"magna_9\": \"<string>\",\n    \"qui128\": \"<string>\",\n    \"in89c\": \"<string>\",\n    \"Excepteurf\": \"<string>\"\n  },\n  \"options\": {\n    \"checkout\": {\n      \"name\": \"<string>\",\n      \"theme\": {\n        \"hide_topbar\": \"<boolean>\"\n      },\n      \"method\": {\n        \"card\": \"<boolean>\",\n        \"netbanking\": \"<boolean>\",\n        \"upi\": \"<boolean>\",\n        \"wallet\": \"<boolean>\"\n      },\n      \"config\": {\n        \"display\": {\n          \"blocks\": {},\n          \"sequence\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"preferences\": {\n            \"show_default_blocks\": \"<boolean>\"\n          }\n        }\n      },\n      \"partial_payment\": {\n        \"min_amount_label\": \"<string>\",\n        \"partial_amount_label\": \"<string>\",\n        \"partial_amount_description\": \"<string>\",\n        \"full_amount_label\": \"<string>\"\n      }\n    },\n    \"hosted_page\": {\n      \"label\": {\n        \"PAYMENT FOR\": \"<string>\",\n        \"RECEIPT NO.\": \"<string>\",\n        \"AMOUNT PAYABLE\": \"<string>\",\n        \"EXPIRES ON\": \"<string>\",\n        \"DUE\": \"<string>\",\n        \"PAID\": \"<string>\",\n        \"AMOUNT PAID\": \"<string>\",\n        \"ISSUED TO\": \"<string>\"\n      }\n    },\n    \"order\": {\n      \"offers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"transfers\": [\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"velit_f47\": \"<string>\",\n            \"nostrud_b\": \"<string>\",\n            \"adipisicing0\": \"<string>\",\n            \"non0\": \"<string>\",\n            \"in_7\": \"<string>\",\n            \"ullamco5f\": \"<string>\",\n            \"magnaf\": \"<string>\",\n            \"nulla_cc\": \"<string>\",\n            \"ut_7f\": \"<string>\",\n            \"exercitationd\": \"<string>\"\n          }\n        },\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"magna_be\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payment_links",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment_links"
+              ]
+            },
+            "description": "Create a shareable payment link to collect payments via SMS and email. Supports standard links (all payment methods) and UPI-only links (set upi_link=true). UPI links are not available in test mode. Partial payments are not supported for UPI links. Links expire after 6 months by default."
+          },
+          "response": [
+            {
+              "id": "44b7bf29-2631-4a7c-b48c-1b46be62d492",
+              "name": "Payment link created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"upi_link\": false,\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"reference_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"notes\": {\n    \"non3\": \"<string>\",\n    \"reprehenderit0\": \"<string>\",\n    \"ut_449\": \"<string>\",\n    \"magna_9\": \"<string>\",\n    \"qui128\": \"<string>\",\n    \"in89c\": \"<string>\",\n    \"Excepteurf\": \"<string>\"\n  },\n  \"options\": {\n    \"checkout\": {\n      \"name\": \"<string>\",\n      \"theme\": {\n        \"hide_topbar\": \"<boolean>\"\n      },\n      \"method\": {\n        \"card\": \"<boolean>\",\n        \"netbanking\": \"<boolean>\",\n        \"upi\": \"<boolean>\",\n        \"wallet\": \"<boolean>\"\n      },\n      \"config\": {\n        \"display\": {\n          \"blocks\": {},\n          \"sequence\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"preferences\": {\n            \"show_default_blocks\": \"<boolean>\"\n          }\n        }\n      },\n      \"partial_payment\": {\n        \"min_amount_label\": \"<string>\",\n        \"partial_amount_label\": \"<string>\",\n        \"partial_amount_description\": \"<string>\",\n        \"full_amount_label\": \"<string>\"\n      }\n    },\n    \"hosted_page\": {\n      \"label\": {\n        \"PAYMENT FOR\": \"<string>\",\n        \"RECEIPT NO.\": \"<string>\",\n        \"AMOUNT PAYABLE\": \"<string>\",\n        \"EXPIRES ON\": \"<string>\",\n        \"DUE\": \"<string>\",\n        \"PAID\": \"<string>\",\n        \"AMOUNT PAID\": \"<string>\",\n        \"ISSUED TO\": \"<string>\"\n      }\n    },\n    \"order\": {\n      \"offers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"transfers\": [\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"velit_f47\": \"<string>\",\n            \"nostrud_b\": \"<string>\",\n            \"adipisicing0\": \"<string>\",\n            \"non0\": \"<string>\",\n            \"in_7\": \"<string>\",\n            \"ullamco5f\": \"<string>\",\n            \"magnaf\": \"<string>\",\n            \"nulla_cc\": \"<string>\",\n            \"ut_7f\": \"<string>\",\n            \"exercitationd\": \"<string>\"\n          }\n        },\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"magna_be\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payment_link\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"expire_by\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"status\": \"cancelled\",\n  \"upi_link\": \"<boolean>\",\n  \"short_url\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"payments\": [\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"wallet\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"payment_id\": \"<string>\",\n      \"plink_id\": \"<string>\",\n      \"method\": \"bank_transfer\",\n      \"status\": \"captured\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    }\n  ],\n  \"notes\": {\n    \"proidentbc\": \"<string>\",\n    \"consequata\": \"<string>\",\n    \"ipsum3\": \"<string>\",\n    \"Lorema0_\": \"<string>\",\n    \"proident_b\": \"<string>\",\n    \"id_1\": \"<string>\",\n    \"in_9\": \"<string>\",\n    \"amet122\": \"<string>\",\n    \"utea\": \"<string>\",\n    \"mollit2\": \"<string>\",\n    \"anim_0b1\": \"<string>\",\n    \"nostrud8\": \"<string>\",\n    \"doloredf\": \"<string>\"\n  },\n  \"order_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-44b7bf29-2631-4a7c-b48c-1b46be62d492"
+            },
+            {
+              "id": "6593731d-1fed-4c12-8252-5de98e6a5588",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"upi_link\": false,\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"reference_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"notes\": {\n    \"non3\": \"<string>\",\n    \"reprehenderit0\": \"<string>\",\n    \"ut_449\": \"<string>\",\n    \"magna_9\": \"<string>\",\n    \"qui128\": \"<string>\",\n    \"in89c\": \"<string>\",\n    \"Excepteurf\": \"<string>\"\n  },\n  \"options\": {\n    \"checkout\": {\n      \"name\": \"<string>\",\n      \"theme\": {\n        \"hide_topbar\": \"<boolean>\"\n      },\n      \"method\": {\n        \"card\": \"<boolean>\",\n        \"netbanking\": \"<boolean>\",\n        \"upi\": \"<boolean>\",\n        \"wallet\": \"<boolean>\"\n      },\n      \"config\": {\n        \"display\": {\n          \"blocks\": {},\n          \"sequence\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"preferences\": {\n            \"show_default_blocks\": \"<boolean>\"\n          }\n        }\n      },\n      \"partial_payment\": {\n        \"min_amount_label\": \"<string>\",\n        \"partial_amount_label\": \"<string>\",\n        \"partial_amount_description\": \"<string>\",\n        \"full_amount_label\": \"<string>\"\n      }\n    },\n    \"hosted_page\": {\n      \"label\": {\n        \"PAYMENT FOR\": \"<string>\",\n        \"RECEIPT NO.\": \"<string>\",\n        \"AMOUNT PAYABLE\": \"<string>\",\n        \"EXPIRES ON\": \"<string>\",\n        \"DUE\": \"<string>\",\n        \"PAID\": \"<string>\",\n        \"AMOUNT PAID\": \"<string>\",\n        \"ISSUED TO\": \"<string>\"\n      }\n    },\n    \"order\": {\n      \"offers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"transfers\": [\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"velit_f47\": \"<string>\",\n            \"nostrud_b\": \"<string>\",\n            \"adipisicing0\": \"<string>\",\n            \"non0\": \"<string>\",\n            \"in_7\": \"<string>\",\n            \"ullamco5f\": \"<string>\",\n            \"magnaf\": \"<string>\",\n            \"nulla_cc\": \"<string>\",\n            \"ut_7f\": \"<string>\",\n            \"exercitationd\": \"<string>\"\n          }\n        },\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"magna_be\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-6593731d-1fed-4c12-8252-5de98e6a5588"
+            },
+            {
+              "id": "af4338e4-91e4-4b98-adb8-e27e744914ea",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"upi_link\": false,\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"reference_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"notes\": {\n    \"non3\": \"<string>\",\n    \"reprehenderit0\": \"<string>\",\n    \"ut_449\": \"<string>\",\n    \"magna_9\": \"<string>\",\n    \"qui128\": \"<string>\",\n    \"in89c\": \"<string>\",\n    \"Excepteurf\": \"<string>\"\n  },\n  \"options\": {\n    \"checkout\": {\n      \"name\": \"<string>\",\n      \"theme\": {\n        \"hide_topbar\": \"<boolean>\"\n      },\n      \"method\": {\n        \"card\": \"<boolean>\",\n        \"netbanking\": \"<boolean>\",\n        \"upi\": \"<boolean>\",\n        \"wallet\": \"<boolean>\"\n      },\n      \"config\": {\n        \"display\": {\n          \"blocks\": {},\n          \"sequence\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"preferences\": {\n            \"show_default_blocks\": \"<boolean>\"\n          }\n        }\n      },\n      \"partial_payment\": {\n        \"min_amount_label\": \"<string>\",\n        \"partial_amount_label\": \"<string>\",\n        \"partial_amount_description\": \"<string>\",\n        \"full_amount_label\": \"<string>\"\n      }\n    },\n    \"hosted_page\": {\n      \"label\": {\n        \"PAYMENT FOR\": \"<string>\",\n        \"RECEIPT NO.\": \"<string>\",\n        \"AMOUNT PAYABLE\": \"<string>\",\n        \"EXPIRES ON\": \"<string>\",\n        \"DUE\": \"<string>\",\n        \"PAID\": \"<string>\",\n        \"AMOUNT PAID\": \"<string>\",\n        \"ISSUED TO\": \"<string>\"\n      }\n    },\n    \"order\": {\n      \"offers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"transfers\": [\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"velit_f47\": \"<string>\",\n            \"nostrud_b\": \"<string>\",\n            \"adipisicing0\": \"<string>\",\n            \"non0\": \"<string>\",\n            \"in_7\": \"<string>\",\n            \"ullamco5f\": \"<string>\",\n            \"magnaf\": \"<string>\",\n            \"nulla_cc\": \"<string>\",\n            \"ut_7f\": \"<string>\",\n            \"exercitationd\": \"<string>\"\n          }\n        },\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"magna_be\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-af4338e4-91e4-4b98-adb8-e27e744914ea"
+            },
+            {
+              "id": "20ad7ba0-b89e-4c15-b517-fc82d3f471e8",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"upi_link\": false,\n  \"accept_partial\": \"<boolean>\",\n  \"first_min_partial_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"reference_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"notify\": {\n    \"sms\": \"<boolean>\",\n    \"email\": \"<boolean>\"\n  },\n  \"reminder_enable\": \"<boolean>\",\n  \"callback_url\": \"<string>\",\n  \"callback_method\": \"get\",\n  \"notes\": {\n    \"non3\": \"<string>\",\n    \"reprehenderit0\": \"<string>\",\n    \"ut_449\": \"<string>\",\n    \"magna_9\": \"<string>\",\n    \"qui128\": \"<string>\",\n    \"in89c\": \"<string>\",\n    \"Excepteurf\": \"<string>\"\n  },\n  \"options\": {\n    \"checkout\": {\n      \"name\": \"<string>\",\n      \"theme\": {\n        \"hide_topbar\": \"<boolean>\"\n      },\n      \"method\": {\n        \"card\": \"<boolean>\",\n        \"netbanking\": \"<boolean>\",\n        \"upi\": \"<boolean>\",\n        \"wallet\": \"<boolean>\"\n      },\n      \"config\": {\n        \"display\": {\n          \"blocks\": {},\n          \"sequence\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"preferences\": {\n            \"show_default_blocks\": \"<boolean>\"\n          }\n        }\n      },\n      \"partial_payment\": {\n        \"min_amount_label\": \"<string>\",\n        \"partial_amount_label\": \"<string>\",\n        \"partial_amount_description\": \"<string>\",\n        \"full_amount_label\": \"<string>\"\n      }\n    },\n    \"hosted_page\": {\n      \"label\": {\n        \"PAYMENT FOR\": \"<string>\",\n        \"RECEIPT NO.\": \"<string>\",\n        \"AMOUNT PAYABLE\": \"<string>\",\n        \"EXPIRES ON\": \"<string>\",\n        \"DUE\": \"<string>\",\n        \"PAID\": \"<string>\",\n        \"AMOUNT PAID\": \"<string>\",\n        \"ISSUED TO\": \"<string>\"\n      }\n    },\n    \"order\": {\n      \"offers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"transfers\": [\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"velit_f47\": \"<string>\",\n            \"nostrud_b\": \"<string>\",\n            \"adipisicing0\": \"<string>\",\n            \"non0\": \"<string>\",\n            \"in_7\": \"<string>\",\n            \"ullamco5f\": \"<string>\",\n            \"magnaf\": \"<string>\",\n            \"nulla_cc\": \"<string>\",\n            \"ut_7f\": \"<string>\",\n            \"exercitationd\": \"<string>\"\n          }\n        },\n        {\n          \"account\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency\": \"<string>\",\n          \"notes\": {\n            \"magna_be\": \"<string>\"\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-20ad7ba0-b89e-4c15-b517-fc82d3f471e8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:13.000Z",
+          "updatedAt": "2026-07-28T01:28:13.000Z",
+          "uid": "35240-7c61b425-7087-4b0e-85b7-363f4b2b824e"
+        },
+        {
+          "name": "Fetch all payment links",
+          "id": "ed94ae9f-5688-40e3-b3bf-360e0ca903e9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payment_links?payment_id=<string>&reference_id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment_links"
+              ],
+              "query": [
+                {
+                  "description": "Filter by associated payment ID.",
+                  "key": "payment_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by your custom reference number.",
+                  "key": "reference_id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve all payment links. Filter by payment_id or reference_id to narrow results."
+          },
+          "response": [
+            {
+              "id": "c41e3ac5-03d6-43a4-be08-533749a7fd60",
+              "name": "List of payment links.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links?payment_id=<string>&reference_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by associated payment ID.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your custom reference number.",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"payment_links\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment_link\",\n      \"amount\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"accept_partial\": \"<boolean>\",\n      \"first_min_partial_amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"reference_id\": \"<string>\",\n      \"expire_by\": \"<integer>\",\n      \"expired_at\": \"<integer>\",\n      \"cancelled_at\": \"<integer>\",\n      \"status\": \"partially_paid\",\n      \"upi_link\": \"<boolean>\",\n      \"short_url\": \"<string>\",\n      \"callback_url\": \"<string>\",\n      \"callback_method\": \"get\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"contact\": \"<string>\"\n      },\n      \"notify\": {\n        \"sms\": \"<boolean>\",\n        \"email\": \"<boolean>\"\n      },\n      \"reminder_enable\": \"<boolean>\",\n      \"payments\": [\n        {\n          \"amount\": \"<integer>\",\n          \"payment_id\": \"<string>\",\n          \"plink_id\": \"<string>\",\n          \"method\": \"wallet\",\n          \"status\": \"captured\",\n          \"created_at\": \"<integer>\",\n          \"updated_at\": \"<integer>\"\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"payment_id\": \"<string>\",\n          \"plink_id\": \"<string>\",\n          \"method\": \"card\",\n          \"status\": \"captured\",\n          \"created_at\": \"<integer>\",\n          \"updated_at\": \"<integer>\"\n        }\n      ],\n      \"notes\": {\n        \"non_7_e\": \"<string>\",\n        \"dolorc\": \"<string>\",\n        \"dolor1\": \"<string>\",\n        \"nostrud_4\": \"<string>\",\n        \"magna_f\": \"<string>\",\n        \"sint_3\": \"<string>\",\n        \"qui_2bf\": \"<string>\",\n        \"Lorem_7_\": \"<string>\",\n        \"in9f\": \"<string>\",\n        \"sit_8\": \"<string>\",\n        \"exercitation_8f\": \"<string>\",\n        \"in_8\": \"<string>\"\n      },\n      \"order_id\": \"<string>\",\n      \"user_id\": \"<string>\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment_link\",\n      \"amount\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"accept_partial\": \"<boolean>\",\n      \"first_min_partial_amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"reference_id\": \"<string>\",\n      \"expire_by\": \"<integer>\",\n      \"expired_at\": \"<integer>\",\n      \"cancelled_at\": \"<integer>\",\n      \"status\": \"expired\",\n      \"upi_link\": \"<boolean>\",\n      \"short_url\": \"<string>\",\n      \"callback_url\": \"<string>\",\n      \"callback_method\": \"get\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"contact\": \"<string>\"\n      },\n      \"notify\": {\n        \"sms\": \"<boolean>\",\n        \"email\": \"<boolean>\"\n      },\n      \"reminder_enable\": \"<boolean>\",\n      \"payments\": [\n        {\n          \"amount\": \"<integer>\",\n          \"payment_id\": \"<string>\",\n          \"plink_id\": \"<string>\",\n          \"method\": \"bank_transfer\",\n          \"status\": \"captured\",\n          \"created_at\": \"<integer>\",\n          \"updated_at\": \"<integer>\"\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"payment_id\": \"<string>\",\n          \"plink_id\": \"<string>\",\n          \"method\": \"netbanking\",\n          \"status\": \"captured\",\n          \"created_at\": \"<integer>\",\n          \"updated_at\": \"<integer>\"\n        }\n      ],\n      \"notes\": {\n        \"dolored\": \"<string>\",\n        \"occaecat_fb\": \"<string>\"\n      },\n      \"order_id\": \"<string>\",\n      \"user_id\": \"<string>\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-c41e3ac5-03d6-43a4-be08-533749a7fd60"
+            },
+            {
+              "id": "7f905d1b-43ca-44ee-b148-25b320fd472b",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links?payment_id=<string>&reference_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by associated payment ID.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your custom reference number.",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-7f905d1b-43ca-44ee-b148-25b320fd472b"
+            },
+            {
+              "id": "72967787-8c4a-4c9f-bb7d-6edf9e208946",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links?payment_id=<string>&reference_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by associated payment ID.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your custom reference number.",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-72967787-8c4a-4c9f-bb7d-6edf9e208946"
+            },
+            {
+              "id": "4ca0da62-cbbc-4af0-a81c-b5be0d1da4f9",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment_links?payment_id=<string>&reference_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment_links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by associated payment ID.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your custom reference number.",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:13.000Z",
+              "updatedAt": "2026-07-28T01:28:13.000Z",
+              "uid": "35240-4ca0da62-cbbc-4af0-a81c-b5be0d1da4f9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:13.000Z",
+          "updatedAt": "2026-07-28T01:28:13.000Z",
+          "uid": "35240-ed94ae9f-5688-40e3-b3bf-360e0ca903e9"
+        }
+      ],
+      "id": "92efab1c-61ff-4529-9c7c-1a165f76542a",
+      "createdAt": "2026-07-28T01:28:13.000Z",
+      "updatedAt": "2026-07-28T01:28:13.000Z",
+      "uid": "35240-92efab1c-61ff-4529-9c7c-1a165f76542a"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

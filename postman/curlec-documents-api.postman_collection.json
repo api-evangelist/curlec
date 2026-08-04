@@ -1,0 +1,928 @@
+{
+  "info": {
+    "_postman_id": "f788c0c9-e435-4a04-80fa-55bcf3c3b7c4",
+    "name": "Razorpay Bills Documents API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:38.000Z",
+    "updatedAt": "2026-07-28T01:27:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f788c0c9-e435-4a04-80fa-55bcf3c3b7c4"
+  },
+  "item": [
+    {
+      "name": "documents",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "content",
+              "item": [
+                {
+                  "name": "Fetch document content",
+                  "id": "685a03e8-542e-482a-921c-418c6eb10955",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/octet-stream"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:id/content",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":id",
+                        "content"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b9ccc2c3-3179-4788-9f7d-b23ca9d84e69",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Document ID. Exactly 14 alphanumeric characters."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the binary content of a previously uploaded document. Returns the raw file bytes."
+                  },
+                  "response": [
+                    {
+                      "id": "04821b34-ad26-4261-b6a7-4ac76db9bd0b",
+                      "name": "Document binary content.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/octet-stream"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:id/content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":id",
+                            "content"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/octet-stream"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-07-28T01:27:38.000Z",
+                      "updatedAt": "2026-07-28T01:27:38.000Z",
+                      "uid": "35240-04821b34-ad26-4261-b6a7-4ac76db9bd0b"
+                    },
+                    {
+                      "id": "0f0498d3-3877-489b-ab54-9a452beb8721",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:id/content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":id",
+                            "content"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:38.000Z",
+                      "updatedAt": "2026-07-28T01:27:38.000Z",
+                      "uid": "35240-0f0498d3-3877-489b-ab54-9a452beb8721"
+                    },
+                    {
+                      "id": "572a982c-1c03-43ac-a613-2c29720f9740",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:id/content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":id",
+                            "content"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:38.000Z",
+                      "updatedAt": "2026-07-28T01:27:38.000Z",
+                      "uid": "35240-572a982c-1c03-43ac-a613-2c29720f9740"
+                    },
+                    {
+                      "id": "d123335d-7a59-4526-b616-ac123d734d70",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:id/content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":id",
+                            "content"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:38.000Z",
+                      "updatedAt": "2026-07-28T01:27:38.000Z",
+                      "uid": "35240-d123335d-7a59-4526-b616-ac123d734d70"
+                    },
+                    {
+                      "id": "851c9bca-7628-4caf-8574-86b789b6a061",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/documents/:id/content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "documents",
+                            ":id",
+                            "content"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:38.000Z",
+                      "updatedAt": "2026-07-28T01:27:38.000Z",
+                      "uid": "35240-851c9bca-7628-4caf-8574-86b789b6a061"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:38.000Z",
+                  "updatedAt": "2026-07-28T01:27:38.000Z",
+                  "uid": "35240-685a03e8-542e-482a-921c-418c6eb10955"
+                }
+              ],
+              "id": "d4cfc6fe-402c-4773-83c3-eb005c08297b",
+              "createdAt": "2026-07-28T01:27:38.000Z",
+              "updatedAt": "2026-07-28T01:27:38.000Z",
+              "uid": "35240-d4cfc6fe-402c-4773-83c3-eb005c08297b"
+            },
+            {
+              "name": "Fetch document info",
+              "id": "86b74109-8a18-4b9a-9e65-70107252589a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/documents/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ddcb748d-fbe2-40b0-9bae-f13f647ee8f9",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Document ID (doc_*). Exactly 14 alphanumeric characters."
+                    }
+                  ]
+                },
+                "description": "Retrieve metadata for an uploaded document (name, MIME type, size, purpose). Document IDs are exactly 14 alphanumeric characters."
+              },
+              "response": [
+                {
+                  "id": "c5501d88-12b3-4d30-8179-5856445bf241",
+                  "name": "Document metadata.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"document\",\n  \"name\": \"<string>\",\n  \"mime_type\": \"image/png\",\n  \"size\": \"<integer>\",\n  \"purpose\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:27:38.000Z",
+                  "updatedAt": "2026-07-28T01:27:38.000Z",
+                  "uid": "35240-c5501d88-12b3-4d30-8179-5856445bf241"
+                },
+                {
+                  "id": "f898078d-96a3-4018-9455-a501cc229962",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:38.000Z",
+                  "updatedAt": "2026-07-28T01:27:38.000Z",
+                  "uid": "35240-f898078d-96a3-4018-9455-a501cc229962"
+                },
+                {
+                  "id": "92f52dfd-ed5a-46cb-a13a-fe73ac6cf3a3",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:38.000Z",
+                  "updatedAt": "2026-07-28T01:27:38.000Z",
+                  "uid": "35240-92f52dfd-ed5a-46cb-a13a-fe73ac6cf3a3"
+                },
+                {
+                  "id": "fc77ef87-b696-4dd6-82eb-9fe5619e4cf7",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:38.000Z",
+                  "updatedAt": "2026-07-28T01:27:38.000Z",
+                  "uid": "35240-fc77ef87-b696-4dd6-82eb-9fe5619e4cf7"
+                },
+                {
+                  "id": "5b28afde-65a8-4613-80b7-c45bb3030d60",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/documents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "documents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:38.000Z",
+                  "updatedAt": "2026-07-28T01:27:38.000Z",
+                  "uid": "35240-5b28afde-65a8-4613-80b7-c45bb3030d60"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:38.000Z",
+              "updatedAt": "2026-07-28T01:27:38.000Z",
+              "uid": "35240-86b74109-8a18-4b9a-9e65-70107252589a"
+            }
+          ],
+          "id": "156e645a-61fb-42b9-9d76-b4672c7664a8",
+          "createdAt": "2026-07-28T01:27:38.000Z",
+          "updatedAt": "2026-07-28T01:27:38.000Z",
+          "uid": "35240-156e645a-61fb-42b9-9d76-b4672c7664a8"
+        },
+        {
+          "name": "Upload a document",
+          "id": "bf3d2892-a2be-4ef7-88e1-8f820ff01dfa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "description": "(Required) File to upload. Supported: JPEG, PNG, PDF.",
+                  "key": "file",
+                  "type": "file",
+                  "value": null
+                },
+                {
+                  "description": "(Required) Reason for upload. Example: dispute_evidence.",
+                  "key": "purpose",
+                  "value": "<string>",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/documents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "documents"
+              ]
+            },
+            "description": "Upload a file to Razorpay. Returns a document ID that can be used in dispute evidence submissions. Supports JPEG, PNG, and PDF formats."
+          },
+          "response": [
+            {
+              "id": "f980afa8-22e2-4b69-99ee-7ed8c3072c74",
+              "name": "Document uploaded.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) File to upload. Supported: JPEG, PNG, PDF.",
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": "(Required) Reason for upload. Example: dispute_evidence.",
+                      "key": "purpose",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/documents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"document\",\n  \"name\": \"<string>\",\n  \"mime_type\": \"image/png\",\n  \"size\": \"<integer>\",\n  \"purpose\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:27:38.000Z",
+              "updatedAt": "2026-07-28T01:27:38.000Z",
+              "uid": "35240-f980afa8-22e2-4b69-99ee-7ed8c3072c74"
+            },
+            {
+              "id": "48b3ae73-4373-4225-884c-a2bc8b2712db",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) File to upload. Supported: JPEG, PNG, PDF.",
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": "(Required) Reason for upload. Example: dispute_evidence.",
+                      "key": "purpose",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/documents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:38.000Z",
+              "updatedAt": "2026-07-28T01:27:38.000Z",
+              "uid": "35240-48b3ae73-4373-4225-884c-a2bc8b2712db"
+            },
+            {
+              "id": "eacfdf5b-00fd-4d4b-b203-c714149aa887",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) File to upload. Supported: JPEG, PNG, PDF.",
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": "(Required) Reason for upload. Example: dispute_evidence.",
+                      "key": "purpose",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/documents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:38.000Z",
+              "updatedAt": "2026-07-28T01:27:38.000Z",
+              "uid": "35240-eacfdf5b-00fd-4d4b-b203-c714149aa887"
+            },
+            {
+              "id": "58c1e1f0-0905-419f-96bf-d060f7475f04",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) File to upload. Supported: JPEG, PNG, PDF.",
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": "(Required) Reason for upload. Example: dispute_evidence.",
+                      "key": "purpose",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/documents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "documents"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:38.000Z",
+              "updatedAt": "2026-07-28T01:27:38.000Z",
+              "uid": "35240-58c1e1f0-0905-419f-96bf-d060f7475f04"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:38.000Z",
+          "updatedAt": "2026-07-28T01:27:38.000Z",
+          "uid": "35240-bf3d2892-a2be-4ef7-88e1-8f820ff01dfa"
+        }
+      ],
+      "id": "282b77cb-8895-412a-b89c-2f118d5a1b06",
+      "createdAt": "2026-07-28T01:27:38.000Z",
+      "updatedAt": "2026-07-28T01:27:38.000Z",
+      "uid": "35240-282b77cb-8895-412a-b89c-2f118d5a1b06"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

@@ -581,6 +581,8 @@ apis:
   - type: OAuthScopes
     url: scopes/curlec-scopes.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/curlec/overview
 - type: AgentCard
   url: a2a/curlec-a2a.yml
   name: A2A Agent Card

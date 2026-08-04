@@ -1,0 +1,2444 @@
+{
+  "info": {
+    "_postman_id": "4c05b1ef-38f2-4032-b05a-cd2d67752b4b",
+    "name": "Razorpay Bills Invoices API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:40.000Z",
+    "updatedAt": "2026-07-28T01:27:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4c05b1ef-38f2-4032-b05a-cd2d67752b4b"
+  },
+  "item": [
+    {
+      "name": "invoices",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "issue",
+              "item": [
+                {
+                  "name": "Issue an invoice",
+                  "id": "a40f4ce9-6fdb-4ae0-952a-1213f9f11f77",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id/issue",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id",
+                        "issue"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e63a7f45-fb9b-44fd-b986-6a678282e8cd",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Invoice ID (inv_*)."
+                        }
+                      ]
+                    },
+                    "description": "Transition a draft invoice to issued status, sending a notification to the customer with the payment link. Once issued, line items cannot be changed."
+                  },
+                  "response": [
+                    {
+                      "id": "067c03e2-8c63-43c1-b7c7-ed8864e35bd0",
+                      "name": "Invoice issued. short_url is now active.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/issue",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "issue"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"invoice\",\n  \"type\": \"link\",\n  \"status\": \"paid\",\n  \"invoice_number\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {},\n  \"order_id\": \"<string>\",\n  \"line_items\": [\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    }\n  ],\n  \"payment_id\": \"<string>\",\n  \"currency\": \"INR\",\n  \"gross_amount\": \"<integer>\",\n  \"tax_amount\": \"<integer>\",\n  \"taxable_amount\": \"<integer>\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"short_url\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"receipt\": \"<string>\",\n  \"description\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"notes\": {\n    \"pariatur1\": \"<string>\",\n    \"incididunt_e65\": \"<string>\",\n    \"exercitation341\": \"<string>\",\n    \"adipisicing_4f\": \"<string>\",\n    \"dolore_43\": \"<string>\",\n    \"tempor_6e0\": \"<string>\",\n    \"anim_695\": \"<string>\",\n    \"minim__9b\": \"<string>\",\n    \"dolore_0_a\": \"<string>\",\n    \"consequat_0a\": \"<string>\",\n    \"sit34\": \"<string>\",\n    \"ullamco1a\": \"<string>\",\n    \"deserunt0\": \"<string>\"\n  },\n  \"expire_by\": \"<integer>\",\n  \"issued_at\": \"<integer>\",\n  \"paid_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-067c03e2-8c63-43c1-b7c7-ed8864e35bd0"
+                    },
+                    {
+                      "id": "848509cb-bf13-4459-b64f-bf265b0d3328",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/issue",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "issue"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-848509cb-bf13-4459-b64f-bf265b0d3328"
+                    },
+                    {
+                      "id": "d1397e02-9d4a-48cb-9ae3-70a604d3d5d8",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/issue",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "issue"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-d1397e02-9d4a-48cb-9ae3-70a604d3d5d8"
+                    },
+                    {
+                      "id": "58cca33b-2d12-4a78-b503-db0cd4cdc180",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/issue",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "issue"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-58cca33b-2d12-4a78-b503-db0cd4cdc180"
+                    },
+                    {
+                      "id": "3cfa56e6-8f59-45ac-a1e5-a09464979b05",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/issue",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "issue"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-3cfa56e6-8f59-45ac-a1e5-a09464979b05"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-a40f4ce9-6fdb-4ae0-952a-1213f9f11f77"
+                }
+              ],
+              "id": "1d5c72e6-66e9-4730-a609-86d5a693bc30",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-1d5c72e6-66e9-4730-a609-86d5a693bc30"
+            },
+            {
+              "name": "cancel",
+              "item": [
+                {
+                  "name": "Cancel an invoice",
+                  "id": "f5f3d35f-cc29-489a-9b3a-ad38ee68e5ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id",
+                        "cancel"
+                      ],
+                      "variable": [
+                        {
+                          "id": "debb6610-c670-4edf-a106-c4d39bbcd10a",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Invoice ID (inv_*)."
+                        }
+                      ]
+                    },
+                    "description": "Cancel a draft or issued invoice. Cancelled invoices cannot be paid and cannot be reinstated."
+                  },
+                  "response": [
+                    {
+                      "id": "a73a168b-19d9-42d7-b729-1caa42f39e9d",
+                      "name": "Invoice cancelled.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"invoice\",\n  \"type\": \"link\",\n  \"status\": \"paid\",\n  \"invoice_number\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {},\n  \"order_id\": \"<string>\",\n  \"line_items\": [\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    }\n  ],\n  \"payment_id\": \"<string>\",\n  \"currency\": \"INR\",\n  \"gross_amount\": \"<integer>\",\n  \"tax_amount\": \"<integer>\",\n  \"taxable_amount\": \"<integer>\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"short_url\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"receipt\": \"<string>\",\n  \"description\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"notes\": {\n    \"pariatur1\": \"<string>\",\n    \"incididunt_e65\": \"<string>\",\n    \"exercitation341\": \"<string>\",\n    \"adipisicing_4f\": \"<string>\",\n    \"dolore_43\": \"<string>\",\n    \"tempor_6e0\": \"<string>\",\n    \"anim_695\": \"<string>\",\n    \"minim__9b\": \"<string>\",\n    \"dolore_0_a\": \"<string>\",\n    \"consequat_0a\": \"<string>\",\n    \"sit34\": \"<string>\",\n    \"ullamco1a\": \"<string>\",\n    \"deserunt0\": \"<string>\"\n  },\n  \"expire_by\": \"<integer>\",\n  \"issued_at\": \"<integer>\",\n  \"paid_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-a73a168b-19d9-42d7-b729-1caa42f39e9d"
+                    },
+                    {
+                      "id": "f5977b86-b788-4cd6-b495-149e688f0e99",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-f5977b86-b788-4cd6-b495-149e688f0e99"
+                    },
+                    {
+                      "id": "abf16549-a611-4120-8596-2c30d64a65c5",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-abf16549-a611-4120-8596-2c30d64a65c5"
+                    },
+                    {
+                      "id": "420ce262-b1a7-48c7-8a76-7950abcfcae5",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-420ce262-b1a7-48c7-8a76-7950abcfcae5"
+                    },
+                    {
+                      "id": "a64fc9da-e3e7-4bdd-b046-b0a7d30285c7",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-a64fc9da-e3e7-4bdd-b046-b0a7d30285c7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-f5f3d35f-cc29-489a-9b3a-ad38ee68e5ed"
+                }
+              ],
+              "id": "5b4cbaa2-14ed-4f67-9e06-cf8476c80761",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-5b4cbaa2-14ed-4f67-9e06-cf8476c80761"
+            },
+            {
+              "name": "notify_by",
+              "item": [
+                {
+                  "name": "{medium}",
+                  "item": [
+                    {
+                      "name": "Send invoice notification",
+                      "id": "f5cbef25-5153-4bbf-8f26-3c52b86df1e2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/invoices/:id/notify_by/:medium",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "invoices",
+                            ":id",
+                            "notify_by",
+                            ":medium"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4e5d6749-bf30-45b0-ba98-99e9e800e1d3",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Invoice ID (inv_*)."
+                            },
+                            {
+                              "id": "679b42ac-e8d8-4114-a710-5f9fee9f8bee",
+                              "key": "medium",
+                              "value": "sms",
+                              "description": "(Required) Notification channel."
+                            }
+                          ]
+                        },
+                        "description": "Send or resend the invoice payment link to the customer via SMS or email."
+                      },
+                      "response": [
+                        {
+                          "id": "e9e102bd-a06a-43a5-810b-f49d1499468a",
+                          "name": "Notification sent.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/invoices/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "invoices",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T01:27:40.000Z",
+                          "updatedAt": "2026-07-28T01:27:40.000Z",
+                          "uid": "35240-e9e102bd-a06a-43a5-810b-f49d1499468a"
+                        },
+                        {
+                          "id": "9458b1c2-e652-4d90-93cc-6a17f4cac6a4",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/invoices/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "invoices",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:27:40.000Z",
+                          "updatedAt": "2026-07-28T01:27:40.000Z",
+                          "uid": "35240-9458b1c2-e652-4d90-93cc-6a17f4cac6a4"
+                        },
+                        {
+                          "id": "4a89ddb7-fd9f-4e29-8af8-d7053817e263",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/invoices/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "invoices",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:27:40.000Z",
+                          "updatedAt": "2026-07-28T01:27:40.000Z",
+                          "uid": "35240-4a89ddb7-fd9f-4e29-8af8-d7053817e263"
+                        },
+                        {
+                          "id": "e96c2685-64a0-4549-afe6-4a32b3a2374d",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/invoices/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "invoices",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:27:40.000Z",
+                          "updatedAt": "2026-07-28T01:27:40.000Z",
+                          "uid": "35240-e96c2685-64a0-4549-afe6-4a32b3a2374d"
+                        },
+                        {
+                          "id": "5e8798b0-2492-4143-a24b-e44079a0426b",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/invoices/:id/notify_by/:medium",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "invoices",
+                                ":id",
+                                "notify_by",
+                                ":medium"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "medium"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:27:40.000Z",
+                          "updatedAt": "2026-07-28T01:27:40.000Z",
+                          "uid": "35240-5e8798b0-2492-4143-a24b-e44079a0426b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:27:40.000Z",
+                      "updatedAt": "2026-07-28T01:27:40.000Z",
+                      "uid": "35240-f5cbef25-5153-4bbf-8f26-3c52b86df1e2"
+                    }
+                  ],
+                  "id": "3a9872e8-22a3-4f11-bb96-fa06c52b5d2a",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-3a9872e8-22a3-4f11-bb96-fa06c52b5d2a"
+                }
+              ],
+              "id": "e26b56f5-651f-45f8-9f7a-a2428ed31b5a",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-e26b56f5-651f-45f8-9f7a-a2428ed31b5a"
+            },
+            {
+              "name": "Fetch an invoice",
+              "id": "420ec165-ea92-4f91-9a56-d0b41ab0272d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a2743792-e53a-48c8-b0c6-802ddd473867",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Invoice ID (inv_*)."
+                    }
+                  ]
+                },
+                "description": "Get full details of a specific invoice including status, line items, and payment information."
+              },
+              "response": [
+                {
+                  "id": "c4257668-b41d-49e6-946d-de9a21754137",
+                  "name": "Invoice details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"invoice\",\n  \"type\": \"link\",\n  \"status\": \"paid\",\n  \"invoice_number\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {},\n  \"order_id\": \"<string>\",\n  \"line_items\": [\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    }\n  ],\n  \"payment_id\": \"<string>\",\n  \"currency\": \"INR\",\n  \"gross_amount\": \"<integer>\",\n  \"tax_amount\": \"<integer>\",\n  \"taxable_amount\": \"<integer>\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"short_url\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"receipt\": \"<string>\",\n  \"description\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"notes\": {\n    \"pariatur1\": \"<string>\",\n    \"incididunt_e65\": \"<string>\",\n    \"exercitation341\": \"<string>\",\n    \"adipisicing_4f\": \"<string>\",\n    \"dolore_43\": \"<string>\",\n    \"tempor_6e0\": \"<string>\",\n    \"anim_695\": \"<string>\",\n    \"minim__9b\": \"<string>\",\n    \"dolore_0_a\": \"<string>\",\n    \"consequat_0a\": \"<string>\",\n    \"sit34\": \"<string>\",\n    \"ullamco1a\": \"<string>\",\n    \"deserunt0\": \"<string>\"\n  },\n  \"expire_by\": \"<integer>\",\n  \"issued_at\": \"<integer>\",\n  \"paid_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-c4257668-b41d-49e6-946d-de9a21754137"
+                },
+                {
+                  "id": "b8ff69e9-8a13-499c-8d55-e62653dfc463",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-b8ff69e9-8a13-499c-8d55-e62653dfc463"
+                },
+                {
+                  "id": "ae67c3a3-f959-40b7-ae87-09d21e1271c5",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-ae67c3a3-f959-40b7-ae87-09d21e1271c5"
+                },
+                {
+                  "id": "65e2f417-ca86-460a-abb0-60ee1f64b830",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-65e2f417-ca86-460a-abb0-60ee1f64b830"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-420ec165-ea92-4f91-9a56-d0b41ab0272d"
+            },
+            {
+              "name": "Update an invoice",
+              "id": "9778b3f0-0ce6-44de-b5d8-2d8497d99ef0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"sed_f3\": \"<string>\",\n    \"incididunt7a1\": \"<string>\",\n    \"velit_c\": \"<string>\",\n    \"ipsum__c\": \"<string>\",\n    \"mollit1\": \"<string>\",\n    \"in_1\": \"<string>\",\n    \"Lorem_4a_\": \"<string>\",\n    \"eu_b\": \"<string>\",\n    \"nostrudaf2\": \"<string>\",\n    \"elit9\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a01e1312-6538-413a-b106-c2b5b5051ba5",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Invoice ID (inv_*)."
+                    }
+                  ]
+                },
+                "description": "Update invoice fields. Updatable fields depend on current status: draft=all fields; issued=partial_payment, receipt, comment, terms, notes, expire_by; paid/cancelled/expired=notes only."
+              },
+              "response": [
+                {
+                  "id": "f98b9ad7-83ff-4b0d-b706-203f205c85ff",
+                  "name": "Updated invoice.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"sed_f3\": \"<string>\",\n    \"incididunt7a1\": \"<string>\",\n    \"velit_c\": \"<string>\",\n    \"ipsum__c\": \"<string>\",\n    \"mollit1\": \"<string>\",\n    \"in_1\": \"<string>\",\n    \"Lorem_4a_\": \"<string>\",\n    \"eu_b\": \"<string>\",\n    \"nostrudaf2\": \"<string>\",\n    \"elit9\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"invoice\",\n  \"type\": \"link\",\n  \"status\": \"paid\",\n  \"invoice_number\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {},\n  \"order_id\": \"<string>\",\n  \"line_items\": [\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    }\n  ],\n  \"payment_id\": \"<string>\",\n  \"currency\": \"INR\",\n  \"gross_amount\": \"<integer>\",\n  \"tax_amount\": \"<integer>\",\n  \"taxable_amount\": \"<integer>\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"short_url\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"receipt\": \"<string>\",\n  \"description\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"notes\": {\n    \"pariatur1\": \"<string>\",\n    \"incididunt_e65\": \"<string>\",\n    \"exercitation341\": \"<string>\",\n    \"adipisicing_4f\": \"<string>\",\n    \"dolore_43\": \"<string>\",\n    \"tempor_6e0\": \"<string>\",\n    \"anim_695\": \"<string>\",\n    \"minim__9b\": \"<string>\",\n    \"dolore_0_a\": \"<string>\",\n    \"consequat_0a\": \"<string>\",\n    \"sit34\": \"<string>\",\n    \"ullamco1a\": \"<string>\",\n    \"deserunt0\": \"<string>\"\n  },\n  \"expire_by\": \"<integer>\",\n  \"issued_at\": \"<integer>\",\n  \"paid_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-f98b9ad7-83ff-4b0d-b706-203f205c85ff"
+                },
+                {
+                  "id": "f29542e3-569c-477b-984d-0aa3276e0ff4",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"sed_f3\": \"<string>\",\n    \"incididunt7a1\": \"<string>\",\n    \"velit_c\": \"<string>\",\n    \"ipsum__c\": \"<string>\",\n    \"mollit1\": \"<string>\",\n    \"in_1\": \"<string>\",\n    \"Lorem_4a_\": \"<string>\",\n    \"eu_b\": \"<string>\",\n    \"nostrudaf2\": \"<string>\",\n    \"elit9\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-f29542e3-569c-477b-984d-0aa3276e0ff4"
+                },
+                {
+                  "id": "389c0876-bbe7-4b15-bffa-0001755174b9",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"sed_f3\": \"<string>\",\n    \"incididunt7a1\": \"<string>\",\n    \"velit_c\": \"<string>\",\n    \"ipsum__c\": \"<string>\",\n    \"mollit1\": \"<string>\",\n    \"in_1\": \"<string>\",\n    \"Lorem_4a_\": \"<string>\",\n    \"eu_b\": \"<string>\",\n    \"nostrudaf2\": \"<string>\",\n    \"elit9\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-389c0876-bbe7-4b15-bffa-0001755174b9"
+                },
+                {
+                  "id": "b7398baf-99d1-4617-a76e-4e58308fd30a",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"sed_f3\": \"<string>\",\n    \"incididunt7a1\": \"<string>\",\n    \"velit_c\": \"<string>\",\n    \"ipsum__c\": \"<string>\",\n    \"mollit1\": \"<string>\",\n    \"in_1\": \"<string>\",\n    \"Lorem_4a_\": \"<string>\",\n    \"eu_b\": \"<string>\",\n    \"nostrudaf2\": \"<string>\",\n    \"elit9\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-b7398baf-99d1-4617-a76e-4e58308fd30a"
+                },
+                {
+                  "id": "459a3389-35c9-4aa4-9abc-17a77cf8039a",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"sed_f3\": \"<string>\",\n    \"incididunt7a1\": \"<string>\",\n    \"velit_c\": \"<string>\",\n    \"ipsum__c\": \"<string>\",\n    \"mollit1\": \"<string>\",\n    \"in_1\": \"<string>\",\n    \"Lorem_4a_\": \"<string>\",\n    \"eu_b\": \"<string>\",\n    \"nostrudaf2\": \"<string>\",\n    \"elit9\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-459a3389-35c9-4aa4-9abc-17a77cf8039a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-9778b3f0-0ce6-44de-b5d8-2d8497d99ef0"
+            },
+            {
+              "name": "Delete a draft invoice",
+              "id": "ef303a2f-a412-4ee2-a07d-068ad22a8227",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "39ee978b-a6ef-4a2d-a468-80d048767081",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Invoice ID (inv_*)."
+                    }
+                  ]
+                },
+                "description": "Permanently delete a draft invoice. Only invoices in draft status can be deleted."
+              },
+              "response": [
+                {
+                  "id": "11d45e71-faeb-41d1-ade1-f85d0bfb38c0",
+                  "name": "Invoice deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-11d45e71-faeb-41d1-ade1-f85d0bfb38c0"
+                },
+                {
+                  "id": "17b0fe7c-b426-4016-b3c5-4868190afaa1",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-17b0fe7c-b426-4016-b3c5-4868190afaa1"
+                },
+                {
+                  "id": "a65554ca-94f0-4f24-af9d-77a22a5f9075",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-a65554ca-94f0-4f24-af9d-77a22a5f9075"
+                },
+                {
+                  "id": "a2902292-5d7a-4f6b-9757-4c0261d52d5a",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-a2902292-5d7a-4f6b-9757-4c0261d52d5a"
+                },
+                {
+                  "id": "a4da9510-b65f-4266-bd5c-3e623f896000",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:40.000Z",
+                  "updatedAt": "2026-07-28T01:27:40.000Z",
+                  "uid": "35240-a4da9510-b65f-4266-bd5c-3e623f896000"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-ef303a2f-a412-4ee2-a07d-068ad22a8227"
+            }
+          ],
+          "id": "7d1be2bd-9c3c-40fa-8d5d-07a68d296a3b",
+          "createdAt": "2026-07-28T01:27:40.000Z",
+          "updatedAt": "2026-07-28T01:27:40.000Z",
+          "uid": "35240-7d1be2bd-9c3c-40fa-8d5d-07a68d296a3b"
+        },
+        {
+          "name": "Create an invoice",
+          "id": "dd442d55-424f-4c0e-acc2-286d40b0e600",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"link\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    }\n  ],\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"dolor_19\": \"<string>\",\n    \"ullamco_6b\": \"<string>\",\n    \"officia7dc\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/invoices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invoices"
+              ]
+            },
+            "description": "Create an invoice or payment page. Set type='invoice' for a formal invoice or type='link' for a simple payment page. The invoice is created in draft state; call POST /invoices/{id}/issue to send it to the customer. Cannot be used to create GST invoices (use the Dashboard for those). Maximum 50 line items per invoice."
+          },
+          "response": [
+            {
+              "id": "1a92eb63-d1b6-434d-bcd0-45e568af97e3",
+              "name": "Invoice created in draft state.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"link\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    }\n  ],\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"dolor_19\": \"<string>\",\n    \"ullamco_6b\": \"<string>\",\n    \"officia7dc\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"invoice\",\n  \"type\": \"link\",\n  \"status\": \"paid\",\n  \"invoice_number\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {},\n  \"order_id\": \"<string>\",\n  \"line_items\": [\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"unit_amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\",\n      \"type\": \"payment_page\"\n    }\n  ],\n  \"payment_id\": \"<string>\",\n  \"currency\": \"INR\",\n  \"gross_amount\": \"<integer>\",\n  \"tax_amount\": \"<integer>\",\n  \"taxable_amount\": \"<integer>\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"short_url\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"receipt\": \"<string>\",\n  \"description\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"notes\": {\n    \"pariatur1\": \"<string>\",\n    \"incididunt_e65\": \"<string>\",\n    \"exercitation341\": \"<string>\",\n    \"adipisicing_4f\": \"<string>\",\n    \"dolore_43\": \"<string>\",\n    \"tempor_6e0\": \"<string>\",\n    \"anim_695\": \"<string>\",\n    \"minim__9b\": \"<string>\",\n    \"dolore_0_a\": \"<string>\",\n    \"consequat_0a\": \"<string>\",\n    \"sit34\": \"<string>\",\n    \"ullamco1a\": \"<string>\",\n    \"deserunt0\": \"<string>\"\n  },\n  \"expire_by\": \"<integer>\",\n  \"issued_at\": \"<integer>\",\n  \"paid_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expired_at\": \"<integer>\",\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-1a92eb63-d1b6-434d-bcd0-45e568af97e3"
+            },
+            {
+              "id": "26fb2899-9396-483a-b314-7d86a732c427",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"link\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    }\n  ],\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"dolor_19\": \"<string>\",\n    \"ullamco_6b\": \"<string>\",\n    \"officia7dc\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-26fb2899-9396-483a-b314-7d86a732c427"
+            },
+            {
+              "id": "f7b0e98c-bd74-48dc-86d5-94bd436fec18",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"link\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    }\n  ],\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"dolor_19\": \"<string>\",\n    \"ullamco_6b\": \"<string>\",\n    \"officia7dc\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-f7b0e98c-bd74-48dc-86d5-94bd436fec18"
+            },
+            {
+              "id": "dca8d120-522a-4ac7-9970-d4f980f8b96f",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"link\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"quantity\": 1,\n      \"currency\": \"INR\"\n    }\n  ],\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"terms\": \"<string>\",\n  \"partial_payment\": \"<boolean>\",\n  \"first_payment_min_amount\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"notes\": {\n    \"dolor_19\": \"<string>\",\n    \"ullamco_6b\": \"<string>\",\n    \"officia7dc\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-dca8d120-522a-4ac7-9970-d4f980f8b96f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:40.000Z",
+          "updatedAt": "2026-07-28T01:27:40.000Z",
+          "uid": "35240-dd442d55-424f-4c0e-acc2-286d40b0e600"
+        },
+        {
+          "name": "List all invoices",
+          "id": "9ac0b6d1-4da4-40b2-a016-d1fcb6e439d6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/invoices?type=link&payment_id=<string>&customer_id=<string>&subscription_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "description": "Filter by invoice type.",
+                  "key": "type",
+                  "value": "link"
+                },
+                {
+                  "description": "Filter invoices by the payment ID used to pay them.",
+                  "key": "payment_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by customer ID (cust_*).",
+                  "key": "customer_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Fetch all invoices generated for a subscription (sub_*).",
+                  "key": "subscription_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of invoices. Filter by type, status, customer, payment, or subscription. Returns up to 100 per call."
+          },
+          "response": [
+            {
+              "id": "180b3ea6-8d04-4c83-b92e-2a4e3a713207",
+              "name": "Collection of invoices.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?type=link&payment_id=<string>&customer_id=<string>&subscription_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by invoice type.",
+                      "key": "type",
+                      "value": "link"
+                    },
+                    {
+                      "description": "Filter invoices by the payment ID used to pay them.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by customer ID (cust_*).",
+                      "key": "customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Fetch all invoices generated for a subscription (sub_*).",
+                      "key": "subscription_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"invoice\",\n      \"type\": \"invoice\",\n      \"status\": \"partially_paid\",\n      \"invoice_number\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"customer\": {},\n      \"order_id\": \"<string>\",\n      \"line_items\": [\n        {\n          \"id\": \"<string>\",\n          \"item_id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"unit_amount\": \"<integer>\",\n          \"quantity\": 1,\n          \"currency\": \"INR\",\n          \"type\": \"payment_page\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"item_id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"unit_amount\": \"<integer>\",\n          \"quantity\": 1,\n          \"currency\": \"INR\",\n          \"type\": \"invoice\"\n        }\n      ],\n      \"payment_id\": \"<string>\",\n      \"currency\": \"INR\",\n      \"gross_amount\": \"<integer>\",\n      \"tax_amount\": \"<integer>\",\n      \"taxable_amount\": \"<integer>\",\n      \"amount\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"amount_due\": \"<integer>\",\n      \"short_url\": \"<string>\",\n      \"partial_payment\": \"<boolean>\",\n      \"first_payment_min_amount\": \"<integer>\",\n      \"receipt\": \"<string>\",\n      \"description\": \"<string>\",\n      \"comment\": \"<string>\",\n      \"terms\": \"<string>\",\n      \"notes\": {\n        \"sed18\": \"<string>\",\n        \"exercitationdd\": \"<string>\",\n        \"Ut_4\": \"<string>\",\n        \"deserunt1a0\": \"<string>\",\n        \"fugiatd\": \"<string>\",\n        \"quis_3ed\": \"<string>\",\n        \"enim8\": \"<string>\",\n        \"occaecat_9b\": \"<string>\",\n        \"sit_7\": \"<string>\",\n        \"ea_f19\": \"<string>\",\n        \"veniam_c85\": \"<string>\"\n      },\n      \"expire_by\": \"<integer>\",\n      \"issued_at\": \"<integer>\",\n      \"paid_at\": \"<integer>\",\n      \"cancelled_at\": \"<integer>\",\n      \"expired_at\": \"<integer>\",\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"invoice\",\n      \"type\": \"link\",\n      \"status\": \"cancelled\",\n      \"invoice_number\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"customer\": {},\n      \"order_id\": \"<string>\",\n      \"line_items\": [\n        {\n          \"id\": \"<string>\",\n          \"item_id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"unit_amount\": \"<integer>\",\n          \"quantity\": 1,\n          \"currency\": \"INR\",\n          \"type\": \"invoice\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"item_id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"unit_amount\": \"<integer>\",\n          \"quantity\": 1,\n          \"currency\": \"INR\",\n          \"type\": \"invoice\"\n        }\n      ],\n      \"payment_id\": \"<string>\",\n      \"currency\": \"INR\",\n      \"gross_amount\": \"<integer>\",\n      \"tax_amount\": \"<integer>\",\n      \"taxable_amount\": \"<integer>\",\n      \"amount\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"amount_due\": \"<integer>\",\n      \"short_url\": \"<string>\",\n      \"partial_payment\": \"<boolean>\",\n      \"first_payment_min_amount\": \"<integer>\",\n      \"receipt\": \"<string>\",\n      \"description\": \"<string>\",\n      \"comment\": \"<string>\",\n      \"terms\": \"<string>\",\n      \"notes\": {\n        \"veniam__\": \"<string>\",\n        \"reprehenderit292\": \"<string>\",\n        \"consectetur_d\": \"<string>\"\n      },\n      \"expire_by\": \"<integer>\",\n      \"issued_at\": \"<integer>\",\n      \"paid_at\": \"<integer>\",\n      \"cancelled_at\": \"<integer>\",\n      \"expired_at\": \"<integer>\",\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-180b3ea6-8d04-4c83-b92e-2a4e3a713207"
+            },
+            {
+              "id": "f04696a7-7c0b-47b2-a707-45a1b44fddaf",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?type=link&payment_id=<string>&customer_id=<string>&subscription_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by invoice type.",
+                      "key": "type",
+                      "value": "link"
+                    },
+                    {
+                      "description": "Filter invoices by the payment ID used to pay them.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by customer ID (cust_*).",
+                      "key": "customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Fetch all invoices generated for a subscription (sub_*).",
+                      "key": "subscription_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-f04696a7-7c0b-47b2-a707-45a1b44fddaf"
+            },
+            {
+              "id": "4a00e871-0dff-4dd6-9e72-ecde124b14f7",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?type=link&payment_id=<string>&customer_id=<string>&subscription_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by invoice type.",
+                      "key": "type",
+                      "value": "link"
+                    },
+                    {
+                      "description": "Filter invoices by the payment ID used to pay them.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by customer ID (cust_*).",
+                      "key": "customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Fetch all invoices generated for a subscription (sub_*).",
+                      "key": "subscription_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:40.000Z",
+              "updatedAt": "2026-07-28T01:27:40.000Z",
+              "uid": "35240-4a00e871-0dff-4dd6-9e72-ecde124b14f7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:40.000Z",
+          "updatedAt": "2026-07-28T01:27:40.000Z",
+          "uid": "35240-9ac0b6d1-4da4-40b2-a016-d1fcb6e439d6"
+        }
+      ],
+      "id": "00593dd4-a28e-4863-a365-290aa9587578",
+      "createdAt": "2026-07-28T01:27:40.000Z",
+      "updatedAt": "2026-07-28T01:27:40.000Z",
+      "uid": "35240-00593dd4-a28e-4863-a365-290aa9587578"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

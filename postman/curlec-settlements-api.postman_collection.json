@@ -1,0 +1,892 @@
+{
+  "info": {
+    "_postman_id": "289c4d95-4b71-4730-bd22-920450c0516d",
+    "name": "Razorpay Bills Settlements API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:32.000Z",
+    "updatedAt": "2026-07-28T01:28:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-289c4d95-4b71-4730-bd22-920450c0516d"
+  },
+  "item": [
+    {
+      "name": "settlements",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Fetch settlement by ID",
+              "id": "16fe53b3-c925-4033-b11f-08ff39f44276",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settlements/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settlements",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "908246a2-fe8d-4f5c-8e05-f9245a126564",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Settlement ID (setl_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific settlement transaction."
+              },
+              "response": [
+                {
+                  "id": "bc70c1bd-6d64-47ec-9866-d32fbfeb695d",
+                  "name": "Settlement details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settlements/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settlements",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"settlement\",\n  \"amount\": \"<integer>\",\n  \"status\": \"created\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"utr\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:33.000Z",
+                  "updatedAt": "2026-07-28T01:28:33.000Z",
+                  "uid": "35240-bc70c1bd-6d64-47ec-9866-d32fbfeb695d"
+                },
+                {
+                  "id": "92baabc8-68f9-4e36-83b0-4290e466db50",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settlements/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settlements",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:33.000Z",
+                  "updatedAt": "2026-07-28T01:28:33.000Z",
+                  "uid": "35240-92baabc8-68f9-4e36-83b0-4290e466db50"
+                },
+                {
+                  "id": "50282bd2-6862-4f09-9047-96f466d47bda",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settlements/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settlements",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:33.000Z",
+                  "updatedAt": "2026-07-28T01:28:33.000Z",
+                  "uid": "35240-50282bd2-6862-4f09-9047-96f466d47bda"
+                },
+                {
+                  "id": "0739fd91-90ba-4175-b70e-85e7e7250069",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settlements/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settlements",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:33.000Z",
+                  "updatedAt": "2026-07-28T01:28:33.000Z",
+                  "uid": "35240-0739fd91-90ba-4175-b70e-85e7e7250069"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:33.000Z",
+              "updatedAt": "2026-07-28T01:28:33.000Z",
+              "uid": "35240-16fe53b3-c925-4033-b11f-08ff39f44276"
+            }
+          ],
+          "id": "1728c3f6-9f3c-4f89-ae11-09ace8838376",
+          "createdAt": "2026-07-28T01:28:33.000Z",
+          "updatedAt": "2026-07-28T01:28:33.000Z",
+          "uid": "35240-1728c3f6-9f3c-4f89-ae11-09ace8838376"
+        },
+        {
+          "name": "recon",
+          "item": [
+            {
+              "name": "combined",
+              "item": [
+                {
+                  "name": "Fetch settlement reconciliation report",
+                  "id": "fc578ea9-247c-4ca5-876e-3df76a9bc4bd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settlements/recon/combined?year=<integer>&month=<integer>&day=<integer>&count=10&skip=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settlements",
+                        "recon",
+                        "combined"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Settlement year in YYYY format.",
+                          "key": "year",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Settlement month in MM format (01\u201312).",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Settlement day in DD format (1\u201331). Omit to fetch the full month.",
+                          "key": "day",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Records per call. Maximum 1000. Default 10.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Records to skip for pagination.",
+                          "key": "skip",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a detailed transaction-level reconciliation report for a given month (or day). Each record maps a payment, refund, transfer, or adjustment to its settlement. Use for accounting reconciliation. Maximum 1000 records per call."
+                  },
+                  "response": [
+                    {
+                      "id": "a8db94fd-c6ac-40c4-88bb-9ffd18e5d8c1",
+                      "name": "Reconciliation report records.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settlements/recon/combined?year=<integer>&month=<integer>&day=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settlements",
+                            "recon",
+                            "combined"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Settlement year in YYYY format.",
+                              "key": "year",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) Settlement month in MM format (01\u201312).",
+                              "key": "month",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Settlement day in DD format (1\u201331). Omit to fetch the full month.",
+                              "key": "day",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Records per call. Maximum 1000. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Records to skip for pagination.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"entity_id\": \"<string>\",\n      \"settlement_id\": \"<string>\",\n      \"order_id\": \"<string>\",\n      \"payment_id\": \"<string>\",\n      \"dispute_id\": \"<string>\",\n      \"type\": \"payment\",\n      \"amount\": \"<integer>\",\n      \"debit\": \"<integer>\",\n      \"credit\": \"<integer>\",\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"method\": \"<string>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"settled\": \"<boolean>\",\n      \"on_hold\": \"<boolean>\",\n      \"created_at\": \"<integer>\",\n      \"settled_at\": \"<integer>\",\n      \"posted_at\": \"<integer>\",\n      \"card_network\": \"<string>\",\n      \"card_issuer\": \"<string>\",\n      \"card_type\": \"<string>\",\n      \"settlement_utr\": \"<string>\",\n      \"order_receipt\": \"<string>\",\n      \"credit_type\": \"<string>\"\n    },\n    {\n      \"entity_id\": \"<string>\",\n      \"settlement_id\": \"<string>\",\n      \"order_id\": \"<string>\",\n      \"payment_id\": \"<string>\",\n      \"dispute_id\": \"<string>\",\n      \"type\": \"transfer\",\n      \"amount\": \"<integer>\",\n      \"debit\": \"<integer>\",\n      \"credit\": \"<integer>\",\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"method\": \"<string>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"settled\": \"<boolean>\",\n      \"on_hold\": \"<boolean>\",\n      \"created_at\": \"<integer>\",\n      \"settled_at\": \"<integer>\",\n      \"posted_at\": \"<integer>\",\n      \"card_network\": \"<string>\",\n      \"card_issuer\": \"<string>\",\n      \"card_type\": \"<string>\",\n      \"settlement_utr\": \"<string>\",\n      \"order_receipt\": \"<string>\",\n      \"credit_type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:28:33.000Z",
+                      "updatedAt": "2026-07-28T01:28:33.000Z",
+                      "uid": "35240-a8db94fd-c6ac-40c4-88bb-9ffd18e5d8c1"
+                    },
+                    {
+                      "id": "291e8a11-c533-4240-ad91-68ff1d13ab45",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settlements/recon/combined?year=<integer>&month=<integer>&day=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settlements",
+                            "recon",
+                            "combined"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Settlement year in YYYY format.",
+                              "key": "year",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) Settlement month in MM format (01\u201312).",
+                              "key": "month",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Settlement day in DD format (1\u201331). Omit to fetch the full month.",
+                              "key": "day",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Records per call. Maximum 1000. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Records to skip for pagination.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:33.000Z",
+                      "updatedAt": "2026-07-28T01:28:33.000Z",
+                      "uid": "35240-291e8a11-c533-4240-ad91-68ff1d13ab45"
+                    },
+                    {
+                      "id": "56c5a9f2-cdab-4b12-b892-792246347448",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settlements/recon/combined?year=<integer>&month=<integer>&day=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settlements",
+                            "recon",
+                            "combined"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Settlement year in YYYY format.",
+                              "key": "year",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) Settlement month in MM format (01\u201312).",
+                              "key": "month",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Settlement day in DD format (1\u201331). Omit to fetch the full month.",
+                              "key": "day",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Records per call. Maximum 1000. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Records to skip for pagination.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:33.000Z",
+                      "updatedAt": "2026-07-28T01:28:33.000Z",
+                      "uid": "35240-56c5a9f2-cdab-4b12-b892-792246347448"
+                    },
+                    {
+                      "id": "0823abd0-5fa7-4661-8c15-27fc34ff416a",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/settlements/recon/combined?year=<integer>&month=<integer>&day=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "settlements",
+                            "recon",
+                            "combined"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Settlement year in YYYY format.",
+                              "key": "year",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) Settlement month in MM format (01\u201312).",
+                              "key": "month",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Settlement day in DD format (1\u201331). Omit to fetch the full month.",
+                              "key": "day",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Records per call. Maximum 1000. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Records to skip for pagination.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:33.000Z",
+                      "updatedAt": "2026-07-28T01:28:33.000Z",
+                      "uid": "35240-0823abd0-5fa7-4661-8c15-27fc34ff416a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:33.000Z",
+                  "updatedAt": "2026-07-28T01:28:33.000Z",
+                  "uid": "35240-fc578ea9-247c-4ca5-876e-3df76a9bc4bd"
+                }
+              ],
+              "id": "d162c834-d1d7-4c1f-994d-8adf9346b7dc",
+              "createdAt": "2026-07-28T01:28:33.000Z",
+              "updatedAt": "2026-07-28T01:28:33.000Z",
+              "uid": "35240-d162c834-d1d7-4c1f-994d-8adf9346b7dc"
+            }
+          ],
+          "id": "93e142fc-b950-4617-b1b4-573578fbc36e",
+          "createdAt": "2026-07-28T01:28:33.000Z",
+          "updatedAt": "2026-07-28T01:28:33.000Z",
+          "uid": "35240-93e142fc-b950-4617-b1b4-573578fbc36e"
+        },
+        {
+          "name": "Fetch all settlements",
+          "id": "e90e4322-cff2-4e10-9b66-3835257b8a63",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/settlements?from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "settlements"
+              ],
+              "query": [
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of settlements. Each settlement represents a batch transfer to your bank account. Maximum 100 per call."
+          },
+          "response": [
+            {
+              "id": "8813890a-6d54-4661-902e-08b942d7042c",
+              "name": "Collection of settlements.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settlements?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settlements"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"settlement\",\n      \"amount\": \"<integer>\",\n      \"status\": \"created\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"utr\": \"<string>\",\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"settlement\",\n      \"amount\": \"<integer>\",\n      \"status\": \"created\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"utr\": \"<string>\",\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:33.000Z",
+              "updatedAt": "2026-07-28T01:28:33.000Z",
+              "uid": "35240-8813890a-6d54-4661-902e-08b942d7042c"
+            },
+            {
+              "id": "2828e30c-f099-423c-b647-63377166f956",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settlements?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settlements"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:33.000Z",
+              "updatedAt": "2026-07-28T01:28:33.000Z",
+              "uid": "35240-2828e30c-f099-423c-b647-63377166f956"
+            },
+            {
+              "id": "b0c1db25-d758-4c4b-8072-d9286bdf72e2",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settlements?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settlements"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:33.000Z",
+              "updatedAt": "2026-07-28T01:28:33.000Z",
+              "uid": "35240-b0c1db25-d758-4c4b-8072-d9286bdf72e2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:33.000Z",
+          "updatedAt": "2026-07-28T01:28:33.000Z",
+          "uid": "35240-e90e4322-cff2-4e10-9b66-3835257b8a63"
+        }
+      ],
+      "id": "337791a6-f5e5-4569-9d2f-2c38cc93db2b",
+      "createdAt": "2026-07-28T01:28:33.000Z",
+      "updatedAt": "2026-07-28T01:28:33.000Z",
+      "uid": "35240-337791a6-f5e5-4569-9d2f-2c38cc93db2b"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

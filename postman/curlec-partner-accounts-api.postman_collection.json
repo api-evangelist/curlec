@@ -1,0 +1,1019 @@
+{
+  "info": {
+    "_postman_id": "01cdfd45-6fdb-4a06-b5a7-8ab17ba4e484",
+    "name": "Razorpay Bills Partner Accounts API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:06.000Z",
+    "updatedAt": "2026-07-28T01:28:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-01cdfd45-6fdb-4a06-b5a7-8ab17ba4e484"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account_id}",
+              "item": [
+                {
+                  "name": "Fetch a Linked Account",
+                  "id": "a1acde63-5361-4206-955e-43f3eed57ac6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "accounts",
+                        ":account_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "75c09e8d-9860-471d-b6eb-b1233c033d0b",
+                          "key": "account_id",
+                          "value": "<string>",
+                          "description": "(Required) Linked Account ID (acc_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the details of a Linked Account by its ID. Also used in Partners API to fetch sub-merchant account details (authentication: OAuth access_token)."
+                  },
+                  "response": [
+                    {
+                      "id": "d4b6e909-2edf-43ba-947b-3e8e03e53562",
+                      "name": "Linked Account details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"route\",\n  \"status\": \"suspended\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"business_type\": \"route\",\n  \"profile\": {\n    \"category\": \"<string>\",\n    \"subcategory\": \"<string>\",\n    \"addresses\": {\n      \"registered\": {\n        \"street1\": \"<string>\",\n        \"street2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"operation\": {\n        \"street1\": \"<string>\",\n        \"street2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\"\n      }\n    }\n  },\n  \"legal_info\": {\n    \"pan\": \"<string>\",\n    \"gst\": \"<string>\"\n  },\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {\n    \"chargeback\": {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"policy_url\": \"<string>\"\n    },\n    \"refund\": {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"policy_url\": \"<string>\"\n    },\n    \"support\": {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"policy_url\": \"<string>\"\n    }\n  },\n  \"apps\": {\n    \"websites\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"android\": [\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"ios\": [\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"notes\": {\n    \"ex7\": \"<string>\",\n    \"voluptate__\": \"<string>\",\n    \"animda7\": \"<string>\",\n    \"uta\": \"<string>\",\n    \"Excepteur547\": \"<string>\",\n    \"sit3b\": \"<string>\",\n    \"sed_9a3\": \"<string>\",\n    \"aliqua0b4\": \"<string>\",\n    \"consequat175\": \"<string>\",\n    \"sit0d\": \"<string>\",\n    \"et33\": \"<string>\",\n    \"officia_e_2\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-d4b6e909-2edf-43ba-947b-3e8e03e53562"
+                    },
+                    {
+                      "id": "a203697d-9301-4e5d-85bd-fdf2e6e3ac8b",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-a203697d-9301-4e5d-85bd-fdf2e6e3ac8b"
+                    },
+                    {
+                      "id": "f2255cef-8f04-45c0-8588-c0533eff64a7",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-f2255cef-8f04-45c0-8588-c0533eff64a7"
+                    },
+                    {
+                      "id": "132a77bc-a732-4592-a73b-6e915d9036f8",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-132a77bc-a732-4592-a73b-6e915d9036f8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:06.000Z",
+                  "updatedAt": "2026-07-28T01:28:06.000Z",
+                  "uid": "35240-a1acde63-5361-4206-955e-43f3eed57ac6"
+                },
+                {
+                  "name": "Update a Linked Account",
+                  "id": "d36b1468-2654-4cf5-8a72-77a230c2ba73",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"profile\": {},\n  \"legal_info\": {},\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {},\n  \"apps\": {},\n  \"notes\": {\n    \"etc5f\": \"<string>\",\n    \"consectetur5\": \"<string>\",\n    \"id31c\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"laborum672\": \"<string>\",\n    \"fugiat__38\": \"<string>\",\n    \"exercitationb5\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"aliquip2_\": \"<string>\",\n    \"labore97e\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "accounts",
+                        ":account_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "51f4589d-dab2-45a9-a701-55a789ca06d3",
+                          "key": "account_id",
+                          "value": "<string>",
+                          "description": "(Required) Linked Account ID (acc_*)."
+                        }
+                      ]
+                    },
+                    "description": "Update mutable fields of a Linked Account. email and business_type cannot be changed after creation."
+                  },
+                  "response": [
+                    {
+                      "id": "9c884f4b-6499-4164-af8c-7dd5a57293dd",
+                      "name": "Linked Account updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"profile\": {},\n  \"legal_info\": {},\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {},\n  \"apps\": {},\n  \"notes\": {\n    \"etc5f\": \"<string>\",\n    \"consectetur5\": \"<string>\",\n    \"id31c\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"laborum672\": \"<string>\",\n    \"fugiat__38\": \"<string>\",\n    \"exercitationb5\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"aliquip2_\": \"<string>\",\n    \"labore97e\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"route\",\n  \"status\": \"suspended\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"business_type\": \"route\",\n  \"profile\": {\n    \"category\": \"<string>\",\n    \"subcategory\": \"<string>\",\n    \"addresses\": {\n      \"registered\": {\n        \"street1\": \"<string>\",\n        \"street2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"operation\": {\n        \"street1\": \"<string>\",\n        \"street2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\"\n      }\n    }\n  },\n  \"legal_info\": {\n    \"pan\": \"<string>\",\n    \"gst\": \"<string>\"\n  },\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {\n    \"chargeback\": {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"policy_url\": \"<string>\"\n    },\n    \"refund\": {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"policy_url\": \"<string>\"\n    },\n    \"support\": {\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"policy_url\": \"<string>\"\n    }\n  },\n  \"apps\": {\n    \"websites\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"android\": [\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"ios\": [\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"notes\": {\n    \"ex7\": \"<string>\",\n    \"voluptate__\": \"<string>\",\n    \"animda7\": \"<string>\",\n    \"uta\": \"<string>\",\n    \"Excepteur547\": \"<string>\",\n    \"sit3b\": \"<string>\",\n    \"sed_9a3\": \"<string>\",\n    \"aliqua0b4\": \"<string>\",\n    \"consequat175\": \"<string>\",\n    \"sit0d\": \"<string>\",\n    \"et33\": \"<string>\",\n    \"officia_e_2\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-9c884f4b-6499-4164-af8c-7dd5a57293dd"
+                    },
+                    {
+                      "id": "3bf913b5-3916-438f-aee9-8e7d5706eb44",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"profile\": {},\n  \"legal_info\": {},\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {},\n  \"apps\": {},\n  \"notes\": {\n    \"etc5f\": \"<string>\",\n    \"consectetur5\": \"<string>\",\n    \"id31c\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"laborum672\": \"<string>\",\n    \"fugiat__38\": \"<string>\",\n    \"exercitationb5\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"aliquip2_\": \"<string>\",\n    \"labore97e\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-3bf913b5-3916-438f-aee9-8e7d5706eb44"
+                    },
+                    {
+                      "id": "87e29338-bc13-46b8-9e38-6e963b47b506",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"profile\": {},\n  \"legal_info\": {},\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {},\n  \"apps\": {},\n  \"notes\": {\n    \"etc5f\": \"<string>\",\n    \"consectetur5\": \"<string>\",\n    \"id31c\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"laborum672\": \"<string>\",\n    \"fugiat__38\": \"<string>\",\n    \"exercitationb5\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"aliquip2_\": \"<string>\",\n    \"labore97e\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-87e29338-bc13-46b8-9e38-6e963b47b506"
+                    },
+                    {
+                      "id": "7089b837-820d-4382-9d5e-5c1d3c515399",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"profile\": {},\n  \"legal_info\": {},\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {},\n  \"apps\": {},\n  \"notes\": {\n    \"etc5f\": \"<string>\",\n    \"consectetur5\": \"<string>\",\n    \"id31c\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"laborum672\": \"<string>\",\n    \"fugiat__38\": \"<string>\",\n    \"exercitationb5\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"aliquip2_\": \"<string>\",\n    \"labore97e\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-7089b837-820d-4382-9d5e-5c1d3c515399"
+                    },
+                    {
+                      "id": "8b5223eb-219d-4862-80c2-4a04731006d2",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"phone\": \"<string>\",\n  \"legal_business_name\": \"<string>\",\n  \"profile\": {},\n  \"legal_info\": {},\n  \"contact_name\": \"<string>\",\n  \"contact_info\": {},\n  \"apps\": {},\n  \"notes\": {\n    \"etc5f\": \"<string>\",\n    \"consectetur5\": \"<string>\",\n    \"id31c\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"laborum672\": \"<string>\",\n    \"fugiat__38\": \"<string>\",\n    \"exercitationb5\": \"<string>\",\n    \"velit_b\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"aliquip2_\": \"<string>\",\n    \"labore97e\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-8b5223eb-219d-4862-80c2-4a04731006d2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:06.000Z",
+                  "updatedAt": "2026-07-28T01:28:06.000Z",
+                  "uid": "35240-d36b1468-2654-4cf5-8a72-77a230c2ba73"
+                },
+                {
+                  "name": "Delete (suspend) a sub-merchant account",
+                  "id": "c684d544-69bf-4e5b-bc4a-ef09763e2634",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "accounts",
+                        ":account_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "addcc31c-b448-4c90-9ebe-7e74135ecd70",
+                          "key": "account_id",
+                          "value": "<string>",
+                          "description": "(Required) Account ID with prefix acc_"
+                        }
+                      ]
+                    },
+                    "description": "Suspend a sub-merchant account created via Partners API. Sets account status to 'suspended' and returns suspended_at timestamp. Authentication: OAuth access_token as username with empty password."
+                  },
+                  "response": [
+                    {
+                      "id": "bad3faaf-0049-4b07-88b3-d8f1c98c2659",
+                      "name": "Account suspended",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"suspended\",\n  \"suspended_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-bad3faaf-0049-4b07-88b3-d8f1c98c2659"
+                    },
+                    {
+                      "id": "428c67d8-ad83-49ad-a269-edb4f7326430",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-428c67d8-ad83-49ad-a269-edb4f7326430"
+                    },
+                    {
+                      "id": "820361d4-94d7-4a6b-baa1-bc85494259c3",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-820361d4-94d7-4a6b-baa1-bc85494259c3"
+                    },
+                    {
+                      "id": "fe641d8a-c9f7-4ea3-8027-c7cd226b93c0",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-fe641d8a-c9f7-4ea3-8027-c7cd226b93c0"
+                    },
+                    {
+                      "id": "83392a08-61da-42b4-a1d0-af4958e8d08d",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-83392a08-61da-42b4-a1d0-af4958e8d08d"
+                    },
+                    {
+                      "id": "7705d2bc-9071-4f26-b4e6-a3af9507beb1",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:06.000Z",
+                      "updatedAt": "2026-07-28T01:28:06.000Z",
+                      "uid": "35240-7705d2bc-9071-4f26-b4e6-a3af9507beb1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:06.000Z",
+                  "updatedAt": "2026-07-28T01:28:06.000Z",
+                  "uid": "35240-c684d544-69bf-4e5b-bc4a-ef09763e2634"
+                }
+              ],
+              "id": "11204ec1-0408-475b-977b-a4c33f6a9ea5",
+              "createdAt": "2026-07-28T01:28:06.000Z",
+              "updatedAt": "2026-07-28T01:28:06.000Z",
+              "uid": "35240-11204ec1-0408-475b-977b-a4c33f6a9ea5"
+            }
+          ],
+          "id": "6c2403f8-9c54-43ed-b33f-3892d1c187fe",
+          "createdAt": "2026-07-28T01:28:06.000Z",
+          "updatedAt": "2026-07-28T01:28:06.000Z",
+          "uid": "35240-6c2403f8-9c54-43ed-b33f-3892d1c187fe"
+        }
+      ],
+      "id": "01618a09-fc48-49f6-b35c-c2ef78c07a4e",
+      "createdAt": "2026-07-28T01:28:06.000Z",
+      "updatedAt": "2026-07-28T01:28:06.000Z",
+      "uid": "35240-01618a09-fc48-49f6-b35c-c2ef78c07a4e"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

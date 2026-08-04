@@ -1,0 +1,1171 @@
+{
+  "info": {
+    "_postman_id": "a55c81d0-d4c1-4016-9724-83b6b42bd333",
+    "name": "Razorpay Bills Customers API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:36.000Z",
+    "updatedAt": "2026-07-28T01:27:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a55c81d0-d4c1-4016-9724-83b6b42bd333"
+  },
+  "item": [
+    {
+      "name": "customers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Fetch customer by ID",
+              "id": "02c836ae-58e7-40ce-a066-a1fe0b19cd4e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4b0f9006-90a8-4cc5-9b38-2179e52a1805",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Customer ID (cust_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve full details of a specific customer."
+              },
+              "response": [
+                {
+                  "id": "8fdd645d-7ad8-40d1-a535-14ae5bd0d570",
+                  "name": "Customer details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"customer\",\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"quisbb\": \"<string>\",\n    \"minim_4\": \"<string>\",\n    \"eu85\": \"<string>\",\n    \"labore35\": \"<string>\",\n    \"in5_\": \"<string>\",\n    \"veniam_35\": \"<string>\",\n    \"ipsum_b8\": \"<string>\",\n    \"consequatcd8\": \"<string>\",\n    \"sit_a__\": \"<string>\",\n    \"est_0\": \"<string>\",\n    \"mollit_8d8\": \"<string>\",\n    \"incididunt_12\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-8fdd645d-7ad8-40d1-a535-14ae5bd0d570"
+                },
+                {
+                  "id": "27fd51de-1fc3-45f3-bcd3-f2eefad432ef",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-27fd51de-1fc3-45f3-bcd3-f2eefad432ef"
+                },
+                {
+                  "id": "af1437d8-2b00-4a1d-b480-ea8fb0429f5e",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-af1437d8-2b00-4a1d-b480-ea8fb0429f5e"
+                },
+                {
+                  "id": "3ab10430-3a58-4570-a26d-fd758389fe99",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-3ab10430-3a58-4570-a26d-fd758389fe99"
+                },
+                {
+                  "id": "2634fc95-b85e-4745-8e91-ebe3f0760a90",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-2634fc95-b85e-4745-8e91-ebe3f0760a90"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-02c836ae-58e7-40ce-a066-a1fe0b19cd4e"
+            },
+            {
+              "name": "Update a customer",
+              "id": "05b91b34-b209-4a81-ace1-a8ee0d7544ae",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3f850e58-69bb-4384-8e63-3537060195f4",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Customer ID (cust_*)."
+                    }
+                  ]
+                },
+                "description": "Update a customer's name, email, or contact. The combination of email and contact must remain unique. Contact number must contain at least 8 digits."
+              },
+              "response": [
+                {
+                  "id": "64a98a44-f29f-48d7-b179-cda3404d50b9",
+                  "name": "Updated customer.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"customer\",\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"quisbb\": \"<string>\",\n    \"minim_4\": \"<string>\",\n    \"eu85\": \"<string>\",\n    \"labore35\": \"<string>\",\n    \"in5_\": \"<string>\",\n    \"veniam_35\": \"<string>\",\n    \"ipsum_b8\": \"<string>\",\n    \"consequatcd8\": \"<string>\",\n    \"sit_a__\": \"<string>\",\n    \"est_0\": \"<string>\",\n    \"mollit_8d8\": \"<string>\",\n    \"incididunt_12\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-64a98a44-f29f-48d7-b179-cda3404d50b9"
+                },
+                {
+                  "id": "3cbd7870-8967-4f4d-8a7f-5661b9e7fea6",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-3cbd7870-8967-4f4d-8a7f-5661b9e7fea6"
+                },
+                {
+                  "id": "63475839-c016-498d-82e2-e62f0afd7ae9",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-63475839-c016-498d-82e2-e62f0afd7ae9"
+                },
+                {
+                  "id": "45383be8-fbdd-4ebc-b768-a57452b0e7f0",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-45383be8-fbdd-4ebc-b768-a57452b0e7f0"
+                },
+                {
+                  "id": "5a63b9f3-2fab-4b8a-b064-d929c9454838",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:36.000Z",
+                  "updatedAt": "2026-07-28T01:27:36.000Z",
+                  "uid": "35240-5a63b9f3-2fab-4b8a-b064-d929c9454838"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-05b91b34-b209-4a81-ace1-a8ee0d7544ae"
+            }
+          ],
+          "id": "c86f23b1-6fb1-427d-abbf-f15e96284936",
+          "createdAt": "2026-07-28T01:27:36.000Z",
+          "updatedAt": "2026-07-28T01:27:36.000Z",
+          "uid": "35240-c86f23b1-6fb1-427d-abbf-f15e96284936"
+        },
+        {
+          "name": "Create a customer",
+          "id": "e2634edc-8c45-4e80-baac-46b3b16623e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"amet_c\": \"<string>\",\n    \"ea_1c\": \"<string>\",\n    \"fugiat_c\": \"<string>\",\n    \"nostrud911\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"ea_0cb\": \"<string>\",\n    \"doloredc\": \"<string>\",\n    \"laborum_6\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "description": "Create a customer profile. The combination of email and contact must be unique per customer. Customer profiles enable saved card tokens, faster checkout, and customer-scoped data."
+          },
+          "response": [
+            {
+              "id": "1371b081-1147-4577-895b-8019af37d87e",
+              "name": "Customer created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"amet_c\": \"<string>\",\n    \"ea_1c\": \"<string>\",\n    \"fugiat_c\": \"<string>\",\n    \"nostrud911\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"ea_0cb\": \"<string>\",\n    \"doloredc\": \"<string>\",\n    \"laborum_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"customer\",\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"quisbb\": \"<string>\",\n    \"minim_4\": \"<string>\",\n    \"eu85\": \"<string>\",\n    \"labore35\": \"<string>\",\n    \"in5_\": \"<string>\",\n    \"veniam_35\": \"<string>\",\n    \"ipsum_b8\": \"<string>\",\n    \"consequatcd8\": \"<string>\",\n    \"sit_a__\": \"<string>\",\n    \"est_0\": \"<string>\",\n    \"mollit_8d8\": \"<string>\",\n    \"incididunt_12\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-1371b081-1147-4577-895b-8019af37d87e"
+            },
+            {
+              "id": "92fc5c2b-580e-4218-a961-47a3ebe2478b",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"amet_c\": \"<string>\",\n    \"ea_1c\": \"<string>\",\n    \"fugiat_c\": \"<string>\",\n    \"nostrud911\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"ea_0cb\": \"<string>\",\n    \"doloredc\": \"<string>\",\n    \"laborum_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-92fc5c2b-580e-4218-a961-47a3ebe2478b"
+            },
+            {
+              "id": "f8d31d37-39ed-41cd-ad20-a9a983ec2d4c",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"amet_c\": \"<string>\",\n    \"ea_1c\": \"<string>\",\n    \"fugiat_c\": \"<string>\",\n    \"nostrud911\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"ea_0cb\": \"<string>\",\n    \"doloredc\": \"<string>\",\n    \"laborum_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-f8d31d37-39ed-41cd-ad20-a9a983ec2d4c"
+            },
+            {
+              "id": "1f4f2537-534e-4507-8530-a17f52caa608",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"email\": \"<string>\",\n  \"gstin\": \"<string>\",\n  \"notes\": {\n    \"amet_c\": \"<string>\",\n    \"ea_1c\": \"<string>\",\n    \"fugiat_c\": \"<string>\",\n    \"nostrud911\": \"<string>\",\n    \"dolora\": \"<string>\",\n    \"ea_0cb\": \"<string>\",\n    \"doloredc\": \"<string>\",\n    \"laborum_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-1f4f2537-534e-4507-8530-a17f52caa608"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:36.000Z",
+          "updatedAt": "2026-07-28T01:27:36.000Z",
+          "uid": "35240-e2634edc-8c45-4e80-baac-46b3b16623e1"
+        },
+        {
+          "name": "Fetch all customers",
+          "id": "5f0b8274-1c05-413d-875f-c397b95d820e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers?count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ],
+              "query": [
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of all customers. Maximum 100 per call."
+          },
+          "response": [
+            {
+              "id": "26633a4b-bd00-4335-993f-4919fb2bb46a",
+              "name": "Collection of customers.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"customer\",\n      \"name\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"email\": \"<string>\",\n      \"gstin\": \"<string>\",\n      \"notes\": {\n        \"qui0\": \"<string>\",\n        \"consequat_41c\": \"<string>\",\n        \"consequat_d4\": \"<string>\",\n        \"amet3d\": \"<string>\",\n        \"pariatur_d6b\": \"<string>\",\n        \"eiusmod__00\": \"<string>\",\n        \"elit7a6\": \"<string>\",\n        \"nisi32\": \"<string>\",\n        \"adipisicing__10\": \"<string>\",\n        \"deseruntf_\": \"<string>\",\n        \"sed00\": \"<string>\",\n        \"Ut771\": \"<string>\",\n        \"ipsum2\": \"<string>\",\n        \"ut67\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"customer\",\n      \"name\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"email\": \"<string>\",\n      \"gstin\": \"<string>\",\n      \"notes\": {\n        \"nostrudf\": \"<string>\",\n        \"Lorem5a\": \"<string>\",\n        \"dof\": \"<string>\",\n        \"mollit_e\": \"<string>\",\n        \"officia6\": \"<string>\",\n        \"velit_a81\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-26633a4b-bd00-4335-993f-4919fb2bb46a"
+            },
+            {
+              "id": "2b97fc22-1520-4208-a897-8b753be56f36",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-2b97fc22-1520-4208-a897-8b753be56f36"
+            },
+            {
+              "id": "4f6ea0df-cdc6-4150-b56d-d8d824cc09a5",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:36.000Z",
+              "updatedAt": "2026-07-28T01:27:36.000Z",
+              "uid": "35240-4f6ea0df-cdc6-4150-b56d-d8d824cc09a5"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:36.000Z",
+          "updatedAt": "2026-07-28T01:27:36.000Z",
+          "uid": "35240-5f0b8274-1c05-413d-875f-c397b95d820e"
+        }
+      ],
+      "id": "642d5da2-0993-4951-a5a5-ec43dd74ba5f",
+      "createdAt": "2026-07-28T01:27:36.000Z",
+      "updatedAt": "2026-07-28T01:27:36.000Z",
+      "uid": "35240-642d5da2-0993-4951-a5a5-ec43dd74ba5f"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

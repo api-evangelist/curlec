@@ -1,0 +1,2478 @@
+{
+  "info": {
+    "_postman_id": "363e1a76-daad-4f7d-8f67-802a6f2f67ab",
+    "name": "Razorpay Bills Transfers API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:35.000Z",
+    "updatedAt": "2026-07-28T01:28:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-363e1a76-daad-4f7d-8f67-802a6f2f67ab"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "transfers",
+              "item": [
+                {
+                  "name": "Create transfers from a payment",
+                  "id": "df2d2a04-d1d7-4638-9ead-068fb45a103e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"transfers\": [\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"officia32d\": \"<string>\",\n        \"id_37a\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    },\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"labore_d9\": \"<string>\",\n        \"reprehenderit_35\": \"<string>\",\n        \"ametbe\": \"<string>\",\n        \"est5\": \"<string>\",\n        \"nulla97\": \"<string>\",\n        \"labore_5\": \"<string>\",\n        \"culpa1_\": \"<string>\",\n        \"nisid\": \"<string>\",\n        \"sint5f\": \"<string>\",\n        \"dolore_55\": \"<string>\",\n        \"velit_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:id/transfers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":id",
+                        "transfers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "84477e38-071d-4899-845b-8fc72d33ba41",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Payment ID (pay_*)."
+                        }
+                      ]
+                    },
+                    "description": "Split a captured payment to one or more Linked Accounts. Amount is deducted from the payment and transferred to the recipient. INR only, minimum \u20b9100 per transfer."
+                  },
+                  "response": [
+                    {
+                      "id": "c2029cd2-a031-4313-8f52-1b3d5779af74",
+                      "name": "Transfers created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transfers\": [\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"officia32d\": \"<string>\",\n        \"id_37a\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    },\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"labore_d9\": \"<string>\",\n        \"reprehenderit_35\": \"<string>\",\n        \"ametbe\": \"<string>\",\n        \"est5\": \"<string>\",\n        \"nulla97\": \"<string>\",\n        \"labore_5\": \"<string>\",\n        \"culpa1_\": \"<string>\",\n        \"nisid\": \"<string>\",\n        \"sint5f\": \"<string>\",\n        \"dolore_55\": \"<string>\",\n        \"velit_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transfer\",\n      \"source\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"amount_reversed\": \"<integer>\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"transfer_status\": \"processed\",\n      \"settlement_status\": \"pending\",\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\",\n      \"recipient_settlement_id\": \"<string>\",\n      \"notes\": {\n        \"aute_2f1\": \"<string>\",\n        \"exercitation3aa\": \"<string>\",\n        \"aliqua2f\": \"<string>\",\n        \"magna_f7\": \"<string>\",\n        \"dolor39\": \"<string>\",\n        \"ut_0cf\": \"<string>\",\n        \"dolor9e\": \"<string>\",\n        \"sit9c5\": \"<string>\",\n        \"anim_55\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<integer>\",\n      \"processed_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transfer\",\n      \"source\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"amount_reversed\": \"<integer>\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"transfer_status\": \"pending\",\n      \"settlement_status\": \"on_hold\",\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\",\n      \"recipient_settlement_id\": \"<string>\",\n      \"notes\": {\n        \"minim1a4\": \"<string>\",\n        \"cillum54b\": \"<string>\",\n        \"eu_21\": \"<string>\",\n        \"consequat_945\": \"<string>\",\n        \"tempor_59\": \"<string>\",\n        \"consequat3\": \"<string>\",\n        \"dolore_59a\": \"<string>\",\n        \"consectetur_f0\": \"<string>\",\n        \"magna51c\": \"<string>\",\n        \"pariatur5b\": \"<string>\",\n        \"aliquip_4\": \"<string>\",\n        \"dolor_f\": \"<string>\",\n        \"in_1_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<integer>\",\n      \"processed_at\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-c2029cd2-a031-4313-8f52-1b3d5779af74"
+                    },
+                    {
+                      "id": "15a8890c-adab-4d6e-90b1-dce46c5066ab",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transfers\": [\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"officia32d\": \"<string>\",\n        \"id_37a\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    },\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"labore_d9\": \"<string>\",\n        \"reprehenderit_35\": \"<string>\",\n        \"ametbe\": \"<string>\",\n        \"est5\": \"<string>\",\n        \"nulla97\": \"<string>\",\n        \"labore_5\": \"<string>\",\n        \"culpa1_\": \"<string>\",\n        \"nisid\": \"<string>\",\n        \"sint5f\": \"<string>\",\n        \"dolore_55\": \"<string>\",\n        \"velit_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-15a8890c-adab-4d6e-90b1-dce46c5066ab"
+                    },
+                    {
+                      "id": "f869852f-75a1-41b4-b989-df06655efd45",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transfers\": [\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"officia32d\": \"<string>\",\n        \"id_37a\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    },\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"labore_d9\": \"<string>\",\n        \"reprehenderit_35\": \"<string>\",\n        \"ametbe\": \"<string>\",\n        \"est5\": \"<string>\",\n        \"nulla97\": \"<string>\",\n        \"labore_5\": \"<string>\",\n        \"culpa1_\": \"<string>\",\n        \"nisid\": \"<string>\",\n        \"sint5f\": \"<string>\",\n        \"dolore_55\": \"<string>\",\n        \"velit_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-f869852f-75a1-41b4-b989-df06655efd45"
+                    },
+                    {
+                      "id": "f9153f98-5bc2-45df-bb63-30e7c5886aab",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transfers\": [\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"officia32d\": \"<string>\",\n        \"id_37a\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    },\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"labore_d9\": \"<string>\",\n        \"reprehenderit_35\": \"<string>\",\n        \"ametbe\": \"<string>\",\n        \"est5\": \"<string>\",\n        \"nulla97\": \"<string>\",\n        \"labore_5\": \"<string>\",\n        \"culpa1_\": \"<string>\",\n        \"nisid\": \"<string>\",\n        \"sint5f\": \"<string>\",\n        \"dolore_55\": \"<string>\",\n        \"velit_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-f9153f98-5bc2-45df-bb63-30e7c5886aab"
+                    },
+                    {
+                      "id": "62bb279f-bd0a-4dd5-9760-c09db0f2c6c2",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transfers\": [\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"officia32d\": \"<string>\",\n        \"id_37a\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    },\n    {\n      \"account\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"labore_d9\": \"<string>\",\n        \"reprehenderit_35\": \"<string>\",\n        \"ametbe\": \"<string>\",\n        \"est5\": \"<string>\",\n        \"nulla97\": \"<string>\",\n        \"labore_5\": \"<string>\",\n        \"culpa1_\": \"<string>\",\n        \"nisid\": \"<string>\",\n        \"sint5f\": \"<string>\",\n        \"dolore_55\": \"<string>\",\n        \"velit_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-62bb279f-bd0a-4dd5-9760-c09db0f2c6c2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-df2d2a04-d1d7-4638-9ead-068fb45a103e"
+                },
+                {
+                  "name": "Fetch transfers for a payment",
+                  "id": "3dc3675c-bfe3-4e6d-abf3-80d889f8e325",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:id/transfers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":id",
+                        "transfers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "dafc8e86-7870-47e4-932a-0f57e89c22b3",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Payment ID (pay_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all transfers created from a specific payment."
+                  },
+                  "response": [
+                    {
+                      "id": "04a536c6-9551-4521-9580-30f7cfdeffd6",
+                      "name": "List of transfers for the payment.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transfer\",\n      \"source\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"amount_reversed\": \"<integer>\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"transfer_status\": \"processed\",\n      \"settlement_status\": \"pending\",\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\",\n      \"recipient_settlement_id\": \"<string>\",\n      \"notes\": {\n        \"aute_2f1\": \"<string>\",\n        \"exercitation3aa\": \"<string>\",\n        \"aliqua2f\": \"<string>\",\n        \"magna_f7\": \"<string>\",\n        \"dolor39\": \"<string>\",\n        \"ut_0cf\": \"<string>\",\n        \"dolor9e\": \"<string>\",\n        \"sit9c5\": \"<string>\",\n        \"anim_55\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<integer>\",\n      \"processed_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transfer\",\n      \"source\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"amount_reversed\": \"<integer>\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"transfer_status\": \"pending\",\n      \"settlement_status\": \"on_hold\",\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\",\n      \"recipient_settlement_id\": \"<string>\",\n      \"notes\": {\n        \"minim1a4\": \"<string>\",\n        \"cillum54b\": \"<string>\",\n        \"eu_21\": \"<string>\",\n        \"consequat_945\": \"<string>\",\n        \"tempor_59\": \"<string>\",\n        \"consequat3\": \"<string>\",\n        \"dolore_59a\": \"<string>\",\n        \"consectetur_f0\": \"<string>\",\n        \"magna51c\": \"<string>\",\n        \"pariatur5b\": \"<string>\",\n        \"aliquip_4\": \"<string>\",\n        \"dolor_f\": \"<string>\",\n        \"in_1_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<integer>\",\n      \"processed_at\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-04a536c6-9551-4521-9580-30f7cfdeffd6"
+                    },
+                    {
+                      "id": "fb0df194-4680-4d65-bb15-1c971bd448ed",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-fb0df194-4680-4d65-bb15-1c971bd448ed"
+                    },
+                    {
+                      "id": "84aabe96-07aa-43da-93d7-83109d8c7e51",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-84aabe96-07aa-43da-93d7-83109d8c7e51"
+                    },
+                    {
+                      "id": "b9bf5b6b-3620-4e3d-b635-d6187a5e3ca6",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "transfers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-b9bf5b6b-3620-4e3d-b635-d6187a5e3ca6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-3dc3675c-bfe3-4e6d-abf3-80d889f8e325"
+                }
+              ],
+              "id": "e8a1ed71-e591-485b-8d5f-f462027ca67b",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-e8a1ed71-e591-485b-8d5f-f462027ca67b"
+            }
+          ],
+          "id": "d0ac9ffe-12e0-4ab9-8488-145188e0cd3c",
+          "createdAt": "2026-07-28T01:28:35.000Z",
+          "updatedAt": "2026-07-28T01:28:35.000Z",
+          "uid": "35240-d0ac9ffe-12e0-4ab9-8488-145188e0cd3c"
+        }
+      ],
+      "id": "9da0e823-7e9d-48cb-bc56-baf053a1b016",
+      "createdAt": "2026-07-28T01:28:35.000Z",
+      "updatedAt": "2026-07-28T01:28:35.000Z",
+      "uid": "35240-9da0e823-7e9d-48cb-bc56-baf053a1b016"
+    },
+    {
+      "name": "transfers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "reversals",
+              "item": [
+                {
+                  "name": "Reverse a transfer",
+                  "id": "a6a2c265-831d-4789-9c06-bf6295ccd81d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<integer>\",\n  \"notes\": {\n    \"Utcb\": \"<string>\",\n    \"adipisicing_0\": \"<string>\",\n    \"in_644\": \"<string>\",\n    \"do_28\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id/reversals",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id",
+                        "reversals"
+                      ],
+                      "variable": [
+                        {
+                          "id": "089eebb2-199c-4001-b166-d4b82600ad7b",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Transfer ID (trf_*)."
+                        }
+                      ]
+                    },
+                    "description": "Move funds from a Linked Account back to the merchant. Partial reversals are supported. Multiple reversals per transfer are allowed as long as the total reversed amount does not exceed the transfer amount."
+                  },
+                  "response": [
+                    {
+                      "id": "0d16f0ca-685d-40d1-843d-678a5013a873",
+                      "name": "Reversal created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"notes\": {\n    \"Utcb\": \"<string>\",\n    \"adipisicing_0\": \"<string>\",\n    \"in_644\": \"<string>\",\n    \"do_28\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"reversal\",\n  \"transfer_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {\n    \"ipsum5f\": \"<string>\",\n    \"irureb\": \"<string>\",\n    \"non_bf\": \"<string>\",\n    \"sit_634\": \"<string>\",\n    \"anima\": \"<string>\",\n    \"amet96\": \"<string>\",\n    \"sit9a\": \"<string>\"\n  },\n  \"initiator_id\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-0d16f0ca-685d-40d1-843d-678a5013a873"
+                    },
+                    {
+                      "id": "2c48565a-b295-4935-af1a-40bf239d3139",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"notes\": {\n    \"Utcb\": \"<string>\",\n    \"adipisicing_0\": \"<string>\",\n    \"in_644\": \"<string>\",\n    \"do_28\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-2c48565a-b295-4935-af1a-40bf239d3139"
+                    },
+                    {
+                      "id": "59adff52-80fd-43d2-b367-a9e18448389f",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"notes\": {\n    \"Utcb\": \"<string>\",\n    \"adipisicing_0\": \"<string>\",\n    \"in_644\": \"<string>\",\n    \"do_28\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-59adff52-80fd-43d2-b367-a9e18448389f"
+                    },
+                    {
+                      "id": "840b8266-d6e1-4af7-9630-132eed8e947b",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"notes\": {\n    \"Utcb\": \"<string>\",\n    \"adipisicing_0\": \"<string>\",\n    \"in_644\": \"<string>\",\n    \"do_28\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-840b8266-d6e1-4af7-9630-132eed8e947b"
+                    },
+                    {
+                      "id": "19688967-79c4-4c4d-bac5-4882978c165d",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<integer>\",\n  \"notes\": {\n    \"Utcb\": \"<string>\",\n    \"adipisicing_0\": \"<string>\",\n    \"in_644\": \"<string>\",\n    \"do_28\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-19688967-79c4-4c4d-bac5-4882978c165d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-a6a2c265-831d-4789-9c06-bf6295ccd81d"
+                },
+                {
+                  "name": "List reversals for a transfer",
+                  "id": "37d2de34-64c4-4757-9fe2-90b85860cd92",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id/reversals",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id",
+                        "reversals"
+                      ],
+                      "variable": [
+                        {
+                          "id": "853743da-8cc8-4948-b1fe-8a754725ed33",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Transfer ID (trf_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all reversals for a specific transfer."
+                  },
+                  "response": [
+                    {
+                      "id": "51a30d08-f9bf-4ef0-8227-adf2ef10366c",
+                      "name": "List of reversals.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"reversal\",\n      \"transfer_id\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"ut_c7b\": \"<string>\",\n        \"irure_3\": \"<string>\"\n      },\n      \"initiator_id\": \"<string>\",\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"reversal\",\n      \"transfer_id\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"notes\": {\n        \"consequatc3\": \"<string>\",\n        \"consequat7a1\": \"<string>\",\n        \"in047\": \"<string>\",\n        \"laboris_728\": \"<string>\",\n        \"Ut50\": \"<string>\",\n        \"eu_29\": \"<string>\",\n        \"enim_159\": \"<string>\",\n        \"dolore7d\": \"<string>\",\n        \"occaecat_7bd\": \"<string>\"\n      },\n      \"initiator_id\": \"<string>\",\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-51a30d08-f9bf-4ef0-8227-adf2ef10366c"
+                    },
+                    {
+                      "id": "d2620717-e4f3-4d09-b409-3b2209308b9c",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-d2620717-e4f3-4d09-b409-3b2209308b9c"
+                    },
+                    {
+                      "id": "8dd525bc-746a-461d-833a-6a2466bc3d41",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-8dd525bc-746a-461d-833a-6a2466bc3d41"
+                    },
+                    {
+                      "id": "ae73e0f5-b9ac-40ad-9456-4d68634aba28",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:id/reversals",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":id",
+                            "reversals"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:35.000Z",
+                      "updatedAt": "2026-07-28T01:28:35.000Z",
+                      "uid": "35240-ae73e0f5-b9ac-40ad-9456-4d68634aba28"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-37d2de34-64c4-4757-9fe2-90b85860cd92"
+                }
+              ],
+              "id": "8866c457-043e-49b5-9f2a-44b423d1a3e9",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-8866c457-043e-49b5-9f2a-44b423d1a3e9"
+            },
+            {
+              "name": "Fetch a transfer",
+              "id": "04a714f5-fc2f-4962-9f28-39852048a4ba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transfers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "43e9c3bb-1b1a-4258-88f4-fcf1fd690bd1",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Transfer ID (trf_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific transfer by ID."
+              },
+              "response": [
+                {
+                  "id": "073c94e2-0d4e-449f-9eed-d753374d0624",
+                  "name": "Transfer details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"transfer\",\n  \"source\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"amount_reversed\": \"<integer>\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"transfer_status\": \"pending\",\n  \"settlement_status\": \"settled\",\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\",\n  \"recipient_settlement_id\": \"<string>\",\n  \"notes\": {\n    \"labore3\": \"<string>\",\n    \"magna_a\": \"<string>\",\n    \"sit_cc\": \"<string>\",\n    \"nulla_e9\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<integer>\",\n  \"processed_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-073c94e2-0d4e-449f-9eed-d753374d0624"
+                },
+                {
+                  "id": "cfa12ea2-fc24-43a7-a15d-bdfa2d2f1bf9",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-cfa12ea2-fc24-43a7-a15d-bdfa2d2f1bf9"
+                },
+                {
+                  "id": "243749ae-11b9-4dcd-8435-fc503e3c1288",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-243749ae-11b9-4dcd-8435-fc503e3c1288"
+                },
+                {
+                  "id": "02421abb-05df-44bf-8466-2d603d56bb7a",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-02421abb-05df-44bf-8466-2d603d56bb7a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-04a714f5-fc2f-4962-9f28-39852048a4ba"
+            },
+            {
+              "name": "Modify settlement hold on a transfer",
+              "id": "fa28c11b-d4aa-467d-a1d7-12dc5c3857a0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/transfers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e8362936-7648-4fca-9c0c-c37fc77c421e",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Transfer ID (trf_*)."
+                    }
+                  ]
+                },
+                "description": "Put a transfer's settlement on hold or release an existing hold. Use on_hold=true to hold settlement, on_hold=false to release. on_hold_until sets a future timestamp for automatic hold release."
+              },
+              "response": [
+                {
+                  "id": "59ddf09d-0fa5-4fed-9d04-d71821417ca1",
+                  "name": "Transfer settlement hold updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"transfer\",\n  \"source\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"amount_reversed\": \"<integer>\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"transfer_status\": \"pending\",\n  \"settlement_status\": \"settled\",\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\",\n  \"recipient_settlement_id\": \"<string>\",\n  \"notes\": {\n    \"labore3\": \"<string>\",\n    \"magna_a\": \"<string>\",\n    \"sit_cc\": \"<string>\",\n    \"nulla_e9\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<integer>\",\n  \"processed_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-59ddf09d-0fa5-4fed-9d04-d71821417ca1"
+                },
+                {
+                  "id": "6b652753-8faa-4c70-93fe-ac8f0a929163",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-6b652753-8faa-4c70-93fe-ac8f0a929163"
+                },
+                {
+                  "id": "a891b00b-a538-46fb-bef3-c27fa856158d",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-a891b00b-a538-46fb-bef3-c27fa856158d"
+                },
+                {
+                  "id": "43d245db-9a52-44f3-bde4-8c6c949f760a",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-43d245db-9a52-44f3-bde4-8c6c949f760a"
+                },
+                {
+                  "id": "43453e0a-1006-4e40-9c73-5778c87a574d",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:35.000Z",
+                  "updatedAt": "2026-07-28T01:28:35.000Z",
+                  "uid": "35240-43453e0a-1006-4e40-9c73-5778c87a574d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-fa28c11b-d4aa-467d-a1d7-12dc5c3857a0"
+            }
+          ],
+          "id": "2c638511-4dc4-4475-bb79-5e986c751f45",
+          "createdAt": "2026-07-28T01:28:35.000Z",
+          "updatedAt": "2026-07-28T01:28:35.000Z",
+          "uid": "35240-2c638511-4dc4-4475-bb79-5e986c751f45"
+        },
+        {
+          "name": "Create a direct transfer",
+          "id": "30bc6b97-85a7-4a72-8306-f46d191f1e9a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "Idempotency key for direct transfers. If provided, retrying with the same key within 24 hours returns the original transfer instead of creating a duplicate.",
+                "key": "X-Transfer-Idempotency",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {\n    \"consequatc\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"proident_f6b\": \"<string>\",\n    \"pariatur8a\": \"<string>\",\n    \"sit_47\": \"<string>\",\n    \"labore_9a3\": \"<string>\",\n    \"Ut_c8b\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"quis_2f6\": \"<string>\",\n    \"nostrud_d1d\": \"<string>\",\n    \"ex24\": \"<string>\",\n    \"deseruntf2c\": \"<string>\",\n    \"tempor_529\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/transfers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transfers"
+              ]
+            },
+            "description": "Create an on-demand direct transfer from the merchant account to a Linked Account. Requires the Direct Transfer feature to be enabled on the account. Supports idempotency via the X-Transfer-Idempotency header (unique to direct transfers)."
+          },
+          "response": [
+            {
+              "id": "8da79a57-3e1b-40e0-913b-82498e6d3bf6",
+              "name": "Transfer created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Idempotency key for direct transfers. If provided, retrying with the same key within 24 hours returns the original transfer instead of creating a duplicate.",
+                    "key": "X-Transfer-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {\n    \"consequatc\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"proident_f6b\": \"<string>\",\n    \"pariatur8a\": \"<string>\",\n    \"sit_47\": \"<string>\",\n    \"labore_9a3\": \"<string>\",\n    \"Ut_c8b\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"quis_2f6\": \"<string>\",\n    \"nostrud_d1d\": \"<string>\",\n    \"ex24\": \"<string>\",\n    \"deseruntf2c\": \"<string>\",\n    \"tempor_529\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"transfer\",\n  \"source\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"amount_reversed\": \"<integer>\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"transfer_status\": \"pending\",\n  \"settlement_status\": \"settled\",\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\",\n  \"recipient_settlement_id\": \"<string>\",\n  \"notes\": {\n    \"labore3\": \"<string>\",\n    \"magna_a\": \"<string>\",\n    \"sit_cc\": \"<string>\",\n    \"nulla_e9\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<integer>\",\n  \"processed_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-8da79a57-3e1b-40e0-913b-82498e6d3bf6"
+            },
+            {
+              "id": "c1f123d0-0759-4a70-91dc-6a81e7563500",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Idempotency key for direct transfers. If provided, retrying with the same key within 24 hours returns the original transfer instead of creating a duplicate.",
+                    "key": "X-Transfer-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {\n    \"consequatc\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"proident_f6b\": \"<string>\",\n    \"pariatur8a\": \"<string>\",\n    \"sit_47\": \"<string>\",\n    \"labore_9a3\": \"<string>\",\n    \"Ut_c8b\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"quis_2f6\": \"<string>\",\n    \"nostrud_d1d\": \"<string>\",\n    \"ex24\": \"<string>\",\n    \"deseruntf2c\": \"<string>\",\n    \"tempor_529\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-c1f123d0-0759-4a70-91dc-6a81e7563500"
+            },
+            {
+              "id": "37050bc0-0285-4958-bbcd-c8533ceb6a0a",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Idempotency key for direct transfers. If provided, retrying with the same key within 24 hours returns the original transfer instead of creating a duplicate.",
+                    "key": "X-Transfer-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {\n    \"consequatc\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"proident_f6b\": \"<string>\",\n    \"pariatur8a\": \"<string>\",\n    \"sit_47\": \"<string>\",\n    \"labore_9a3\": \"<string>\",\n    \"Ut_c8b\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"quis_2f6\": \"<string>\",\n    \"nostrud_d1d\": \"<string>\",\n    \"ex24\": \"<string>\",\n    \"deseruntf2c\": \"<string>\",\n    \"tempor_529\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-37050bc0-0285-4958-bbcd-c8533ceb6a0a"
+            },
+            {
+              "id": "c056ebe0-64a8-4b16-a1a3-a420b2130812",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Idempotency key for direct transfers. If provided, retrying with the same key within 24 hours returns the original transfer instead of creating a duplicate.",
+                    "key": "X-Transfer-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {\n    \"consequatc\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"proident_f6b\": \"<string>\",\n    \"pariatur8a\": \"<string>\",\n    \"sit_47\": \"<string>\",\n    \"labore_9a3\": \"<string>\",\n    \"Ut_c8b\": \"<string>\",\n    \"eu_6\": \"<string>\",\n    \"quis_2f6\": \"<string>\",\n    \"nostrud_d1d\": \"<string>\",\n    \"ex24\": \"<string>\",\n    \"deseruntf2c\": \"<string>\",\n    \"tempor_529\": \"<string>\"\n  },\n  \"linked_account_notes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"on_hold\": \"<boolean>\",\n  \"on_hold_until\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-c056ebe0-64a8-4b16-a1a3-a420b2130812"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:35.000Z",
+          "updatedAt": "2026-07-28T01:28:35.000Z",
+          "uid": "35240-30bc6b97-85a7-4a72-8306-f46d191f1e9a"
+        },
+        {
+          "name": "List transfers",
+          "id": "f63dfed9-59d0-40d8-a2de-0c0977ebc81d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transfers?from=<integer>&to=<integer>&count=10&skip=0&recipient_settlement_id=<string>&expand[]=recipient_settlement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transfers"
+              ],
+              "query": [
+                {
+                  "description": "Unix timestamp filter (start).",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp filter (end).",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to return. Default: 10. Maximum: 100.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use for pagination. Default: 0.",
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter transfers by settlement ID in the Linked Account.",
+                  "key": "recipient_settlement_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Expand recipient_settlement to include full settlement object.",
+                  "key": "expand[]",
+                  "value": "recipient_settlement"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of transfers. Filter by recipient_settlement_id to fetch transfers included in a specific settlement. Use expand[]=recipient_settlement to include settlement details."
+          },
+          "response": [
+            {
+              "id": "fc2b3f1c-1d7f-4fd4-8ee4-f485907858c1",
+              "name": "List of transfers.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transfers?from=<integer>&to=<integer>&count=10&skip=0&recipient_settlement_id=<string>&expand[]=recipient_settlement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp filter (start).",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter (end).",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter transfers by settlement ID in the Linked Account.",
+                      "key": "recipient_settlement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Expand recipient_settlement to include full settlement object.",
+                      "key": "expand[]",
+                      "value": "recipient_settlement"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transfer\",\n      \"source\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"amount_reversed\": \"<integer>\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"transfer_status\": \"processed\",\n      \"settlement_status\": \"pending\",\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\",\n      \"recipient_settlement_id\": \"<string>\",\n      \"notes\": {\n        \"aute_2f1\": \"<string>\",\n        \"exercitation3aa\": \"<string>\",\n        \"aliqua2f\": \"<string>\",\n        \"magna_f7\": \"<string>\",\n        \"dolor39\": \"<string>\",\n        \"ut_0cf\": \"<string>\",\n        \"dolor9e\": \"<string>\",\n        \"sit9c5\": \"<string>\",\n        \"anim_55\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<integer>\",\n      \"processed_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transfer\",\n      \"source\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"amount_reversed\": \"<integer>\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"transfer_status\": \"pending\",\n      \"settlement_status\": \"on_hold\",\n      \"on_hold\": \"<boolean>\",\n      \"on_hold_until\": \"<integer>\",\n      \"recipient_settlement_id\": \"<string>\",\n      \"notes\": {\n        \"minim1a4\": \"<string>\",\n        \"cillum54b\": \"<string>\",\n        \"eu_21\": \"<string>\",\n        \"consequat_945\": \"<string>\",\n        \"tempor_59\": \"<string>\",\n        \"consequat3\": \"<string>\",\n        \"dolore_59a\": \"<string>\",\n        \"consectetur_f0\": \"<string>\",\n        \"magna51c\": \"<string>\",\n        \"pariatur5b\": \"<string>\",\n        \"aliquip_4\": \"<string>\",\n        \"dolor_f\": \"<string>\",\n        \"in_1_4\": \"<string>\"\n      },\n      \"linked_account_notes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<integer>\",\n      \"processed_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-fc2b3f1c-1d7f-4fd4-8ee4-f485907858c1"
+            },
+            {
+              "id": "aca3dc00-caa8-441e-9ea5-9bc49cf5ea02",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transfers?from=<integer>&to=<integer>&count=10&skip=0&recipient_settlement_id=<string>&expand[]=recipient_settlement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp filter (start).",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter (end).",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter transfers by settlement ID in the Linked Account.",
+                      "key": "recipient_settlement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Expand recipient_settlement to include full settlement object.",
+                      "key": "expand[]",
+                      "value": "recipient_settlement"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-aca3dc00-caa8-441e-9ea5-9bc49cf5ea02"
+            },
+            {
+              "id": "d6c7f2f6-9a94-4c09-8773-0bc8812d5146",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transfers?from=<integer>&to=<integer>&count=10&skip=0&recipient_settlement_id=<string>&expand[]=recipient_settlement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp filter (start).",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter (end).",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter transfers by settlement ID in the Linked Account.",
+                      "key": "recipient_settlement_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Expand recipient_settlement to include full settlement object.",
+                      "key": "expand[]",
+                      "value": "recipient_settlement"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:35.000Z",
+              "updatedAt": "2026-07-28T01:28:35.000Z",
+              "uid": "35240-d6c7f2f6-9a94-4c09-8773-0bc8812d5146"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:35.000Z",
+          "updatedAt": "2026-07-28T01:28:35.000Z",
+          "uid": "35240-f63dfed9-59d0-40d8-a2de-0c0977ebc81d"
+        }
+      ],
+      "id": "1fad8252-fa69-411a-a3d2-370853dad10f",
+      "createdAt": "2026-07-28T01:28:35.000Z",
+      "updatedAt": "2026-07-28T01:28:35.000Z",
+      "uid": "35240-1fad8252-fa69-411a-a3d2-370853dad10f"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

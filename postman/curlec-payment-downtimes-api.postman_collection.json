@@ -1,0 +1,460 @@
+{
+  "info": {
+    "_postman_id": "3232dc1d-0348-4282-95c5-4c8f76d819dc",
+    "name": "Razorpay Bills Payment Downtimes API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:11.000Z",
+    "updatedAt": "2026-07-28T01:28:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3232dc1d-0348-4282-95c5-4c8f76d819dc"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "downtimes",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Fetch payment downtime by ID",
+                  "id": "93a4f60b-266d-4acb-90d3-814428402f64",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/downtimes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "downtimes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d72745ff-93c0-49ca-9971-b01d5443d387",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Downtime identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific payment downtime event."
+                  },
+                  "response": [
+                    {
+                      "id": "25ecad3b-1232-4cef-8a31-5e6e3482f3fa",
+                      "name": "Downtime details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/downtimes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "downtimes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payment.downtime\",\n  \"method\": \"upi\",\n  \"begin\": \"<integer>\",\n  \"end\": \"<integer,null>\",\n  \"status\": \"resolved\",\n  \"scheduled\": \"<boolean>\",\n  \"severity\": \"low\",\n  \"instrument\": {\n    \"bank\": \"<string>\",\n    \"network\": \"<string>\",\n    \"issuer\": \"<string>\",\n    \"psp\": \"<string>\",\n    \"vpa_handle\": \"<string>\",\n    \"card_type\": \"<string>\",\n    \"flow\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:12.000Z",
+                      "updatedAt": "2026-07-28T01:28:12.000Z",
+                      "uid": "35240-25ecad3b-1232-4cef-8a31-5e6e3482f3fa"
+                    },
+                    {
+                      "id": "88666d07-f089-4e4d-80f5-9bb606f9b327",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/downtimes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "downtimes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:12.000Z",
+                      "updatedAt": "2026-07-28T01:28:12.000Z",
+                      "uid": "35240-88666d07-f089-4e4d-80f5-9bb606f9b327"
+                    },
+                    {
+                      "id": "b9627215-62f1-48a9-96e7-6559ba0d6c52",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/downtimes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "downtimes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:12.000Z",
+                      "updatedAt": "2026-07-28T01:28:12.000Z",
+                      "uid": "35240-b9627215-62f1-48a9-96e7-6559ba0d6c52"
+                    },
+                    {
+                      "id": "052979da-a5be-4f91-85a4-b3b1a15ff8af",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/downtimes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "downtimes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:12.000Z",
+                      "updatedAt": "2026-07-28T01:28:12.000Z",
+                      "uid": "35240-052979da-a5be-4f91-85a4-b3b1a15ff8af"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:12.000Z",
+                  "updatedAt": "2026-07-28T01:28:12.000Z",
+                  "uid": "35240-93a4f60b-266d-4acb-90d3-814428402f64"
+                }
+              ],
+              "id": "45596e9e-dc66-4b8d-ac74-ef9826091ef4",
+              "createdAt": "2026-07-28T01:28:12.000Z",
+              "updatedAt": "2026-07-28T01:28:12.000Z",
+              "uid": "35240-45596e9e-dc66-4b8d-ac74-ef9826091ef4"
+            },
+            {
+              "name": "Fetch all payment downtimes",
+              "id": "69709aec-e234-4833-b95d-56f777ed3780",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments/downtimes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments",
+                    "downtimes"
+                  ]
+                },
+                "description": "Retrieve current and upcoming payment method downtimes for cards, netbanking, and UPI. Use to surface degraded methods in checkout UI."
+              },
+              "response": [
+                {
+                  "id": "84f9698c-38ed-4d6c-bc8c-dc17d283179d",
+                  "name": "Collection of active and scheduled downtimes.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/downtimes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "downtimes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment.downtime\",\n      \"method\": \"upi\",\n      \"begin\": \"<integer>\",\n      \"end\": \"<integer,null>\",\n      \"status\": \"resolved\",\n      \"scheduled\": \"<boolean>\",\n      \"severity\": \"high\",\n      \"instrument\": {\n        \"bank\": \"<string>\",\n        \"network\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"psp\": \"<string>\",\n        \"vpa_handle\": \"<string>\",\n        \"card_type\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment.downtime\",\n      \"method\": \"card\",\n      \"begin\": \"<integer>\",\n      \"end\": \"<integer,null>\",\n      \"status\": \"scheduled\",\n      \"scheduled\": \"<boolean>\",\n      \"severity\": \"low\",\n      \"instrument\": {\n        \"bank\": \"<string>\",\n        \"network\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"psp\": \"<string>\",\n        \"vpa_handle\": \"<string>\",\n        \"card_type\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:28:12.000Z",
+                  "updatedAt": "2026-07-28T01:28:12.000Z",
+                  "uid": "35240-84f9698c-38ed-4d6c-bc8c-dc17d283179d"
+                },
+                {
+                  "id": "d182b8eb-5505-437a-bc22-50aad6e063d5",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/downtimes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "downtimes"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:12.000Z",
+                  "updatedAt": "2026-07-28T01:28:12.000Z",
+                  "uid": "35240-d182b8eb-5505-437a-bc22-50aad6e063d5"
+                },
+                {
+                  "id": "3dc69f44-816c-4e5b-aaa2-e66c69a057e1",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/downtimes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "downtimes"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:12.000Z",
+                  "updatedAt": "2026-07-28T01:28:12.000Z",
+                  "uid": "35240-3dc69f44-816c-4e5b-aaa2-e66c69a057e1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:12.000Z",
+              "updatedAt": "2026-07-28T01:28:12.000Z",
+              "uid": "35240-69709aec-e234-4833-b95d-56f777ed3780"
+            }
+          ],
+          "id": "db2593bd-199a-430b-9122-fac1982d9f40",
+          "createdAt": "2026-07-28T01:28:12.000Z",
+          "updatedAt": "2026-07-28T01:28:12.000Z",
+          "uid": "35240-db2593bd-199a-430b-9122-fac1982d9f40"
+        }
+      ],
+      "id": "cd1d959a-f439-4b32-a370-196824f401ee",
+      "createdAt": "2026-07-28T01:28:12.000Z",
+      "updatedAt": "2026-07-28T01:28:12.000Z",
+      "uid": "35240-cd1d959a-f439-4b32-a370-196824f401ee"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

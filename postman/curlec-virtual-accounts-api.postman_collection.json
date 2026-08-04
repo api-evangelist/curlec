@@ -1,0 +1,3088 @@
+{
+  "info": {
+    "_postman_id": "87776166-df81-466a-9ac8-0d3c081afda9",
+    "name": "Razorpay Bills Virtual Accounts API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:36.000Z",
+    "updatedAt": "2026-07-28T01:28:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87776166-df81-466a-9ac8-0d3c081afda9"
+  },
+  "item": [
+    {
+      "name": "virtual_accounts",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "close",
+              "item": [
+                {
+                  "name": "Close a Virtual Account",
+                  "id": "4f165635-9d6d-4876-9393-8cee188294af",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"closed\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id/close",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id",
+                        "close"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fb863297-4fbc-4759-aaa3-ffe4bb1c8c47",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Virtual Account ID (va_*)."
+                        }
+                      ]
+                    },
+                    "description": "Manually close an active virtual account so it no longer accepts payments."
+                  },
+                  "response": [
+                    {
+                      "id": "bd4968ab-5974-4e80-b91a-7bd0055570d4",
+                      "name": "Virtual Account closed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"closed\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"entity\": \"virtual_account\",\n  \"description\": \"<string>\",\n  \"amount_expected\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"status\": \"active\",\n  \"receivers\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"vpa\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"magna_d88\": \"<string>\",\n        \"veniam0\": \"<string>\",\n        \"proidente3\": \"<string>\",\n        \"elit545\": \"<string>\",\n        \"ad76e\": \"<string>\",\n        \"et_9c\": \"<string>\",\n        \"elit_e\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"bank_account\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"reprehenderit_308\": \"<string>\",\n        \"non_44\": \"<string>\",\n        \"mollitc02\": \"<string>\",\n        \"anim4b\": \"<string>\",\n        \"dolore_2\": \"<string>\",\n        \"id7\": \"<string>\",\n        \"adipisicingba\": \"<string>\",\n        \"exercitation_fd3\": \"<string>\",\n        \"adipisicing_e2e\": \"<string>\",\n        \"do84b\": \"<string>\",\n        \"sint_b9\": \"<string>\",\n        \"dolor__\": \"<string>\",\n        \"proident0e7\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    }\n  ],\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"notes\": {\n    \"commodo_ac_\": \"<string>\",\n    \"anim_0f\": \"<string>\",\n    \"dolor_5b\": \"<string>\",\n    \"proidentc\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-bd4968ab-5974-4e80-b91a-7bd0055570d4"
+                    },
+                    {
+                      "id": "9c673099-df41-43e6-b977-cf1f609efbe4",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"closed\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-9c673099-df41-43e6-b977-cf1f609efbe4"
+                    },
+                    {
+                      "id": "136cbe6f-09c5-49ef-95ab-c25dd7265c76",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"closed\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-136cbe6f-09c5-49ef-95ab-c25dd7265c76"
+                    },
+                    {
+                      "id": "44c26118-ab1d-44c4-9646-7e5af787467e",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"closed\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-44c26118-ab1d-44c4-9646-7e5af787467e"
+                    },
+                    {
+                      "id": "3c54c515-3fc2-490a-8e24-fb276fa6e43b",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"closed\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-3c54c515-3fc2-490a-8e24-fb276fa6e43b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-4f165635-9d6d-4876-9393-8cee188294af"
+                }
+              ],
+              "id": "bc6cc16d-6c81-4af6-aef0-677fdc3859ee",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-bc6cc16d-6c81-4af6-aef0-677fdc3859ee"
+            },
+            {
+              "name": "payments",
+              "item": [
+                {
+                  "name": "Fetch payments for a Virtual Account",
+                  "id": "0225bd02-7841-4779-81e5-b4ab4286e385",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id/payments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id",
+                        "payments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "99763e25-0a6d-4e79-9c27-d58a8493f963",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Virtual Account ID (va_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all payments received by a virtual account. Returns Payment objects."
+                  },
+                  "response": [
+                    {
+                      "id": "8432a282-49d1-4772-bddc-1a61fe57aa53",
+                      "name": "List of payments for the virtual account.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"status\": \"authorized\",\n      \"order_id\": \"<string>\",\n      \"invoice_id\": \"<string>\",\n      \"international\": \"<boolean>\",\n      \"method\": \"card\",\n      \"amount_refunded\": \"<integer>\",\n      \"refund_status\": \"null\",\n      \"captured\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"card_id\": \"<string>\",\n      \"card\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"name\": \"<string>\",\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"emi\": \"<boolean>\",\n        \"sub_type\": \"<string>\"\n      },\n      \"bank\": \"<string>\",\n      \"wallet\": \"<string>\",\n      \"vpa\": \"<string>\",\n      \"upi\": {\n        \"payer_account_type\": \"<string>\",\n        \"vpa\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"token_id\": \"<string>\",\n      \"notes\": {\n        \"in3d\": \"<string>\",\n        \"ut545\": \"<string>\",\n        \"voluptate_35\": \"<string>\",\n        \"add\": \"<string>\",\n        \"sit_592\": \"<string>\",\n        \"incididunt_3\": \"<string>\"\n      },\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"error_code\": \"<string>\",\n      \"error_description\": \"<string>\",\n      \"error_source\": \"<string>\",\n      \"error_step\": \"<string>\",\n      \"error_reason\": \"<string>\",\n      \"acquirer_data\": {\n        \"rrn\": \"<string>\",\n        \"authentication_reference_number\": \"<string>\",\n        \"bank_transaction_id\": \"<string>\",\n        \"transaction_id\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"status\": \"created\",\n      \"order_id\": \"<string>\",\n      \"invoice_id\": \"<string>\",\n      \"international\": \"<boolean>\",\n      \"method\": \"card\",\n      \"amount_refunded\": \"<integer>\",\n      \"refund_status\": \"full\",\n      \"captured\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"card_id\": \"<string>\",\n      \"card\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"name\": \"<string>\",\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"emi\": \"<boolean>\",\n        \"sub_type\": \"<string>\"\n      },\n      \"bank\": \"<string>\",\n      \"wallet\": \"<string>\",\n      \"vpa\": \"<string>\",\n      \"upi\": {\n        \"payer_account_type\": \"<string>\",\n        \"vpa\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"token_id\": \"<string>\",\n      \"notes\": {\n        \"veniam_8\": \"<string>\",\n        \"sunta\": \"<string>\",\n        \"minim_a7\": \"<string>\",\n        \"magna6\": \"<string>\",\n        \"cillum_01\": \"<string>\",\n        \"voluptate_b\": \"<string>\",\n        \"irurec76\": \"<string>\",\n        \"dolore_5_e\": \"<string>\",\n        \"dolorea4\": \"<string>\",\n        \"laboris47c\": \"<string>\",\n        \"laboris60\": \"<string>\",\n        \"do41\": \"<string>\"\n      },\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"error_code\": \"<string>\",\n      \"error_description\": \"<string>\",\n      \"error_source\": \"<string>\",\n      \"error_step\": \"<string>\",\n      \"error_reason\": \"<string>\",\n      \"acquirer_data\": {\n        \"rrn\": \"<string>\",\n        \"authentication_reference_number\": \"<string>\",\n        \"bank_transaction_id\": \"<string>\",\n        \"transaction_id\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-8432a282-49d1-4772-bddc-1a61fe57aa53"
+                    },
+                    {
+                      "id": "adfb4241-4e4e-49eb-8a3b-0f3f85515c54",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-adfb4241-4e4e-49eb-8a3b-0f3f85515c54"
+                    },
+                    {
+                      "id": "4ddbbe0b-7b4c-4a6b-bd05-f3682f471384",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-4ddbbe0b-7b4c-4a6b-bd05-f3682f471384"
+                    },
+                    {
+                      "id": "0f9ef9f0-a03d-4eaa-8d3d-4d14c54e5aa8",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-0f9ef9f0-a03d-4eaa-8d3d-4d14c54e5aa8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-0225bd02-7841-4779-81e5-b4ab4286e385"
+                }
+              ],
+              "id": "cc1880f2-4189-403a-8934-5430257c9bbb",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-cc1880f2-4189-403a-8934-5430257c9bbb"
+            },
+            {
+              "name": "receivers",
+              "item": [
+                {
+                  "name": "Add a VPA receiver to a Virtual Account",
+                  "id": "10d28da7-23d3-494a-a081-812de345a385",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"types\": [\n    \"vpa\",\n    \"vpa\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id/receivers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id",
+                        "receivers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0a67cf4f-aaa8-4467-ac6a-68f205e72d9f",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Virtual Account ID (va_*)."
+                        }
+                      ]
+                    },
+                    "description": "Add a UPI VPA receiver to an existing virtual account (Smart Collect 2.0). Requires the VPA receiver feature to be enabled on the merchant account."
+                  },
+                  "response": [
+                    {
+                      "id": "87abe898-52df-4ba3-873c-d49039bca8fb",
+                      "name": "VPA receiver added. Returns the updated VirtualAccount.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"types\": [\n    \"vpa\",\n    \"vpa\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/receivers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "receivers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"entity\": \"virtual_account\",\n  \"description\": \"<string>\",\n  \"amount_expected\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"status\": \"active\",\n  \"receivers\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"vpa\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"magna_d88\": \"<string>\",\n        \"veniam0\": \"<string>\",\n        \"proidente3\": \"<string>\",\n        \"elit545\": \"<string>\",\n        \"ad76e\": \"<string>\",\n        \"et_9c\": \"<string>\",\n        \"elit_e\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"bank_account\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"reprehenderit_308\": \"<string>\",\n        \"non_44\": \"<string>\",\n        \"mollitc02\": \"<string>\",\n        \"anim4b\": \"<string>\",\n        \"dolore_2\": \"<string>\",\n        \"id7\": \"<string>\",\n        \"adipisicingba\": \"<string>\",\n        \"exercitation_fd3\": \"<string>\",\n        \"adipisicing_e2e\": \"<string>\",\n        \"do84b\": \"<string>\",\n        \"sint_b9\": \"<string>\",\n        \"dolor__\": \"<string>\",\n        \"proident0e7\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    }\n  ],\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"notes\": {\n    \"commodo_ac_\": \"<string>\",\n    \"anim_0f\": \"<string>\",\n    \"dolor_5b\": \"<string>\",\n    \"proidentc\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-87abe898-52df-4ba3-873c-d49039bca8fb"
+                    },
+                    {
+                      "id": "032edc6b-4984-4f77-9c25-68829e5b36b1",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"types\": [\n    \"vpa\",\n    \"vpa\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/receivers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "receivers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-032edc6b-4984-4f77-9c25-68829e5b36b1"
+                    },
+                    {
+                      "id": "e8bb4562-5926-4245-a6bc-a680b6b5ee97",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"types\": [\n    \"vpa\",\n    \"vpa\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/receivers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "receivers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-e8bb4562-5926-4245-a6bc-a680b6b5ee97"
+                    },
+                    {
+                      "id": "db0fc5c4-0639-459a-8fa5-3126da3a61d4",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"types\": [\n    \"vpa\",\n    \"vpa\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/receivers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "receivers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-db0fc5c4-0639-459a-8fa5-3126da3a61d4"
+                    },
+                    {
+                      "id": "b8bf4e00-98ca-4720-b2e8-6eefffc28f6d",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"types\": [\n    \"vpa\",\n    \"vpa\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:id/receivers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":id",
+                            "receivers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-b8bf4e00-98ca-4720-b2e8-6eefffc28f6d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-10d28da7-23d3-494a-a081-812de345a385"
+                }
+              ],
+              "id": "f25dbca2-855b-4119-8a2f-9d29c8fae6e0",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-f25dbca2-855b-4119-8a2f-9d29c8fae6e0"
+            },
+            {
+              "name": "Fetch a Virtual Account",
+              "id": "5f9f0bc1-4aec-49a7-956a-44bd9398ea80",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fc15d6a9-f1fd-4f82-a8b2-78d2d99828ac",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Virtual Account ID (va_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific virtual account."
+              },
+              "response": [
+                {
+                  "id": "95225df3-6026-47c4-9c2d-955ee2cad88b",
+                  "name": "Virtual Account details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"entity\": \"virtual_account\",\n  \"description\": \"<string>\",\n  \"amount_expected\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"status\": \"active\",\n  \"receivers\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"vpa\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"magna_d88\": \"<string>\",\n        \"veniam0\": \"<string>\",\n        \"proidente3\": \"<string>\",\n        \"elit545\": \"<string>\",\n        \"ad76e\": \"<string>\",\n        \"et_9c\": \"<string>\",\n        \"elit_e\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"bank_account\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"reprehenderit_308\": \"<string>\",\n        \"non_44\": \"<string>\",\n        \"mollitc02\": \"<string>\",\n        \"anim4b\": \"<string>\",\n        \"dolore_2\": \"<string>\",\n        \"id7\": \"<string>\",\n        \"adipisicingba\": \"<string>\",\n        \"exercitation_fd3\": \"<string>\",\n        \"adipisicing_e2e\": \"<string>\",\n        \"do84b\": \"<string>\",\n        \"sint_b9\": \"<string>\",\n        \"dolor__\": \"<string>\",\n        \"proident0e7\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    }\n  ],\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"notes\": {\n    \"commodo_ac_\": \"<string>\",\n    \"anim_0f\": \"<string>\",\n    \"dolor_5b\": \"<string>\",\n    \"proidentc\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-95225df3-6026-47c4-9c2d-955ee2cad88b"
+                },
+                {
+                  "id": "9cc14fd0-e606-4559-a8be-7e90d78372e8",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-9cc14fd0-e606-4559-a8be-7e90d78372e8"
+                },
+                {
+                  "id": "bc1eeaac-0aab-4587-9211-656078671f9c",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-bc1eeaac-0aab-4587-9211-656078671f9c"
+                },
+                {
+                  "id": "1a85d315-8d9f-4223-9bfc-c45663a7b887",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-1a85d315-8d9f-4223-9bfc-c45663a7b887"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-5f9f0bc1-4aec-49a7-956a-44bd9398ea80"
+            },
+            {
+              "name": "Update a Virtual Account",
+              "id": "84506db1-6661-4c44-86ad-50a08901fea9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"close_by\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "286181ad-ad4c-46c2-b32e-9ada11331827",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Virtual Account ID (va_*)."
+                    }
+                  ]
+                },
+                "description": "Update the amount_expected or close_by timestamp on an active virtual account."
+              },
+              "response": [
+                {
+                  "id": "a4286aeb-a08e-47d6-a412-0c9fe57665e4",
+                  "name": "Virtual Account updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<integer>\",\n  \"close_by\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"entity\": \"virtual_account\",\n  \"description\": \"<string>\",\n  \"amount_expected\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"status\": \"active\",\n  \"receivers\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"vpa\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"magna_d88\": \"<string>\",\n        \"veniam0\": \"<string>\",\n        \"proidente3\": \"<string>\",\n        \"elit545\": \"<string>\",\n        \"ad76e\": \"<string>\",\n        \"et_9c\": \"<string>\",\n        \"elit_e\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"bank_account\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"reprehenderit_308\": \"<string>\",\n        \"non_44\": \"<string>\",\n        \"mollitc02\": \"<string>\",\n        \"anim4b\": \"<string>\",\n        \"dolore_2\": \"<string>\",\n        \"id7\": \"<string>\",\n        \"adipisicingba\": \"<string>\",\n        \"exercitation_fd3\": \"<string>\",\n        \"adipisicing_e2e\": \"<string>\",\n        \"do84b\": \"<string>\",\n        \"sint_b9\": \"<string>\",\n        \"dolor__\": \"<string>\",\n        \"proident0e7\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    }\n  ],\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"notes\": {\n    \"commodo_ac_\": \"<string>\",\n    \"anim_0f\": \"<string>\",\n    \"dolor_5b\": \"<string>\",\n    \"proidentc\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-a4286aeb-a08e-47d6-a412-0c9fe57665e4"
+                },
+                {
+                  "id": "691549ef-9675-4507-994f-e641b18e648a",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<integer>\",\n  \"close_by\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-691549ef-9675-4507-994f-e641b18e648a"
+                },
+                {
+                  "id": "e0b74385-e67c-422a-8693-766c49dde106",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<integer>\",\n  \"close_by\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-e0b74385-e67c-422a-8693-766c49dde106"
+                },
+                {
+                  "id": "50b1e578-50b5-4692-a6b9-382e9f130996",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<integer>\",\n  \"close_by\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-50b1e578-50b5-4692-a6b9-382e9f130996"
+                },
+                {
+                  "id": "1bede2fe-26f7-4309-8d35-d1dcd1dd4557",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<integer>\",\n  \"close_by\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-1bede2fe-26f7-4309-8d35-d1dcd1dd4557"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-84506db1-6661-4c44-86ad-50a08901fea9"
+            }
+          ],
+          "id": "b4faab35-df9f-4d65-ba28-1f24c01665af",
+          "createdAt": "2026-07-28T01:28:36.000Z",
+          "updatedAt": "2026-07-28T01:28:36.000Z",
+          "uid": "35240-b4faab35-df9f-4d65-ba28-1f24c01665af"
+        },
+        {
+          "name": "{va_id}",
+          "item": [
+            {
+              "name": "allowed_payers",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Delete an allowed payer (TPV)",
+                      "id": "745b48c1-a5e5-4050-bf6b-c2ee66a1cf4e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":va_id",
+                            "allowed_payers",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7fffc515-9d25-457d-97b9-175a8bf22fb0",
+                              "key": "va_id",
+                              "value": "<string>",
+                              "description": "(Required) Virtual Account ID (va_*)."
+                            },
+                            {
+                              "id": "6b3f0fae-f4d2-40ae-9893-a69369e79e74",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Allowed payer ID to remove."
+                            }
+                          ]
+                        },
+                        "description": "Remove a payer from the whitelist of a virtual account (Smart Collect TPV). The payer will no longer be able to make payments to this virtual account."
+                      },
+                      "response": [
+                        {
+                          "id": "7caef4d3-3aaa-48b5-af27-8ec7a94ab8b3",
+                          "name": "Allowed payer removed.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "virtual_accounts",
+                                ":va_id",
+                                "allowed_payers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "va_id"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T01:28:36.000Z",
+                          "updatedAt": "2026-07-28T01:28:36.000Z",
+                          "uid": "35240-7caef4d3-3aaa-48b5-af27-8ec7a94ab8b3"
+                        },
+                        {
+                          "id": "ce325e88-af4a-4966-b111-d1bc693d7ef3",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "virtual_accounts",
+                                ":va_id",
+                                "allowed_payers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "va_id"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:36.000Z",
+                          "updatedAt": "2026-07-28T01:28:36.000Z",
+                          "uid": "35240-ce325e88-af4a-4966-b111-d1bc693d7ef3"
+                        },
+                        {
+                          "id": "35ffe195-3bec-428c-a832-5e7692c1d75c",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "virtual_accounts",
+                                ":va_id",
+                                "allowed_payers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "va_id"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:36.000Z",
+                          "updatedAt": "2026-07-28T01:28:36.000Z",
+                          "uid": "35240-35ffe195-3bec-428c-a832-5e7692c1d75c"
+                        },
+                        {
+                          "id": "ded7f56b-1c81-44fa-8604-a9975dd50287",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "virtual_accounts",
+                                ":va_id",
+                                "allowed_payers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "va_id"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:36.000Z",
+                          "updatedAt": "2026-07-28T01:28:36.000Z",
+                          "uid": "35240-ded7f56b-1c81-44fa-8604-a9975dd50287"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-745b48c1-a5e5-4050-bf6b-c2ee66a1cf4e"
+                    }
+                  ],
+                  "id": "4ff2dad6-74e2-4eb9-a12c-25e3c0f66893",
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-4ff2dad6-74e2-4eb9-a12c-25e3c0f66893"
+                },
+                {
+                  "name": "Add an allowed payer (TPV)",
+                  "id": "b614e3ab-9358-4969-8bd3-3fea3f1b453b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"bank_account\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "virtual_accounts",
+                        ":va_id",
+                        "allowed_payers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "60f958f9-eec5-4a97-9342-6553d4965e4e",
+                          "key": "va_id",
+                          "value": "<string>",
+                          "description": "(Required) Virtual Account ID (va_*)."
+                        }
+                      ]
+                    },
+                    "description": "Whitelist a specific payer bank account or VPA for a virtual account (Smart Collect with Third Party Validation). Only whitelisted payers can successfully pay into this virtual account."
+                  },
+                  "response": [
+                    {
+                      "id": "64eeca76-b1a3-4267-9da0-6c7780527511",
+                      "name": "Allowed payer added.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"bank_account\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":va_id",
+                            "allowed_payers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "va_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"entity\": \"virtual_account\",\n  \"description\": \"<string>\",\n  \"amount_expected\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"status\": \"active\",\n  \"receivers\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"vpa\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"magna_d88\": \"<string>\",\n        \"veniam0\": \"<string>\",\n        \"proidente3\": \"<string>\",\n        \"elit545\": \"<string>\",\n        \"ad76e\": \"<string>\",\n        \"et_9c\": \"<string>\",\n        \"elit_e\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"bank_account\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"reprehenderit_308\": \"<string>\",\n        \"non_44\": \"<string>\",\n        \"mollitc02\": \"<string>\",\n        \"anim4b\": \"<string>\",\n        \"dolore_2\": \"<string>\",\n        \"id7\": \"<string>\",\n        \"adipisicingba\": \"<string>\",\n        \"exercitation_fd3\": \"<string>\",\n        \"adipisicing_e2e\": \"<string>\",\n        \"do84b\": \"<string>\",\n        \"sint_b9\": \"<string>\",\n        \"dolor__\": \"<string>\",\n        \"proident0e7\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    }\n  ],\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"notes\": {\n    \"commodo_ac_\": \"<string>\",\n    \"anim_0f\": \"<string>\",\n    \"dolor_5b\": \"<string>\",\n    \"proidentc\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-64eeca76-b1a3-4267-9da0-6c7780527511"
+                    },
+                    {
+                      "id": "27472f86-49d5-4804-9cce-dc680652b68a",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"bank_account\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":va_id",
+                            "allowed_payers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "va_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-27472f86-49d5-4804-9cce-dc680652b68a"
+                    },
+                    {
+                      "id": "27e85c77-8a79-44ee-a637-06d2cab88534",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"bank_account\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":va_id",
+                            "allowed_payers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "va_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-27e85c77-8a79-44ee-a637-06d2cab88534"
+                    },
+                    {
+                      "id": "f0dc8967-b913-4357-abab-d74a97114292",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"bank_account\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":va_id",
+                            "allowed_payers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "va_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-f0dc8967-b913-4357-abab-d74a97114292"
+                    },
+                    {
+                      "id": "b7224be9-56f7-41fd-b2b2-ab3597a980b9",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"bank_account\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/virtual_accounts/:va_id/allowed_payers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "virtual_accounts",
+                            ":va_id",
+                            "allowed_payers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "va_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-b7224be9-56f7-41fd-b2b2-ab3597a980b9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-b614e3ab-9358-4969-8bd3-3fea3f1b453b"
+                }
+              ],
+              "id": "8874cfb8-85b8-4ee4-91fe-376f2971dae6",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-8874cfb8-85b8-4ee4-91fe-376f2971dae6"
+            }
+          ],
+          "id": "6da5e3bf-b28f-4576-b93e-d136f34c3888",
+          "createdAt": "2026-07-28T01:28:36.000Z",
+          "updatedAt": "2026-07-28T01:28:36.000Z",
+          "uid": "35240-6da5e3bf-b28f-4576-b93e-d136f34c3888"
+        },
+        {
+          "name": "Create a Virtual Account",
+          "id": "831d8183-51d1-411d-85f3-be506830ba5d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"receivers\": {\n    \"types\": [\n      \"bank_account\",\n      \"bank_account\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"adipisicing_\": \"<string>\",\n    \"minimb8\": \"<string>\",\n    \"in_9d6\": \"<string>\",\n    \"occaecatb\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/virtual_accounts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "virtual_accounts"
+              ]
+            },
+            "description": "Create a virtual bank account (and optionally a VPA) for accepting NEFT/RTGS/IMPS/UPI payments. Set amount_expected=0 to accept any amount. Auto-closes after 90 days of inactivity. Maximum close_by timestamp: 2147483647."
+          },
+          "response": [
+            {
+              "id": "c14af251-37b9-45e6-9057-bbc2b5f30b48",
+              "name": "Virtual Account created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"receivers\": {\n    \"types\": [\n      \"bank_account\",\n      \"bank_account\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"adipisicing_\": \"<string>\",\n    \"minimb8\": \"<string>\",\n    \"in_9d6\": \"<string>\",\n    \"occaecatb\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"entity\": \"virtual_account\",\n  \"description\": \"<string>\",\n  \"amount_expected\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"status\": \"active\",\n  \"receivers\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"vpa\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"magna_d88\": \"<string>\",\n        \"veniam0\": \"<string>\",\n        \"proidente3\": \"<string>\",\n        \"elit545\": \"<string>\",\n        \"ad76e\": \"<string>\",\n        \"et_9c\": \"<string>\",\n        \"elit_e\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"bank_account\",\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"notes\": {\n        \"reprehenderit_308\": \"<string>\",\n        \"non_44\": \"<string>\",\n        \"mollitc02\": \"<string>\",\n        \"anim4b\": \"<string>\",\n        \"dolore_2\": \"<string>\",\n        \"id7\": \"<string>\",\n        \"adipisicingba\": \"<string>\",\n        \"exercitation_fd3\": \"<string>\",\n        \"adipisicing_e2e\": \"<string>\",\n        \"do84b\": \"<string>\",\n        \"sint_b9\": \"<string>\",\n        \"dolor__\": \"<string>\",\n        \"proident0e7\": \"<string>\"\n      },\n      \"account_number\": \"<string>\",\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"flow\": \"upi_qr\"\n    }\n  ],\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"notes\": {\n    \"commodo_ac_\": \"<string>\",\n    \"anim_0f\": \"<string>\",\n    \"dolor_5b\": \"<string>\",\n    \"proidentc\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-c14af251-37b9-45e6-9057-bbc2b5f30b48"
+            },
+            {
+              "id": "dd8d0ca2-5fad-464a-988d-7b38fa595b2f",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"receivers\": {\n    \"types\": [\n      \"bank_account\",\n      \"bank_account\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"adipisicing_\": \"<string>\",\n    \"minimb8\": \"<string>\",\n    \"in_9d6\": \"<string>\",\n    \"occaecatb\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-dd8d0ca2-5fad-464a-988d-7b38fa595b2f"
+            },
+            {
+              "id": "a4f4dbef-5123-4b76-b561-a9286d2566b3",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"receivers\": {\n    \"types\": [\n      \"bank_account\",\n      \"bank_account\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"adipisicing_\": \"<string>\",\n    \"minimb8\": \"<string>\",\n    \"in_9d6\": \"<string>\",\n    \"occaecatb\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-a4f4dbef-5123-4b76-b561-a9286d2566b3"
+            },
+            {
+              "id": "d84551f1-7148-4cc9-aa38-002f83774e88",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"receivers\": {\n    \"types\": [\n      \"bank_account\",\n      \"bank_account\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"adipisicing_\": \"<string>\",\n    \"minimb8\": \"<string>\",\n    \"in_9d6\": \"<string>\",\n    \"occaecatb\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-d84551f1-7148-4cc9-aa38-002f83774e88"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:36.000Z",
+          "updatedAt": "2026-07-28T01:28:36.000Z",
+          "uid": "35240-831d8183-51d1-411d-85f3-be506830ba5d"
+        },
+        {
+          "name": "List Virtual Accounts",
+          "id": "851fe01b-d765-4075-a4cf-51715a3f9542",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/virtual_accounts?from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "virtual_accounts"
+              ],
+              "query": [
+                {
+                  "description": "Unix timestamp filter (start).",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp filter (end).",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to return. Default: 10. Maximum: 100.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use for pagination. Default: 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of virtual accounts with optional filters."
+          },
+          "response": [
+            {
+              "id": "27f4bdba-419c-4cd0-9adf-b3085cdac490",
+              "name": "List of Virtual Accounts.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp filter (start).",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter (end).",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"entity\": \"virtual_account\",\n      \"description\": \"<string>\",\n      \"amount_expected\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"status\": \"closed\",\n      \"receivers\": [\n        {\n          \"id\": \"<string>\",\n          \"entity\": \"bank_account\",\n          \"ifsc\": \"<string>\",\n          \"bank_name\": \"<string>\",\n          \"name\": \"<string>\",\n          \"notes\": {\n            \"Duisa\": \"<string>\",\n            \"ut_b\": \"<string>\",\n            \"voluptate_f\": \"<string>\",\n            \"aliquipc0d\": \"<string>\",\n            \"esse_d\": \"<string>\",\n            \"doa\": \"<string>\",\n            \"nisid\": \"<string>\",\n            \"sint5b\": \"<string>\"\n          },\n          \"account_number\": \"<string>\",\n          \"username\": \"<string>\",\n          \"handle\": \"<string>\",\n          \"flow\": \"upi_qr\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"entity\": \"vpa\",\n          \"ifsc\": \"<string>\",\n          \"bank_name\": \"<string>\",\n          \"name\": \"<string>\",\n          \"notes\": {\n            \"quis_0\": \"<string>\",\n            \"ut_74\": \"<string>\",\n            \"Excepteur9\": \"<string>\",\n            \"iddb9\": \"<string>\",\n            \"dolore_2\": \"<string>\",\n            \"pariatur_6b0\": \"<string>\",\n            \"nulla_3b\": \"<string>\",\n            \"nonb\": \"<string>\",\n            \"in2\": \"<string>\",\n            \"culpa_b7\": \"<string>\",\n            \"nulla608\": \"<string>\",\n            \"laborum_d1c\": \"<string>\",\n            \"Ut_7\": \"<string>\",\n            \"pariatur8\": \"<string>\"\n          },\n          \"account_number\": \"<string>\",\n          \"username\": \"<string>\",\n          \"handle\": \"<string>\",\n          \"flow\": \"upi_qr\"\n        }\n      ],\n      \"close_by\": \"<integer>\",\n      \"closed_at\": \"<integer>\",\n      \"customer_id\": \"<string>\",\n      \"notes\": {\n        \"esse_36_\": \"<string>\",\n        \"cupidatat_9d\": \"<string>\",\n        \"magna4b\": \"<string>\",\n        \"consectetur_6\": \"<string>\",\n        \"incididuntba6\": \"<string>\",\n        \"laborum_99\": \"<string>\",\n        \"in96\": \"<string>\",\n        \"eu61\": \"<string>\",\n        \"dolore_e\": \"<string>\",\n        \"non171\": \"<string>\",\n        \"esse_ad0\": \"<string>\",\n        \"officia_b\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"entity\": \"virtual_account\",\n      \"description\": \"<string>\",\n      \"amount_expected\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"status\": \"active\",\n      \"receivers\": [\n        {\n          \"id\": \"<string>\",\n          \"entity\": \"vpa\",\n          \"ifsc\": \"<string>\",\n          \"bank_name\": \"<string>\",\n          \"name\": \"<string>\",\n          \"notes\": {\n            \"veniam238\": \"<string>\",\n            \"in5\": \"<string>\",\n            \"quif\": \"<string>\",\n            \"etc8e\": \"<string>\",\n            \"incididunt_1b1\": \"<string>\",\n            \"ut_d\": \"<string>\",\n            \"cupidatat_0\": \"<string>\",\n            \"fugiat_5\": \"<string>\",\n            \"magna98\": \"<string>\"\n          },\n          \"account_number\": \"<string>\",\n          \"username\": \"<string>\",\n          \"handle\": \"<string>\",\n          \"flow\": \"upi_qr\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"entity\": \"bank_account\",\n          \"ifsc\": \"<string>\",\n          \"bank_name\": \"<string>\",\n          \"name\": \"<string>\",\n          \"notes\": {\n            \"ut_b82\": \"<string>\",\n            \"pariatur_d_2\": \"<string>\",\n            \"enim938\": \"<string>\"\n          },\n          \"account_number\": \"<string>\",\n          \"username\": \"<string>\",\n          \"handle\": \"<string>\",\n          \"flow\": \"upi_qr\"\n        }\n      ],\n      \"close_by\": \"<integer>\",\n      \"closed_at\": \"<integer>\",\n      \"customer_id\": \"<string>\",\n      \"notes\": {\n        \"ipsum_fb\": \"<string>\",\n        \"dolore_2cf\": \"<string>\",\n        \"culpa3\": \"<string>\",\n        \"occaecat5\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-27f4bdba-419c-4cd0-9adf-b3085cdac490"
+            },
+            {
+              "id": "ca53c752-4039-4426-aa3c-508e8f9ea62f",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp filter (start).",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter (end).",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-ca53c752-4039-4426-aa3c-508e8f9ea62f"
+            },
+            {
+              "id": "54e15c54-5a9b-416b-b83d-9e41793bb0d7",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/virtual_accounts?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "virtual_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp filter (start).",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter (end).",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-54e15c54-5a9b-416b-b83d-9e41793bb0d7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:36.000Z",
+          "updatedAt": "2026-07-28T01:28:36.000Z",
+          "uid": "35240-851fe01b-d765-4075-a4cf-51715a3f9542"
+        }
+      ],
+      "id": "71ca132a-f4ac-4e98-a657-f39f7b749313",
+      "createdAt": "2026-07-28T01:28:36.000Z",
+      "updatedAt": "2026-07-28T01:28:36.000Z",
+      "uid": "35240-71ca132a-f4ac-4e98-a657-f39f7b749313"
+    },
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "bank_transfer",
+              "item": [
+                {
+                  "name": "Fetch bank transfer details for a payment",
+                  "id": "e10cc0c4-acb6-401c-ac45-73dccdb08676",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:id/bank_transfer",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":id",
+                        "bank_transfer"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ec2cee20-39cb-4022-8309-30c511d9d34d",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Payment ID (pay_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the BankTransfer entity associated with a payment received via a Virtual Account. Contains the UTR number, payer bank account details, and transfer mode."
+                  },
+                  "response": [
+                    {
+                      "id": "4ff5c879-ec13-42f9-847c-88aca964875f",
+                      "name": "Bank transfer details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/bank_transfer",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "bank_transfer"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"bank_transfer\",\n  \"payment_id\": \"<string>\",\n  \"mode\": \"NEFT\",\n  \"amount\": \"<integer>\",\n  \"payer_bank_account\": {\n    \"id\": \"<string>\",\n    \"entity\": \"bank_account\",\n    \"ifsc\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"notes\": {\n      \"veniam6\": \"<string>\",\n      \"Duis_df\": \"<string>\"\n    },\n    \"account_number\": \"<string>\"\n  },\n  \"bank_reference\": \"<string>\",\n  \"virtual_account_id\": \"<string>\",\n  \"virtual_account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"entity\": \"virtual_account\",\n    \"description\": \"<string>\",\n    \"amount_expected\": \"<integer>\",\n    \"amount_paid\": \"<integer>\",\n    \"status\": \"closed\",\n    \"receivers\": [\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"bank_account\",\n        \"ifsc\": \"<string>\",\n        \"bank_name\": \"<string>\",\n        \"name\": \"<string>\",\n        \"notes\": {\n          \"labore_f\": \"<string>\",\n          \"mollit_2e\": \"<string>\",\n          \"ex54\": \"<string>\",\n          \"eu_414\": \"<string>\"\n        },\n        \"account_number\": \"<string>\",\n        \"username\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"flow\": \"upi_qr\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"vpa\",\n        \"ifsc\": \"<string>\",\n        \"bank_name\": \"<string>\",\n        \"name\": \"<string>\",\n        \"notes\": {\n          \"veniam_e9_\": \"<string>\",\n          \"quis0f4\": \"<string>\",\n          \"incididuntdd\": \"<string>\",\n          \"ut_b\": \"<string>\",\n          \"fugiat_d1\": \"<string>\",\n          \"aute_a5f\": \"<string>\",\n          \"tempor77\": \"<string>\"\n        },\n        \"account_number\": \"<string>\",\n        \"username\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"flow\": \"upi_qr\"\n      }\n    ],\n    \"close_by\": \"<integer>\",\n    \"closed_at\": \"<integer>\",\n    \"customer_id\": \"<string>\",\n    \"notes\": {\n      \"magna_bac\": \"<string>\",\n      \"tempor0\": \"<string>\",\n      \"cupidatat0\": \"<string>\",\n      \"Excepteur_4fe\": \"<string>\",\n      \"commodo_895\": \"<string>\",\n      \"fugiata\": \"<string>\",\n      \"laborum3bd\": \"<string>\",\n      \"aliqua4\": \"<string>\",\n      \"est65\": \"<string>\",\n      \"ut772\": \"<string>\",\n      \"elit1\": \"<string>\",\n      \"Lorem__\": \"<string>\",\n      \"laborum1d0\": \"<string>\",\n      \"elitec\": \"<string>\"\n    },\n    \"created_at\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-4ff5c879-ec13-42f9-847c-88aca964875f"
+                    },
+                    {
+                      "id": "f00112d1-e429-4a5f-917a-a855f35fd9d6",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/bank_transfer",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "bank_transfer"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-f00112d1-e429-4a5f-917a-a855f35fd9d6"
+                    },
+                    {
+                      "id": "c52d9475-78da-435d-bbc6-3e6ed7fd6da7",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/bank_transfer",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "bank_transfer"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-c52d9475-78da-435d-bbc6-3e6ed7fd6da7"
+                    },
+                    {
+                      "id": "e55e5e74-da5c-4237-9f13-33976aba1ae7",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/:id/bank_transfer",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            ":id",
+                            "bank_transfer"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:36.000Z",
+                      "updatedAt": "2026-07-28T01:28:36.000Z",
+                      "uid": "35240-e55e5e74-da5c-4237-9f13-33976aba1ae7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:36.000Z",
+                  "updatedAt": "2026-07-28T01:28:36.000Z",
+                  "uid": "35240-e10cc0c4-acb6-401c-ac45-73dccdb08676"
+                }
+              ],
+              "id": "dc5402c6-0d7b-4578-b28e-a21d00199cba",
+              "createdAt": "2026-07-28T01:28:36.000Z",
+              "updatedAt": "2026-07-28T01:28:36.000Z",
+              "uid": "35240-dc5402c6-0d7b-4578-b28e-a21d00199cba"
+            }
+          ],
+          "id": "89f4e675-53a6-446e-abff-dc03023cba00",
+          "createdAt": "2026-07-28T01:28:36.000Z",
+          "updatedAt": "2026-07-28T01:28:36.000Z",
+          "uid": "35240-89f4e675-53a6-446e-abff-dc03023cba00"
+        }
+      ],
+      "id": "8d80f2ae-6e19-4c2f-8c8b-a3e4cba4c6b1",
+      "createdAt": "2026-07-28T01:28:36.000Z",
+      "updatedAt": "2026-07-28T01:28:36.000Z",
+      "uid": "35240-8d80f2ae-6e19-4c2f-8c8b-a3e4cba4c6b1"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

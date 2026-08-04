@@ -1,0 +1,1152 @@
+{
+  "info": {
+    "_postman_id": "0d256856-c9e4-4536-a7b8-5f8428ca9b74",
+    "name": "Razorpay Bills Partner Stakeholders API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:08.000Z",
+    "updatedAt": "2026-07-28T01:28:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0d256856-c9e4-4536-a7b8-5f8428ca9b74"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account_id}",
+              "item": [
+                {
+                  "name": "stakeholders",
+                  "item": [
+                    {
+                      "name": "{stakeholder_id}",
+                      "item": [
+                        {
+                          "name": "Update a Stakeholder",
+                          "id": "2d8adfbd-24d2-4f4c-ad24-9a5733ca0f21",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {},\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {},\n  \"notes\": {\n    \"veniam_44\": \"<string>\",\n    \"proident_404\": \"<string>\",\n    \"est1\": \"<string>\",\n    \"tempor7a\": \"<string>\",\n    \"Utb\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders",
+                                ":stakeholder_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "fff9c7a7-81d5-4c79-969e-3da6fda4904a",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Linked Account ID (acc_*)."
+                                },
+                                {
+                                  "id": "1f08b099-6cb8-4276-9132-f9b49b015d90",
+                                  "key": "stakeholder_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Stakeholder ID (sth_*)."
+                                }
+                              ]
+                            },
+                            "description": "Update stakeholder information for a Linked Account."
+                          },
+                          "response": [
+                            {
+                              "id": "2191c8b1-b900-442a-9af7-9f3772952c8d",
+                              "name": "Stakeholder updated.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {},\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {},\n  \"notes\": {\n    \"veniam_44\": \"<string>\",\n    \"proident_404\": \"<string>\",\n    \"est1\": \"<string>\",\n    \"tempor7a\": \"<string>\",\n    \"Utb\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "stakeholders",
+                                    ":stakeholder_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "stakeholder_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"stakeholder\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {\n    \"director\": \"<boolean>\",\n    \"executive\": \"<boolean>\"\n  },\n  \"phone\": {\n    \"primary\": {\n      \"number\": \"<string>\",\n      \"country_code\": \"<string>\"\n    },\n    \"secondary\": {\n      \"number\": \"<string>\",\n      \"country_code\": \"<string>\"\n    }\n  },\n  \"addresses\": {\n    \"residential\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"kyc\": {\n    \"pan\": \"<string>\"\n  },\n  \"notes\": {\n    \"velit_03\": \"<string>\",\n    \"exb\": \"<string>\",\n    \"ut_2\": \"<string>\",\n    \"magna_48\": \"<string>\",\n    \"cupidatat_d4\": \"<string>\",\n    \"in_d3\": \"<string>\",\n    \"irure_9_\": \"<string>\",\n    \"esse6\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:28:08.000Z",
+                              "updatedAt": "2026-07-28T01:28:08.000Z",
+                              "uid": "35240-2191c8b1-b900-442a-9af7-9f3772952c8d"
+                            },
+                            {
+                              "id": "b71ca669-e1d2-418c-9b8b-b6d0fe13f5fe",
+                              "name": "Bad request. Invalid parameters or missing required fields.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {},\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {},\n  \"notes\": {\n    \"veniam_44\": \"<string>\",\n    \"proident_404\": \"<string>\",\n    \"est1\": \"<string>\",\n    \"tempor7a\": \"<string>\",\n    \"Utb\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "stakeholders",
+                                    ":stakeholder_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "stakeholder_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:08.000Z",
+                              "updatedAt": "2026-07-28T01:28:08.000Z",
+                              "uid": "35240-b71ca669-e1d2-418c-9b8b-b6d0fe13f5fe"
+                            },
+                            {
+                              "id": "b83e5d8f-841a-44f8-b2b6-1f9584c7d8f6",
+                              "name": "Authentication failed. Invalid or missing API key credentials.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {},\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {},\n  \"notes\": {\n    \"veniam_44\": \"<string>\",\n    \"proident_404\": \"<string>\",\n    \"est1\": \"<string>\",\n    \"tempor7a\": \"<string>\",\n    \"Utb\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "stakeholders",
+                                    ":stakeholder_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "stakeholder_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:08.000Z",
+                              "updatedAt": "2026-07-28T01:28:08.000Z",
+                              "uid": "35240-b83e5d8f-841a-44f8-b2b6-1f9584c7d8f6"
+                            },
+                            {
+                              "id": "b6a97d64-54ab-4797-8dd1-99e48b9e67d2",
+                              "name": "Resource not found.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {},\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {},\n  \"notes\": {\n    \"veniam_44\": \"<string>\",\n    \"proident_404\": \"<string>\",\n    \"est1\": \"<string>\",\n    \"tempor7a\": \"<string>\",\n    \"Utb\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "stakeholders",
+                                    ":stakeholder_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "stakeholder_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:08.000Z",
+                              "updatedAt": "2026-07-28T01:28:08.000Z",
+                              "uid": "35240-b6a97d64-54ab-4797-8dd1-99e48b9e67d2"
+                            },
+                            {
+                              "id": "bce6b3fb-aa95-4e17-87fb-464b1695f365",
+                              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {},\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {},\n  \"notes\": {\n    \"veniam_44\": \"<string>\",\n    \"proident_404\": \"<string>\",\n    \"est1\": \"<string>\",\n    \"tempor7a\": \"<string>\",\n    \"Utb\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "stakeholders",
+                                    ":stakeholder_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "stakeholder_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:08.000Z",
+                              "updatedAt": "2026-07-28T01:28:08.000Z",
+                              "uid": "35240-bce6b3fb-aa95-4e17-87fb-464b1695f365"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-2d8adfbd-24d2-4f4c-ad24-9a5733ca0f21"
+                        }
+                      ],
+                      "id": "d0a5ea56-0c54-4722-a636-9f939f187ab8",
+                      "createdAt": "2026-07-28T01:28:08.000Z",
+                      "updatedAt": "2026-07-28T01:28:08.000Z",
+                      "uid": "35240-d0a5ea56-0c54-4722-a636-9f939f187ab8"
+                    },
+                    {
+                      "name": "Create a Stakeholder",
+                      "id": "22be0deb-7b13-469c-85b2-dd2b8fe4e064",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {\n    \"director\": \"<boolean>\",\n    \"executive\": \"<boolean>\"\n  },\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {\n    \"pan\": \"<string>\"\n  },\n  \"notes\": {\n    \"officia7\": \"<string>\",\n    \"do_0b3\": \"<string>\",\n    \"deserunt18\": \"<string>\",\n    \"deserunt245\": \"<string>\",\n    \"amet225\": \"<string>\",\n    \"ullamco_04_\": \"<string>\",\n    \"Ut5\": \"<string>\",\n    \"Excepteur_01\": \"<string>\",\n    \"in1\": \"<string>\",\n    \"aute7\": \"<string>\",\n    \"enim_5\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id",
+                            "stakeholders"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2d4c80d4-6c48-48f2-993c-a928ed4edc31",
+                              "key": "account_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                            }
+                          ]
+                        },
+                        "description": "Add a business owner or director to a Linked Account. Only one stakeholder is allowed per Route Linked Account. PAN 4th character must be 'P' (individual PAN)."
+                      },
+                      "response": [
+                        {
+                          "id": "06210be7-53c4-47a6-8a0b-c518226533d2",
+                          "name": "Stakeholder created.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {\n    \"director\": \"<boolean>\",\n    \"executive\": \"<boolean>\"\n  },\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {\n    \"pan\": \"<string>\"\n  },\n  \"notes\": {\n    \"officia7\": \"<string>\",\n    \"do_0b3\": \"<string>\",\n    \"deserunt18\": \"<string>\",\n    \"deserunt245\": \"<string>\",\n    \"amet225\": \"<string>\",\n    \"ullamco_04_\": \"<string>\",\n    \"Ut5\": \"<string>\",\n    \"Excepteur_01\": \"<string>\",\n    \"in1\": \"<string>\",\n    \"aute7\": \"<string>\",\n    \"enim_5\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"stakeholder\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {\n    \"director\": \"<boolean>\",\n    \"executive\": \"<boolean>\"\n  },\n  \"phone\": {\n    \"primary\": {\n      \"number\": \"<string>\",\n      \"country_code\": \"<string>\"\n    },\n    \"secondary\": {\n      \"number\": \"<string>\",\n      \"country_code\": \"<string>\"\n    }\n  },\n  \"addresses\": {\n    \"residential\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"kyc\": {\n    \"pan\": \"<string>\"\n  },\n  \"notes\": {\n    \"velit_03\": \"<string>\",\n    \"exb\": \"<string>\",\n    \"ut_2\": \"<string>\",\n    \"magna_48\": \"<string>\",\n    \"cupidatat_d4\": \"<string>\",\n    \"in_d3\": \"<string>\",\n    \"irure_9_\": \"<string>\",\n    \"esse6\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-06210be7-53c4-47a6-8a0b-c518226533d2"
+                        },
+                        {
+                          "id": "69bac934-9fd5-42a8-ba31-628203a36d28",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {\n    \"director\": \"<boolean>\",\n    \"executive\": \"<boolean>\"\n  },\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {\n    \"pan\": \"<string>\"\n  },\n  \"notes\": {\n    \"officia7\": \"<string>\",\n    \"do_0b3\": \"<string>\",\n    \"deserunt18\": \"<string>\",\n    \"deserunt245\": \"<string>\",\n    \"amet225\": \"<string>\",\n    \"ullamco_04_\": \"<string>\",\n    \"Ut5\": \"<string>\",\n    \"Excepteur_01\": \"<string>\",\n    \"in1\": \"<string>\",\n    \"aute7\": \"<string>\",\n    \"enim_5\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-69bac934-9fd5-42a8-ba31-628203a36d28"
+                        },
+                        {
+                          "id": "b5aaab17-5e38-4c5c-a8f3-80a2a4d89b4f",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {\n    \"director\": \"<boolean>\",\n    \"executive\": \"<boolean>\"\n  },\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {\n    \"pan\": \"<string>\"\n  },\n  \"notes\": {\n    \"officia7\": \"<string>\",\n    \"do_0b3\": \"<string>\",\n    \"deserunt18\": \"<string>\",\n    \"deserunt245\": \"<string>\",\n    \"amet225\": \"<string>\",\n    \"ullamco_04_\": \"<string>\",\n    \"Ut5\": \"<string>\",\n    \"Excepteur_01\": \"<string>\",\n    \"in1\": \"<string>\",\n    \"aute7\": \"<string>\",\n    \"enim_5\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-b5aaab17-5e38-4c5c-a8f3-80a2a4d89b4f"
+                        },
+                        {
+                          "id": "8ff93e68-7718-4353-990e-bae283c52bb6",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"percentage_ownership\": \"<number>\",\n  \"relationship\": {\n    \"director\": \"<boolean>\",\n    \"executive\": \"<boolean>\"\n  },\n  \"phone\": {},\n  \"addresses\": {},\n  \"kyc\": {\n    \"pan\": \"<string>\"\n  },\n  \"notes\": {\n    \"officia7\": \"<string>\",\n    \"do_0b3\": \"<string>\",\n    \"deserunt18\": \"<string>\",\n    \"deserunt245\": \"<string>\",\n    \"amet225\": \"<string>\",\n    \"ullamco_04_\": \"<string>\",\n    \"Ut5\": \"<string>\",\n    \"Excepteur_01\": \"<string>\",\n    \"in1\": \"<string>\",\n    \"aute7\": \"<string>\",\n    \"enim_5\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-8ff93e68-7718-4353-990e-bae283c52bb6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:08.000Z",
+                      "updatedAt": "2026-07-28T01:28:08.000Z",
+                      "uid": "35240-22be0deb-7b13-469c-85b2-dd2b8fe4e064"
+                    },
+                    {
+                      "name": "Fetch all stakeholders for an account",
+                      "id": "a8cb9b0b-9c01-457c-aaad-637f5d7a7307",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id",
+                            "stakeholders"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c1570a26-f21c-4381-91d5-268b810edfa9",
+                              "key": "account_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve all stakeholders associated with a sub-merchant account. Partners API only \u2014 Route allows only 1 stakeholder per account. Authentication: OAuth access_token."
+                      },
+                      "response": [
+                        {
+                          "id": "2ad92e61-d89d-4df1-adda-9d6d1e8cf516",
+                          "name": "List of stakeholders",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"stakeholder\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"percentage_ownership\": \"<number>\",\n      \"relationship\": {\n        \"director\": \"<boolean>\",\n        \"executive\": \"<boolean>\"\n      },\n      \"phone\": {\n        \"primary\": \"<string>\",\n        \"secondary\": \"<string>\"\n      },\n      \"addresses\": {\n        \"residential\": {\n          \"street\": \"<string>\",\n          \"city\": \"<string>\",\n          \"state\": \"<string>\",\n          \"postal_code\": \"<string>\",\n          \"country\": \"<string>\"\n        }\n      },\n      \"kyc\": {\n        \"pan\": \"<string>\"\n      },\n      \"notes\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"stakeholder\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"percentage_ownership\": \"<number>\",\n      \"relationship\": {\n        \"director\": \"<boolean>\",\n        \"executive\": \"<boolean>\"\n      },\n      \"phone\": {\n        \"primary\": \"<string>\",\n        \"secondary\": \"<string>\"\n      },\n      \"addresses\": {\n        \"residential\": {\n          \"street\": \"<string>\",\n          \"city\": \"<string>\",\n          \"state\": \"<string>\",\n          \"postal_code\": \"<string>\",\n          \"country\": \"<string>\"\n        }\n      },\n      \"kyc\": {\n        \"pan\": \"<string>\"\n      },\n      \"notes\": {}\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-2ad92e61-d89d-4df1-adda-9d6d1e8cf516"
+                        },
+                        {
+                          "id": "0b83383d-3285-405c-91da-bc662c7b5d20",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-0b83383d-3285-405c-91da-bc662c7b5d20"
+                        },
+                        {
+                          "id": "2f35eb95-70c9-4fc6-9095-c369a653a212",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-2f35eb95-70c9-4fc6-9095-c369a653a212"
+                        },
+                        {
+                          "id": "639158db-0417-45e6-ac7c-63bbf153c1e3",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-639158db-0417-45e6-ac7c-63bbf153c1e3"
+                        },
+                        {
+                          "id": "4a3e3035-1b42-493d-b2f3-0d2223020606",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-4a3e3035-1b42-493d-b2f3-0d2223020606"
+                        },
+                        {
+                          "id": "83d20d06-844b-4b1e-8a3b-07bf867c0ffe",
+                          "name": "Internal server error.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "stakeholders"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:08.000Z",
+                          "updatedAt": "2026-07-28T01:28:08.000Z",
+                          "uid": "35240-83d20d06-844b-4b1e-8a3b-07bf867c0ffe"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:08.000Z",
+                      "updatedAt": "2026-07-28T01:28:08.000Z",
+                      "uid": "35240-a8cb9b0b-9c01-457c-aaad-637f5d7a7307"
+                    }
+                  ],
+                  "id": "3c35b2bd-c434-4d58-b77d-65970c06ccf2",
+                  "createdAt": "2026-07-28T01:28:08.000Z",
+                  "updatedAt": "2026-07-28T01:28:08.000Z",
+                  "uid": "35240-3c35b2bd-c434-4d58-b77d-65970c06ccf2"
+                }
+              ],
+              "id": "95f5ad6e-dec4-47ca-82fc-5203b7b59b5f",
+              "createdAt": "2026-07-28T01:28:08.000Z",
+              "updatedAt": "2026-07-28T01:28:08.000Z",
+              "uid": "35240-95f5ad6e-dec4-47ca-82fc-5203b7b59b5f"
+            }
+          ],
+          "id": "734d1555-db59-4efb-8f63-3b699fa5385c",
+          "createdAt": "2026-07-28T01:28:08.000Z",
+          "updatedAt": "2026-07-28T01:28:08.000Z",
+          "uid": "35240-734d1555-db59-4efb-8f63-3b699fa5385c"
+        }
+      ],
+      "id": "bbcc5540-c395-469e-8812-a65ddaa73b2a",
+      "createdAt": "2026-07-28T01:28:08.000Z",
+      "updatedAt": "2026-07-28T01:28:08.000Z",
+      "uid": "35240-bbcc5540-c395-469e-8812-a65ddaa73b2a"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

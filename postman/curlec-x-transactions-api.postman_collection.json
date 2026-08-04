@@ -1,0 +1,784 @@
+{
+  "info": {
+    "_postman_id": "6a92cca4-3996-4360-a271-60712c592a5d",
+    "name": "Razorpay Bills X Transactions API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:45.000Z",
+    "updatedAt": "2026-07-28T01:28:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6a92cca4-3996-4360-a271-60712c592a5d"
+  },
+  "item": [
+    {
+      "name": "transactions",
+      "item": [
+        {
+          "name": "{transaction_id}",
+          "item": [
+            {
+              "name": "Fetch a transaction by ID",
+              "id": "f4d1e6c7-3f76-4ffd-96f1-9407388bf85c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions/:transaction_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    ":transaction_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "de78dccf-3fac-469c-9a50-0a17df599f56",
+                      "key": "transaction_id",
+                      "value": "<string>",
+                      "description": "(Required) Transaction ID (txn_*)"
+                    }
+                  ]
+                },
+                "description": "Fetch details of a specific transaction from a RazorpayX account by its ID."
+              },
+              "response": [
+                {
+                  "id": "d81de639-0ab9-43af-ba14-e69092136597",
+                  "name": "Transaction details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transactions/:transaction_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        ":transaction_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "transaction_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"transaction\",\n  \"account_number\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"credit\": \"<integer>\",\n  \"debit\": \"<integer>\",\n  \"balance\": \"<integer>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"entity\": \"payout\",\n    \"amount\": \"<integer>\",\n    \"fund_account_id\": \"<string>\",\n    \"notes\": {},\n    \"fees\": \"<integer>\",\n    \"tax\": \"<integer>\",\n    \"status\": \"<string>\",\n    \"utr\": \"<string>\",\n    \"mode\": \"<string>\",\n    \"fee_type\": \"<string>\",\n    \"payer_name\": \"<string>\",\n    \"payer_account\": \"<string>\",\n    \"payer_ifsc\": \"<string>\",\n    \"bank_reference\": \"<string>\",\n    \"created_at\": \"<integer>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:46.000Z",
+                  "updatedAt": "2026-07-28T01:28:46.000Z",
+                  "uid": "35240-d81de639-0ab9-43af-ba14-e69092136597"
+                },
+                {
+                  "id": "75a0ae90-cbe5-4f74-b897-b4e2ea757f30",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transactions/:transaction_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        ":transaction_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "transaction_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:46.000Z",
+                  "updatedAt": "2026-07-28T01:28:46.000Z",
+                  "uid": "35240-75a0ae90-cbe5-4f74-b897-b4e2ea757f30"
+                },
+                {
+                  "id": "8f879b5d-503f-4684-b93d-2099a5227ae3",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transactions/:transaction_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        ":transaction_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "transaction_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:46.000Z",
+                  "updatedAt": "2026-07-28T01:28:46.000Z",
+                  "uid": "35240-8f879b5d-503f-4684-b93d-2099a5227ae3"
+                },
+                {
+                  "id": "1a54537f-8ad7-4e18-9ade-43b458240072",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transactions/:transaction_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        ":transaction_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "transaction_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:46.000Z",
+                  "updatedAt": "2026-07-28T01:28:46.000Z",
+                  "uid": "35240-1a54537f-8ad7-4e18-9ade-43b458240072"
+                },
+                {
+                  "id": "9e1bbfb7-2605-48f8-92ac-f0dd55cea0f1",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transactions/:transaction_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        ":transaction_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "transaction_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:46.000Z",
+                  "updatedAt": "2026-07-28T01:28:46.000Z",
+                  "uid": "35240-9e1bbfb7-2605-48f8-92ac-f0dd55cea0f1"
+                },
+                {
+                  "id": "acb812c5-cf28-4ae1-ab67-70be84d3ab60",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transactions/:transaction_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactions",
+                        ":transaction_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "transaction_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:46.000Z",
+                  "updatedAt": "2026-07-28T01:28:46.000Z",
+                  "uid": "35240-acb812c5-cf28-4ae1-ab67-70be84d3ab60"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:46.000Z",
+              "updatedAt": "2026-07-28T01:28:46.000Z",
+              "uid": "35240-f4d1e6c7-3f76-4ffd-96f1-9407388bf85c"
+            }
+          ],
+          "id": "e8b7a009-6035-4ad8-be1f-65dfdaa95d13",
+          "createdAt": "2026-07-28T01:28:46.000Z",
+          "updatedAt": "2026-07-28T01:28:46.000Z",
+          "uid": "35240-e8b7a009-6035-4ad8-be1f-65dfdaa95d13"
+        },
+        {
+          "name": "List transactions for a RazorpayX account",
+          "id": "96de6d75-56e1-4483-9c79-5c0d79c95264",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transactions?account_number=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transactions"
+              ],
+              "query": [
+                {
+                  "description": "(Required) RazorpayX account number (Customer Identifier from Dashboard). Different for Test and Live mode.",
+                  "key": "account_number",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Unix timestamp filter start",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp filter end",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of transactions to return. Default: 10. Maximum: 100.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of transactions to skip. Use for pagination. Default: 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns all transaction records (credits and debits) for a given RazorpayX account. Use account_number from Dashboard \u2192 My Account & Settings \u2192 Banking \u2192 Customer Identifier."
+          },
+          "response": [
+            {
+              "id": "140ee79c-d2f6-46bb-be97-bcbe76f250e6",
+              "name": "List of transactions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions?account_number=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RazorpayX account number (Customer Identifier from Dashboard). Different for Test and Live mode.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter start",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter end",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of transactions to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of transactions to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transaction\",\n      \"account_number\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"credit\": \"<integer>\",\n      \"debit\": \"<integer>\",\n      \"balance\": \"<integer>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"entity\": \"bank_transfer\",\n        \"amount\": \"<integer>\",\n        \"fund_account_id\": \"<string>\",\n        \"notes\": {},\n        \"fees\": \"<integer>\",\n        \"tax\": \"<integer>\",\n        \"status\": \"<string>\",\n        \"utr\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"fee_type\": \"<string>\",\n        \"payer_name\": \"<string>\",\n        \"payer_account\": \"<string>\",\n        \"payer_ifsc\": \"<string>\",\n        \"bank_reference\": \"<string>\",\n        \"created_at\": \"<integer>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"transaction\",\n      \"account_number\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"credit\": \"<integer>\",\n      \"debit\": \"<integer>\",\n      \"balance\": \"<integer>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"entity\": \"payout\",\n        \"amount\": \"<integer>\",\n        \"fund_account_id\": \"<string>\",\n        \"notes\": {},\n        \"fees\": \"<integer>\",\n        \"tax\": \"<integer>\",\n        \"status\": \"<string>\",\n        \"utr\": \"<string>\",\n        \"mode\": \"<string>\",\n        \"fee_type\": \"<string>\",\n        \"payer_name\": \"<string>\",\n        \"payer_account\": \"<string>\",\n        \"payer_ifsc\": \"<string>\",\n        \"bank_reference\": \"<string>\",\n        \"created_at\": \"<integer>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:46.000Z",
+              "updatedAt": "2026-07-28T01:28:46.000Z",
+              "uid": "35240-140ee79c-d2f6-46bb-be97-bcbe76f250e6"
+            },
+            {
+              "id": "750ec35c-ce0e-47ff-a0bc-e4d3c15aa36d",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions?account_number=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RazorpayX account number (Customer Identifier from Dashboard). Different for Test and Live mode.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter start",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter end",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of transactions to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of transactions to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:46.000Z",
+              "updatedAt": "2026-07-28T01:28:46.000Z",
+              "uid": "35240-750ec35c-ce0e-47ff-a0bc-e4d3c15aa36d"
+            },
+            {
+              "id": "6a4b1eec-bd2e-42ae-a2e8-8568f09320a6",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions?account_number=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RazorpayX account number (Customer Identifier from Dashboard). Different for Test and Live mode.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter start",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter end",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of transactions to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of transactions to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:46.000Z",
+              "updatedAt": "2026-07-28T01:28:46.000Z",
+              "uid": "35240-6a4b1eec-bd2e-42ae-a2e8-8568f09320a6"
+            },
+            {
+              "id": "60a01fa5-717e-4b6d-bf18-9a1dada72379",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions?account_number=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RazorpayX account number (Customer Identifier from Dashboard). Different for Test and Live mode.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter start",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter end",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of transactions to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of transactions to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:46.000Z",
+              "updatedAt": "2026-07-28T01:28:46.000Z",
+              "uid": "35240-60a01fa5-717e-4b6d-bf18-9a1dada72379"
+            },
+            {
+              "id": "5fd88673-404d-4fd0-a922-168ec64bfa49",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions?account_number=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RazorpayX account number (Customer Identifier from Dashboard). Different for Test and Live mode.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter start",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp filter end",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of transactions to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of transactions to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:46.000Z",
+              "updatedAt": "2026-07-28T01:28:46.000Z",
+              "uid": "35240-5fd88673-404d-4fd0-a922-168ec64bfa49"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:46.000Z",
+          "updatedAt": "2026-07-28T01:28:46.000Z",
+          "uid": "35240-96de6d75-56e1-4483-9c79-5c0d79c95264"
+        }
+      ],
+      "id": "71ab3af1-333f-4f1d-933a-e380040a0a5d",
+      "createdAt": "2026-07-28T01:28:46.000Z",
+      "updatedAt": "2026-07-28T01:28:46.000Z",
+      "uid": "35240-71ab3af1-333f-4f1d-933a-e380040a0a5d"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,1107 @@
+{
+  "info": {
+    "_postman_id": "580ef08b-80c8-4467-a70b-d9ee213e43f9",
+    "name": "Razorpay Bills X Account Validation API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:37.000Z",
+    "updatedAt": "2026-07-28T01:28:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-580ef08b-80c8-4467-a70b-d9ee213e43f9"
+  },
+  "item": [
+    {
+      "name": "fund_accounts",
+      "item": [
+        {
+          "name": "validations",
+          "item": [
+            {
+              "name": "{validation_id}",
+              "item": [
+                {
+                  "name": "Fetch a fund account validation",
+                  "id": "e8de3e34-3462-45be-b278-1f7cf29d5861",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations/:validation_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations",
+                        ":validation_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8e903b41-afcb-4191-9e8d-991fe09c23cd",
+                          "key": "validation_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier of the fund account validation (e.g. `fav_00000000000001`)."
+                        }
+                      ]
+                    },
+                    "description": "Fetch details of a specific fund account validation by its ID."
+                  },
+                  "response": [
+                    {
+                      "id": "7809fa29-9da9-4394-9ee1-ba9db79990b0",
+                      "name": "Validation details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/fund_accounts/validations/:validation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fund_accounts",
+                            "validations",
+                            ":validation_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "validation_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"fund_account.validation\",\n  \"status\": \"completed\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"utr\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"validated_account_type\": \"<string>\",\n  \"fund_account\": {\n    \"id\": \"<string>\",\n    \"account_type\": \"<string>\",\n    \"bank_account\": {},\n    \"vpa\": {}\n  },\n  \"validation_results\": {\n    \"account_status\": \"<string>\",\n    \"registered_name\": \"<string>\",\n    \"name_match_score\": \"<integer>\",\n    \"details\": {}\n  },\n  \"status_details\": {},\n  \"upi_intent\": {\n    \"intent_url\": \"<string>\",\n    \"phonepe_url\": \"<string>\",\n    \"gpay_url\": \"<string>\",\n    \"paytm_url\": \"<string>\",\n    \"bhim_url\": \"<string>\",\n    \"encoded_qr_code\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:37.000Z",
+                      "updatedAt": "2026-07-28T01:28:37.000Z",
+                      "uid": "35240-7809fa29-9da9-4394-9ee1-ba9db79990b0"
+                    },
+                    {
+                      "id": "4eaf00ed-ed65-475f-b6b4-9ecc8d506990",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/fund_accounts/validations/:validation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fund_accounts",
+                            "validations",
+                            ":validation_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "validation_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:37.000Z",
+                      "updatedAt": "2026-07-28T01:28:37.000Z",
+                      "uid": "35240-4eaf00ed-ed65-475f-b6b4-9ecc8d506990"
+                    },
+                    {
+                      "id": "002bf6d2-79c7-43f8-a34b-3ff5e8b0e456",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/fund_accounts/validations/:validation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fund_accounts",
+                            "validations",
+                            ":validation_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "validation_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:37.000Z",
+                      "updatedAt": "2026-07-28T01:28:37.000Z",
+                      "uid": "35240-002bf6d2-79c7-43f8-a34b-3ff5e8b0e456"
+                    },
+                    {
+                      "id": "0eadf2bd-5ea1-4ee2-b6a5-c097455a4905",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/fund_accounts/validations/:validation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fund_accounts",
+                            "validations",
+                            ":validation_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "validation_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:37.000Z",
+                      "updatedAt": "2026-07-28T01:28:37.000Z",
+                      "uid": "35240-0eadf2bd-5ea1-4ee2-b6a5-c097455a4905"
+                    },
+                    {
+                      "id": "7718550e-6424-4034-bea6-7786926d4804",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/fund_accounts/validations/:validation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fund_accounts",
+                            "validations",
+                            ":validation_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "validation_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:37.000Z",
+                      "updatedAt": "2026-07-28T01:28:37.000Z",
+                      "uid": "35240-7718550e-6424-4034-bea6-7786926d4804"
+                    },
+                    {
+                      "id": "5b816f23-c6b9-4bea-ba8d-d4425226d8b9",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/fund_accounts/validations/:validation_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "fund_accounts",
+                            "validations",
+                            ":validation_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "validation_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:37.000Z",
+                      "updatedAt": "2026-07-28T01:28:37.000Z",
+                      "uid": "35240-5b816f23-c6b9-4bea-ba8d-d4425226d8b9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-e8de3e34-3462-45be-b278-1f7cf29d5861"
+                }
+              ],
+              "id": "2cce7405-7cfc-4c8b-9811-a6c898be27c6",
+              "createdAt": "2026-07-28T01:28:37.000Z",
+              "updatedAt": "2026-07-28T01:28:37.000Z",
+              "uid": "35240-2cce7405-7cfc-4c8b-9811-a6c898be27c6"
+            },
+            {
+              "name": "Validate a bank account or VPA",
+              "id": "58bfa55c-7dc6-4805-a388-8cdc3dc7b5b2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_type\": \"vpa\",\n  \"fund_account\": {},\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {},\n  \"receipt\": \"<string>\",\n  \"validation_type\": \"optimized\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts/validations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts",
+                    "validations"
+                  ]
+                },
+                "description": "Three validation methods: (1) penny drop for bank accounts \u2014 sends Re.1 to verify; (2) penny drop for VPA \u2014 sends Re.1 to UPI address; (3) reverse penny drop \u2014 sends UPI intent URL to customer who initiates payment. Live-mode only, RazorpayX Lite account required. Composite validation (creates Contact + Fund Account inline) supported via validation_type field."
+              },
+              "response": [
+                {
+                  "id": "35c8ec91-a492-4160-85b3-2874fa6425c9",
+                  "name": "Validation created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_type\": \"vpa\",\n  \"fund_account\": {},\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {},\n  \"receipt\": \"<string>\",\n  \"validation_type\": \"optimized\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"fund_account.validation\",\n  \"status\": \"completed\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"utr\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"validated_account_type\": \"<string>\",\n  \"fund_account\": {\n    \"id\": \"<string>\",\n    \"account_type\": \"<string>\",\n    \"bank_account\": {},\n    \"vpa\": {}\n  },\n  \"validation_results\": {\n    \"account_status\": \"<string>\",\n    \"registered_name\": \"<string>\",\n    \"name_match_score\": \"<integer>\",\n    \"details\": {}\n  },\n  \"status_details\": {},\n  \"upi_intent\": {\n    \"intent_url\": \"<string>\",\n    \"phonepe_url\": \"<string>\",\n    \"gpay_url\": \"<string>\",\n    \"paytm_url\": \"<string>\",\n    \"bhim_url\": \"<string>\",\n    \"encoded_qr_code\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-35c8ec91-a492-4160-85b3-2874fa6425c9"
+                },
+                {
+                  "id": "f758e4aa-a62c-4c37-b8d5-0ed0bd119df3",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_type\": \"vpa\",\n  \"fund_account\": {},\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {},\n  \"receipt\": \"<string>\",\n  \"validation_type\": \"optimized\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-f758e4aa-a62c-4c37-b8d5-0ed0bd119df3"
+                },
+                {
+                  "id": "7c07506d-5740-4c3d-bc9e-a8fd14bd191d",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_type\": \"vpa\",\n  \"fund_account\": {},\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {},\n  \"receipt\": \"<string>\",\n  \"validation_type\": \"optimized\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-7c07506d-5740-4c3d-bc9e-a8fd14bd191d"
+                },
+                {
+                  "id": "9f8ab813-cfca-4c05-af45-b28155312eee",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_type\": \"vpa\",\n  \"fund_account\": {},\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {},\n  \"receipt\": \"<string>\",\n  \"validation_type\": \"optimized\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-9f8ab813-cfca-4c05-af45-b28155312eee"
+                },
+                {
+                  "id": "a7c11656-0f94-4cdd-b0cf-0e5bacdab080",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_type\": \"vpa\",\n  \"fund_account\": {},\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"notes\": {},\n  \"receipt\": \"<string>\",\n  \"validation_type\": \"optimized\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-a7c11656-0f94-4cdd-b0cf-0e5bacdab080"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:37.000Z",
+              "updatedAt": "2026-07-28T01:28:37.000Z",
+              "uid": "35240-58bfa55c-7dc6-4805-a388-8cdc3dc7b5b2"
+            },
+            {
+              "name": "List fund account validations",
+              "id": "4b6339a9-9cb0-42c4-94d5-5dd3a27099c0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts/validations?from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts",
+                    "validations"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp. Only validations created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only validations created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of validation records to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of validation records to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "List all fund account validation records, optionally filtered by date range."
+              },
+              "response": [
+                {
+                  "id": "d027865f-817a-4e3e-915e-635cabc4982b",
+                  "name": "List of validations",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations?from=<integer>&to=<integer>&count=10&skip=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp. Only validations created from this timestamp onwards are returned.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp. Only validations created before this timestamp are returned.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of validation records to return. Default: 10. Maximum: 100.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of validation records to skip. Use for pagination. Default: 0.",
+                          "key": "skip",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"fund_account.validation\",\n      \"status\": \"failed\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"utr\": \"<string>\",\n      \"reference_id\": \"<string>\",\n      \"notes\": {},\n      \"validated_account_type\": \"<string>\",\n      \"fund_account\": {\n        \"id\": \"<string>\",\n        \"account_type\": \"<string>\",\n        \"bank_account\": {},\n        \"vpa\": {}\n      },\n      \"validation_results\": {\n        \"account_status\": \"<string>\",\n        \"registered_name\": \"<string>\",\n        \"name_match_score\": \"<integer>\",\n        \"details\": {}\n      },\n      \"status_details\": {},\n      \"upi_intent\": {\n        \"intent_url\": \"<string>\",\n        \"phonepe_url\": \"<string>\",\n        \"gpay_url\": \"<string>\",\n        \"paytm_url\": \"<string>\",\n        \"bhim_url\": \"<string>\",\n        \"encoded_qr_code\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"fund_account.validation\",\n      \"status\": \"created\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"utr\": \"<string>\",\n      \"reference_id\": \"<string>\",\n      \"notes\": {},\n      \"validated_account_type\": \"<string>\",\n      \"fund_account\": {\n        \"id\": \"<string>\",\n        \"account_type\": \"<string>\",\n        \"bank_account\": {},\n        \"vpa\": {}\n      },\n      \"validation_results\": {\n        \"account_status\": \"<string>\",\n        \"registered_name\": \"<string>\",\n        \"name_match_score\": \"<integer>\",\n        \"details\": {}\n      },\n      \"status_details\": {},\n      \"upi_intent\": {\n        \"intent_url\": \"<string>\",\n        \"phonepe_url\": \"<string>\",\n        \"gpay_url\": \"<string>\",\n        \"paytm_url\": \"<string>\",\n        \"bhim_url\": \"<string>\",\n        \"encoded_qr_code\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-d027865f-817a-4e3e-915e-635cabc4982b"
+                },
+                {
+                  "id": "60794b2d-4ded-4fe9-bd7c-ed358c588a19",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations?from=<integer>&to=<integer>&count=10&skip=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp. Only validations created from this timestamp onwards are returned.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp. Only validations created before this timestamp are returned.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of validation records to return. Default: 10. Maximum: 100.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of validation records to skip. Use for pagination. Default: 0.",
+                          "key": "skip",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-60794b2d-4ded-4fe9-bd7c-ed358c588a19"
+                },
+                {
+                  "id": "7d465d4e-e7f8-440f-b36e-998fd0cac26f",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations?from=<integer>&to=<integer>&count=10&skip=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp. Only validations created from this timestamp onwards are returned.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp. Only validations created before this timestamp are returned.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of validation records to return. Default: 10. Maximum: 100.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of validation records to skip. Use for pagination. Default: 0.",
+                          "key": "skip",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-7d465d4e-e7f8-440f-b36e-998fd0cac26f"
+                },
+                {
+                  "id": "6002de8c-78bc-46ec-8a79-a1a8509f0714",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations?from=<integer>&to=<integer>&count=10&skip=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp. Only validations created from this timestamp onwards are returned.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp. Only validations created before this timestamp are returned.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of validation records to return. Default: 10. Maximum: 100.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of validation records to skip. Use for pagination. Default: 0.",
+                          "key": "skip",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-6002de8c-78bc-46ec-8a79-a1a8509f0714"
+                },
+                {
+                  "id": "cff2e424-97f7-4a73-9980-80a1aad1fdfc",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/validations?from=<integer>&to=<integer>&count=10&skip=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        "validations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp. Only validations created from this timestamp onwards are returned.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp. Only validations created before this timestamp are returned.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of validation records to return. Default: 10. Maximum: 100.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of validation records to skip. Use for pagination. Default: 0.",
+                          "key": "skip",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:37.000Z",
+                  "updatedAt": "2026-07-28T01:28:37.000Z",
+                  "uid": "35240-cff2e424-97f7-4a73-9980-80a1aad1fdfc"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:37.000Z",
+              "updatedAt": "2026-07-28T01:28:37.000Z",
+              "uid": "35240-4b6339a9-9cb0-42c4-94d5-5dd3a27099c0"
+            }
+          ],
+          "id": "26bf78f1-b2d4-4f81-b85a-86de1d321d54",
+          "createdAt": "2026-07-28T01:28:37.000Z",
+          "updatedAt": "2026-07-28T01:28:37.000Z",
+          "uid": "35240-26bf78f1-b2d4-4f81-b85a-86de1d321d54"
+        }
+      ],
+      "id": "e57fa7d3-7d82-4718-ac46-3cf7832b43ae",
+      "createdAt": "2026-07-28T01:28:37.000Z",
+      "updatedAt": "2026-07-28T01:28:37.000Z",
+      "uid": "35240-e57fa7d3-7d82-4718-ac46-3cf7832b43ae"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

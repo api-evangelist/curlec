@@ -1,0 +1,2252 @@
+{
+  "info": {
+    "_postman_id": "aa7fbdac-2b8d-402a-a5b5-412650c763c3",
+    "name": "Razorpay Bills X Payouts API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:44.000Z",
+    "updatedAt": "2026-07-28T01:28:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aa7fbdac-2b8d-402a-a5b5-412650c763c3"
+  },
+  "item": [
+    {
+      "name": "payouts",
+      "item": [
+        {
+          "name": "{payout_id}",
+          "item": [
+            {
+              "name": "cancel",
+              "item": [
+                {
+                  "name": "Cancel a queued payout",
+                  "id": "d1376572-88da-41e5-885f-ffbab181d49f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id",
+                        "cancel"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9f9ffedb-40ca-422c-9d44-7764aa3e4f21",
+                          "key": "payout_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier of the payout to cancel."
+                        }
+                      ]
+                    },
+                    "description": "Only payouts in 'queued' status can be cancelled."
+                  },
+                  "response": [
+                    {
+                      "id": "1f43609e-714d-4c78-bd89-3e37992286b8",
+                      "name": "Payout cancelled",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {\n    \"id\": \"<string>\",\n    \"entity\": \"fund_account\",\n    \"contact_id\": \"<string>\",\n    \"account_type\": \"wallet\",\n    \"active\": \"<boolean>\",\n    \"batch_id\": \"<string>\",\n    \"bank_account\": {\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_number\": \"<string>\"\n    },\n    \"vpa\": {\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"address\": \"<string>\"\n    },\n    \"card\": {\n      \"last4\": \"<string>\",\n      \"network\": \"<string>\",\n      \"type\": \"<string>\",\n      \"issuer\": \"<string>\",\n      \"input_type\": \"service_provider_token\"\n    },\n    \"created_at\": \"<integer>\",\n    \"wallet\": {\n      \"provider\": \"amazonpay\",\n      \"phone\": \"<string>\",\n      \"email\": \"<email>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"mode\": \"IMPS\",\n  \"utr\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"debit_account_number\": \"<string>\",\n  \"narration\": \"<string>\",\n  \"purpose\": \"refund\",\n  \"fee_type\": \"<string>\",\n  \"status\": \"rejected\",\n  \"status_details\": {\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"reason\": \"<string>\"\n  },\n  \"batch_id\": \"<string>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\",\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-1f43609e-714d-4c78-bd89-3e37992286b8"
+                    },
+                    {
+                      "id": "bdc7376d-7351-4bbc-a135-8cdc88d075d3",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-bdc7376d-7351-4bbc-a135-8cdc88d075d3"
+                    },
+                    {
+                      "id": "ab7faeee-9a9a-4d3e-8a7e-f88dda2d350a",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-ab7faeee-9a9a-4d3e-8a7e-f88dda2d350a"
+                    },
+                    {
+                      "id": "c09d75e2-8137-48b9-a24d-e10ae5083abc",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-c09d75e2-8137-48b9-a24d-e10ae5083abc"
+                    },
+                    {
+                      "id": "92e737c9-75bf-41f5-8d67-ef6dcfc08c4d",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-92e737c9-75bf-41f5-8d67-ef6dcfc08c4d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-d1376572-88da-41e5-885f-ffbab181d49f"
+                }
+              ],
+              "id": "9a9667d3-b775-4662-8649-b514b0c7e9c4",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-9a9667d3-b775-4662-8649-b514b0c7e9c4"
+            },
+            {
+              "name": "approve",
+              "item": [
+                {
+                  "name": "Approve a payout (workflow enabled)",
+                  "id": "7945d392-5732-4a0c-ad0c-2812e4ca9c45",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id/approve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id",
+                        "approve"
+                      ],
+                      "variable": [
+                        {
+                          "id": "716ec308-d4df-4599-8941-3d3e40063411",
+                          "key": "payout_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier of the payout to approve."
+                        }
+                      ]
+                    },
+                    "description": "Requires Payouts Approval workflow enabled and Technology Partner status with OAuth."
+                  },
+                  "response": [
+                    {
+                      "id": "c8e0221d-f897-4295-ad9d-4746ce063bee",
+                      "name": "Payout approved",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {\n    \"id\": \"<string>\",\n    \"entity\": \"fund_account\",\n    \"contact_id\": \"<string>\",\n    \"account_type\": \"wallet\",\n    \"active\": \"<boolean>\",\n    \"batch_id\": \"<string>\",\n    \"bank_account\": {\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_number\": \"<string>\"\n    },\n    \"vpa\": {\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"address\": \"<string>\"\n    },\n    \"card\": {\n      \"last4\": \"<string>\",\n      \"network\": \"<string>\",\n      \"type\": \"<string>\",\n      \"issuer\": \"<string>\",\n      \"input_type\": \"service_provider_token\"\n    },\n    \"created_at\": \"<integer>\",\n    \"wallet\": {\n      \"provider\": \"amazonpay\",\n      \"phone\": \"<string>\",\n      \"email\": \"<email>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"mode\": \"IMPS\",\n  \"utr\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"debit_account_number\": \"<string>\",\n  \"narration\": \"<string>\",\n  \"purpose\": \"refund\",\n  \"fee_type\": \"<string>\",\n  \"status\": \"rejected\",\n  \"status_details\": {\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"reason\": \"<string>\"\n  },\n  \"batch_id\": \"<string>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\",\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-c8e0221d-f897-4295-ad9d-4746ce063bee"
+                    },
+                    {
+                      "id": "f3b33c1e-72e4-4ae7-96b6-dd930fb5238e",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-f3b33c1e-72e4-4ae7-96b6-dd930fb5238e"
+                    },
+                    {
+                      "id": "7a474659-8d40-44ee-a8fe-cf78610fcd37",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-7a474659-8d40-44ee-a8fe-cf78610fcd37"
+                    },
+                    {
+                      "id": "4d2efb20-a371-4e85-bae0-cf8ca54e83c8",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-4d2efb20-a371-4e85-bae0-cf8ca54e83c8"
+                    },
+                    {
+                      "id": "dedf1bcf-b548-4836-8193-ebb0af58f7db",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-dedf1bcf-b548-4836-8193-ebb0af58f7db"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-7945d392-5732-4a0c-ad0c-2812e4ca9c45"
+                }
+              ],
+              "id": "7e4d1ca6-50fe-4db7-b43f-74e01b4b402f",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-7e4d1ca6-50fe-4db7-b43f-74e01b4b402f"
+            },
+            {
+              "name": "reject",
+              "item": [
+                {
+                  "name": "Reject a payout (workflow enabled)",
+                  "id": "ce8b3dd5-568d-447e-8a2b-55e7e98ba7e0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id/reject",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id",
+                        "reject"
+                      ],
+                      "variable": [
+                        {
+                          "id": "27535f49-33c8-43d9-bba3-cb592a7b58db",
+                          "key": "payout_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier of the payout to reject."
+                        }
+                      ]
+                    },
+                    "description": "Requires Payouts Approval workflow enabled and Technology Partner status with OAuth."
+                  },
+                  "response": [
+                    {
+                      "id": "de39b4e5-f4d3-47f1-919b-e03ea737917b",
+                      "name": "Payout rejected",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {\n    \"id\": \"<string>\",\n    \"entity\": \"fund_account\",\n    \"contact_id\": \"<string>\",\n    \"account_type\": \"wallet\",\n    \"active\": \"<boolean>\",\n    \"batch_id\": \"<string>\",\n    \"bank_account\": {\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_number\": \"<string>\"\n    },\n    \"vpa\": {\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"address\": \"<string>\"\n    },\n    \"card\": {\n      \"last4\": \"<string>\",\n      \"network\": \"<string>\",\n      \"type\": \"<string>\",\n      \"issuer\": \"<string>\",\n      \"input_type\": \"service_provider_token\"\n    },\n    \"created_at\": \"<integer>\",\n    \"wallet\": {\n      \"provider\": \"amazonpay\",\n      \"phone\": \"<string>\",\n      \"email\": \"<email>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"mode\": \"IMPS\",\n  \"utr\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"debit_account_number\": \"<string>\",\n  \"narration\": \"<string>\",\n  \"purpose\": \"refund\",\n  \"fee_type\": \"<string>\",\n  \"status\": \"rejected\",\n  \"status_details\": {\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"reason\": \"<string>\"\n  },\n  \"batch_id\": \"<string>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\",\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-de39b4e5-f4d3-47f1-919b-e03ea737917b"
+                    },
+                    {
+                      "id": "8e8e2cdb-b591-4394-a740-84a0ec73df99",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-8e8e2cdb-b591-4394-a740-84a0ec73df99"
+                    },
+                    {
+                      "id": "8f18e6fa-975c-4547-9bbe-5168c1a3be61",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-8f18e6fa-975c-4547-9bbe-5168c1a3be61"
+                    },
+                    {
+                      "id": "f93e6d43-438c-46a8-ab28-5c8fb33a928b",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-f93e6d43-438c-46a8-ab28-5c8fb33a928b"
+                    },
+                    {
+                      "id": "1ab57d38-1c08-45f7-a749-ff5cd2289d0d",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remarks\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payouts/:payout_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payouts",
+                            ":payout_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:45.000Z",
+                      "updatedAt": "2026-07-28T01:28:45.000Z",
+                      "uid": "35240-1ab57d38-1c08-45f7-a749-ff5cd2289d0d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-ce8b3dd5-568d-447e-8a2b-55e7e98ba7e0"
+                }
+              ],
+              "id": "f33fc1e9-69ec-4874-b4a7-32c62850a234",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-f33fc1e9-69ec-4874-b4a7-32c62850a234"
+            },
+            {
+              "name": "Fetch a payout",
+              "id": "d99b27ee-bfd3-498b-be71-ebb909e1bfb0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts/:payout_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts",
+                    ":payout_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "22f38ff3-548c-46b7-ba70-6dff7834ad8a",
+                      "key": "payout_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the payout (e.g. `pout_00000000000001`)."
+                    }
+                  ]
+                },
+                "description": "Fetch details of a specific payout by its ID."
+              },
+              "response": [
+                {
+                  "id": "81cfdbb2-e4fb-47e2-9320-773dbe74b72e",
+                  "name": "Payout details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {\n    \"id\": \"<string>\",\n    \"entity\": \"fund_account\",\n    \"contact_id\": \"<string>\",\n    \"account_type\": \"wallet\",\n    \"active\": \"<boolean>\",\n    \"batch_id\": \"<string>\",\n    \"bank_account\": {\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_number\": \"<string>\"\n    },\n    \"vpa\": {\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"address\": \"<string>\"\n    },\n    \"card\": {\n      \"last4\": \"<string>\",\n      \"network\": \"<string>\",\n      \"type\": \"<string>\",\n      \"issuer\": \"<string>\",\n      \"input_type\": \"service_provider_token\"\n    },\n    \"created_at\": \"<integer>\",\n    \"wallet\": {\n      \"provider\": \"amazonpay\",\n      \"phone\": \"<string>\",\n      \"email\": \"<email>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"mode\": \"IMPS\",\n  \"utr\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"debit_account_number\": \"<string>\",\n  \"narration\": \"<string>\",\n  \"purpose\": \"refund\",\n  \"fee_type\": \"<string>\",\n  \"status\": \"rejected\",\n  \"status_details\": {\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"reason\": \"<string>\"\n  },\n  \"batch_id\": \"<string>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\",\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-81cfdbb2-e4fb-47e2-9320-773dbe74b72e"
+                },
+                {
+                  "id": "49d28bab-8a11-46b6-990d-5b59b335af44",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-49d28bab-8a11-46b6-990d-5b59b335af44"
+                },
+                {
+                  "id": "6837ff81-dfa9-47fb-a91d-03cddffee6fc",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-6837ff81-dfa9-47fb-a91d-03cddffee6fc"
+                },
+                {
+                  "id": "d2bbcfe5-b6cc-4318-a9e3-98b936f65ce0",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-d2bbcfe5-b6cc-4318-a9e3-98b936f65ce0"
+                },
+                {
+                  "id": "b1703472-ac94-4109-9201-c7a5e2b81a85",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-b1703472-ac94-4109-9201-c7a5e2b81a85"
+                },
+                {
+                  "id": "47952f67-afd1-451e-9a2a-0a635d7328e0",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payouts/:payout_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payouts",
+                        ":payout_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:45.000Z",
+                  "updatedAt": "2026-07-28T01:28:45.000Z",
+                  "uid": "35240-47952f67-afd1-451e-9a2a-0a635d7328e0"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-d99b27ee-bfd3-498b-be71-ebb909e1bfb0"
+            }
+          ],
+          "id": "0c8283be-5c97-4712-a3d2-8a21c94ec645",
+          "createdAt": "2026-07-28T01:28:45.000Z",
+          "updatedAt": "2026-07-28T01:28:45.000Z",
+          "uid": "35240-0c8283be-5c97-4712-a3d2-8a21c94ec645"
+        },
+        {
+          "name": "Create a payout",
+          "id": "9a9559b7-411d-44c9-a13b-ac542f12cec0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) UUID v4 idempotency key. Mandatory since March 15, 2025.",
+                "key": "X-Payout-Idempotency",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account_number\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"mode\": \"IMPS\",\n  \"purpose\": \"vendor bill\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {},\n  \"narration\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payouts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payouts"
+              ]
+            },
+            "description": "Disburse funds via NEFT, RTGS, IMPS, UPI, or card. Supports standard payouts (fund_account_id), composite payouts (contact + fund account inline), card payouts (PCI DSS required), and mobile number payouts (resolved via NPCI mapper). Idempotency header X-Payout-Idempotency (UUID v4, 4\u201336 chars) is mandatory since March 15, 2025. Never generate a new idempotency key while a payout is in 'processing' state."
+          },
+          "response": [
+            {
+              "id": "a7a5fd60-4f4e-4c73-a9cf-e6e6671999f1",
+              "name": "Payout created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) UUID v4 idempotency key. Mandatory since March 15, 2025.",
+                    "key": "X-Payout-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_number\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"mode\": \"IMPS\",\n  \"purpose\": \"vendor bill\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {},\n  \"narration\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payouts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {\n    \"id\": \"<string>\",\n    \"entity\": \"fund_account\",\n    \"contact_id\": \"<string>\",\n    \"account_type\": \"wallet\",\n    \"active\": \"<boolean>\",\n    \"batch_id\": \"<string>\",\n    \"bank_account\": {\n      \"ifsc\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"name\": \"<string>\",\n      \"account_number\": \"<string>\"\n    },\n    \"vpa\": {\n      \"username\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"address\": \"<string>\"\n    },\n    \"card\": {\n      \"last4\": \"<string>\",\n      \"network\": \"<string>\",\n      \"type\": \"<string>\",\n      \"issuer\": \"<string>\",\n      \"input_type\": \"service_provider_token\"\n    },\n    \"created_at\": \"<integer>\",\n    \"wallet\": {\n      \"provider\": \"amazonpay\",\n      \"phone\": \"<string>\",\n      \"email\": \"<email>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"fees\": \"<integer>\",\n  \"tax\": \"<integer>\",\n  \"mode\": \"IMPS\",\n  \"utr\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"debit_account_number\": \"<string>\",\n  \"narration\": \"<string>\",\n  \"purpose\": \"refund\",\n  \"fee_type\": \"<string>\",\n  \"status\": \"rejected\",\n  \"status_details\": {\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"reason\": \"<string>\"\n  },\n  \"batch_id\": \"<string>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\",\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-a7a5fd60-4f4e-4c73-a9cf-e6e6671999f1"
+            },
+            {
+              "id": "fc598d0d-76b2-4396-aeeb-a0f02761f005",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) UUID v4 idempotency key. Mandatory since March 15, 2025.",
+                    "key": "X-Payout-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_number\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"mode\": \"IMPS\",\n  \"purpose\": \"vendor bill\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {},\n  \"narration\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payouts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-fc598d0d-76b2-4396-aeeb-a0f02761f005"
+            },
+            {
+              "id": "064f18d9-de76-433a-b048-7e5f64b0574a",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) UUID v4 idempotency key. Mandatory since March 15, 2025.",
+                    "key": "X-Payout-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_number\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"mode\": \"IMPS\",\n  \"purpose\": \"vendor bill\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {},\n  \"narration\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payouts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-064f18d9-de76-433a-b048-7e5f64b0574a"
+            },
+            {
+              "id": "dc11213f-d414-47f8-a3ed-ce37781122f2",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) UUID v4 idempotency key. Mandatory since March 15, 2025.",
+                    "key": "X-Payout-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_number\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"mode\": \"IMPS\",\n  \"purpose\": \"vendor bill\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {},\n  \"narration\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payouts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-dc11213f-d414-47f8-a3ed-ce37781122f2"
+            },
+            {
+              "id": "632d84a2-4e7b-43aa-8176-ce2927c7b6f9",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) UUID v4 idempotency key. Mandatory since March 15, 2025.",
+                    "key": "X-Payout-Idempotency",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_number\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"mode\": \"IMPS\",\n  \"purpose\": \"vendor bill\",\n  \"fund_account_id\": \"<string>\",\n  \"fund_account\": {},\n  \"narration\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"queue_if_low_balance\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payouts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-632d84a2-4e7b-43aa-8176-ce2927c7b6f9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:45.000Z",
+          "updatedAt": "2026-07-28T01:28:45.000Z",
+          "uid": "35240-9a9559b7-411d-44c9-a13b-ac542f12cec0"
+        },
+        {
+          "name": "List payouts",
+          "id": "c02c4772-918c-4bf3-bdb7-82ae8bbe0dd4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payouts?account_number=<string>&contact_id=<string>&fund_account_id=<string>&from=<integer>&to=<integer>&count=25&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payouts"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The RazorpayX account number (Customer Identifier from Dashboard \u2192 My Account & Settings \u2192 Banking). Required to scope results to a specific account.",
+                  "key": "account_number",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter payouts by the contact ID of the recipient.",
+                  "key": "contact_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter payouts by fund account ID.",
+                  "key": "fund_account_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Unix timestamp. Only payouts created from this timestamp onwards are returned.",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp. Only payouts created before this timestamp are returned.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of payouts to return. Default: 10. Maximum: 100.",
+                  "key": "count",
+                  "value": "25"
+                },
+                {
+                  "description": "Number of payouts to skip. Use for pagination. Default: 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "List payouts for a given RazorpayX account. Filter by contact, fund account, date range, or status."
+          },
+          "response": [
+            {
+              "id": "af6c1b9e-6880-46ad-a11a-081d8fc28391",
+              "name": "List of payouts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts?account_number=<string>&contact_id=<string>&fund_account_id=<string>&from=<integer>&to=<integer>&count=25&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The RazorpayX account number (Customer Identifier from Dashboard \u2192 My Account & Settings \u2192 Banking). Required to scope results to a specific account.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by fund account ID.",
+                      "key": "fund_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payouts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of payouts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payout\",\n      \"fund_account_id\": \"<string>\",\n      \"fund_account\": {\n        \"id\": \"<string>\",\n        \"entity\": \"fund_account\",\n        \"contact_id\": \"<string>\",\n        \"account_type\": \"card\",\n        \"active\": \"<boolean>\",\n        \"batch_id\": \"<string>\",\n        \"bank_account\": {\n          \"ifsc\": \"<string>\",\n          \"bank_name\": \"<string>\",\n          \"name\": \"<string>\",\n          \"account_number\": \"<string>\"\n        },\n        \"vpa\": {\n          \"username\": \"<string>\",\n          \"handle\": \"<string>\",\n          \"address\": \"<string>\"\n        },\n        \"card\": {\n          \"last4\": \"<string>\",\n          \"network\": \"<string>\",\n          \"type\": \"<string>\",\n          \"issuer\": \"<string>\",\n          \"input_type\": \"service_provider_token\"\n        },\n        \"created_at\": \"<integer>\",\n        \"wallet\": {\n          \"provider\": \"amazonpay\",\n          \"phone\": \"<string>\",\n          \"email\": \"<email>\",\n          \"name\": \"<string>\"\n        }\n      },\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"mode\": \"amazonpay\",\n      \"utr\": \"<string>\",\n      \"reference_id\": \"<string>\",\n      \"debit_account_number\": \"<string>\",\n      \"narration\": \"<string>\",\n      \"purpose\": \"payout\",\n      \"fee_type\": \"<string>\",\n      \"status\": \"failed\",\n      \"status_details\": {\n        \"description\": \"<string>\",\n        \"source\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"batch_id\": \"<string>\",\n      \"notes\": {},\n      \"created_at\": \"<integer>\",\n      \"queue_if_low_balance\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payout\",\n      \"fund_account_id\": \"<string>\",\n      \"fund_account\": {\n        \"id\": \"<string>\",\n        \"entity\": \"fund_account\",\n        \"contact_id\": \"<string>\",\n        \"account_type\": \"wallet\",\n        \"active\": \"<boolean>\",\n        \"batch_id\": \"<string>\",\n        \"bank_account\": {\n          \"ifsc\": \"<string>\",\n          \"bank_name\": \"<string>\",\n          \"name\": \"<string>\",\n          \"account_number\": \"<string>\"\n        },\n        \"vpa\": {\n          \"username\": \"<string>\",\n          \"handle\": \"<string>\",\n          \"address\": \"<string>\"\n        },\n        \"card\": {\n          \"last4\": \"<string>\",\n          \"network\": \"<string>\",\n          \"type\": \"<string>\",\n          \"issuer\": \"<string>\",\n          \"input_type\": \"raw\"\n        },\n        \"created_at\": \"<integer>\",\n        \"wallet\": {\n          \"provider\": \"amazonpay\",\n          \"phone\": \"<string>\",\n          \"email\": \"<email>\",\n          \"name\": \"<string>\"\n        }\n      },\n      \"amount\": \"<integer>\",\n      \"currency\": \"INR\",\n      \"fees\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"mode\": \"RTGS\",\n      \"utr\": \"<string>\",\n      \"reference_id\": \"<string>\",\n      \"debit_account_number\": \"<string>\",\n      \"narration\": \"<string>\",\n      \"purpose\": \"cashback\",\n      \"fee_type\": \"<string>\",\n      \"status\": \"processed\",\n      \"status_details\": {\n        \"description\": \"<string>\",\n        \"source\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"batch_id\": \"<string>\",\n      \"notes\": {},\n      \"created_at\": \"<integer>\",\n      \"queue_if_low_balance\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-af6c1b9e-6880-46ad-a11a-081d8fc28391"
+            },
+            {
+              "id": "2a6a7987-a156-43b9-b366-d5dd9d2a7903",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts?account_number=<string>&contact_id=<string>&fund_account_id=<string>&from=<integer>&to=<integer>&count=25&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The RazorpayX account number (Customer Identifier from Dashboard \u2192 My Account & Settings \u2192 Banking). Required to scope results to a specific account.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by fund account ID.",
+                      "key": "fund_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payouts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of payouts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-2a6a7987-a156-43b9-b366-d5dd9d2a7903"
+            },
+            {
+              "id": "888bded8-882c-4616-aa20-6f15aa93a62d",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts?account_number=<string>&contact_id=<string>&fund_account_id=<string>&from=<integer>&to=<integer>&count=25&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The RazorpayX account number (Customer Identifier from Dashboard \u2192 My Account & Settings \u2192 Banking). Required to scope results to a specific account.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by fund account ID.",
+                      "key": "fund_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payouts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of payouts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-888bded8-882c-4616-aa20-6f15aa93a62d"
+            },
+            {
+              "id": "736a4945-c7e9-490e-bcdf-49b626d28228",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts?account_number=<string>&contact_id=<string>&fund_account_id=<string>&from=<integer>&to=<integer>&count=25&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The RazorpayX account number (Customer Identifier from Dashboard \u2192 My Account & Settings \u2192 Banking). Required to scope results to a specific account.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by fund account ID.",
+                      "key": "fund_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payouts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of payouts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-736a4945-c7e9-490e-bcdf-49b626d28228"
+            },
+            {
+              "id": "8219cdd2-59b5-4d7a-b2cb-c077c99822b9",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payouts?account_number=<string>&contact_id=<string>&fund_account_id=<string>&from=<integer>&to=<integer>&count=25&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payouts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The RazorpayX account number (Customer Identifier from Dashboard \u2192 My Account & Settings \u2192 Banking). Required to scope results to a specific account.",
+                      "key": "account_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter payouts by fund account ID.",
+                      "key": "fund_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payouts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payouts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of payouts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:45.000Z",
+              "updatedAt": "2026-07-28T01:28:45.000Z",
+              "uid": "35240-8219cdd2-59b5-4d7a-b2cb-c077c99822b9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:45.000Z",
+          "updatedAt": "2026-07-28T01:28:45.000Z",
+          "uid": "35240-c02c4772-918c-4bf3-bdb7-82ae8bbe0dd4"
+        }
+      ],
+      "id": "f6c7aa41-3231-4f74-9cfd-464d102a96e3",
+      "createdAt": "2026-07-28T01:28:45.000Z",
+      "updatedAt": "2026-07-28T01:28:45.000Z",
+      "uid": "35240-f6c7aa41-3231-4f74-9cfd-464d102a96e3"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

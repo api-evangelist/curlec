@@ -1,0 +1,1404 @@
+{
+  "info": {
+    "_postman_id": "e14f2424-9092-4b68-b4b7-94f2609a1a1f",
+    "name": "Razorpay Bills X Payout Links API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:43.000Z",
+    "updatedAt": "2026-07-28T01:28:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e14f2424-9092-4b68-b4b7-94f2609a1a1f"
+  },
+  "item": [
+    {
+      "name": "payout-links",
+      "item": [
+        {
+          "name": "{payout_link_id}",
+          "item": [
+            {
+              "name": "cancel",
+              "item": [
+                {
+                  "name": "Cancel a payout link",
+                  "id": "b8b9f0c4-54de-4a8e-bed0-596167625569",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payout-links/:payout_link_id/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payout-links",
+                        ":payout_link_id",
+                        "cancel"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0d2d1724-69b7-449d-bab2-d390a96825f6",
+                          "key": "payout_link_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier of the payout link to cancel."
+                        }
+                      ]
+                    },
+                    "description": "Cancel a payout link that is in `issued` or `pending` state."
+                  },
+                  "response": [
+                    {
+                      "id": "e69201ac-89cb-4a89-ac97-1453e525efbd",
+                      "name": "Payout link cancelled",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payout-links/:payout_link_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payout-links",
+                            ":payout_link_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_link_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout_link\",\n  \"contact_id\": \"<string>\",\n  \"contact\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"purpose\": \"<string>\",\n  \"status\": \"processing\",\n  \"fund_account_id\": \"<string>\",\n  \"payout_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"notes\": {},\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"short_url\": \"<string>\",\n  \"attempt_count\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"expired_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:44.000Z",
+                      "updatedAt": "2026-07-28T01:28:44.000Z",
+                      "uid": "35240-e69201ac-89cb-4a89-ac97-1453e525efbd"
+                    },
+                    {
+                      "id": "0abe7aad-3218-466e-a753-bab5175a8be5",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payout-links/:payout_link_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payout-links",
+                            ":payout_link_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_link_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:44.000Z",
+                      "updatedAt": "2026-07-28T01:28:44.000Z",
+                      "uid": "35240-0abe7aad-3218-466e-a753-bab5175a8be5"
+                    },
+                    {
+                      "id": "6751c354-c1c7-4bff-862b-7aeff9eaffab",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payout-links/:payout_link_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payout-links",
+                            ":payout_link_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_link_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:44.000Z",
+                      "updatedAt": "2026-07-28T01:28:44.000Z",
+                      "uid": "35240-6751c354-c1c7-4bff-862b-7aeff9eaffab"
+                    },
+                    {
+                      "id": "bd79a336-3ff9-4163-8365-c1af013a8422",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payout-links/:payout_link_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payout-links",
+                            ":payout_link_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_link_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:44.000Z",
+                      "updatedAt": "2026-07-28T01:28:44.000Z",
+                      "uid": "35240-bd79a336-3ff9-4163-8365-c1af013a8422"
+                    },
+                    {
+                      "id": "960dbcab-0428-40bf-bfea-66eeea93b5b8",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payout-links/:payout_link_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payout-links",
+                            ":payout_link_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payout_link_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:44.000Z",
+                      "updatedAt": "2026-07-28T01:28:44.000Z",
+                      "uid": "35240-960dbcab-0428-40bf-bfea-66eeea93b5b8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:44.000Z",
+                  "updatedAt": "2026-07-28T01:28:44.000Z",
+                  "uid": "35240-b8b9f0c4-54de-4a8e-bed0-596167625569"
+                }
+              ],
+              "id": "b6be37b9-97f2-47e4-9486-3f0b80ead10e",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-b6be37b9-97f2-47e4-9486-3f0b80ead10e"
+            },
+            {
+              "name": "Fetch a payout link",
+              "id": "e251c0d4-bb0e-472e-8e94-9b2d7bc69089",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links/:payout_link_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links",
+                    ":payout_link_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d0bbb203-cf6c-4eaf-a905-a4a7e5af1c69",
+                      "key": "payout_link_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the payout link (e.g. `poutlk_00000000000001`)."
+                    }
+                  ]
+                },
+                "description": "Fetch details of a specific payout link by its ID."
+              },
+              "response": [
+                {
+                  "id": "b3dfd78f-1e1f-46f4-bea2-4ed83c3c06d5",
+                  "name": "Payout link details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payout-links/:payout_link_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payout-links",
+                        ":payout_link_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_link_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout_link\",\n  \"contact_id\": \"<string>\",\n  \"contact\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"purpose\": \"<string>\",\n  \"status\": \"processing\",\n  \"fund_account_id\": \"<string>\",\n  \"payout_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"notes\": {},\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"short_url\": \"<string>\",\n  \"attempt_count\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"expired_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:44.000Z",
+                  "updatedAt": "2026-07-28T01:28:44.000Z",
+                  "uid": "35240-b3dfd78f-1e1f-46f4-bea2-4ed83c3c06d5"
+                },
+                {
+                  "id": "f5d75118-b427-4ef9-81cb-102d8e152865",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payout-links/:payout_link_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payout-links",
+                        ":payout_link_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_link_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:44.000Z",
+                  "updatedAt": "2026-07-28T01:28:44.000Z",
+                  "uid": "35240-f5d75118-b427-4ef9-81cb-102d8e152865"
+                },
+                {
+                  "id": "a2be2a8f-86b0-437b-8939-163f15d9960c",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payout-links/:payout_link_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payout-links",
+                        ":payout_link_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_link_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:44.000Z",
+                  "updatedAt": "2026-07-28T01:28:44.000Z",
+                  "uid": "35240-a2be2a8f-86b0-437b-8939-163f15d9960c"
+                },
+                {
+                  "id": "cf0a97f1-025a-4031-b3fe-c094b686eb4c",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payout-links/:payout_link_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payout-links",
+                        ":payout_link_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_link_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:44.000Z",
+                  "updatedAt": "2026-07-28T01:28:44.000Z",
+                  "uid": "35240-cf0a97f1-025a-4031-b3fe-c094b686eb4c"
+                },
+                {
+                  "id": "a06d2aa6-3efe-45c8-b003-b14f72620ca4",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payout-links/:payout_link_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payout-links",
+                        ":payout_link_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_link_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:44.000Z",
+                  "updatedAt": "2026-07-28T01:28:44.000Z",
+                  "uid": "35240-a06d2aa6-3efe-45c8-b003-b14f72620ca4"
+                },
+                {
+                  "id": "6888bdeb-3f96-4103-96dd-9a69aa6e70cf",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payout-links/:payout_link_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payout-links",
+                        ":payout_link_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "payout_link_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:44.000Z",
+                  "updatedAt": "2026-07-28T01:28:44.000Z",
+                  "uid": "35240-6888bdeb-3f96-4103-96dd-9a69aa6e70cf"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-e251c0d4-bb0e-472e-8e94-9b2d7bc69089"
+            }
+          ],
+          "id": "8a4eaadf-8ad9-404f-b18f-bda7f9227a05",
+          "createdAt": "2026-07-28T01:28:44.000Z",
+          "updatedAt": "2026-07-28T01:28:44.000Z",
+          "uid": "35240-8a4eaadf-8ad9-404f-b18f-bda7f9227a05"
+        },
+        {
+          "name": "Create a payout link",
+          "id": "1089bf6f-521b-4ccd-be81-9ac7a1fb7b2d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contact_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"purpose\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"notes\": {},\n  \"expire_by\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payout-links",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payout-links"
+              ]
+            },
+            "description": "Send a payout link to a contact when fund account details are unavailable. expire_by must be at least 15 minutes in the future."
+          },
+          "response": [
+            {
+              "id": "93c6b67c-8201-412c-b10c-f8627486f8ef",
+              "name": "Payout link created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"purpose\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"notes\": {},\n  \"expire_by\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"payout_link\",\n  \"contact_id\": \"<string>\",\n  \"contact\": {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"contact\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"purpose\": \"<string>\",\n  \"status\": \"processing\",\n  \"fund_account_id\": \"<string>\",\n  \"payout_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"notes\": {},\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"short_url\": \"<string>\",\n  \"attempt_count\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"expire_by\": \"<integer>\",\n  \"expired_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-93c6b67c-8201-412c-b10c-f8627486f8ef"
+            },
+            {
+              "id": "a5ee9a8d-1abe-42a4-b7f6-9c58a9589d64",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"purpose\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"notes\": {},\n  \"expire_by\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-a5ee9a8d-1abe-42a4-b7f6-9c58a9589d64"
+            },
+            {
+              "id": "d6b52eda-8a89-48a4-9a72-ad69b0d9135d",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"purpose\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"notes\": {},\n  \"expire_by\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-d6b52eda-8a89-48a4-9a72-ad69b0d9135d"
+            },
+            {
+              "id": "d9fff54b-fac0-480e-8a77-aaedfb876e24",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"purpose\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"notes\": {},\n  \"expire_by\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-d9fff54b-fac0-480e-8a77-aaedfb876e24"
+            },
+            {
+              "id": "2efa9950-7e1c-4573-b324-cf00ad5d5e41",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"purpose\": \"<string>\",\n  \"description\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"notes\": {},\n  \"expire_by\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-2efa9950-7e1c-4573-b324-cf00ad5d5e41"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:44.000Z",
+          "updatedAt": "2026-07-28T01:28:44.000Z",
+          "uid": "35240-1089bf6f-521b-4ccd-be81-9ac7a1fb7b2d"
+        },
+        {
+          "name": "List payout links",
+          "id": "a08c227f-6499-47b4-b66b-25b0068bffd7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payout-links?contact_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payout-links"
+              ],
+              "query": [
+                {
+                  "description": "Filter payout links by the contact ID of the recipient.",
+                  "key": "contact_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Unix timestamp. Only payout links created from this timestamp onwards are returned.",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp. Only payout links created before this timestamp are returned.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of payout links to return. Default: 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of payout links to skip. Use for pagination. Default: 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "List all payout links. Filter by contact ID, status, or date range."
+          },
+          "response": [
+            {
+              "id": "bffaf768-5372-4cb0-ae7b-117794664278",
+              "name": "List of payout links",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links?contact_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter payout links by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payout links to return. Default: 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of payout links to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payout_link\",\n      \"contact_id\": \"<string>\",\n      \"contact\": {\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"contact\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"issued\",\n      \"fund_account_id\": \"<string>\",\n      \"payout_id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"receipt\": \"<string>\",\n      \"notes\": {},\n      \"send_sms\": \"<boolean>\",\n      \"send_email\": \"<boolean>\",\n      \"short_url\": \"<string>\",\n      \"attempt_count\": \"<integer>\",\n      \"created_at\": \"<integer>\",\n      \"cancelled_at\": \"<integer>\",\n      \"expire_by\": \"<integer>\",\n      \"expired_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payout_link\",\n      \"contact_id\": \"<string>\",\n      \"contact\": {\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"contact\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"processing\",\n      \"fund_account_id\": \"<string>\",\n      \"payout_id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"receipt\": \"<string>\",\n      \"notes\": {},\n      \"send_sms\": \"<boolean>\",\n      \"send_email\": \"<boolean>\",\n      \"short_url\": \"<string>\",\n      \"attempt_count\": \"<integer>\",\n      \"created_at\": \"<integer>\",\n      \"cancelled_at\": \"<integer>\",\n      \"expire_by\": \"<integer>\",\n      \"expired_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-bffaf768-5372-4cb0-ae7b-117794664278"
+            },
+            {
+              "id": "3d3fc416-c7f2-4826-8d3c-b7446f66009c",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links?contact_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter payout links by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payout links to return. Default: 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of payout links to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-3d3fc416-c7f2-4826-8d3c-b7446f66009c"
+            },
+            {
+              "id": "20076a65-e48c-4d76-ad08-915d4ec2773d",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links?contact_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter payout links by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payout links to return. Default: 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of payout links to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-20076a65-e48c-4d76-ad08-915d4ec2773d"
+            },
+            {
+              "id": "6005847e-fb7c-4e0a-9602-12c0146966ed",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links?contact_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter payout links by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payout links to return. Default: 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of payout links to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-6005847e-fb7c-4e0a-9602-12c0146966ed"
+            },
+            {
+              "id": "633c98db-d77e-425f-859a-a4f582e333e6",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payout-links?contact_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payout-links"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter payout links by the contact ID of the recipient.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created from this timestamp onwards are returned.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only payout links created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of payout links to return. Default: 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of payout links to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:44.000Z",
+              "updatedAt": "2026-07-28T01:28:44.000Z",
+              "uid": "35240-633c98db-d77e-425f-859a-a4f582e333e6"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:44.000Z",
+          "updatedAt": "2026-07-28T01:28:44.000Z",
+          "uid": "35240-a08c227f-6499-47b4-b66b-25b0068bffd7"
+        }
+      ],
+      "id": "4d205399-87ef-4888-9d4d-8b2f6893c968",
+      "createdAt": "2026-07-28T01:28:44.000Z",
+      "updatedAt": "2026-07-28T01:28:44.000Z",
+      "uid": "35240-4d205399-87ef-4888-9d4d-8b2f6893c968"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

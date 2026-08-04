@@ -1,0 +1,1135 @@
+{
+  "info": {
+    "_postman_id": "fb763b43-ef2a-4173-af29-65a5b830a890",
+    "name": "Razorpay Bills Disputes API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:37.000Z",
+    "updatedAt": "2026-07-28T01:27:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fb763b43-ef2a-4173-af29-65a5b830a890"
+  },
+  "item": [
+    {
+      "name": "disputes",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "accept",
+              "item": [
+                {
+                  "name": "Accept a dispute",
+                  "id": "5bc4085f-6b4b-4d91-8e61-8bebdced54eb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/disputes/:id/accept",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "disputes",
+                        ":id",
+                        "accept"
+                      ],
+                      "variable": [
+                        {
+                          "id": "856c8e8a-a6bd-4ad1-a0ce-8a0859165ab4",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Dispute ID (disp_*)."
+                        }
+                      ]
+                    },
+                    "description": "Accept a dispute, acknowledging it as lost. This is irreversible \u2014 the dispute status changes to 'lost' and the disputed amount is deducted from your balance. Only accept if you do not wish to contest."
+                  },
+                  "response": [
+                    {
+                      "id": "c300e7f6-fea8-43a1-a3c8-63d55708a38e",
+                      "name": "Dispute accepted. Status changes to 'lost'.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/accept",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "accept"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"dispute\",\n  \"payment_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"amount_deducted\": \"<integer>\",\n  \"reason_code\": \"<string>\",\n  \"reason_description\": \"<string>\",\n  \"respond_by\": \"<integer>\",\n  \"status\": \"under_review\",\n  \"phase\": \"chargeback\",\n  \"created_at\": \"<integer>\",\n  \"evidence\": {\n    \"amount\": \"<integer>\",\n    \"summary\": \"<string>\",\n    \"shipping_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"billing_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"cancellation_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"customer_communication\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"proof_of_service\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"explanation_letter\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"refund_confirmation\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"access_activity_log\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"refund_cancellation_policy\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"term_and_conditions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_at\": \"<integer,null>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-c300e7f6-fea8-43a1-a3c8-63d55708a38e"
+                    },
+                    {
+                      "id": "7f2eeb07-580d-4d31-839d-6e6a0710dc8b",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/accept",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "accept"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-7f2eeb07-580d-4d31-839d-6e6a0710dc8b"
+                    },
+                    {
+                      "id": "24b41a56-f487-42f5-be90-6c7ccebc8053",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/accept",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "accept"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-24b41a56-f487-42f5-be90-6c7ccebc8053"
+                    },
+                    {
+                      "id": "bd67bb2f-fbca-4a34-a36a-fdbb6385af49",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/accept",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "accept"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-bd67bb2f-fbca-4a34-a36a-fdbb6385af49"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:37.000Z",
+                  "updatedAt": "2026-07-28T01:27:37.000Z",
+                  "uid": "35240-5bc4085f-6b4b-4d91-8e61-8bebdced54eb"
+                }
+              ],
+              "id": "4dfb5088-15c9-474b-baf9-88a08fec6ecd",
+              "createdAt": "2026-07-28T01:27:37.000Z",
+              "updatedAt": "2026-07-28T01:27:37.000Z",
+              "uid": "35240-4dfb5088-15c9-474b-baf9-88a08fec6ecd"
+            },
+            {
+              "name": "contest",
+              "item": [
+                {
+                  "name": "Contest a dispute",
+                  "id": "4a75b439-3d09-43d0-bc3b-b557e5ce4393",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"action\": \"draft\",\n  \"amount\": \"<integer>\",\n  \"summary\": \"<string>\",\n  \"shipping_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"billing_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancellation_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customer_communication\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"proof_of_service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explanation_letter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_confirmation\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"access_activity_log\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_cancellation_policy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"term_and_conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/disputes/:id/contest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "disputes",
+                        ":id",
+                        "contest"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5b78ec36-8c89-4b80-a82b-79b38b1613f9",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Dispute ID (disp_*)."
+                        }
+                      ]
+                    },
+                    "description": "Submit evidence to challenge a dispute. Use action=draft to save without submitting, or action=submit to send for bank review (triggers payment.dispute.under_review webhook). At least one evidence document is required when submitting. You can contest partial amounts by specifying amount."
+                  },
+                  "response": [
+                    {
+                      "id": "040b71c3-4281-46b3-86d8-fab2835c2ec2",
+                      "name": "Dispute contested. Status changes to 'under_review' on submit.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"action\": \"draft\",\n  \"amount\": \"<integer>\",\n  \"summary\": \"<string>\",\n  \"shipping_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"billing_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancellation_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customer_communication\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"proof_of_service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explanation_letter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_confirmation\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"access_activity_log\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_cancellation_policy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"term_and_conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/contest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "contest"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"dispute\",\n  \"payment_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"amount_deducted\": \"<integer>\",\n  \"reason_code\": \"<string>\",\n  \"reason_description\": \"<string>\",\n  \"respond_by\": \"<integer>\",\n  \"status\": \"under_review\",\n  \"phase\": \"chargeback\",\n  \"created_at\": \"<integer>\",\n  \"evidence\": {\n    \"amount\": \"<integer>\",\n    \"summary\": \"<string>\",\n    \"shipping_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"billing_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"cancellation_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"customer_communication\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"proof_of_service\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"explanation_letter\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"refund_confirmation\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"access_activity_log\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"refund_cancellation_policy\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"term_and_conditions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_at\": \"<integer,null>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-040b71c3-4281-46b3-86d8-fab2835c2ec2"
+                    },
+                    {
+                      "id": "9e7d4644-74cb-4987-8bdf-1e3152b3eb53",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"action\": \"draft\",\n  \"amount\": \"<integer>\",\n  \"summary\": \"<string>\",\n  \"shipping_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"billing_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancellation_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customer_communication\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"proof_of_service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explanation_letter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_confirmation\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"access_activity_log\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_cancellation_policy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"term_and_conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/contest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "contest"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-9e7d4644-74cb-4987-8bdf-1e3152b3eb53"
+                    },
+                    {
+                      "id": "84ada561-331b-4b62-b285-63464b13c081",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"action\": \"draft\",\n  \"amount\": \"<integer>\",\n  \"summary\": \"<string>\",\n  \"shipping_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"billing_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancellation_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customer_communication\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"proof_of_service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explanation_letter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_confirmation\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"access_activity_log\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_cancellation_policy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"term_and_conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/contest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "contest"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-84ada561-331b-4b62-b285-63464b13c081"
+                    },
+                    {
+                      "id": "42214c0d-3784-4940-8e39-e5605c2d7f1e",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"action\": \"draft\",\n  \"amount\": \"<integer>\",\n  \"summary\": \"<string>\",\n  \"shipping_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"billing_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancellation_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customer_communication\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"proof_of_service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explanation_letter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_confirmation\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"access_activity_log\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_cancellation_policy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"term_and_conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/contest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "contest"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-42214c0d-3784-4940-8e39-e5605c2d7f1e"
+                    },
+                    {
+                      "id": "cd6c4bfe-12b2-4a29-8a39-d0c6708b1949",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"action\": \"draft\",\n  \"amount\": \"<integer>\",\n  \"summary\": \"<string>\",\n  \"shipping_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"billing_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancellation_proof\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customer_communication\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"proof_of_service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"explanation_letter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_confirmation\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"access_activity_log\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"refund_cancellation_policy\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"term_and_conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/disputes/:id/contest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "disputes",
+                            ":id",
+                            "contest"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:37.000Z",
+                      "updatedAt": "2026-07-28T01:27:37.000Z",
+                      "uid": "35240-cd6c4bfe-12b2-4a29-8a39-d0c6708b1949"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:37.000Z",
+                  "updatedAt": "2026-07-28T01:27:37.000Z",
+                  "uid": "35240-4a75b439-3d09-43d0-bc3b-b557e5ce4393"
+                }
+              ],
+              "id": "5b007edd-414f-4eb1-802a-b2e7f2bd849a",
+              "createdAt": "2026-07-28T01:27:37.000Z",
+              "updatedAt": "2026-07-28T01:27:37.000Z",
+              "uid": "35240-5b007edd-414f-4eb1-802a-b2e7f2bd849a"
+            },
+            {
+              "name": "Fetch dispute by ID",
+              "id": "187885bc-9f85-4d03-938b-d16b1bc0304c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/disputes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "disputes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6ae45422-e1f0-4c5e-8e50-38a3399e4573",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Dispute ID (disp_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve full details of a specific dispute including submitted evidence."
+              },
+              "response": [
+                {
+                  "id": "5f71da9c-f561-488f-b873-7b565e17784b",
+                  "name": "Dispute details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/disputes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "disputes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"dispute\",\n  \"payment_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"amount_deducted\": \"<integer>\",\n  \"reason_code\": \"<string>\",\n  \"reason_description\": \"<string>\",\n  \"respond_by\": \"<integer>\",\n  \"status\": \"under_review\",\n  \"phase\": \"chargeback\",\n  \"created_at\": \"<integer>\",\n  \"evidence\": {\n    \"amount\": \"<integer>\",\n    \"summary\": \"<string>\",\n    \"shipping_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"billing_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"cancellation_proof\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"customer_communication\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"proof_of_service\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"explanation_letter\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"refund_confirmation\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"access_activity_log\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"refund_cancellation_policy\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"term_and_conditions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_at\": \"<integer,null>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:37.000Z",
+                  "updatedAt": "2026-07-28T01:27:37.000Z",
+                  "uid": "35240-5f71da9c-f561-488f-b873-7b565e17784b"
+                },
+                {
+                  "id": "be1e11df-67e1-4df0-ad92-2d3d6649f1a4",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/disputes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "disputes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:37.000Z",
+                  "updatedAt": "2026-07-28T01:27:37.000Z",
+                  "uid": "35240-be1e11df-67e1-4df0-ad92-2d3d6649f1a4"
+                },
+                {
+                  "id": "60351199-c5c7-4042-b475-2873aca3b33a",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/disputes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "disputes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:37.000Z",
+                  "updatedAt": "2026-07-28T01:27:37.000Z",
+                  "uid": "35240-60351199-c5c7-4042-b475-2873aca3b33a"
+                },
+                {
+                  "id": "32abb2a5-155f-449b-bae7-1c9abf3d501d",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/disputes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "disputes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:37.000Z",
+                  "updatedAt": "2026-07-28T01:27:37.000Z",
+                  "uid": "35240-32abb2a5-155f-449b-bae7-1c9abf3d501d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:37.000Z",
+              "updatedAt": "2026-07-28T01:27:37.000Z",
+              "uid": "35240-187885bc-9f85-4d03-938b-d16b1bc0304c"
+            }
+          ],
+          "id": "8ae453db-b6c7-4449-abd3-703fc5183134",
+          "createdAt": "2026-07-28T01:27:37.000Z",
+          "updatedAt": "2026-07-28T01:27:37.000Z",
+          "uid": "35240-8ae453db-b6c7-4449-abd3-703fc5183134"
+        },
+        {
+          "name": "Fetch all disputes",
+          "id": "0de5e037-421b-4099-9dc1-44dd859b6ab2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/disputes?count=10&skip=0&expand[]=transaction.settlement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "disputes"
+              ],
+              "query": [
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "description": "Expand sub-entities. Supported: payment, transaction.settlement.",
+                  "key": "expand[]",
+                  "value": "transaction.settlement"
+                }
+              ]
+            },
+            "description": "Retrieve a list of all payment disputes. Use expand[]=payment or expand[]=transaction.settlement for additional context."
+          },
+          "response": [
+            {
+              "id": "48478970-f922-451a-92ed-5f7b5d130d63",
+              "name": "Collection of disputes.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/disputes?count=10&skip=0&expand[]=transaction.settlement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "disputes"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Expand sub-entities. Supported: payment, transaction.settlement.",
+                      "key": "expand[]",
+                      "value": "transaction.settlement"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"dispute\",\n      \"payment_id\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"amount_deducted\": \"<integer>\",\n      \"reason_code\": \"<string>\",\n      \"reason_description\": \"<string>\",\n      \"respond_by\": \"<integer>\",\n      \"status\": \"lost\",\n      \"phase\": \"fraud\",\n      \"created_at\": \"<integer>\",\n      \"evidence\": {\n        \"amount\": \"<integer>\",\n        \"summary\": \"<string>\",\n        \"shipping_proof\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"billing_proof\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"cancellation_proof\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"customer_communication\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"proof_of_service\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"explanation_letter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"refund_confirmation\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"access_activity_log\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"refund_cancellation_policy\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"term_and_conditions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"submitted_at\": \"<integer,null>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"dispute\",\n      \"payment_id\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"amount_deducted\": \"<integer>\",\n      \"reason_code\": \"<string>\",\n      \"reason_description\": \"<string>\",\n      \"respond_by\": \"<integer>\",\n      \"status\": \"closed\",\n      \"phase\": \"retrieval\",\n      \"created_at\": \"<integer>\",\n      \"evidence\": {\n        \"amount\": \"<integer>\",\n        \"summary\": \"<string>\",\n        \"shipping_proof\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"billing_proof\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"cancellation_proof\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"customer_communication\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"proof_of_service\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"explanation_letter\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"refund_confirmation\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"access_activity_log\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"refund_cancellation_policy\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"term_and_conditions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"submitted_at\": \"<integer,null>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:27:37.000Z",
+              "updatedAt": "2026-07-28T01:27:37.000Z",
+              "uid": "35240-48478970-f922-451a-92ed-5f7b5d130d63"
+            },
+            {
+              "id": "65376678-07d3-4ae9-a380-010e3da7c301",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/disputes?count=10&skip=0&expand[]=transaction.settlement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "disputes"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Expand sub-entities. Supported: payment, transaction.settlement.",
+                      "key": "expand[]",
+                      "value": "transaction.settlement"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:37.000Z",
+              "updatedAt": "2026-07-28T01:27:37.000Z",
+              "uid": "35240-65376678-07d3-4ae9-a380-010e3da7c301"
+            },
+            {
+              "id": "1947f535-5c44-4daa-bf2d-bc2a183a3b71",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/disputes?count=10&skip=0&expand[]=transaction.settlement",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "disputes"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Expand sub-entities. Supported: payment, transaction.settlement.",
+                      "key": "expand[]",
+                      "value": "transaction.settlement"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:37.000Z",
+              "updatedAt": "2026-07-28T01:27:37.000Z",
+              "uid": "35240-1947f535-5c44-4daa-bf2d-bc2a183a3b71"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:37.000Z",
+          "updatedAt": "2026-07-28T01:27:37.000Z",
+          "uid": "35240-0de5e037-421b-4099-9dc1-44dd859b6ab2"
+        }
+      ],
+      "id": "b4006b45-791f-4069-95ff-7476c4bcf8c6",
+      "createdAt": "2026-07-28T01:27:37.000Z",
+      "updatedAt": "2026-07-28T01:27:37.000Z",
+      "uid": "35240-b4006b45-791f-4069-95ff-7476c4bcf8c6"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

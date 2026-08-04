@@ -1,0 +1,759 @@
+{
+  "info": {
+    "_postman_id": "cd012b1e-b7c6-460b-8a17-c40454db29d8",
+    "name": "Razorpay Bills Plans API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:14.000Z",
+    "updatedAt": "2026-07-28T01:28:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cd012b1e-b7c6-460b-8a17-c40454db29d8"
+  },
+  "item": [
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Fetch a plan",
+              "id": "a8750fa9-5ed6-42da-8ac0-018a7f93fa10",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "87c88112-a1cc-4007-bace-ab49011c2d80",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Plan ID (plan_*)."
+                    }
+                  ]
+                },
+                "description": "Get details of a specific billing plan."
+              },
+              "response": [
+                {
+                  "id": "57e69913-925b-4c41-b84b-d97115e4c605",
+                  "name": "Plan details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"plan\",\n  \"interval\": \"<integer>\",\n  \"period\": \"daily\",\n  \"item\": {\n    \"id\": \"<string>\",\n    \"entity\": \"item\",\n    \"active\": \"<boolean>\",\n    \"amount\": \"<integer>\",\n    \"unit_amount\": \"<integer>\",\n    \"currency\": \"INR\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_at\": \"<integer>\"\n  },\n  \"notes\": {\n    \"aliquaaf\": \"<string>\",\n    \"inf1_\": \"<string>\",\n    \"eteda\": \"<string>\",\n    \"velit_3\": \"<string>\",\n    \"enim3\": \"<string>\",\n    \"aliqua_5\": \"<string>\",\n    \"sunt758\": \"<string>\",\n    \"consectetur_b35\": \"<string>\",\n    \"aliqua_d_\": \"<string>\",\n    \"dolor_3\": \"<string>\",\n    \"consequat17b\": \"<string>\",\n    \"ad81e\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:15.000Z",
+                  "updatedAt": "2026-07-28T01:28:15.000Z",
+                  "uid": "35240-57e69913-925b-4c41-b84b-d97115e4c605"
+                },
+                {
+                  "id": "58126611-c16e-4a18-a417-e05545e5d987",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:15.000Z",
+                  "updatedAt": "2026-07-28T01:28:15.000Z",
+                  "uid": "35240-58126611-c16e-4a18-a417-e05545e5d987"
+                },
+                {
+                  "id": "fcdefe0f-6c15-433d-aad1-9794fc3489a5",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:15.000Z",
+                  "updatedAt": "2026-07-28T01:28:15.000Z",
+                  "uid": "35240-fcdefe0f-6c15-433d-aad1-9794fc3489a5"
+                },
+                {
+                  "id": "2b8007d6-32d5-4fea-86a0-50aba6d9c34e",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/plans/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "plans",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:15.000Z",
+                  "updatedAt": "2026-07-28T01:28:15.000Z",
+                  "uid": "35240-2b8007d6-32d5-4fea-86a0-50aba6d9c34e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-a8750fa9-5ed6-42da-8ac0-018a7f93fa10"
+            }
+          ],
+          "id": "ba54ccb2-1b3e-4520-aebc-e77ffdf5bf53",
+          "createdAt": "2026-07-28T01:28:15.000Z",
+          "updatedAt": "2026-07-28T01:28:15.000Z",
+          "uid": "35240-ba54ccb2-1b3e-4520-aebc-e77ffdf5bf53"
+        },
+        {
+          "name": "Create a plan",
+          "id": "d14fcbbd-6a22-4287-bb44-aaac36efe48d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"period\": \"monthly\",\n  \"interval\": \"<integer>\",\n  \"item\": {\n    \"name\": \"<string>\",\n    \"amount\": \"<integer>\",\n    \"currency\": \"INR\",\n    \"description\": \"<string>\"\n  },\n  \"notes\": {\n    \"laboris_3b5\": \"<string>\",\n    \"Lorem_d\": \"<string>\",\n    \"cillum_91\": \"<string>\",\n    \"enim_3e\": \"<string>\",\n    \"elitc5c\": \"<string>\",\n    \"irure_c1\": \"<string>\",\n    \"Lorem_06\": \"<string>\",\n    \"pariatur64\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/plans",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "plans"
+              ]
+            },
+            "description": "Define a recurring billing plan with a fixed period, interval, and amount. Plans are reusable across multiple subscriptions. Once created, plan details cannot be modified."
+          },
+          "response": [
+            {
+              "id": "6562d19c-09c4-48fe-94aa-d8612d248fb5",
+              "name": "Plan created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"period\": \"monthly\",\n  \"interval\": \"<integer>\",\n  \"item\": {\n    \"name\": \"<string>\",\n    \"amount\": \"<integer>\",\n    \"currency\": \"INR\",\n    \"description\": \"<string>\"\n  },\n  \"notes\": {\n    \"laboris_3b5\": \"<string>\",\n    \"Lorem_d\": \"<string>\",\n    \"cillum_91\": \"<string>\",\n    \"enim_3e\": \"<string>\",\n    \"elitc5c\": \"<string>\",\n    \"irure_c1\": \"<string>\",\n    \"Lorem_06\": \"<string>\",\n    \"pariatur64\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"plan\",\n  \"interval\": \"<integer>\",\n  \"period\": \"daily\",\n  \"item\": {\n    \"id\": \"<string>\",\n    \"entity\": \"item\",\n    \"active\": \"<boolean>\",\n    \"amount\": \"<integer>\",\n    \"unit_amount\": \"<integer>\",\n    \"currency\": \"INR\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_at\": \"<integer>\"\n  },\n  \"notes\": {\n    \"aliquaaf\": \"<string>\",\n    \"inf1_\": \"<string>\",\n    \"eteda\": \"<string>\",\n    \"velit_3\": \"<string>\",\n    \"enim3\": \"<string>\",\n    \"aliqua_5\": \"<string>\",\n    \"sunt758\": \"<string>\",\n    \"consectetur_b35\": \"<string>\",\n    \"aliqua_d_\": \"<string>\",\n    \"dolor_3\": \"<string>\",\n    \"consequat17b\": \"<string>\",\n    \"ad81e\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-6562d19c-09c4-48fe-94aa-d8612d248fb5"
+            },
+            {
+              "id": "f3e33246-0f5a-4d7c-85bf-886f5e40cea2",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"period\": \"monthly\",\n  \"interval\": \"<integer>\",\n  \"item\": {\n    \"name\": \"<string>\",\n    \"amount\": \"<integer>\",\n    \"currency\": \"INR\",\n    \"description\": \"<string>\"\n  },\n  \"notes\": {\n    \"laboris_3b5\": \"<string>\",\n    \"Lorem_d\": \"<string>\",\n    \"cillum_91\": \"<string>\",\n    \"enim_3e\": \"<string>\",\n    \"elitc5c\": \"<string>\",\n    \"irure_c1\": \"<string>\",\n    \"Lorem_06\": \"<string>\",\n    \"pariatur64\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-f3e33246-0f5a-4d7c-85bf-886f5e40cea2"
+            },
+            {
+              "id": "89adcdc6-be82-4b59-84b4-be87bb4207e5",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"period\": \"monthly\",\n  \"interval\": \"<integer>\",\n  \"item\": {\n    \"name\": \"<string>\",\n    \"amount\": \"<integer>\",\n    \"currency\": \"INR\",\n    \"description\": \"<string>\"\n  },\n  \"notes\": {\n    \"laboris_3b5\": \"<string>\",\n    \"Lorem_d\": \"<string>\",\n    \"cillum_91\": \"<string>\",\n    \"enim_3e\": \"<string>\",\n    \"elitc5c\": \"<string>\",\n    \"irure_c1\": \"<string>\",\n    \"Lorem_06\": \"<string>\",\n    \"pariatur64\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-89adcdc6-be82-4b59-84b4-be87bb4207e5"
+            },
+            {
+              "id": "387cb9af-2bf3-4dba-a016-b434e8611228",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"period\": \"monthly\",\n  \"interval\": \"<integer>\",\n  \"item\": {\n    \"name\": \"<string>\",\n    \"amount\": \"<integer>\",\n    \"currency\": \"INR\",\n    \"description\": \"<string>\"\n  },\n  \"notes\": {\n    \"laboris_3b5\": \"<string>\",\n    \"Lorem_d\": \"<string>\",\n    \"cillum_91\": \"<string>\",\n    \"enim_3e\": \"<string>\",\n    \"elitc5c\": \"<string>\",\n    \"irure_c1\": \"<string>\",\n    \"Lorem_06\": \"<string>\",\n    \"pariatur64\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/plans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-387cb9af-2bf3-4dba-a016-b434e8611228"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:15.000Z",
+          "updatedAt": "2026-07-28T01:28:15.000Z",
+          "uid": "35240-d14fcbbd-6a22-4287-bb44-aaac36efe48d"
+        },
+        {
+          "name": "List all plans",
+          "id": "6e160d24-57de-4974-b1f3-c1d47bd1e00f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/plans?count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "plans"
+              ],
+              "query": [
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve all billing plans. Supports pagination."
+          },
+          "response": [
+            {
+              "id": "eae9b377-da63-413c-bf95-a193f7a49abc",
+              "name": "Collection of plans.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans?count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"plan\",\n      \"interval\": \"<integer>\",\n      \"period\": \"monthly\",\n      \"item\": {\n        \"id\": \"<string>\",\n        \"entity\": \"item\",\n        \"active\": \"<boolean>\",\n        \"amount\": \"<integer>\",\n        \"unit_amount\": \"<integer>\",\n        \"currency\": \"INR\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"created_at\": \"<integer>\"\n      },\n      \"notes\": {\n        \"pariatur_c2\": \"<string>\",\n        \"est_438\": \"<string>\",\n        \"sunt9\": \"<string>\",\n        \"ut_e9\": \"<string>\",\n        \"ex_4ef\": \"<string>\",\n        \"consectetur15\": \"<string>\",\n        \"dolorb\": \"<string>\",\n        \"nulla184\": \"<string>\",\n        \"Utd\": \"<string>\",\n        \"aliquip1\": \"<string>\",\n        \"incididunt_ff\": \"<string>\",\n        \"proident_5\": \"<string>\",\n        \"occaecat85\": \"<string>\",\n        \"labore_2c\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"plan\",\n      \"interval\": \"<integer>\",\n      \"period\": \"monthly\",\n      \"item\": {\n        \"id\": \"<string>\",\n        \"entity\": \"item\",\n        \"active\": \"<boolean>\",\n        \"amount\": \"<integer>\",\n        \"unit_amount\": \"<integer>\",\n        \"currency\": \"INR\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"created_at\": \"<integer>\"\n      },\n      \"notes\": {\n        \"do62b\": \"<string>\",\n        \"ullamcob6b\": \"<string>\",\n        \"officia_9e1\": \"<string>\",\n        \"ullamco9_\": \"<string>\",\n        \"sunt_b3c\": \"<string>\",\n        \"laboris4\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-eae9b377-da63-413c-bf95-a193f7a49abc"
+            },
+            {
+              "id": "33408703-bfcd-46c9-ad6e-93d363641e78",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans?count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-33408703-bfcd-46c9-ad6e-93d363641e78"
+            },
+            {
+              "id": "257b5e98-0bf9-4653-869e-66cbe8649c46",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/plans?count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "plans"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:15.000Z",
+              "updatedAt": "2026-07-28T01:28:15.000Z",
+              "uid": "35240-257b5e98-0bf9-4653-869e-66cbe8649c46"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:15.000Z",
+          "updatedAt": "2026-07-28T01:28:15.000Z",
+          "uid": "35240-6e160d24-57de-4974-b1f3-c1d47bd1e00f"
+        }
+      ],
+      "id": "89a69f60-f947-463e-95a4-86da162b76e7",
+      "createdAt": "2026-07-28T01:28:15.000Z",
+      "updatedAt": "2026-07-28T01:28:15.000Z",
+      "uid": "35240-89a69f60-f947-463e-95a4-86da162b76e7"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

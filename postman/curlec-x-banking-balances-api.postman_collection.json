@@ -1,0 +1,357 @@
+{
+  "info": {
+    "_postman_id": "560d0d1f-b445-4dd1-94ea-f4006b0cb99d",
+    "name": "Razorpay Bills X Banking Balances API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:40.000Z",
+    "updatedAt": "2026-07-28T01:28:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-560d0d1f-b445-4dd1-94ea-f4006b0cb99d"
+  },
+  "item": [
+    {
+      "name": "banking_balances",
+      "item": [
+        {
+          "name": "Fetch RazorpayX banking balances",
+          "id": "c1b7b19a-a174-4eb0-a819-dccb6969b0e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/banking_balances?account_type=fixed_deposit&bank_code=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "banking_balances"
+              ],
+              "query": [
+                {
+                  "description": "Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`.",
+                  "key": "account_type",
+                  "value": "fixed_deposit"
+                },
+                {
+                  "description": "First 4 characters of IFSC",
+                  "key": "bank_code",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Fetch balance details for RazorpayX current accounts or RazorpayX Lite accounts."
+          },
+          "response": [
+            {
+              "id": "43fc2242-1613-4c7c-8d1b-0b45ee938066",
+              "name": "Banking balances",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banking_balances?account_type=fixed_deposit&bank_code=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banking_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`.",
+                      "key": "account_type",
+                      "value": "fixed_deposit"
+                    },
+                    {
+                      "description": "First 4 characters of IFSC",
+                      "key": "bank_code",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"entity\": \"banking_balance\",\n      \"currency\": \"<string>\",\n      \"account_number\": \"<string>\",\n      \"account_type\": \"razorpayx_lite\",\n      \"bank_name\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"available_amount\": \"<integer>\",\n      \"refreshed_at\": \"<integer>\"\n    },\n    {\n      \"entity\": \"banking_balance\",\n      \"currency\": \"<string>\",\n      \"account_number\": \"<string>\",\n      \"account_type\": \"fixed_deposit\",\n      \"bank_name\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"available_amount\": \"<integer>\",\n      \"refreshed_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:41.000Z",
+              "updatedAt": "2026-07-28T01:28:41.000Z",
+              "uid": "35240-43fc2242-1613-4c7c-8d1b-0b45ee938066"
+            },
+            {
+              "id": "04f335c3-6dd8-4a93-9732-1a2356cc5995",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banking_balances?account_type=fixed_deposit&bank_code=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banking_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`.",
+                      "key": "account_type",
+                      "value": "fixed_deposit"
+                    },
+                    {
+                      "description": "First 4 characters of IFSC",
+                      "key": "bank_code",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:41.000Z",
+              "updatedAt": "2026-07-28T01:28:41.000Z",
+              "uid": "35240-04f335c3-6dd8-4a93-9732-1a2356cc5995"
+            },
+            {
+              "id": "54e65023-ed91-45bf-8452-b25de43e488a",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banking_balances?account_type=fixed_deposit&bank_code=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banking_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`.",
+                      "key": "account_type",
+                      "value": "fixed_deposit"
+                    },
+                    {
+                      "description": "First 4 characters of IFSC",
+                      "key": "bank_code",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:41.000Z",
+              "updatedAt": "2026-07-28T01:28:41.000Z",
+              "uid": "35240-54e65023-ed91-45bf-8452-b25de43e488a"
+            },
+            {
+              "id": "580d0a18-3d0b-4248-9a54-4e2b1a63b87f",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banking_balances?account_type=fixed_deposit&bank_code=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banking_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`.",
+                      "key": "account_type",
+                      "value": "fixed_deposit"
+                    },
+                    {
+                      "description": "First 4 characters of IFSC",
+                      "key": "bank_code",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:41.000Z",
+              "updatedAt": "2026-07-28T01:28:41.000Z",
+              "uid": "35240-580d0a18-3d0b-4248-9a54-4e2b1a63b87f"
+            },
+            {
+              "id": "8f061aec-62ab-4e94-a9a9-b0d70944266c",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banking_balances?account_type=fixed_deposit&bank_code=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banking_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`.",
+                      "key": "account_type",
+                      "value": "fixed_deposit"
+                    },
+                    {
+                      "description": "First 4 characters of IFSC",
+                      "key": "bank_code",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:41.000Z",
+              "updatedAt": "2026-07-28T01:28:41.000Z",
+              "uid": "35240-8f061aec-62ab-4e94-a9a9-b0d70944266c"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:41.000Z",
+          "updatedAt": "2026-07-28T01:28:41.000Z",
+          "uid": "35240-c1b7b19a-a174-4eb0-a819-dccb6969b0e1"
+        }
+      ],
+      "id": "1cc6bfae-666d-4784-8f29-c821735dbd3e",
+      "createdAt": "2026-07-28T01:28:41.000Z",
+      "updatedAt": "2026-07-28T01:28:41.000Z",
+      "uid": "35240-1cc6bfae-666d-4784-8f29-c821735dbd3e"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

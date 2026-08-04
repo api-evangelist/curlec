@@ -1,0 +1,1972 @@
+{
+  "info": {
+    "_postman_id": "74ed7de0-15dc-490c-999b-5667ee7894c2",
+    "name": "Razorpay Bills Partner Webhooks API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:09.000Z",
+    "updatedAt": "2026-07-28T01:28:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74ed7de0-15dc-490c-999b-5667ee7894c2"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account_id}",
+              "item": [
+                {
+                  "name": "webhooks",
+                  "item": [
+                    {
+                      "name": "{webhook_id}",
+                      "item": [
+                        {
+                          "name": "Fetch a webhook by ID",
+                          "id": "31ecb4c8-33bf-4390-80c4-d377e72bcdd5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "basic",
+                              "basic": [
+                                {
+                                  "key": "username",
+                                  "value": "{{basicAuthUsername}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "password",
+                                  "value": "{{basicAuthPassword}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks",
+                                ":webhook_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1b5df0dd-366b-42f9-84b6-23b4f604fe0b",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                                },
+                                {
+                                  "id": "83e6e7c5-3796-4836-b48b-df13507e7235",
+                                  "key": "webhook_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the webhook (e.g. `we_00000000000001`)."
+                                }
+                              ]
+                            },
+                            "description": "Retrieve details of a specific webhook for a sub-merchant account. Authentication: OAuth access_token."
+                          },
+                          "response": [
+                            {
+                              "id": "55a39974-788d-4380-902d-42d55a642654",
+                              "name": "Webhook details",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-55a39974-788d-4380-902d-42d55a642654"
+                            },
+                            {
+                              "id": "725e2f45-5b36-4618-90b3-8a9d2cabe254",
+                              "name": "Bad request. Invalid parameters or missing required fields.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-725e2f45-5b36-4618-90b3-8a9d2cabe254"
+                            },
+                            {
+                              "id": "aa5cbe1b-3e05-4700-a350-99d42187e029",
+                              "name": "Authentication failed. Invalid or missing API key credentials.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-aa5cbe1b-3e05-4700-a350-99d42187e029"
+                            },
+                            {
+                              "id": "eca11acc-46b6-4340-94af-588b2a9eb8e4",
+                              "name": "Resource not found.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-eca11acc-46b6-4340-94af-588b2a9eb8e4"
+                            },
+                            {
+                              "id": "b5c7f0ac-0738-4eef-8d1c-a7f3b22a5cf9",
+                              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-b5c7f0ac-0738-4eef-8d1c-a7f3b22a5cf9"
+                            },
+                            {
+                              "id": "23d4115b-5d45-42e3-890d-0e76e222f12a",
+                              "name": "Internal server error.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-23d4115b-5d45-42e3-890d-0e76e222f12a"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-31ecb4c8-33bf-4390-80c4-d377e72bcdd5"
+                        },
+                        {
+                          "name": "Update a webhook",
+                          "id": "02b1a0a0-b8eb-4ac3-8b75-fe31031fe38a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "basic",
+                              "basic": [
+                                {
+                                  "key": "username",
+                                  "value": "{{basicAuthUsername}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "password",
+                                  "value": "{{basicAuthPassword}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks",
+                                ":webhook_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3f1da19c-2794-4c13-9387-21d15eceb953",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                                },
+                                {
+                                  "id": "b30f856e-3eaa-4458-a952-575e04d64542",
+                                  "key": "webhook_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the webhook (e.g. `we_00000000000001`)."
+                                }
+                              ]
+                            },
+                            "description": "Update webhook URL, events, secret, or active status for a sub-merchant account. Authentication: OAuth access_token."
+                          },
+                          "response": [
+                            {
+                              "id": "bf7e48e0-9a55-4a8d-abf2-f57cd212af15",
+                              "name": "Webhook updated",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-bf7e48e0-9a55-4a8d-abf2-f57cd212af15"
+                            },
+                            {
+                              "id": "695fdc6a-6e73-4fc6-9824-8cebb6d032cc",
+                              "name": "Bad request. Invalid parameters or missing required fields.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-695fdc6a-6e73-4fc6-9824-8cebb6d032cc"
+                            },
+                            {
+                              "id": "0f19a7c9-0366-4b36-bc2e-4dc7256cf320",
+                              "name": "Authentication failed. Invalid or missing API key credentials.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-0f19a7c9-0366-4b36-bc2e-4dc7256cf320"
+                            },
+                            {
+                              "id": "b775f75d-2930-45fd-be30-7a8615749e60",
+                              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-b775f75d-2930-45fd-be30-7a8615749e60"
+                            },
+                            {
+                              "id": "2583317c-52a8-46b6-9ef2-41835dae1089",
+                              "name": "Internal server error.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-2583317c-52a8-46b6-9ef2-41835dae1089"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-02b1a0a0-b8eb-4ac3-8b75-fe31031fe38a"
+                        },
+                        {
+                          "name": "Delete a webhook",
+                          "id": "105e28cb-de7b-4a6b-95e6-c592a0ad2719",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "basic",
+                              "basic": [
+                                {
+                                  "key": "username",
+                                  "value": "{{basicAuthUsername}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "password",
+                                  "value": "{{basicAuthPassword}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks",
+                                ":webhook_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "66719c48-143f-4f0e-b216-b85d1ab7506a",
+                                  "key": "account_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                                },
+                                {
+                                  "id": "dc9a0dbf-18fe-4772-ad37-61f17b8b41f6",
+                                  "key": "webhook_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the webhook (e.g. `we_00000000000001`)."
+                                }
+                              ]
+                            },
+                            "description": "Delete a webhook for a sub-merchant account. Returns empty array on success. Authentication: OAuth access_token."
+                          },
+                          "response": [
+                            {
+                              "id": "1a30184d-bedc-474f-860f-a40a496c2395",
+                              "name": "Webhook deleted",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-1a30184d-bedc-474f-860f-a40a496c2395"
+                            },
+                            {
+                              "id": "216ebd9e-786b-4fa5-9863-afa628e7f38b",
+                              "name": "Bad request. Invalid parameters or missing required fields.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-216ebd9e-786b-4fa5-9863-afa628e7f38b"
+                            },
+                            {
+                              "id": "260c4df5-ae3b-4934-b970-3a94fcd271b5",
+                              "name": "Authentication failed. Invalid or missing API key credentials.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-260c4df5-ae3b-4934-b970-3a94fcd271b5"
+                            },
+                            {
+                              "id": "2d487a04-4a60-4a0e-b4b3-d73a2fbaa902",
+                              "name": "Resource not found.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-2d487a04-4a60-4a0e-b4b3-d73a2fbaa902"
+                            },
+                            {
+                              "id": "67f8f52d-d12e-4744-a610-a8aac426cdd9",
+                              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-67f8f52d-d12e-4744-a610-a8aac426cdd9"
+                            },
+                            {
+                              "id": "58d4cebf-7452-474f-a692-74ce0fbd4d95",
+                              "name": "Internal server error.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks/:webhook_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "webhooks",
+                                    ":webhook_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account_id"
+                                    },
+                                    {
+                                      "key": "webhook_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:28:09.000Z",
+                              "updatedAt": "2026-07-28T01:28:09.000Z",
+                              "uid": "35240-58d4cebf-7452-474f-a692-74ce0fbd4d95"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-105e28cb-de7b-4a6b-95e6-c592a0ad2719"
+                        }
+                      ],
+                      "id": "77207fd0-0a43-4b6e-bebb-236ac7584496",
+                      "createdAt": "2026-07-28T01:28:09.000Z",
+                      "updatedAt": "2026-07-28T01:28:09.000Z",
+                      "uid": "35240-77207fd0-0a43-4b6e-bebb-236ac7584496"
+                    },
+                    {
+                      "name": "Create a webhook for a sub-merchant",
+                      "id": "9b63453f-f6a1-461c-b0ad-94d0b7d97aac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<string>\",\n  \"events\": {\n    \"sunt_3\": \"<boolean>\"\n  },\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1d0f71d4-f3d0-45eb-ab9c-ee5a73553d62",
+                              "key": "account_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                            }
+                          ]
+                        },
+                        "description": "Create a webhook to receive events for a sub-merchant account. Maximum 30 webhooks per account. Authentication: OAuth access_token."
+                      },
+                      "response": [
+                        {
+                          "id": "92857d61-ece0-43cc-9983-740cf1861ca4",
+                          "name": "Webhook created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<string>\",\n  \"events\": {\n    \"sunt_3\": \"<boolean>\"\n  },\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"webhook\",\n  \"owner_id\": \"<string>\",\n  \"owner_type\": \"<string>\",\n  \"url\": \"<string>\",\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"secret_exists\": \"<boolean>\",\n  \"active\": \"<boolean>\",\n  \"events\": {\n    \"veniam_c\": \"<boolean>\",\n    \"consequat81f\": \"<boolean>\",\n    \"nostrud1\": \"<boolean>\"\n  },\n  \"service\": \"<string>\",\n  \"context\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"disabled_at\": \"<integer>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-92857d61-ece0-43cc-9983-740cf1861ca4"
+                        },
+                        {
+                          "id": "0d67185c-a7e1-4cb5-ba9f-cb714031fa61",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<string>\",\n  \"events\": {\n    \"sunt_3\": \"<boolean>\"\n  },\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-0d67185c-a7e1-4cb5-ba9f-cb714031fa61"
+                        },
+                        {
+                          "id": "e9af9895-b8ff-4e47-b880-b89a86fb2e4e",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<string>\",\n  \"events\": {\n    \"sunt_3\": \"<boolean>\"\n  },\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-e9af9895-b8ff-4e47-b880-b89a86fb2e4e"
+                        },
+                        {
+                          "id": "d6d7170e-28e8-4e6d-b9d1-c39ebbb988ad",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<string>\",\n  \"events\": {\n    \"sunt_3\": \"<boolean>\"\n  },\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-d6d7170e-28e8-4e6d-b9d1-c39ebbb988ad"
+                        },
+                        {
+                          "id": "11d7a2e9-abb7-47c0-9bf9-b6ee8272d17f",
+                          "name": "Internal server error.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"url\": \"<string>\",\n  \"events\": {\n    \"sunt_3\": \"<boolean>\"\n  },\n  \"alert_email\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-11d7a2e9-abb7-47c0-9bf9-b6ee8272d17f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:09.000Z",
+                      "updatedAt": "2026-07-28T01:28:09.000Z",
+                      "uid": "35240-9b63453f-f6a1-461c-b0ad-94d0b7d97aac"
+                    },
+                    {
+                      "name": "List webhooks for a sub-merchant",
+                      "id": "bda83c6e-47e0-4e60-937b-7711152ee62f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8325a1b6-39f6-442c-b488-bcbad2a464e3",
+                              "key": "account_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve all webhooks configured for a sub-merchant account. Authentication: OAuth access_token."
+                      },
+                      "response": [
+                        {
+                          "id": "21da60f3-6501-494a-907b-914524620c32",
+                          "name": "List of webhooks",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"webhook\",\n      \"owner_id\": \"<string>\",\n      \"owner_type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"alert_email\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"secret_exists\": \"<boolean>\",\n      \"active\": \"<boolean>\",\n      \"events\": {\n        \"magna28c\": \"<boolean>\"\n      },\n      \"service\": \"<string>\",\n      \"context\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"disabled_at\": \"<integer>\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"webhook\",\n      \"owner_id\": \"<string>\",\n      \"owner_type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"alert_email\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"secret_exists\": \"<boolean>\",\n      \"active\": \"<boolean>\",\n      \"events\": {\n        \"occaecatb5\": \"<boolean>\"\n      },\n      \"service\": \"<string>\",\n      \"context\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"disabled_at\": \"<integer>\",\n      \"created_at\": \"<integer>\",\n      \"updated_at\": \"<integer>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-21da60f3-6501-494a-907b-914524620c32"
+                        },
+                        {
+                          "id": "ecbc612d-1e82-4d5c-b832-95279764f27c",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-ecbc612d-1e82-4d5c-b832-95279764f27c"
+                        },
+                        {
+                          "id": "c7066349-9e54-408a-a9c7-7246ba5a11c4",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-c7066349-9e54-408a-a9c7-7246ba5a11c4"
+                        },
+                        {
+                          "id": "f53c6c15-9a0c-4f57-8607-0bf2909fa921",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-f53c6c15-9a0c-4f57-8607-0bf2909fa921"
+                        },
+                        {
+                          "id": "b3a4bf85-489c-4fc2-8d8a-418157c30ada",
+                          "name": "Internal server error.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:09.000Z",
+                          "updatedAt": "2026-07-28T01:28:09.000Z",
+                          "uid": "35240-b3a4bf85-489c-4fc2-8d8a-418157c30ada"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:09.000Z",
+                      "updatedAt": "2026-07-28T01:28:09.000Z",
+                      "uid": "35240-bda83c6e-47e0-4e60-937b-7711152ee62f"
+                    }
+                  ],
+                  "id": "663f04dc-65f8-4aa6-8263-48770e63bf9d",
+                  "createdAt": "2026-07-28T01:28:09.000Z",
+                  "updatedAt": "2026-07-28T01:28:09.000Z",
+                  "uid": "35240-663f04dc-65f8-4aa6-8263-48770e63bf9d"
+                }
+              ],
+              "id": "cf62d6da-336c-4e80-828e-6b1e778b5e3f",
+              "createdAt": "2026-07-28T01:28:09.000Z",
+              "updatedAt": "2026-07-28T01:28:09.000Z",
+              "uid": "35240-cf62d6da-336c-4e80-828e-6b1e778b5e3f"
+            }
+          ],
+          "id": "61926831-ee2e-4ab0-aff0-50e6af5b476a",
+          "createdAt": "2026-07-28T01:28:09.000Z",
+          "updatedAt": "2026-07-28T01:28:09.000Z",
+          "uid": "35240-61926831-ee2e-4ab0-aff0-50e6af5b476a"
+        }
+      ],
+      "id": "392ba632-af1f-4e59-8364-7c11656ff798",
+      "createdAt": "2026-07-28T01:28:09.000Z",
+      "updatedAt": "2026-07-28T01:28:09.000Z",
+      "uid": "35240-392ba632-af1f-4e59-8364-7c11656ff798"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

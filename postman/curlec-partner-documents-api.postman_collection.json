@@ -1,0 +1,1727 @@
+{
+  "info": {
+    "_postman_id": "cd5c2259-4ff8-494d-a8c9-c44ad0c5540c",
+    "name": "Razorpay Bills Partner Documents API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:07.000Z",
+    "updatedAt": "2026-07-28T01:28:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cd5c2259-4ff8-494d-a8c9-c44ad0c5540c"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account_id}",
+              "item": [
+                {
+                  "name": "documents",
+                  "item": [
+                    {
+                      "name": "Upload KYC documents for a sub-merchant account",
+                      "id": "519dd9ad-59dd-4e4c-a535-57c4106f919c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": " (This can only be one of business_proof_url,gst_certificate,shop_establishment_certificate,certificate_of_incorporation,trust_deed,society_registration_certificate)",
+                              "key": "document_type",
+                              "value": "society_registration_certificate",
+                              "type": "text"
+                            },
+                            {
+                              "key": "file",
+                              "type": "file",
+                              "value": null
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ce3c4233-965c-498c-8e43-f1808241ac0d",
+                              "key": "account_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                            }
+                          ]
+                        },
+                        "description": "Upload KYC documents for business identity and address verification. Multipart form upload. JPG/PNG max 4MB, PDF max 2MB. Authentication: OAuth access_token."
+                      },
+                      "response": [
+                        {
+                          "id": "e9abb3c9-1ba2-4945-87f7-547c40e24406",
+                          "name": "Document uploaded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": " (This can only be one of business_proof_url,gst_certificate,shop_establishment_certificate,certificate_of_incorporation,trust_deed,society_registration_certificate)",
+                                  "key": "document_type",
+                                  "value": "society_registration_certificate",
+                                  "type": "text"
+                                },
+                                {
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"business_proof_of_identification\": [\n    {\n      \"type\": \"trust_deed\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"certificate_of_incorporation\",\n      \"document_id\": \"<string>\"\n    }\n  ],\n  \"business_proof_of_address\": [\n    {\n      \"type\": \"<string>\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"document_id\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-e9abb3c9-1ba2-4945-87f7-547c40e24406"
+                        },
+                        {
+                          "id": "5163db1a-49f9-4ecd-9b54-a562bb44027c",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": " (This can only be one of business_proof_url,gst_certificate,shop_establishment_certificate,certificate_of_incorporation,trust_deed,society_registration_certificate)",
+                                  "key": "document_type",
+                                  "value": "society_registration_certificate",
+                                  "type": "text"
+                                },
+                                {
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-5163db1a-49f9-4ecd-9b54-a562bb44027c"
+                        },
+                        {
+                          "id": "a2ca701a-2b72-4c70-81d8-0237a4675e6c",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": " (This can only be one of business_proof_url,gst_certificate,shop_establishment_certificate,certificate_of_incorporation,trust_deed,society_registration_certificate)",
+                                  "key": "document_type",
+                                  "value": "society_registration_certificate",
+                                  "type": "text"
+                                },
+                                {
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-a2ca701a-2b72-4c70-81d8-0237a4675e6c"
+                        },
+                        {
+                          "id": "588d936a-febb-429d-a7a1-225063600225",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": " (This can only be one of business_proof_url,gst_certificate,shop_establishment_certificate,certificate_of_incorporation,trust_deed,society_registration_certificate)",
+                                  "key": "document_type",
+                                  "value": "society_registration_certificate",
+                                  "type": "text"
+                                },
+                                {
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-588d936a-febb-429d-a7a1-225063600225"
+                        },
+                        {
+                          "id": "f5012c70-5bc7-4d96-ab39-93b17c8a139f",
+                          "name": "Internal server error.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": " (This can only be one of business_proof_url,gst_certificate,shop_establishment_certificate,certificate_of_incorporation,trust_deed,society_registration_certificate)",
+                                  "key": "document_type",
+                                  "value": "society_registration_certificate",
+                                  "type": "text"
+                                },
+                                {
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-f5012c70-5bc7-4d96-ab39-93b17c8a139f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:07.000Z",
+                      "updatedAt": "2026-07-28T01:28:07.000Z",
+                      "uid": "35240-519dd9ad-59dd-4e4c-a535-57c4106f919c"
+                    },
+                    {
+                      "name": "Fetch KYC documents for a sub-merchant account",
+                      "id": "3d5a9d9e-edc8-4043-b60c-314ab34c5471",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "accounts",
+                            ":account_id",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d181ec3a-9e04-4b81-a2d1-d1b797ffb8d8",
+                              "key": "account_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve all KYC documents uploaded for a sub-merchant account. Authentication: OAuth access_token."
+                      },
+                      "response": [
+                        {
+                          "id": "f738cd67-5055-44b7-8ae5-c8961b895152",
+                          "name": "Account documents",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"business_proof_of_identification\": [\n    {\n      \"type\": \"trust_deed\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"certificate_of_incorporation\",\n      \"document_id\": \"<string>\"\n    }\n  ],\n  \"business_proof_of_address\": [\n    {\n      \"type\": \"<string>\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"document_id\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-f738cd67-5055-44b7-8ae5-c8961b895152"
+                        },
+                        {
+                          "id": "69fc7b4f-a290-4fbe-976b-b98876778aa2",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-69fc7b4f-a290-4fbe-976b-b98876778aa2"
+                        },
+                        {
+                          "id": "cf5c9506-fcbe-49e1-9fc6-3b95d5f17096",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-cf5c9506-fcbe-49e1-9fc6-3b95d5f17096"
+                        },
+                        {
+                          "id": "60656c0d-95af-4c6a-973c-39300b5e4711",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-60656c0d-95af-4c6a-973c-39300b5e4711"
+                        },
+                        {
+                          "id": "886c3c13-59f1-4fba-b622-b37210dde100",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-886c3c13-59f1-4fba-b622-b37210dde100"
+                        },
+                        {
+                          "id": "4e19aab1-bf18-41b2-9889-12a52cdcd097",
+                          "name": "Internal server error.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/accounts/:account_id/documents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "accounts",
+                                ":account_id",
+                                "documents"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-4e19aab1-bf18-41b2-9889-12a52cdcd097"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:07.000Z",
+                      "updatedAt": "2026-07-28T01:28:07.000Z",
+                      "uid": "35240-3d5a9d9e-edc8-4043-b60c-314ab34c5471"
+                    }
+                  ],
+                  "id": "4b023980-2e86-46e2-b5c3-3a005834d916",
+                  "createdAt": "2026-07-28T01:28:07.000Z",
+                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                  "uid": "35240-4b023980-2e86-46e2-b5c3-3a005834d916"
+                },
+                {
+                  "name": "stakeholders",
+                  "item": [
+                    {
+                      "name": "{stakeholder_id}",
+                      "item": [
+                        {
+                          "name": "documents",
+                          "item": [
+                            {
+                              "name": "Upload KYC documents for a stakeholder",
+                              "id": "15938bad-4b62-432f-9ae9-483c19e4644a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "basic",
+                                  "basic": [
+                                    {
+                                      "key": "username",
+                                      "value": "{{basicAuthUsername}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "password",
+                                      "value": "{{basicAuthPassword}}",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "multipart/form-data"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "formdata",
+                                  "formdata": [
+                                    {
+                                      "description": " (This can only be one of personal_pan,aadhar_front,aadhar_back,passport_front,passport_back,voter_id_front,voter_id_back)",
+                                      "key": "document_type",
+                                      "value": "aadhar_front",
+                                      "type": "text"
+                                    },
+                                    {
+                                      "key": "file",
+                                      "type": "file",
+                                      "value": null
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "stakeholders",
+                                    ":stakeholder_id",
+                                    "documents"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "24bffe68-5fa8-4206-9ca6-8ca1d6d3ce5d",
+                                      "key": "account_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                                    },
+                                    {
+                                      "id": "52ed8d77-4fbb-4520-a62b-82761766025f",
+                                      "key": "stakeholder_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Unique identifier of the stakeholder (e.g. `sth_00000000000001`)."
+                                    }
+                                  ]
+                                },
+                                "description": "Upload identity and address verification documents for a stakeholder. Supports PAN, Aadhaar (front/back), passport (front/back), voter ID (front/back). Multipart form upload. JPG/PNG max 4MB, PDF max 2MB. Authentication: OAuth access_token."
+                              },
+                              "response": [
+                                {
+                                  "id": "1c5332bd-4dd2-4fac-9ac6-89141f59acad",
+                                  "name": "Document uploaded",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": " (This can only be one of personal_pan,aadhar_front,aadhar_back,passport_front,passport_back,voter_id_front,voter_id_back)",
+                                          "key": "document_type",
+                                          "value": "aadhar_front",
+                                          "type": "text"
+                                        },
+                                        {
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"individual_proof_of_address\": [\n    {\n      \"type\": \"voter_id_front\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"passport_front\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    }\n  ],\n  \"individual_proof_of_identification\": [\n    {\n      \"type\": \"personal_pan\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"personal_pan\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-1c5332bd-4dd2-4fac-9ac6-89141f59acad"
+                                },
+                                {
+                                  "id": "92d30098-0d85-41f2-a3ed-c7a4e4d69891",
+                                  "name": "Bad request. Invalid parameters or missing required fields.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": " (This can only be one of personal_pan,aadhar_front,aadhar_back,passport_front,passport_back,voter_id_front,voter_id_back)",
+                                          "key": "document_type",
+                                          "value": "aadhar_front",
+                                          "type": "text"
+                                        },
+                                        {
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-92d30098-0d85-41f2-a3ed-c7a4e4d69891"
+                                },
+                                {
+                                  "id": "a0b8dcc1-1b3b-437d-b9bf-6d623b5688cc",
+                                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": " (This can only be one of personal_pan,aadhar_front,aadhar_back,passport_front,passport_back,voter_id_front,voter_id_back)",
+                                          "key": "document_type",
+                                          "value": "aadhar_front",
+                                          "type": "text"
+                                        },
+                                        {
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-a0b8dcc1-1b3b-437d-b9bf-6d623b5688cc"
+                                },
+                                {
+                                  "id": "746ebc52-4a85-46aa-a6f8-e78e1cf09bcf",
+                                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": " (This can only be one of personal_pan,aadhar_front,aadhar_back,passport_front,passport_back,voter_id_front,voter_id_back)",
+                                          "key": "document_type",
+                                          "value": "aadhar_front",
+                                          "type": "text"
+                                        },
+                                        {
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-746ebc52-4a85-46aa-a6f8-e78e1cf09bcf"
+                                },
+                                {
+                                  "id": "d7a057e4-5bb6-4a84-9d05-9c93bbde7906",
+                                  "name": "Internal server error.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": " (This can only be one of personal_pan,aadhar_front,aadhar_back,passport_front,passport_back,voter_id_front,voter_id_back)",
+                                          "key": "document_type",
+                                          "value": "aadhar_front",
+                                          "type": "text"
+                                        },
+                                        {
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-d7a057e4-5bb6-4a84-9d05-9c93bbde7906"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:28:07.000Z",
+                              "updatedAt": "2026-07-28T01:28:07.000Z",
+                              "uid": "35240-15938bad-4b62-432f-9ae9-483c19e4644a"
+                            },
+                            {
+                              "name": "Fetch KYC documents for a stakeholder",
+                              "id": "9e74943a-2e07-4754-9a15-36a1df273d9c",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "basic",
+                                  "basic": [
+                                    {
+                                      "key": "username",
+                                      "value": "{{basicAuthUsername}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "password",
+                                      "value": "{{basicAuthPassword}}",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "accounts",
+                                    ":account_id",
+                                    "stakeholders",
+                                    ":stakeholder_id",
+                                    "documents"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "d91fbda2-414a-4634-936b-97f04bf655e5",
+                                      "key": "account_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+                                    },
+                                    {
+                                      "id": "9ef122ad-9539-48eb-8d9f-03600691e7c2",
+                                      "key": "stakeholder_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Unique identifier of the stakeholder (e.g. `sth_00000000000001`)."
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve all KYC documents uploaded for a specific stakeholder. Authentication: OAuth access_token."
+                              },
+                              "response": [
+                                {
+                                  "id": "079ea5c3-73ac-46e6-b6f1-7ecdddf369fc",
+                                  "name": "Stakeholder documents",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"individual_proof_of_address\": [\n    {\n      \"type\": \"voter_id_front\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"passport_front\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    }\n  ],\n  \"individual_proof_of_identification\": [\n    {\n      \"type\": \"personal_pan\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    },\n    {\n      \"type\": \"personal_pan\",\n      \"url\": \"<string>\",\n      \"document_id\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-079ea5c3-73ac-46e6-b6f1-7ecdddf369fc"
+                                },
+                                {
+                                  "id": "8574d895-f0ce-4fa6-9bae-25abc14bc54f",
+                                  "name": "Bad request. Invalid parameters or missing required fields.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-8574d895-f0ce-4fa6-9bae-25abc14bc54f"
+                                },
+                                {
+                                  "id": "66bda6c3-3222-459f-95db-765155c3a6f6",
+                                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-66bda6c3-3222-459f-95db-765155c3a6f6"
+                                },
+                                {
+                                  "id": "b2dd819d-ccb0-4b65-b9a8-ad343c828464",
+                                  "name": "Resource not found.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-b2dd819d-ccb0-4b65-b9a8-ad343c828464"
+                                },
+                                {
+                                  "id": "76425cec-debb-4c19-a275-20f667510343",
+                                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-76425cec-debb-4c19-a275-20f667510343"
+                                },
+                                {
+                                  "id": "3632be2d-702a-46f1-a07a-c099e1b996e9",
+                                  "name": "Internal server error.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: basic",
+                                        "key": "Authorization",
+                                        "value": "Basic <credentials>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "accounts",
+                                        ":account_id",
+                                        "stakeholders",
+                                        ":stakeholder_id",
+                                        "documents"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account_id"
+                                        },
+                                        {
+                                          "key": "stakeholder_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:28:07.000Z",
+                                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                                  "uid": "35240-3632be2d-702a-46f1-a07a-c099e1b996e9"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:28:07.000Z",
+                              "updatedAt": "2026-07-28T01:28:07.000Z",
+                              "uid": "35240-9e74943a-2e07-4754-9a15-36a1df273d9c"
+                            }
+                          ],
+                          "id": "42e0196d-5e73-4813-9933-e658f9c51e13",
+                          "createdAt": "2026-07-28T01:28:07.000Z",
+                          "updatedAt": "2026-07-28T01:28:07.000Z",
+                          "uid": "35240-42e0196d-5e73-4813-9933-e658f9c51e13"
+                        }
+                      ],
+                      "id": "ced2e1bc-d64a-4cac-b192-f26a27b13a69",
+                      "createdAt": "2026-07-28T01:28:07.000Z",
+                      "updatedAt": "2026-07-28T01:28:07.000Z",
+                      "uid": "35240-ced2e1bc-d64a-4cac-b192-f26a27b13a69"
+                    }
+                  ],
+                  "id": "14ae2e58-31d9-4519-82a0-9e6350c78122",
+                  "createdAt": "2026-07-28T01:28:07.000Z",
+                  "updatedAt": "2026-07-28T01:28:07.000Z",
+                  "uid": "35240-14ae2e58-31d9-4519-82a0-9e6350c78122"
+                }
+              ],
+              "id": "71dc2b2c-7229-43dd-9ec4-11413297c676",
+              "createdAt": "2026-07-28T01:28:07.000Z",
+              "updatedAt": "2026-07-28T01:28:07.000Z",
+              "uid": "35240-71dc2b2c-7229-43dd-9ec4-11413297c676"
+            }
+          ],
+          "id": "c25dbeff-c98e-4db2-969d-8628c07a3c2d",
+          "createdAt": "2026-07-28T01:28:07.000Z",
+          "updatedAt": "2026-07-28T01:28:07.000Z",
+          "uid": "35240-c25dbeff-c98e-4db2-969d-8628c07a3c2d"
+        }
+      ],
+      "id": "51460c71-55be-41af-a023-e46dc1e5e402",
+      "createdAt": "2026-07-28T01:28:07.000Z",
+      "updatedAt": "2026-07-28T01:28:07.000Z",
+      "uid": "35240-51460c71-55be-41af-a023-e46dc1e5e402"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

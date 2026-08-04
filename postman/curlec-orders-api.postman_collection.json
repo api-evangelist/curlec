@@ -1,0 +1,1609 @@
+{
+  "info": {
+    "_postman_id": "cf601d34-c735-49db-9c48-ce27facfbab8",
+    "name": "Razorpay Bills Orders API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:27:43.000Z",
+    "updatedAt": "2026-07-28T01:27:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf601d34-c735-49db-9c48-ce27facfbab8"
+  },
+  "item": [
+    {
+      "name": "orders",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "payments",
+              "item": [
+                {
+                  "name": "Fetch payments for an order",
+                  "id": "45a3f3e5-43df-4fb7-a878-90ba38ec8ba8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id/payments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id",
+                        "payments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9f2f5b3f-f36c-4e46-a225-391d191d4d3d",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Order ID (order_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all authorized and failed payment attempts made against a specific order."
+                  },
+                  "response": [
+                    {
+                      "id": "ec16c4b1-f5de-4a90-b740-3acbb90d8d2a",
+                      "name": "Collection of payments for the order.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"status\": \"failed\",\n      \"order_id\": \"<string>\",\n      \"invoice_id\": \"<string>\",\n      \"international\": \"<boolean>\",\n      \"method\": \"wallet\",\n      \"amount_refunded\": \"<integer>\",\n      \"refund_status\": \"full\",\n      \"captured\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"card_id\": \"<string>\",\n      \"card\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"name\": \"<string>\",\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"emi\": \"<boolean>\",\n        \"sub_type\": \"<string>\"\n      },\n      \"bank\": \"<string>\",\n      \"wallet\": \"<string>\",\n      \"vpa\": \"<string>\",\n      \"upi\": {\n        \"payer_account_type\": \"<string>\",\n        \"vpa\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"token_id\": \"<string>\",\n      \"notes\": {\n        \"iruread\": \"<string>\",\n        \"laboris_dd1\": \"<string>\",\n        \"ad_113\": \"<string>\",\n        \"pariatur32d\": \"<string>\",\n        \"Lorem4\": \"<string>\",\n        \"velit_5\": \"<string>\",\n        \"nostrud_3\": \"<string>\",\n        \"proident_15a\": \"<string>\",\n        \"in_e\": \"<string>\",\n        \"consectetur_54\": \"<string>\",\n        \"sintb\": \"<string>\",\n        \"quif3\": \"<string>\",\n        \"ullamcoe\": \"<string>\",\n        \"et020\": \"<string>\",\n        \"incididunt_fb4\": \"<string>\"\n      },\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"error_code\": \"<string>\",\n      \"error_description\": \"<string>\",\n      \"error_source\": \"<string>\",\n      \"error_step\": \"<string>\",\n      \"error_reason\": \"<string>\",\n      \"acquirer_data\": {\n        \"rrn\": \"<string>\",\n        \"authentication_reference_number\": \"<string>\",\n        \"bank_transaction_id\": \"<string>\",\n        \"transaction_id\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"status\": \"refunded\",\n      \"order_id\": \"<string>\",\n      \"invoice_id\": \"<string>\",\n      \"international\": \"<boolean>\",\n      \"method\": \"emi\",\n      \"amount_refunded\": \"<integer>\",\n      \"refund_status\": \"partial\",\n      \"captured\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"card_id\": \"<string>\",\n      \"card\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"name\": \"<string>\",\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"emi\": \"<boolean>\",\n        \"sub_type\": \"<string>\"\n      },\n      \"bank\": \"<string>\",\n      \"wallet\": \"<string>\",\n      \"vpa\": \"<string>\",\n      \"upi\": {\n        \"payer_account_type\": \"<string>\",\n        \"vpa\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"token_id\": \"<string>\",\n      \"notes\": {\n        \"id1d3\": \"<string>\",\n        \"tempor090\": \"<string>\",\n        \"tempor_ed\": \"<string>\",\n        \"Excepteur0\": \"<string>\",\n        \"Ut_3\": \"<string>\"\n      },\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"error_code\": \"<string>\",\n      \"error_description\": \"<string>\",\n      \"error_source\": \"<string>\",\n      \"error_step\": \"<string>\",\n      \"error_reason\": \"<string>\",\n      \"acquirer_data\": {\n        \"rrn\": \"<string>\",\n        \"authentication_reference_number\": \"<string>\",\n        \"bank_transaction_id\": \"<string>\",\n        \"transaction_id\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:27:44.000Z",
+                      "updatedAt": "2026-07-28T01:27:44.000Z",
+                      "uid": "35240-ec16c4b1-f5de-4a90-b740-3acbb90d8d2a"
+                    },
+                    {
+                      "id": "cf5ed642-4b98-426b-8d12-74bb9995738c",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:44.000Z",
+                      "updatedAt": "2026-07-28T01:27:44.000Z",
+                      "uid": "35240-cf5ed642-4b98-426b-8d12-74bb9995738c"
+                    },
+                    {
+                      "id": "3ecd0bfa-be21-4cc2-8bd1-98f6addc6d1e",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:44.000Z",
+                      "updatedAt": "2026-07-28T01:27:44.000Z",
+                      "uid": "35240-3ecd0bfa-be21-4cc2-8bd1-98f6addc6d1e"
+                    },
+                    {
+                      "id": "f9e0c8f0-5fdb-4998-a1f2-49eb7f113732",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orders/:id/payments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orders",
+                            ":id",
+                            "payments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:27:44.000Z",
+                      "updatedAt": "2026-07-28T01:27:44.000Z",
+                      "uid": "35240-f9e0c8f0-5fdb-4998-a1f2-49eb7f113732"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-45a3f3e5-43df-4fb7-a878-90ba38ec8ba8"
+                }
+              ],
+              "id": "1cc31b49-d745-4072-b407-479aaa3c5900",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-1cc31b49-d745-4072-b407-479aaa3c5900"
+            },
+            {
+              "name": "Fetch order by ID",
+              "id": "a2553ab5-9fef-46ca-b05d-3123f227a5c7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7955a91a-3daf-400c-a098-9ba915c0a4be",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Order ID (order_*)."
+                    }
+                  ]
+                },
+                "description": "Retrieve the full details and current status of a specific order."
+              },
+              "response": [
+                {
+                  "id": "0f6905e3-bddd-4099-8537-d4d08ee3fc95",
+                  "name": "Order details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"order\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"status\": \"paid\",\n  \"attempts\": \"<integer>\",\n  \"notes\": {\n    \"et_400\": \"<string>\",\n    \"Utea4\": \"<string>\",\n    \"sunt_0\": \"<string>\",\n    \"laborumbeb\": \"<string>\",\n    \"ex_3\": \"<string>\",\n    \"dolor_da_\": \"<string>\",\n    \"fugiat_1_\": \"<string>\",\n    \"minim_73\": \"<string>\",\n    \"eu12\": \"<string>\",\n    \"mollit_2a\": \"<string>\",\n    \"enim_7\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"offer_id\": \"<string>\",\n  \"offers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-0f6905e3-bddd-4099-8537-d4d08ee3fc95"
+                },
+                {
+                  "id": "3d8c0a41-6812-42b7-8118-15ac51ffb7d0",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-3d8c0a41-6812-42b7-8118-15ac51ffb7d0"
+                },
+                {
+                  "id": "2924d17b-6fc2-4a09-be68-a363b6d73b30",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-2924d17b-6fc2-4a09-be68-a363b6d73b30"
+                },
+                {
+                  "id": "8269b1fb-b917-4926-a653-4815ef63ce87",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-8269b1fb-b917-4926-a653-4815ef63ce87"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-a2553ab5-9fef-46ca-b05d-3123f227a5c7"
+            },
+            {
+              "name": "Update an order",
+              "id": "1a6b8e5d-5a5e-45f3-94e7-6a89310762c8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"est2e\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4aab5979-2f1d-41da-971f-727588305fcc",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Order ID (order_*)."
+                    }
+                  ]
+                },
+                "description": "Update the notes field of an existing order. Only notes can be modified after creation."
+              },
+              "response": [
+                {
+                  "id": "89964841-3173-4975-96a3-5fbcde1083ee",
+                  "name": "Updated order.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"est2e\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"order\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"status\": \"paid\",\n  \"attempts\": \"<integer>\",\n  \"notes\": {\n    \"et_400\": \"<string>\",\n    \"Utea4\": \"<string>\",\n    \"sunt_0\": \"<string>\",\n    \"laborumbeb\": \"<string>\",\n    \"ex_3\": \"<string>\",\n    \"dolor_da_\": \"<string>\",\n    \"fugiat_1_\": \"<string>\",\n    \"minim_73\": \"<string>\",\n    \"eu12\": \"<string>\",\n    \"mollit_2a\": \"<string>\",\n    \"enim_7\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"offer_id\": \"<string>\",\n  \"offers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-89964841-3173-4975-96a3-5fbcde1083ee"
+                },
+                {
+                  "id": "3a059d64-9222-4ffa-9267-35400f98dc5e",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"est2e\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-3a059d64-9222-4ffa-9267-35400f98dc5e"
+                },
+                {
+                  "id": "3996328d-f0d3-47a3-9bdb-6609faa8af67",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"est2e\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-3996328d-f0d3-47a3-9bdb-6609faa8af67"
+                },
+                {
+                  "id": "710816b3-9a11-4a59-bd83-520c8ab40323",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"est2e\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-710816b3-9a11-4a59-bd83-520c8ab40323"
+                },
+                {
+                  "id": "2d250241-dcdc-49f1-9a35-f80721167cb3",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"est2e\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:27:44.000Z",
+                  "updatedAt": "2026-07-28T01:27:44.000Z",
+                  "uid": "35240-2d250241-dcdc-49f1-9a35-f80721167cb3"
+                }
+              ],
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-1a6b8e5d-5a5e-45f3-94e7-6a89310762c8"
+            }
+          ],
+          "id": "7202fd20-aaae-4f24-8752-b5c431dfa7e1",
+          "createdAt": "2026-07-28T01:27:44.000Z",
+          "updatedAt": "2026-07-28T01:27:44.000Z",
+          "uid": "35240-7202fd20-aaae-4f24-8752-b5c431dfa7e1"
+        },
+        {
+          "name": "Create an order",
+          "id": "ef63a00c-cb12-4879-9ab2-fae24b435244",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"notes\": {\n    \"ullamco7\": \"<string>\"\n  },\n  \"partial_payment\": false\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            },
+            "description": "Create an order before initiating a payment. The returned order_id must be passed to Razorpay Checkout. An order can have multiple payment attempts but only one successful capture."
+          },
+          "response": [
+            {
+              "id": "7611d5a2-1197-47d7-8e13-3ba7cc5dbfe2",
+              "name": "Order created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"notes\": {\n    \"ullamco7\": \"<string>\"\n  },\n  \"partial_payment\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"order\",\n  \"amount\": \"<integer>\",\n  \"amount_paid\": \"<integer>\",\n  \"amount_due\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"receipt\": \"<string>\",\n  \"status\": \"paid\",\n  \"attempts\": \"<integer>\",\n  \"notes\": {\n    \"et_400\": \"<string>\",\n    \"Utea4\": \"<string>\",\n    \"sunt_0\": \"<string>\",\n    \"laborumbeb\": \"<string>\",\n    \"ex_3\": \"<string>\",\n    \"dolor_da_\": \"<string>\",\n    \"fugiat_1_\": \"<string>\",\n    \"minim_73\": \"<string>\",\n    \"eu12\": \"<string>\",\n    \"mollit_2a\": \"<string>\",\n    \"enim_7\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\",\n  \"offer_id\": \"<string>\",\n  \"offers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-7611d5a2-1197-47d7-8e13-3ba7cc5dbfe2"
+            },
+            {
+              "id": "a5d4ec2b-76a3-49ca-8780-777d0389324a",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"notes\": {\n    \"ullamco7\": \"<string>\"\n  },\n  \"partial_payment\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-a5d4ec2b-76a3-49ca-8780-777d0389324a"
+            },
+            {
+              "id": "adb4d0fa-5f18-4a27-ab25-4412673fcb9a",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"notes\": {\n    \"ullamco7\": \"<string>\"\n  },\n  \"partial_payment\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-adb4d0fa-5f18-4a27-ab25-4412673fcb9a"
+            },
+            {
+              "id": "51a6fdc0-bf6e-4bc4-9e7d-051c128da026",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"notes\": {\n    \"ullamco7\": \"<string>\"\n  },\n  \"partial_payment\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-51a6fdc0-bf6e-4bc4-9e7d-051c128da026"
+            },
+            {
+              "id": "fc12a06b-0d97-43b1-9105-d3bf7847aca2",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\",\n  \"receipt\": \"<string>\",\n  \"notes\": {\n    \"ullamco7\": \"<string>\"\n  },\n  \"partial_payment\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-fc12a06b-0d97-43b1-9105-d3bf7847aca2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:44.000Z",
+          "updatedAt": "2026-07-28T01:27:44.000Z",
+          "uid": "35240-ef63a00c-cb12-4879-9ab2-fae24b435244"
+        },
+        {
+          "name": "Fetch all orders",
+          "id": "5c13ebbf-0c30-43a0-b202-4cdf096191e2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders?from=<integer>&to=<integer>&count=10&skip=0&authorized=0&receipt=<string>&expand[]=transfers&expand[]=payments.card",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ],
+              "query": [
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "description": "1 = orders with authorized payments only. 0 = without.",
+                  "key": "authorized",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter by receipt value.",
+                  "key": "receipt",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Expand: payments, payments.card, transfers, virtual_account.",
+                  "key": "expand[]",
+                  "value": "transfers"
+                },
+                {
+                  "description": "Expand: payments, payments.card, transfers, virtual_account.",
+                  "key": "expand[]",
+                  "value": "payments.card"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of orders. Maximum 100 records per call."
+          },
+          "response": [
+            {
+              "id": "8fd1afcc-0d0c-45c0-8bf0-1af28098d3e0",
+              "name": "Collection of orders.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?from=<integer>&to=<integer>&count=10&skip=0&authorized=0&receipt=<string>&expand[]=payments.card",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "1 = orders with authorized payments only. 0 = without.",
+                      "key": "authorized",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by receipt value.",
+                      "key": "receipt",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Expand: payments, payments.card, transfers, virtual_account.",
+                      "key": "expand[]",
+                      "value": "payments.card"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"order\",\n      \"amount\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"amount_due\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"receipt\": \"<string>\",\n      \"status\": \"paid\",\n      \"attempts\": \"<integer>\",\n      \"notes\": {\n        \"officia5\": \"<string>\",\n        \"reprehenderit_d69\": \"<string>\",\n        \"eiusmod2b5\": \"<string>\",\n        \"fugiat668\": \"<string>\",\n        \"qui138\": \"<string>\",\n        \"ad__e\": \"<string>\",\n        \"in_6c\": \"<string>\",\n        \"eab\": \"<string>\",\n        \"eiusmod_cda\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"offer_id\": \"<string>\",\n      \"offers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"order\",\n      \"amount\": \"<integer>\",\n      \"amount_paid\": \"<integer>\",\n      \"amount_due\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"receipt\": \"<string>\",\n      \"status\": \"attempted\",\n      \"attempts\": \"<integer>\",\n      \"notes\": {\n        \"do4_b\": \"<string>\",\n        \"ut_8\": \"<string>\",\n        \"enim_3\": \"<string>\",\n        \"do_0\": \"<string>\",\n        \"animc\": \"<string>\",\n        \"ullamco_4\": \"<string>\",\n        \"qui_6\": \"<string>\",\n        \"et373\": \"<string>\",\n        \"elit8_7\": \"<string>\",\n        \"tempor_e\": \"<string>\",\n        \"in_59d\": \"<string>\",\n        \"nulla_20e\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\",\n      \"offer_id\": \"<string>\",\n      \"offers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-8fd1afcc-0d0c-45c0-8bf0-1af28098d3e0"
+            },
+            {
+              "id": "4c3e2a94-685a-4858-a070-bf48c4ef4efe",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?from=<integer>&to=<integer>&count=10&skip=0&authorized=0&receipt=<string>&expand[]=payments.card",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "1 = orders with authorized payments only. 0 = without.",
+                      "key": "authorized",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by receipt value.",
+                      "key": "receipt",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Expand: payments, payments.card, transfers, virtual_account.",
+                      "key": "expand[]",
+                      "value": "payments.card"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-4c3e2a94-685a-4858-a070-bf48c4ef4efe"
+            },
+            {
+              "id": "ee29d99a-0a9d-498b-9908-02e6d9b5c126",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?from=<integer>&to=<integer>&count=10&skip=0&authorized=0&receipt=<string>&expand[]=payments.card",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "1 = orders with authorized payments only. 0 = without.",
+                      "key": "authorized",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by receipt value.",
+                      "key": "receipt",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Expand: payments, payments.card, transfers, virtual_account.",
+                      "key": "expand[]",
+                      "value": "payments.card"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-ee29d99a-0a9d-498b-9908-02e6d9b5c126"
+            },
+            {
+              "id": "470c6fb6-f91d-4b57-a4b7-d201a7db4b13",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?from=<integer>&to=<integer>&count=10&skip=0&authorized=0&receipt=<string>&expand[]=payments.card",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "1 = orders with authorized payments only. 0 = without.",
+                      "key": "authorized",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by receipt value.",
+                      "key": "receipt",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Expand: payments, payments.card, transfers, virtual_account.",
+                      "key": "expand[]",
+                      "value": "payments.card"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:27:44.000Z",
+              "updatedAt": "2026-07-28T01:27:44.000Z",
+              "uid": "35240-470c6fb6-f91d-4b57-a4b7-d201a7db4b13"
+            }
+          ],
+          "createdAt": "2026-07-28T01:27:44.000Z",
+          "updatedAt": "2026-07-28T01:27:44.000Z",
+          "uid": "35240-5c13ebbf-0c30-43a0-b202-4cdf096191e2"
+        }
+      ],
+      "id": "5c6cde18-01e6-41a5-bfdc-e378e3b4d20c",
+      "createdAt": "2026-07-28T01:27:44.000Z",
+      "updatedAt": "2026-07-28T01:27:44.000Z",
+      "uid": "35240-5c6cde18-01e6-41a5-bfdc-e378e3b4d20c"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

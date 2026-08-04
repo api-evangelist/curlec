@@ -1,0 +1,1443 @@
+{
+  "info": {
+    "_postman_id": "a79b150c-2c6d-4930-9df4-a800729efd35",
+    "name": "Razorpay Bills X Fund Accounts API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:42.000Z",
+    "updatedAt": "2026-07-28T01:28:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a79b150c-2c6d-4930-9df4-a800729efd35"
+  },
+  "item": [
+    {
+      "name": "fund_accounts",
+      "item": [
+        {
+          "name": "{fund_account_id}",
+          "item": [
+            {
+              "name": "Fetch a fund account",
+              "id": "21a73150-7be0-457c-b1da-db4796f7d29f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts",
+                    ":fund_account_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "380bf357-251d-4cb9-bb79-93de958babdf",
+                      "key": "fund_account_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the fund account (e.g. `fa_00000000000001`)."
+                    }
+                  ]
+                },
+                "description": "Fetch details of a specific fund account by its ID."
+              },
+              "response": [
+                {
+                  "id": "6c0f2f5b-306f-4680-b9bc-904820bf13ea",
+                  "name": "Fund account details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"fund_account\",\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"wallet\",\n  \"active\": \"<boolean>\",\n  \"batch_id\": \"<string>\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"username\": \"<string>\",\n    \"handle\": \"<string>\",\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"last4\": \"<string>\",\n    \"network\": \"<string>\",\n    \"type\": \"<string>\",\n    \"issuer\": \"<string>\",\n    \"input_type\": \"service_provider_token\"\n  },\n  \"created_at\": \"<integer>\",\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-6c0f2f5b-306f-4680-b9bc-904820bf13ea"
+                },
+                {
+                  "id": "8b63e520-882d-47bd-9af5-8dd78c5b9598",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-8b63e520-882d-47bd-9af5-8dd78c5b9598"
+                },
+                {
+                  "id": "c116a641-5cf8-4e5d-8da8-6523fc32f70f",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-c116a641-5cf8-4e5d-8da8-6523fc32f70f"
+                },
+                {
+                  "id": "00e249bc-548a-4e3e-9ea5-cbb48cf136d4",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-00e249bc-548a-4e3e-9ea5-cbb48cf136d4"
+                },
+                {
+                  "id": "31a11e7a-d8ae-45d1-87bd-71306c41d507",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-31a11e7a-d8ae-45d1-87bd-71306c41d507"
+                },
+                {
+                  "id": "19e4eed9-0f89-46f5-8e83-51863cc910cd",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-19e4eed9-0f89-46f5-8e83-51863cc910cd"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-21a73150-7be0-457c-b1da-db4796f7d29f"
+            },
+            {
+              "name": "Activate or deactivate a fund account",
+              "id": "b088cb4d-8cb2-465c-903d-93f61ff87d17",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts",
+                    ":fund_account_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f6a60c51-6633-47ad-b490-a5e4ff08a396",
+                      "key": "fund_account_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the fund account (e.g. `fa_00000000000001`)."
+                    }
+                  ]
+                },
+                "description": "Activate or deactivate a fund account. Fund account details are immutable \u2014 only the `active` status can be changed."
+              },
+              "response": [
+                {
+                  "id": "33597dce-22fc-4a5a-84a3-d9246c7e9a9c",
+                  "name": "Updated fund account",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"fund_account\",\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"wallet\",\n  \"active\": \"<boolean>\",\n  \"batch_id\": \"<string>\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"username\": \"<string>\",\n    \"handle\": \"<string>\",\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"last4\": \"<string>\",\n    \"network\": \"<string>\",\n    \"type\": \"<string>\",\n    \"issuer\": \"<string>\",\n    \"input_type\": \"service_provider_token\"\n  },\n  \"created_at\": \"<integer>\",\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-33597dce-22fc-4a5a-84a3-d9246c7e9a9c"
+                },
+                {
+                  "id": "f79f9194-2e2c-4709-8bf6-e4161b6095a8",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-f79f9194-2e2c-4709-8bf6-e4161b6095a8"
+                },
+                {
+                  "id": "8d62ae41-a2a0-46f7-957b-fe54fb52f45e",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-8d62ae41-a2a0-46f7-957b-fe54fb52f45e"
+                },
+                {
+                  "id": "f6a8dc2d-e1fe-4295-9117-2f1e1a1fd356",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-f6a8dc2d-e1fe-4295-9117-2f1e1a1fd356"
+                },
+                {
+                  "id": "471c67a3-ccdc-4b3d-a99e-34f148368c1d",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/fund_accounts/:fund_account_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "fund_accounts",
+                        ":fund_account_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "fund_account_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:43.000Z",
+                  "updatedAt": "2026-07-28T01:28:43.000Z",
+                  "uid": "35240-471c67a3-ccdc-4b3d-a99e-34f148368c1d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-b088cb4d-8cb2-465c-903d-93f61ff87d17"
+            }
+          ],
+          "id": "6222d617-3de7-4933-84b6-00f201143109",
+          "createdAt": "2026-07-28T01:28:43.000Z",
+          "updatedAt": "2026-07-28T01:28:43.000Z",
+          "uid": "35240-6222d617-3de7-4933-84b6-00f201143109"
+        },
+        {
+          "name": "Create a fund account",
+          "id": "30d8bf64-7375-421b-b8d7-b949cfd16b7e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"vpa\",\n  \"bank_account\": {\n    \"name\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"expiry_month\": \"<string>\",\n    \"expiry_year\": \"<string>\",\n    \"input_type\": \"service_provider_token\",\n    \"token_id\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/fund_accounts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fund_accounts"
+              ]
+            },
+            "description": "Create a bank account, VPA, card, or wallet (Amazon Pay) fund account linked to a contact. Fund accounts are immutable after creation. Returns existing record if contact_id + account details all match."
+          },
+          "response": [
+            {
+              "id": "12d1dcfc-8fd0-4bde-b9e6-46cceab5b001",
+              "name": "Fund account created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"vpa\",\n  \"bank_account\": {\n    \"name\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"expiry_month\": \"<string>\",\n    \"expiry_year\": \"<string>\",\n    \"input_type\": \"service_provider_token\",\n    \"token_id\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"fund_account\",\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"wallet\",\n  \"active\": \"<boolean>\",\n  \"batch_id\": \"<string>\",\n  \"bank_account\": {\n    \"ifsc\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"username\": \"<string>\",\n    \"handle\": \"<string>\",\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"last4\": \"<string>\",\n    \"network\": \"<string>\",\n    \"type\": \"<string>\",\n    \"issuer\": \"<string>\",\n    \"input_type\": \"service_provider_token\"\n  },\n  \"created_at\": \"<integer>\",\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<email>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-12d1dcfc-8fd0-4bde-b9e6-46cceab5b001"
+            },
+            {
+              "id": "28edfb9c-663d-442c-ab89-5e88be7c0d20",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"vpa\",\n  \"bank_account\": {\n    \"name\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"expiry_month\": \"<string>\",\n    \"expiry_year\": \"<string>\",\n    \"input_type\": \"service_provider_token\",\n    \"token_id\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-28edfb9c-663d-442c-ab89-5e88be7c0d20"
+            },
+            {
+              "id": "3d2f3a00-22ac-487f-8628-080c456f094f",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"vpa\",\n  \"bank_account\": {\n    \"name\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"expiry_month\": \"<string>\",\n    \"expiry_year\": \"<string>\",\n    \"input_type\": \"service_provider_token\",\n    \"token_id\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-3d2f3a00-22ac-487f-8628-080c456f094f"
+            },
+            {
+              "id": "a9cb3b9b-5fa8-4e57-82a8-ad5df848d946",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"vpa\",\n  \"bank_account\": {\n    \"name\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"expiry_month\": \"<string>\",\n    \"expiry_year\": \"<string>\",\n    \"input_type\": \"service_provider_token\",\n    \"token_id\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-a9cb3b9b-5fa8-4e57-82a8-ad5df848d946"
+            },
+            {
+              "id": "3de6aba4-e49d-44ac-b99c-ac51abf0a731",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_id\": \"<string>\",\n  \"account_type\": \"vpa\",\n  \"bank_account\": {\n    \"name\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"vpa\": {\n    \"address\": \"<string>\"\n  },\n  \"card\": {\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"expiry_month\": \"<string>\",\n    \"expiry_year\": \"<string>\",\n    \"input_type\": \"service_provider_token\",\n    \"token_id\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"wallet\": {\n    \"provider\": \"amazonpay\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-3de6aba4-e49d-44ac-b99c-ac51abf0a731"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:43.000Z",
+          "updatedAt": "2026-07-28T01:28:43.000Z",
+          "uid": "35240-30d8bf64-7375-421b-b8d7-b949cfd16b7e"
+        },
+        {
+          "name": "List fund accounts",
+          "id": "ae16e382-f4c5-4d9f-a5fa-e11e117ee0ea",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fund_accounts?contact_id=<string>&account_type=<string>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fund_accounts"
+              ],
+              "query": [
+                {
+                  "description": "Filter by contact ID to list fund accounts linked to that contact.",
+                  "key": "contact_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by fund account type: `bank_account`, `vpa`, `card`, or `wallet`.",
+                  "key": "account_type",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of fund accounts to return. Default: 10. Maximum: 100.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of fund accounts to skip. Use for pagination. Default: 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "List fund accounts linked to contacts. Filter by contact ID and/or account type."
+          },
+          "response": [
+            {
+              "id": "ee989ae2-dede-447a-9588-3d61bac1ac40",
+              "name": "List of fund accounts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts?contact_id=<string>&account_type=<string>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact ID to list fund accounts linked to that contact.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by fund account type: `bank_account`, `vpa`, `card`, or `wallet`.",
+                      "key": "account_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of fund accounts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of fund accounts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"fund_account\",\n      \"contact_id\": \"<string>\",\n      \"account_type\": \"bank_account\",\n      \"active\": \"<boolean>\",\n      \"batch_id\": \"<string>\",\n      \"bank_account\": {\n        \"ifsc\": \"<string>\",\n        \"bank_name\": \"<string>\",\n        \"name\": \"<string>\",\n        \"account_number\": \"<string>\"\n      },\n      \"vpa\": {\n        \"username\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"address\": \"<string>\"\n      },\n      \"card\": {\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"input_type\": \"razorpay_token\"\n      },\n      \"created_at\": \"<integer>\",\n      \"wallet\": {\n        \"provider\": \"amazonpay\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\",\n        \"name\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"fund_account\",\n      \"contact_id\": \"<string>\",\n      \"account_type\": \"wallet\",\n      \"active\": \"<boolean>\",\n      \"batch_id\": \"<string>\",\n      \"bank_account\": {\n        \"ifsc\": \"<string>\",\n        \"bank_name\": \"<string>\",\n        \"name\": \"<string>\",\n        \"account_number\": \"<string>\"\n      },\n      \"vpa\": {\n        \"username\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"address\": \"<string>\"\n      },\n      \"card\": {\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"input_type\": \"service_provider_token\"\n      },\n      \"created_at\": \"<integer>\",\n      \"wallet\": {\n        \"provider\": \"amazonpay\",\n        \"phone\": \"<string>\",\n        \"email\": \"<email>\",\n        \"name\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-ee989ae2-dede-447a-9588-3d61bac1ac40"
+            },
+            {
+              "id": "2018bf9c-544c-43c0-abf6-44360115fe1a",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts?contact_id=<string>&account_type=<string>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact ID to list fund accounts linked to that contact.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by fund account type: `bank_account`, `vpa`, `card`, or `wallet`.",
+                      "key": "account_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of fund accounts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of fund accounts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-2018bf9c-544c-43c0-abf6-44360115fe1a"
+            },
+            {
+              "id": "d110ef57-1668-45ac-9184-ae6bb70e7c98",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts?contact_id=<string>&account_type=<string>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact ID to list fund accounts linked to that contact.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by fund account type: `bank_account`, `vpa`, `card`, or `wallet`.",
+                      "key": "account_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of fund accounts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of fund accounts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-d110ef57-1668-45ac-9184-ae6bb70e7c98"
+            },
+            {
+              "id": "fbfbb8c5-19f4-4c8d-b68d-0573ba60e3d1",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts?contact_id=<string>&account_type=<string>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact ID to list fund accounts linked to that contact.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by fund account type: `bank_account`, `vpa`, `card`, or `wallet`.",
+                      "key": "account_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of fund accounts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of fund accounts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-fbfbb8c5-19f4-4c8d-b68d-0573ba60e3d1"
+            },
+            {
+              "id": "b57a0c2e-408a-43d1-91ea-d1cdd8f04b3f",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fund_accounts?contact_id=<string>&account_type=<string>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fund_accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact ID to list fund accounts linked to that contact.",
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by fund account type: `bank_account`, `vpa`, `card`, or `wallet`.",
+                      "key": "account_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of fund accounts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of fund accounts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:43.000Z",
+              "updatedAt": "2026-07-28T01:28:43.000Z",
+              "uid": "35240-b57a0c2e-408a-43d1-91ea-d1cdd8f04b3f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:43.000Z",
+          "updatedAt": "2026-07-28T01:28:43.000Z",
+          "uid": "35240-ae16e382-f4c5-4d9f-a5fa-e11e117ee0ea"
+        }
+      ],
+      "id": "1a48641e-7e82-44c3-a396-1fa256075e8f",
+      "createdAt": "2026-07-28T01:28:43.000Z",
+      "updatedAt": "2026-07-28T01:28:43.000Z",
+      "uid": "35240-1a48641e-7e82-44c3-a396-1fa256075e8f"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

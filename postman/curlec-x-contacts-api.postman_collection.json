@@ -1,0 +1,1563 @@
+{
+  "info": {
+    "_postman_id": "b4b0fd00-c652-4d72-b739-7a0adce76db9",
+    "name": "Razorpay Bills X Contacts API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:41.000Z",
+    "updatedAt": "2026-07-28T01:28:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b4b0fd00-c652-4d72-b739-7a0adce76db9"
+  },
+  "item": [
+    {
+      "name": "contacts",
+      "item": [
+        {
+          "name": "{contact_id}",
+          "item": [
+            {
+              "name": "Fetch a contact",
+              "id": "098bee2d-3fd5-4f6b-80b2-78ef6f96cf7f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts/:contact_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts",
+                    ":contact_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "85c42349-41d2-42d3-b87a-8de03051d3f3",
+                      "key": "contact_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the contact (e.g. `cont_00000000000001`)."
+                    }
+                  ]
+                },
+                "description": "Fetch details of a specific contact by its ID."
+              },
+              "response": [
+                {
+                  "id": "47c094d9-041e-4b08-a03c-d9622b246c89",
+                  "name": "Contact details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"contact\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"batch_id\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-47c094d9-041e-4b08-a03c-d9622b246c89"
+                },
+                {
+                  "id": "8d1f7e09-9c46-49eb-b1fd-54903e8a9bd9",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-8d1f7e09-9c46-49eb-b1fd-54903e8a9bd9"
+                },
+                {
+                  "id": "cb63ba61-9c89-4588-93fb-27bf3e66f5ae",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-cb63ba61-9c89-4588-93fb-27bf3e66f5ae"
+                },
+                {
+                  "id": "9664b9fa-4dd6-4d4b-bab6-50a28cec5d15",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-9664b9fa-4dd6-4d4b-bab6-50a28cec5d15"
+                },
+                {
+                  "id": "2d881810-e642-45a6-8be5-4bbcee34f029",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-2d881810-e642-45a6-8be5-4bbcee34f029"
+                },
+                {
+                  "id": "8d327f44-d025-4109-bb6f-30c6a54f3f28",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-8d327f44-d025-4109-bb6f-30c6a54f3f28"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-098bee2d-3fd5-4f6b-80b2-78ef6f96cf7f"
+            },
+            {
+              "name": "Update or activate/deactivate a contact",
+              "id": "ef30e29c-05bf-48f1-a5b2-97d2949c442e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts/:contact_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts",
+                    ":contact_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ad097e32-9f8a-49c5-8021-b352ec48a42c",
+                      "key": "contact_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the contact (e.g. `cont_00000000000001`)."
+                    }
+                  ]
+                },
+                "description": "Update contact details or activate/deactivate a contact. Set `active: false` to deactivate."
+              },
+              "response": [
+                {
+                  "id": "6795a3cd-b9e0-4cf2-bf78-04ce390d0b80",
+                  "name": "Updated contact",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"contact\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"batch_id\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-6795a3cd-b9e0-4cf2-bf78-04ce390d0b80"
+                },
+                {
+                  "id": "859fac80-50c0-4907-b4d8-0ea006c52e07",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-859fac80-50c0-4907-b4d8-0ea006c52e07"
+                },
+                {
+                  "id": "15cead74-7187-4857-8b41-240b0275af11",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-15cead74-7187-4857-8b41-240b0275af11"
+                },
+                {
+                  "id": "488aff65-acd5-48e6-a0b8-6c940f05f12c",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-488aff65-acd5-48e6-a0b8-6c940f05f12c"
+                },
+                {
+                  "id": "9e2f40f3-7b1f-4497-b115-5153e4f5e4e8",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"contact\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {},\n  \"active\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contact_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contact_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contact_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:42.000Z",
+                  "updatedAt": "2026-07-28T01:28:42.000Z",
+                  "uid": "35240-9e2f40f3-7b1f-4497-b115-5153e4f5e4e8"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-ef30e29c-05bf-48f1-a5b2-97d2949c442e"
+            }
+          ],
+          "id": "766f1e2e-bbad-4dc9-8b7d-1aadea16823c",
+          "createdAt": "2026-07-28T01:28:42.000Z",
+          "updatedAt": "2026-07-28T01:28:42.000Z",
+          "uid": "35240-766f1e2e-bbad-4dc9-8b7d-1aadea16823c"
+        },
+        {
+          "name": "Create a contact",
+          "id": "4a5cb058-d627-4862-aa04-7f02f27d4436",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contacts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts"
+              ]
+            },
+            "description": "Create a payout recipient contact. Returns existing contact if all identifying fields (name, email, contact, type) match an existing record."
+          },
+          "response": [
+            {
+              "id": "1672756c-dbf6-4d7b-acad-ffa1dadd259f",
+              "name": "Contact created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"contact\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"batch_id\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"notes\": {},\n  \"created_at\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-1672756c-dbf6-4d7b-acad-ffa1dadd259f"
+            },
+            {
+              "id": "dc3bcc94-25a3-497b-80f5-26eb73817d14",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-dc3bcc94-25a3-497b-80f5-26eb73817d14"
+            },
+            {
+              "id": "48ad023e-f92f-4853-a0cb-7c8f3ec22e99",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-48ad023e-f92f-4853-a0cb-7c8f3ec22e99"
+            },
+            {
+              "id": "9755f45f-6f04-4276-9863-2392c437f2d7",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-9755f45f-6f04-4276-9863-2392c437f2d7"
+            },
+            {
+              "id": "8b713efa-2eba-486a-a23d-947810c4fe60",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"contact\": \"<string>\",\n  \"type\": \"self\",\n  \"reference_id\": \"<string>\",\n  \"notes\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-8b713efa-2eba-486a-a23d-947810c4fe60"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:42.000Z",
+          "updatedAt": "2026-07-28T01:28:42.000Z",
+          "uid": "35240-4a5cb058-d627-4862-aa04-7f02f27d4436"
+        },
+        {
+          "name": "List contacts",
+          "id": "0b0fa3da-bb0e-4fad-b536-4465b434ffa9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contacts?name=<string>&email=<string>&contact=<string>&reference_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts"
+              ],
+              "query": [
+                {
+                  "description": "Filter by contact name (partial match supported).",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by contact email address.",
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by contact phone number.",
+                  "key": "contact",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by your unique reference ID for the contact (max 40 chars).",
+                  "key": "reference_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Unix timestamp filter",
+                  "key": "from",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Unix timestamp. Only contacts created before this timestamp are returned.",
+                  "key": "to",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of contacts to return. Default: 10. Maximum: 100.",
+                  "key": "count",
+                  "value": "10"
+                },
+                {
+                  "description": "Number of contacts to skip. Use for pagination. Default: 0.",
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Filter and list all contacts. Supports filtering by name, email, phone number, reference ID, and active status."
+          },
+          "response": [
+            {
+              "id": "0e9a2aa2-a64e-4656-968b-e76704d38758",
+              "name": "List of contacts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?name=<string>&email=<string>&contact=<string>&reference_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact name (partial match supported).",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact email address.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact phone number.",
+                      "key": "contact",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your unique reference ID for the contact (max 40 chars).",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only contacts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of contacts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of contacts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entity\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"contact\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"contact\": \"<string>\",\n      \"type\": \"vendor\",\n      \"reference_id\": \"<string>\",\n      \"batch_id\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"notes\": {},\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"contact\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"contact\": \"<string>\",\n      \"type\": \"self\",\n      \"reference_id\": \"<string>\",\n      \"batch_id\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"notes\": {},\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-0e9a2aa2-a64e-4656-968b-e76704d38758"
+            },
+            {
+              "id": "b731cc82-94d8-4ec4-b0b3-82d7da1c735d",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?name=<string>&email=<string>&contact=<string>&reference_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact name (partial match supported).",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact email address.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact phone number.",
+                      "key": "contact",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your unique reference ID for the contact (max 40 chars).",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only contacts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of contacts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of contacts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-b731cc82-94d8-4ec4-b0b3-82d7da1c735d"
+            },
+            {
+              "id": "99faf8d4-9bdd-46f4-9fe7-d23068dc8f8a",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?name=<string>&email=<string>&contact=<string>&reference_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact name (partial match supported).",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact email address.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact phone number.",
+                      "key": "contact",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your unique reference ID for the contact (max 40 chars).",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only contacts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of contacts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of contacts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-99faf8d4-9bdd-46f4-9fe7-d23068dc8f8a"
+            },
+            {
+              "id": "aa58dfc1-3ae9-41f7-9ca0-d8aa90be338f",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?name=<string>&email=<string>&contact=<string>&reference_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact name (partial match supported).",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact email address.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact phone number.",
+                      "key": "contact",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your unique reference ID for the contact (max 40 chars).",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only contacts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of contacts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of contacts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-aa58dfc1-3ae9-41f7-9ca0-d8aa90be338f"
+            },
+            {
+              "id": "ab96b23d-8ff0-4bc0-8b44-863661d87806",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?name=<string>&email=<string>&contact=<string>&reference_id=<string>&from=<integer>&to=<integer>&count=10&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by contact name (partial match supported).",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact email address.",
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by contact phone number.",
+                      "key": "contact",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by your unique reference ID for the contact (max 40 chars).",
+                      "key": "reference_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unix timestamp filter",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp. Only contacts created before this timestamp are returned.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of contacts to return. Default: 10. Maximum: 100.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of contacts to skip. Use for pagination. Default: 0.",
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:28:42.000Z",
+              "updatedAt": "2026-07-28T01:28:42.000Z",
+              "uid": "35240-ab96b23d-8ff0-4bc0-8b44-863661d87806"
+            }
+          ],
+          "createdAt": "2026-07-28T01:28:42.000Z",
+          "updatedAt": "2026-07-28T01:28:42.000Z",
+          "uid": "35240-0b0fa3da-bb0e-4fad-b536-4465b434ffa9"
+        }
+      ],
+      "id": "a8cc7383-806a-4aef-b807-7daff85caee1",
+      "createdAt": "2026-07-28T01:28:42.000Z",
+      "updatedAt": "2026-07-28T01:28:42.000Z",
+      "uid": "35240-a8cc7383-806a-4aef-b807-7daff85caee1"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}

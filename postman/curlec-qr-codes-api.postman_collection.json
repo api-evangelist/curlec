@@ -1,0 +1,1894 @@
+{
+  "info": {
+    "_postman_id": "5057309b-5d98-4b97-bcf2-c11589c727a7",
+    "name": "Razorpay Bills QR Codes API",
+    "description": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:28:15.000Z",
+    "updatedAt": "2026-07-28T01:28:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5057309b-5d98-4b97-bcf2-c11589c727a7"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "qr_codes",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "close",
+                  "item": [
+                    {
+                      "name": "Close a QR code",
+                      "id": "659ba12c-399c-4adf-a7b7-f294cd59d42e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e7a6cc5a-db52-4bc0-b6e9-7cc7ddd81b37",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) QR code ID (qr_*)."
+                            }
+                          ]
+                        },
+                        "description": "Deactivate a QR code to stop accepting new payments. Once closed, the QR code cannot be reopened."
+                      },
+                      "response": [
+                        {
+                          "id": "312ffa6a-2adf-4ae6-adfa-6854937fd4b2",
+                          "name": "QR code closed. Status changes to 'closed'.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/close",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "close"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"qr_code\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<string>\",\n  \"payment_amount\": \"<integer>\",\n  \"status\": \"closed\",\n  \"usage_type\": \"multiple_use\",\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"<string>\",\n  \"payments_amount_received\": \"<integer>\",\n  \"payments_count_received\": \"<integer>\",\n  \"notes\": {\n    \"sed578\": \"<string>\",\n    \"Utebb\": \"<string>\",\n    \"in93\": \"<string>\",\n    \"sit_cba\": \"<string>\",\n    \"laboris_9b\": \"<string>\",\n    \"nulla0_f\": \"<string>\",\n    \"officia6\": \"<string>\",\n    \"dolore_27\": \"<string>\",\n    \"tempore2c\": \"<string>\",\n    \"ut786\": \"<string>\",\n    \"cillume5b\": \"<string>\",\n    \"aliquip88\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-312ffa6a-2adf-4ae6-adfa-6854937fd4b2"
+                        },
+                        {
+                          "id": "934e7887-ad1e-490d-adcf-c186cf33bd9e",
+                          "name": "Bad request. Invalid parameters or missing required fields.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/close",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "close"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-934e7887-ad1e-490d-adcf-c186cf33bd9e"
+                        },
+                        {
+                          "id": "8f4c193c-2997-4692-b798-6a796f75212e",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/close",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "close"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-8f4c193c-2997-4692-b798-6a796f75212e"
+                        },
+                        {
+                          "id": "44d2302e-cd87-46db-a77b-cb0313c2bf29",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/close",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "close"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-44d2302e-cd87-46db-a77b-cb0313c2bf29"
+                        },
+                        {
+                          "id": "6f44c969-2404-4356-8b00-6346cc0c61dd",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/close",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "close"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-6f44c969-2404-4356-8b00-6346cc0c61dd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-659ba12c-399c-4adf-a7b7-f294cd59d42e"
+                    }
+                  ],
+                  "id": "a9e63ee9-51b7-4485-b034-126995e5db66",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-a9e63ee9-51b7-4485-b034-126995e5db66"
+                },
+                {
+                  "name": "payments",
+                  "item": [
+                    {
+                      "name": "Fetch payments for a QR code",
+                      "id": "e910cb25-87c2-40f8-b4ad-9895aee9de70",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id/payments?from=<integer>&to=<integer>&count=10&skip=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id",
+                            "payments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                              "key": "from",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                              "key": "to",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of records to return per call. Maximum 100. Default 10.",
+                              "key": "count",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                              "key": "skip",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "c5d2fcc8-1066-4a2a-aa13-55660a7bfa9c",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) QR code ID (qr_*)."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve all payments made against a specific QR code."
+                      },
+                      "response": [
+                        {
+                          "id": "f1f7fdab-e0e9-4cb9-95c3-4168b8d7b728",
+                          "name": "Collection of payments for the QR code.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/payments?from=<integer>&to=<integer>&count=10&skip=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "payments"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                                  "key": "from",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                                  "key": "to",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                                  "key": "count",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                                  "key": "skip",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"status\": \"refunded\",\n      \"order_id\": \"<string>\",\n      \"invoice_id\": \"<string>\",\n      \"international\": \"<boolean>\",\n      \"method\": \"netbanking\",\n      \"amount_refunded\": \"<integer>\",\n      \"refund_status\": \"partial\",\n      \"captured\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"card_id\": \"<string>\",\n      \"card\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"name\": \"<string>\",\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"emi\": \"<boolean>\",\n        \"sub_type\": \"<string>\"\n      },\n      \"bank\": \"<string>\",\n      \"wallet\": \"<string>\",\n      \"vpa\": \"<string>\",\n      \"upi\": {\n        \"payer_account_type\": \"<string>\",\n        \"vpa\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"token_id\": \"<string>\",\n      \"notes\": {\n        \"in_5\": \"<string>\",\n        \"occaecat_a\": \"<string>\",\n        \"labore_a1\": \"<string>\",\n        \"ut_1a8\": \"<string>\",\n        \"culpa_b3\": \"<string>\",\n        \"nostrud1\": \"<string>\",\n        \"dolor_7b\": \"<string>\",\n        \"enim_\": \"<string>\",\n        \"nisi96_\": \"<string>\",\n        \"sint_65d\": \"<string>\"\n      },\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"error_code\": \"<string>\",\n      \"error_description\": \"<string>\",\n      \"error_source\": \"<string>\",\n      \"error_step\": \"<string>\",\n      \"error_reason\": \"<string>\",\n      \"acquirer_data\": {\n        \"rrn\": \"<string>\",\n        \"authentication_reference_number\": \"<string>\",\n        \"bank_transaction_id\": \"<string>\",\n        \"transaction_id\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"payment\",\n      \"amount\": \"<integer>\",\n      \"currency\": \"<string>\",\n      \"status\": \"refunded\",\n      \"order_id\": \"<string>\",\n      \"invoice_id\": \"<string>\",\n      \"international\": \"<boolean>\",\n      \"method\": \"card\",\n      \"amount_refunded\": \"<integer>\",\n      \"refund_status\": \"null\",\n      \"captured\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"card_id\": \"<string>\",\n      \"card\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"name\": \"<string>\",\n        \"last4\": \"<string>\",\n        \"network\": \"<string>\",\n        \"type\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"emi\": \"<boolean>\",\n        \"sub_type\": \"<string>\"\n      },\n      \"bank\": \"<string>\",\n      \"wallet\": \"<string>\",\n      \"vpa\": \"<string>\",\n      \"upi\": {\n        \"payer_account_type\": \"<string>\",\n        \"vpa\": \"<string>\",\n        \"flow\": \"<string>\"\n      },\n      \"email\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"token_id\": \"<string>\",\n      \"notes\": {\n        \"magna_f\": \"<string>\",\n        \"culpafc\": \"<string>\",\n        \"labore_97\": \"<string>\",\n        \"id_4d\": \"<string>\",\n        \"eu_370\": \"<string>\"\n      },\n      \"fee\": \"<integer>\",\n      \"tax\": \"<integer>\",\n      \"error_code\": \"<string>\",\n      \"error_description\": \"<string>\",\n      \"error_source\": \"<string>\",\n      \"error_step\": \"<string>\",\n      \"error_reason\": \"<string>\",\n      \"acquirer_data\": {\n        \"rrn\": \"<string>\",\n        \"authentication_reference_number\": \"<string>\",\n        \"bank_transaction_id\": \"<string>\",\n        \"transaction_id\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-f1f7fdab-e0e9-4cb9-95c3-4168b8d7b728"
+                        },
+                        {
+                          "id": "ded8c623-adea-42d5-9757-051e8e7e8caa",
+                          "name": "Authentication failed. Invalid or missing API key credentials.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/payments?from=<integer>&to=<integer>&count=10&skip=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "payments"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                                  "key": "from",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                                  "key": "to",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                                  "key": "count",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                                  "key": "skip",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-ded8c623-adea-42d5-9757-051e8e7e8caa"
+                        },
+                        {
+                          "id": "d51ee60f-a711-4623-8416-cd6763c7abdf",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/payments?from=<integer>&to=<integer>&count=10&skip=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "payments"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                                  "key": "from",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                                  "key": "to",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                                  "key": "count",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                                  "key": "skip",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-d51ee60f-a711-4623-8416-cd6763c7abdf"
+                        },
+                        {
+                          "id": "0da0921b-652a-48ad-8dc2-cf2bcc5fc147",
+                          "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/payments/qr_codes/:id/payments?from=<integer>&to=<integer>&count=10&skip=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "payments",
+                                "qr_codes",
+                                ":id",
+                                "payments"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                                  "key": "from",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                                  "key": "to",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Number of records to return per call. Maximum 100. Default 10.",
+                                  "key": "count",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                                  "key": "skip",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:28:16.000Z",
+                          "updatedAt": "2026-07-28T01:28:16.000Z",
+                          "uid": "35240-0da0921b-652a-48ad-8dc2-cf2bcc5fc147"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-e910cb25-87c2-40f8-b4ad-9895aee9de70"
+                    }
+                  ],
+                  "id": "693968b4-bf0c-4651-91b2-bdc0fe3bdaf9",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-693968b4-bf0c-4651-91b2-bdc0fe3bdaf9"
+                },
+                {
+                  "name": "Fetch QR code by ID",
+                  "id": "8314bf02-d100-4eb4-ba8d-73446a1aeb42",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ae231518-b3f1-4b28-a68e-7fa8891ad717",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) QR code ID (qr_*)."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific QR code including payment counts and status."
+                  },
+                  "response": [
+                    {
+                      "id": "1edabd40-e405-4129-876d-eca02bc5a21a",
+                      "name": "QR code details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"qr_code\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<string>\",\n  \"payment_amount\": \"<integer>\",\n  \"status\": \"closed\",\n  \"usage_type\": \"multiple_use\",\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"<string>\",\n  \"payments_amount_received\": \"<integer>\",\n  \"payments_count_received\": \"<integer>\",\n  \"notes\": {\n    \"sed578\": \"<string>\",\n    \"Utebb\": \"<string>\",\n    \"in93\": \"<string>\",\n    \"sit_cba\": \"<string>\",\n    \"laboris_9b\": \"<string>\",\n    \"nulla0_f\": \"<string>\",\n    \"officia6\": \"<string>\",\n    \"dolore_27\": \"<string>\",\n    \"tempore2c\": \"<string>\",\n    \"ut786\": \"<string>\",\n    \"cillume5b\": \"<string>\",\n    \"aliquip88\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-1edabd40-e405-4129-876d-eca02bc5a21a"
+                    },
+                    {
+                      "id": "bfefab37-3037-4c30-843b-8ad60a50dd82",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-bfefab37-3037-4c30-843b-8ad60a50dd82"
+                    },
+                    {
+                      "id": "32694d1c-3bd6-44ce-9f33-3b6b3a9de526",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-32694d1c-3bd6-44ce-9f33-3b6b3a9de526"
+                    },
+                    {
+                      "id": "3d7e9c60-80c0-47ab-8e65-201926960559",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-3d7e9c60-80c0-47ab-8e65-201926960559"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-8314bf02-d100-4eb4-ba8d-73446a1aeb42"
+                },
+                {
+                  "name": "Update a QR code",
+                  "id": "587bda04-c034-4f48-84ca-5e6c649f3406",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"notes\": {\n    \"irure__e\": \"<string>\",\n    \"voluptate72a\": \"<string>\",\n    \"id_c0a\": \"<string>\",\n    \"proident7c\": \"<string>\",\n    \"minim3a\": \"<string>\",\n    \"laboris_f0\": \"<string>\",\n    \"anim_9\": \"<string>\",\n    \"esse6b1\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1220ff1e-b187-4816-9454-50f21c926163",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) QR code ID (qr_*)."
+                        }
+                      ]
+                    },
+                    "description": "Update the notes field of a QR code. Only notes can be modified after creation."
+                  },
+                  "response": [
+                    {
+                      "id": "2767baf0-841d-4f3b-98c4-e124a7376bc5",
+                      "name": "Updated QR code.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": {\n    \"irure__e\": \"<string>\",\n    \"voluptate72a\": \"<string>\",\n    \"id_c0a\": \"<string>\",\n    \"proident7c\": \"<string>\",\n    \"minim3a\": \"<string>\",\n    \"laboris_f0\": \"<string>\",\n    \"anim_9\": \"<string>\",\n    \"esse6b1\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"qr_code\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<string>\",\n  \"payment_amount\": \"<integer>\",\n  \"status\": \"closed\",\n  \"usage_type\": \"multiple_use\",\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"<string>\",\n  \"payments_amount_received\": \"<integer>\",\n  \"payments_count_received\": \"<integer>\",\n  \"notes\": {\n    \"sed578\": \"<string>\",\n    \"Utebb\": \"<string>\",\n    \"in93\": \"<string>\",\n    \"sit_cba\": \"<string>\",\n    \"laboris_9b\": \"<string>\",\n    \"nulla0_f\": \"<string>\",\n    \"officia6\": \"<string>\",\n    \"dolore_27\": \"<string>\",\n    \"tempore2c\": \"<string>\",\n    \"ut786\": \"<string>\",\n    \"cillume5b\": \"<string>\",\n    \"aliquip88\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-2767baf0-841d-4f3b-98c4-e124a7376bc5"
+                    },
+                    {
+                      "id": "76667c17-ce94-49df-bdd1-1489bad4b43f",
+                      "name": "Bad request. Invalid parameters or missing required fields.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": {\n    \"irure__e\": \"<string>\",\n    \"voluptate72a\": \"<string>\",\n    \"id_c0a\": \"<string>\",\n    \"proident7c\": \"<string>\",\n    \"minim3a\": \"<string>\",\n    \"laboris_f0\": \"<string>\",\n    \"anim_9\": \"<string>\",\n    \"esse6b1\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-76667c17-ce94-49df-bdd1-1489bad4b43f"
+                    },
+                    {
+                      "id": "aa6b9f5e-98ff-4994-b1a0-4e09ea17aaf5",
+                      "name": "Authentication failed. Invalid or missing API key credentials.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": {\n    \"irure__e\": \"<string>\",\n    \"voluptate72a\": \"<string>\",\n    \"id_c0a\": \"<string>\",\n    \"proident7c\": \"<string>\",\n    \"minim3a\": \"<string>\",\n    \"laboris_f0\": \"<string>\",\n    \"anim_9\": \"<string>\",\n    \"esse6b1\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-aa6b9f5e-98ff-4994-b1a0-4e09ea17aaf5"
+                    },
+                    {
+                      "id": "7802baea-b26c-4bbe-8fa9-bba79ce33e49",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": {\n    \"irure__e\": \"<string>\",\n    \"voluptate72a\": \"<string>\",\n    \"id_c0a\": \"<string>\",\n    \"proident7c\": \"<string>\",\n    \"minim3a\": \"<string>\",\n    \"laboris_f0\": \"<string>\",\n    \"anim_9\": \"<string>\",\n    \"esse6b1\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-7802baea-b26c-4bbe-8fa9-bba79ce33e49"
+                    },
+                    {
+                      "id": "640ef89c-08e7-4f38-850b-ebde6c565f75",
+                      "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"notes\": {\n    \"irure__e\": \"<string>\",\n    \"voluptate72a\": \"<string>\",\n    \"id_c0a\": \"<string>\",\n    \"proident7c\": \"<string>\",\n    \"minim3a\": \"<string>\",\n    \"laboris_f0\": \"<string>\",\n    \"anim_9\": \"<string>\",\n    \"esse6b1\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payments/qr_codes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payments",
+                            "qr_codes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:28:16.000Z",
+                      "updatedAt": "2026-07-28T01:28:16.000Z",
+                      "uid": "35240-640ef89c-08e7-4f38-850b-ebde6c565f75"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-587bda04-c034-4f48-84ca-5e6c649f3406"
+                }
+              ],
+              "id": "229d6487-d80b-494c-9d2d-8b1933c72354",
+              "createdAt": "2026-07-28T01:28:16.000Z",
+              "updatedAt": "2026-07-28T01:28:16.000Z",
+              "uid": "35240-229d6487-d80b-494c-9d2d-8b1933c72354"
+            },
+            {
+              "name": "Create a QR code",
+              "id": "9c2e0ded-220e-4e78-b3fa-40e7ba697602",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"upi_qr\",\n  \"name\": \"<string>\",\n  \"usage\": \"multiple_use\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"eiusmod_a\": \"<string>\",\n    \"dolore13\": \"<string>\",\n    \"incididunt7f\": \"<string>\",\n    \"dolore_038\": \"<string>\",\n    \"veniam91a\": \"<string>\",\n    \"Ute22\": \"<string>\",\n    \"Lorem3\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments/qr_codes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ]
+                },
+                "description": "Create a UPI QR code for accepting digital payments. Only upi_qr type is supported (on-demand feature; requires merchant activation). single_use QR codes require fixed_amount=true and close_by maximum is 45 days. multiple_use QR codes have no expiry restriction."
+              },
+              "response": [
+                {
+                  "id": "e69804e0-5686-466d-a733-e9a0ecb79430",
+                  "name": "QR code created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"upi_qr\",\n  \"name\": \"<string>\",\n  \"usage\": \"multiple_use\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"eiusmod_a\": \"<string>\",\n    \"dolore13\": \"<string>\",\n    \"incididunt7f\": \"<string>\",\n    \"dolore_038\": \"<string>\",\n    \"veniam91a\": \"<string>\",\n    \"Ute22\": \"<string>\",\n    \"Lorem3\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"qr_code\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<string>\",\n  \"payment_amount\": \"<integer>\",\n  \"status\": \"closed\",\n  \"usage_type\": \"multiple_use\",\n  \"close_by\": \"<integer>\",\n  \"closed_at\": \"<integer>\",\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"<string>\",\n  \"payments_amount_received\": \"<integer>\",\n  \"payments_count_received\": \"<integer>\",\n  \"notes\": {\n    \"sed578\": \"<string>\",\n    \"Utebb\": \"<string>\",\n    \"in93\": \"<string>\",\n    \"sit_cba\": \"<string>\",\n    \"laboris_9b\": \"<string>\",\n    \"nulla0_f\": \"<string>\",\n    \"officia6\": \"<string>\",\n    \"dolore_27\": \"<string>\",\n    \"tempore2c\": \"<string>\",\n    \"ut786\": \"<string>\",\n    \"cillume5b\": \"<string>\",\n    \"aliquip88\": \"<string>\"\n  },\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-e69804e0-5686-466d-a733-e9a0ecb79430"
+                },
+                {
+                  "id": "39f858f2-81e5-4ff9-9443-8964498f84ef",
+                  "name": "Bad request. Invalid parameters or missing required fields.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"upi_qr\",\n  \"name\": \"<string>\",\n  \"usage\": \"multiple_use\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"eiusmod_a\": \"<string>\",\n    \"dolore13\": \"<string>\",\n    \"incididunt7f\": \"<string>\",\n    \"dolore_038\": \"<string>\",\n    \"veniam91a\": \"<string>\",\n    \"Ute22\": \"<string>\",\n    \"Lorem3\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-39f858f2-81e5-4ff9-9443-8964498f84ef"
+                },
+                {
+                  "id": "274cad67-9746-4a93-a92c-9adcf90eeba1",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"upi_qr\",\n  \"name\": \"<string>\",\n  \"usage\": \"multiple_use\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"eiusmod_a\": \"<string>\",\n    \"dolore13\": \"<string>\",\n    \"incididunt7f\": \"<string>\",\n    \"dolore_038\": \"<string>\",\n    \"veniam91a\": \"<string>\",\n    \"Ute22\": \"<string>\",\n    \"Lorem3\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-274cad67-9746-4a93-a92c-9adcf90eeba1"
+                },
+                {
+                  "id": "96e8c272-c438-4e84-95b7-97f9ee2ec07e",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"upi_qr\",\n  \"name\": \"<string>\",\n  \"usage\": \"multiple_use\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"eiusmod_a\": \"<string>\",\n    \"dolore13\": \"<string>\",\n    \"incididunt7f\": \"<string>\",\n    \"dolore_038\": \"<string>\",\n    \"veniam91a\": \"<string>\",\n    \"Ute22\": \"<string>\",\n    \"Lorem3\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-96e8c272-c438-4e84-95b7-97f9ee2ec07e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:16.000Z",
+              "updatedAt": "2026-07-28T01:28:16.000Z",
+              "uid": "35240-9c2e0ded-220e-4e78-b3fa-40e7ba697602"
+            },
+            {
+              "name": "Fetch all QR codes",
+              "id": "1e2134bb-a518-4500-8d9d-3cc2fc8e8a6c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments/qr_codes?from=<integer>&to=<integer>&count=10&skip=0&customer_id=<string>&payment_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of records to return per call. Maximum 100. Default 10.",
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by customer ID (cust_*).",
+                      "key": "customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter QR codes associated with a specific payment.",
+                      "key": "payment_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all QR codes. Filter by customer_id or payment_id."
+              },
+              "response": [
+                {
+                  "id": "033462aa-b089-4c55-96a7-69e7b1ee989f",
+                  "name": "Collection of QR codes.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes?from=<integer>&to=<integer>&count=10&skip=0&customer_id=<string>&payment_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to return per call. Maximum 100. Default 10.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter by customer ID (cust_*).",
+                          "key": "customer_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter QR codes associated with a specific payment.",
+                          "key": "payment_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"entity\": \"collection\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"qr_code\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"image_url\": \"<string>\",\n      \"payment_amount\": \"<integer>\",\n      \"status\": \"closed\",\n      \"usage_type\": \"multiple_use\",\n      \"close_by\": \"<integer>\",\n      \"closed_at\": \"<integer>\",\n      \"close_reason\": \"on_demand\",\n      \"customer_id\": \"<string>\",\n      \"payments_amount_received\": \"<integer>\",\n      \"payments_count_received\": \"<integer>\",\n      \"notes\": {\n        \"Lorem_3\": \"<string>\",\n        \"proident4a\": \"<string>\",\n        \"ut9a\": \"<string>\",\n        \"non0\": \"<string>\",\n        \"sint25\": \"<string>\",\n        \"Ut_e1\": \"<string>\",\n        \"consectetur66\": \"<string>\",\n        \"dolor54\": \"<string>\",\n        \"nisi2\": \"<string>\",\n        \"ad0\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"qr_code\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"image_url\": \"<string>\",\n      \"payment_amount\": \"<integer>\",\n      \"status\": \"closed\",\n      \"usage_type\": \"single_use\",\n      \"close_by\": \"<integer>\",\n      \"closed_at\": \"<integer>\",\n      \"close_reason\": \"paid\",\n      \"customer_id\": \"<string>\",\n      \"payments_amount_received\": \"<integer>\",\n      \"payments_count_received\": \"<integer>\",\n      \"notes\": {\n        \"mollita3f\": \"<string>\",\n        \"ullamco_0\": \"<string>\",\n        \"laboris9\": \"<string>\",\n        \"labore5\": \"<string>\",\n        \"nulla_e1d\": \"<string>\",\n        \"in_58\": \"<string>\"\n      },\n      \"created_at\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-033462aa-b089-4c55-96a7-69e7b1ee989f"
+                },
+                {
+                  "id": "26bd06fa-0032-4557-8423-1bb79ee99863",
+                  "name": "Authentication failed. Invalid or missing API key credentials.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes?from=<integer>&to=<integer>&count=10&skip=0&customer_id=<string>&payment_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to return per call. Maximum 100. Default 10.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter by customer ID (cust_*).",
+                          "key": "customer_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter QR codes associated with a specific payment.",
+                          "key": "payment_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-26bd06fa-0032-4557-8423-1bb79ee99863"
+                },
+                {
+                  "id": "16283b80-a782-41cd-93cc-cd0d9d3996b9",
+                  "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/qr_codes?from=<integer>&to=<integer>&count=10&skip=0&customer_id=<string>&payment_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        "qr_codes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or after this time.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp (seconds). Fetch records created on or before this time.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of records to return per call. Maximum 100. Default 10.",
+                          "key": "count",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of records to skip. Use with count for pagination. Default 0.",
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter by customer ID (cust_*).",
+                          "key": "customer_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter QR codes associated with a specific payment.",
+                          "key": "payment_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source\": \"<string>\",\n    \"step\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"metadata\": {},\n    \"field\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:28:16.000Z",
+                  "updatedAt": "2026-07-28T01:28:16.000Z",
+                  "uid": "35240-16283b80-a782-41cd-93cc-cd0d9d3996b9"
+                }
+              ],
+              "createdAt": "2026-07-28T01:28:16.000Z",
+              "updatedAt": "2026-07-28T01:28:16.000Z",
+              "uid": "35240-1e2134bb-a518-4500-8d9d-3cc2fc8e8a6c"
+            }
+          ],
+          "id": "d072a5ec-ef1e-4378-aa98-537b062bc518",
+          "createdAt": "2026-07-28T01:28:16.000Z",
+          "updatedAt": "2026-07-28T01:28:16.000Z",
+          "uid": "35240-d072a5ec-ef1e-4378-aa98-537b062bc518"
+        }
+      ],
+      "id": "1774c389-40a0-4402-96ac-49db7717950f",
+      "createdAt": "2026-07-28T01:28:16.000Z",
+      "updatedAt": "2026-07-28T01:28:16.000Z",
+      "uid": "35240-1774c389-40a0-4402-96ac-49db7717950f"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.razorpay.com/v1"
+    }
+  ]
+}
