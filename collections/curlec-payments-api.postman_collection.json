@@ -1,0 +1,1317 @@
+{
+  "item": [
+    {
+      "id": "5af66d82-3722-4f5a-958e-8fe41edc3330",
+      "name": "Payments",
+      "description": {
+        "content": "A payment is created when a customer completes checkout. Payments can be auto-captured or manually captured. Fetch payment details to reconcile and diagnose failures.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "adfd8544-ee63-402b-b747-c8988f6fe712",
+          "name": "Fetch all payments",
+          "request": {
+            "name": "Fetch all payments",
+            "description": {
+              "content": "Retrieve a paginated list of payments. Maximum 100 per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "10",
+                  "description": "Number of records to return per call. Maximum 100. Default 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip. Use with count for pagination. Default 0."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b96834a3-5c0e-4ea6-b400-d8c961e77f2d",
+              "name": "Collection of payments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": 4798,\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"entity\": \"payment\",\n      \"amount\": 9407,\n      \"currency\": \"string\",\n      \"status\": \"captured\",\n      \"order_id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"international\": true,\n      \"method\": \"upi\",\n      \"amount_refunded\": 7513,\n      \"refund_status\": \"full\",\n      \"captured\": true,\n      \"description\": \"string\",\n      \"card_id\": \"string\",\n      \"card\": {\n        \"id\": \"string\",\n        \"entity\": \"string\",\n        \"name\": \"string\",\n        \"last4\": \"string\",\n        \"network\": \"string\",\n        \"type\": \"string\",\n        \"issuer\": \"string\",\n        \"emi\": false,\n        \"sub_type\": \"string\"\n      },\n      \"bank\": \"string\",\n      \"wallet\": \"string\",\n      \"vpa\": \"string\",\n      \"upi\": {\n        \"payer_account_type\": \"string\",\n        \"vpa\": \"string\",\n        \"flow\": \"string\"\n      },\n      \"email\": \"string\",\n      \"contact\": \"string\",\n      \"customer_id\": \"string\",\n      \"token_id\": \"string\",\n      \"notes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"fee\": 8992,\n      \"tax\": 8458,\n      \"error_code\": \"string\",\n      \"error_description\": \"string\",\n      \"error_source\": \"string\",\n      \"error_step\": \"string\",\n      \"error_reason\": \"string\",\n      \"acquirer_data\": {\n        \"rrn\": \"string\",\n        \"authentication_reference_number\": \"string\",\n        \"bank_transaction_id\": \"string\",\n        \"transaction_id\": \"string\"\n      },\n      \"created_at\": 5863\n    },\n    {\n      \"id\": \"string\",\n      \"entity\": \"payment\",\n      \"amount\": 9563,\n      \"currency\": \"string\",\n      \"status\": \"captured\",\n      \"order_id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"international\": false,\n      \"method\": \"upi\",\n      \"amount_refunded\": 8066,\n      \"refund_status\": \"null\",\n      \"captured\": true,\n      \"description\": \"string\",\n      \"card_id\": \"string\",\n      \"card\": {\n        \"id\": \"string\",\n        \"entity\": \"string\",\n        \"name\": \"string\",\n        \"last4\": \"string\",\n        \"network\": \"string\",\n        \"type\": \"string\",\n        \"issuer\": \"string\",\n        \"emi\": false,\n        \"sub_type\": \"string\"\n      },\n      \"bank\": \"string\",\n      \"wallet\": \"string\",\n      \"vpa\": \"string\",\n      \"upi\": {\n        \"payer_account_type\": \"string\",\n        \"vpa\": \"string\",\n        \"flow\": \"string\"\n      },\n      \"email\": \"string\",\n      \"contact\": \"string\",\n      \"customer_id\": \"string\",\n      \"token_id\": \"string\",\n      \"notes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"fee\": 5176,\n      \"tax\": 4422,\n      \"error_code\": \"string\",\n      \"error_description\": \"string\",\n      \"error_source\": \"string\",\n      \"error_step\": \"string\",\n      \"error_reason\": \"string\",\n      \"acquirer_data\": {\n        \"rrn\": \"string\",\n        \"authentication_reference_number\": \"string\",\n        \"bank_transaction_id\": \"string\",\n        \"transaction_id\": \"string\"\n      },\n      \"created_at\": 555\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a288102-af1f-46f3-84e4-52a41b39ec90",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f58b1b27-7fd2-4977-8c74-e472688f8ac4",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95939342-9906-40b4-b5e3-5ffaf3e8469c",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2be33a46-b546-493a-bd36-a09d5bcb6b08",
+          "name": "Fetch payment by ID",
+          "request": {
+            "name": "Fetch payment by ID",
+            "description": {
+              "content": "Retrieve full details and current status of a specific payment. Always re-fetch before acting — status can change.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Payment ID (pay_*)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9ea5ed2-e379-48ce-8bc5-f00378b9a027",
+              "name": "Payment details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"payment\",\n  \"amount\": 4972,\n  \"currency\": \"string\",\n  \"status\": \"failed\",\n  \"order_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"international\": true,\n  \"method\": \"emi\",\n  \"amount_refunded\": 5182,\n  \"refund_status\": \"partial\",\n  \"captured\": false,\n  \"description\": \"string\",\n  \"card_id\": \"string\",\n  \"card\": {\n    \"id\": \"string\",\n    \"entity\": \"string\",\n    \"name\": \"string\",\n    \"last4\": \"string\",\n    \"network\": \"string\",\n    \"type\": \"string\",\n    \"issuer\": \"string\",\n    \"emi\": true,\n    \"sub_type\": \"string\"\n  },\n  \"bank\": \"string\",\n  \"wallet\": \"string\",\n  \"vpa\": \"string\",\n  \"upi\": {\n    \"payer_account_type\": \"string\",\n    \"vpa\": \"string\",\n    \"flow\": \"string\"\n  },\n  \"email\": \"string\",\n  \"contact\": \"string\",\n  \"customer_id\": \"string\",\n  \"token_id\": \"string\",\n  \"notes\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\",\n    \"key_4\": \"string\",\n    \"key_5\": \"string\",\n    \"key_6\": \"string\",\n    \"key_7\": \"string\",\n    \"key_8\": \"string\",\n    \"key_9\": \"string\",\n    \"key_10\": \"string\",\n    \"key_11\": \"string\",\n    \"key_12\": \"string\"\n  },\n  \"fee\": 3564,\n  \"tax\": 4019,\n  \"error_code\": \"string\",\n  \"error_description\": \"string\",\n  \"error_source\": \"string\",\n  \"error_step\": \"string\",\n  \"error_reason\": \"string\",\n  \"acquirer_data\": {\n    \"rrn\": \"string\",\n    \"authentication_reference_number\": \"string\",\n    \"bank_transaction_id\": \"string\",\n    \"transaction_id\": \"string\"\n  },\n  \"created_at\": 282\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e052faa2-7014-4bed-a8bf-f4b0b2093fda",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb70fdbd-4665-46c0-92ec-ce5da6f944d5",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52679f51-bd88-48b4-9dd4-be9e3d21f127",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0762218e-2c58-443a-a717-95817cc63a69",
+          "name": "Update a payment",
+          "request": {
+            "name": "Update a payment",
+            "description": {
+              "content": "Update the notes field of a payment. Only notes can be modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Payment ID (pay_*)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd9b7986-9a36-4eb8-b6b7-5172a2ba5982",
+              "name": "Updated payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\",\n    \"key_12\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"payment\",\n  \"amount\": 436,\n  \"currency\": \"string\",\n  \"status\": \"authorized\",\n  \"order_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"international\": true,\n  \"method\": \"emi\",\n  \"amount_refunded\": 9226,\n  \"refund_status\": \"partial\",\n  \"captured\": true,\n  \"description\": \"string\",\n  \"card_id\": \"string\",\n  \"card\": {\n    \"id\": \"string\",\n    \"entity\": \"string\",\n    \"name\": \"string\",\n    \"last4\": \"string\",\n    \"network\": \"string\",\n    \"type\": \"string\",\n    \"issuer\": \"string\",\n    \"emi\": true,\n    \"sub_type\": \"string\"\n  },\n  \"bank\": \"string\",\n  \"wallet\": \"string\",\n  \"vpa\": \"string\",\n  \"upi\": {\n    \"payer_account_type\": \"string\",\n    \"vpa\": \"string\",\n    \"flow\": \"string\"\n  },\n  \"email\": \"string\",\n  \"contact\": \"string\",\n  \"customer_id\": \"string\",\n  \"token_id\": \"string\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\"\n  },\n  \"fee\": 2814,\n  \"tax\": 3073,\n  \"error_code\": \"string\",\n  \"error_description\": \"string\",\n  \"error_source\": \"string\",\n  \"error_step\": \"string\",\n  \"error_reason\": \"string\",\n  \"acquirer_data\": {\n    \"rrn\": \"string\",\n    \"authentication_reference_number\": \"string\",\n    \"bank_transaction_id\": \"string\",\n    \"transaction_id\": \"string\"\n  },\n  \"created_at\": 3222\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62213029-eb7c-4c52-8639-9f060d06d83f",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\",\n    \"key_12\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a12a31c9-dc10-4f4f-b0e2-f55fcfce031c",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\",\n    \"key_12\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20bfbac5-4ccd-4fbf-9d2d-078b76f2dfef",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\",\n    \"key_12\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a40a2e3c-3977-4786-ae55-fd79ea3b3084",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\",\n    \"key_12\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8259b58-f126-4019-b4da-bcb0d78a696d",
+          "name": "Capture a payment",
+          "request": {
+            "name": "Capture a payment",
+            "description": {
+              "content": "Capture an authorized payment to collect funds. Must be called within the capture window (default 5 days). Amount must exactly equal authorized amount unless partial capture is enabled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                ":id",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Payment ID (pay_*). Must be in 'authorized' status."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"INR\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54830212-8095-4de1-a44f-af92ce2db6ba",
+              "name": "Payment captured. Status changes to 'captured'.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*). Must be in 'authorized' status."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 50000,\n  \"currency\": \"INR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"payment\",\n  \"amount\": 436,\n  \"currency\": \"string\",\n  \"status\": \"authorized\",\n  \"order_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"international\": true,\n  \"method\": \"emi\",\n  \"amount_refunded\": 9226,\n  \"refund_status\": \"partial\",\n  \"captured\": true,\n  \"description\": \"string\",\n  \"card_id\": \"string\",\n  \"card\": {\n    \"id\": \"string\",\n    \"entity\": \"string\",\n    \"name\": \"string\",\n    \"last4\": \"string\",\n    \"network\": \"string\",\n    \"type\": \"string\",\n    \"issuer\": \"string\",\n    \"emi\": true,\n    \"sub_type\": \"string\"\n  },\n  \"bank\": \"string\",\n  \"wallet\": \"string\",\n  \"vpa\": \"string\",\n  \"upi\": {\n    \"payer_account_type\": \"string\",\n    \"vpa\": \"string\",\n    \"flow\": \"string\"\n  },\n  \"email\": \"string\",\n  \"contact\": \"string\",\n  \"customer_id\": \"string\",\n  \"token_id\": \"string\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\"\n  },\n  \"fee\": 2814,\n  \"tax\": 3073,\n  \"error_code\": \"string\",\n  \"error_description\": \"string\",\n  \"error_source\": \"string\",\n  \"error_step\": \"string\",\n  \"error_reason\": \"string\",\n  \"acquirer_data\": {\n    \"rrn\": \"string\",\n    \"authentication_reference_number\": \"string\",\n    \"bank_transaction_id\": \"string\",\n    \"transaction_id\": \"string\"\n  },\n  \"created_at\": 3222\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebb1eda9-dc83-4108-b93a-f79a2a3f279f",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*). Must be in 'authorized' status."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 50000,\n  \"currency\": \"INR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7abe4e6-d974-42dc-988e-c5fa11132e30",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*). Must be in 'authorized' status."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 50000,\n  \"currency\": \"INR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a847f9f5-d8d5-449b-bbb7-92ea1f5fb779",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*). Must be in 'authorized' status."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 50000,\n  \"currency\": \"INR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "daebb122-18c0-462f-9148-7605e75573fb",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment ID (pay_*). Must be in 'authorized' status."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 50000,\n  \"currency\": \"INR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.razorpay.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7a924366-0f8e-4dcb-8865-e5fc9c4b87cb",
+    "name": "Razorpay Bills Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+      "type": "text/plain"
+    }
+  }
+}

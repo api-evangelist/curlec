@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Items API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/items",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              }
+            ]
+          },
+          "docs": "Retrieve all catalog items. Supports pagination."
+        },
+        {
+          "info": {
+            "name": "Create an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a reusable catalog item. Items can be referenced in invoice line_items by item_id, which auto-fills price and description. Each item is merchant-scoped."
+        },
+        {
+          "info": {
+            "name": "Fetch an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Item ID (item_*)."
+              }
+            ]
+          },
+          "docs": "Get details of a specific catalog item."
+        },
+        {
+          "info": {
+            "name": "Update an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Item ID (item_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the name, description, amount, currency, or active status of an item."
+        },
+        {
+          "info": {
+            "name": "Delete an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.razorpay.com/v1/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Item ID (item_*)."
+              }
+            ]
+          },
+          "docs": "Permanently delete a catalog item. Deleted items cannot be recovered."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

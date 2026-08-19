@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills QR Codes API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "QR Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch all QR codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payments/qr_codes",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by customer ID (cust_*)."
+              },
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter QR codes associated with a specific payment."
+              }
+            ]
+          },
+          "docs": "Retrieve all QR codes. Filter by customer_id or payment_id."
+        },
+        {
+          "info": {
+            "name": "Create a QR code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payments/qr_codes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a UPI QR code for accepting digital payments. Only upi_qr type is supported (on-demand feature; requires merchant activation). single_use QR codes require fixed_amount=true and close_by maximum is 45 days. multiple_use QR codes have no expiry restriction."
+        },
+        {
+          "info": {
+            "name": "Fetch QR code by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payments/qr_codes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "QR code ID (qr_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific QR code including payment counts and status."
+        },
+        {
+          "info": {
+            "name": "Update a QR code",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/payments/qr_codes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "QR code ID (qr_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the notes field of a QR code. Only notes can be modified after creation."
+        },
+        {
+          "info": {
+            "name": "Close a QR code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payments/qr_codes/:id/close",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "QR code ID (qr_*)."
+              }
+            ]
+          },
+          "docs": "Deactivate a QR code to stop accepting new payments. Once closed, the QR code cannot be reopened."
+        },
+        {
+          "info": {
+            "name": "Fetch payments for a QR code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payments/qr_codes/:id/payments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "QR code ID (qr_*)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              }
+            ]
+          },
+          "docs": "Retrieve all payments made against a specific QR code."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

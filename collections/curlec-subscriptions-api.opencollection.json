@@ -1,0 +1,257 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Subscriptions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/subscriptions",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by plan ID."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              }
+            ]
+          },
+          "docs": "Retrieve all subscriptions. Filter by plan_id or status. Returns up to 100 per call."
+        },
+        {
+          "info": {
+            "name": "Create a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe a customer to a plan. Returns a short_url that the customer MUST open to authorize the payment mandate (UPI Autopay, NACH, or card-on-file). The subscription will not charge until the mandate is authorized. Set notify_info to send the auth link via SMS/email automatically. Requires Subscriptions feature enabled on your Razorpay account."
+        },
+        {
+          "info": {
+            "name": "Fetch a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              }
+            ]
+          },
+          "docs": "Get current status and full details of a subscription."
+        },
+        {
+          "info": {
+            "name": "Update a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update plan, quantity, or schedule future changes for a subscription. Use schedule_change_at='now' for immediate effect (creates a new billing cycle) or 'cycle_end' to defer until the current cycle ends. Cannot change plan mid-cycle without creating a new cycle."
+        },
+        {
+          "info": {
+            "name": "Cancel a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/subscriptions/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an active or authenticated subscription. Use cancel_at_cycle_end=1 to continue service until the end of the current cycle before cancelling."
+        },
+        {
+          "info": {
+            "name": "Pause a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/subscriptions/:id/pause",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pause an active subscription. No charges will be attempted while paused. Resume with POST /subscriptions/{id}/resume."
+        },
+        {
+          "info": {
+            "name": "Resume a paused subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/subscriptions/:id/resume",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resume a paused subscription. Charging resumes on the next scheduled cycle."
+        },
+        {
+          "info": {
+            "name": "Fetch scheduled changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/subscriptions/:id/retrieve_scheduled_changes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve any pending plan or quantity changes scheduled for the next billing cycle."
+        },
+        {
+          "info": {
+            "name": "Cancel scheduled changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/subscriptions/:id/cancel_scheduled_changes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              }
+            ]
+          },
+          "docs": "Cancel any pending plan or quantity changes that were scheduled for the next billing cycle."
+        },
+        {
+          "info": {
+            "name": "Delete an offer from a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.razorpay.com/v1/subscriptions/:sub_id/:offer_id",
+            "params": [
+              {
+                "name": "sub_id",
+                "value": "",
+                "type": "path",
+                "description": "Subscription ID (sub_*)."
+              },
+              {
+                "name": "offer_id",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID to remove."
+              }
+            ]
+          },
+          "docs": "Remove an applied offer/coupon from a subscription. The offer will no longer apply from the next billing cycle."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

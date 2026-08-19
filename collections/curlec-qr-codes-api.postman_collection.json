@@ -1,0 +1,1873 @@
+{
+  "item": [
+    {
+      "id": "b5d26682-b056-4444-b8db-1071020a4ecd",
+      "name": "QR Codes",
+      "description": {
+        "content": "QR Codes enable offline and digital payment collection. Customers scan with any UPI or card app. Supports fixed-amount and variable-amount codes, single-use and multiple-use modes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bbd05da3-192e-4625-988b-549f10951321",
+          "name": "Create a QR code",
+          "request": {
+            "name": "Create a QR code",
+            "description": {
+              "content": "Create a UPI QR code for accepting digital payments. Only upi_qr type is supported (on-demand feature; requires merchant activation). single_use QR codes require fixed_amount=true and close_by maximum is 45 days. multiple_use QR codes have no expiry restriction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                "qr_codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "202a0236-4f48-4ac4-8147-27553ae75f82",
+              "name": "QR code created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"qr_code\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image_url\": \"string\",\n  \"payment_amount\": 6864,\n  \"status\": \"closed\",\n  \"usage_type\": \"single_use\",\n  \"close_by\": 1160,\n  \"closed_at\": 3489,\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"string\",\n  \"payments_amount_received\": 5568,\n  \"payments_count_received\": 7926,\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\"\n  },\n  \"created_at\": 7226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe1efedb-9122-4787-9daf-dfc92c08631d",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aad140a-6e26-41f0-8058-ecaf7e19429a",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b5a117f-d0dd-4f97-9211-65c2ab171c21",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"usage\": \"<string>\",\n  \"fixed_amount\": \"<boolean>\",\n  \"payment_amount\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"close_by\": \"<integer>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "affc9b55-fda3-4080-bd83-f4fa4c711aff",
+          "name": "Fetch all QR codes",
+          "request": {
+            "name": "Fetch all QR codes",
+            "description": {
+              "content": "Retrieve all QR codes. Filter by customer_id or payment_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                "qr_codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "10",
+                  "description": "Number of records to return per call. Maximum 100. Default 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip. Use with count for pagination. Default 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<string>",
+                  "description": "Filter by customer ID (cust_*)."
+                },
+                {
+                  "disabled": false,
+                  "key": "payment_id",
+                  "value": "<string>",
+                  "description": "Filter QR codes associated with a specific payment."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de4f04ba-db9a-46f5-9caf-683098f7cfe6",
+              "name": "Collection of QR codes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payment_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": 3846,\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"entity\": \"qr_code\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"payment_amount\": 1902,\n      \"status\": \"closed\",\n      \"usage_type\": \"single_use\",\n      \"close_by\": 8922,\n      \"closed_at\": 1003,\n      \"close_reason\": \"on_demand\",\n      \"customer_id\": \"string\",\n      \"payments_amount_received\": 1781,\n      \"payments_count_received\": 3191,\n      \"notes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\",\n        \"key_5\": \"<string>\"\n      },\n      \"created_at\": 2913\n    },\n    {\n      \"id\": \"string\",\n      \"entity\": \"qr_code\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"payment_amount\": 4212,\n      \"status\": \"closed\",\n      \"usage_type\": \"multiple_use\",\n      \"close_by\": 958,\n      \"closed_at\": 8519,\n      \"close_reason\": \"paid\",\n      \"customer_id\": \"string\",\n      \"payments_amount_received\": 7200,\n      \"payments_count_received\": 4954,\n      \"notes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\",\n        \"key_5\": \"<string>\",\n        \"key_6\": \"<string>\",\n        \"key_7\": \"<string>\",\n        \"key_8\": \"<string>\",\n        \"key_9\": \"<string>\",\n        \"key_10\": \"<string>\",\n        \"key_11\": \"<string>\",\n        \"key_12\": \"<string>\"\n      },\n      \"created_at\": 2352\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dab9a3c-7d09-4644-8541-6a2daeefa50e",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payment_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3dc7d111-10b6-4839-a307-94d4d7707805",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payment_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "510f13e7-30f9-414b-88da-3f393975ce8d",
+          "name": "Fetch QR code by ID",
+          "request": {
+            "name": "Fetch QR code by ID",
+            "description": {
+              "content": "Retrieve details of a specific QR code including payment counts and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                "qr_codes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) QR code ID (qr_*)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41575853-4618-4306-9fc5-85eb12941bc9",
+              "name": "QR code details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"qr_code\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image_url\": \"string\",\n  \"payment_amount\": 6864,\n  \"status\": \"closed\",\n  \"usage_type\": \"single_use\",\n  \"close_by\": 1160,\n  \"closed_at\": 3489,\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"string\",\n  \"payments_amount_received\": 5568,\n  \"payments_count_received\": 7926,\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\"\n  },\n  \"created_at\": 7226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44c6ad88-8a7b-4517-98c4-cb9af25e8f92",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e98b64a-bded-475d-bd9c-c29eecb1ca6e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "404255ee-8b32-43c8-bea1-2eeced236608",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2e2cdd4-8164-4a61-bc4a-2d9a588b1971",
+          "name": "Update a QR code",
+          "request": {
+            "name": "Update a QR code",
+            "description": {
+              "content": "Update the notes field of a QR code. Only notes can be modified after creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                "qr_codes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) QR code ID (qr_*)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\",\n    \"key_12\": \"<string>\",\n    \"key_13\": \"<string>\",\n    \"key_14\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13541620-5cfd-4dd1-a20e-5194c71494c8",
+              "name": "Updated QR code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"qr_code\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image_url\": \"string\",\n  \"payment_amount\": 6864,\n  \"status\": \"closed\",\n  \"usage_type\": \"single_use\",\n  \"close_by\": 1160,\n  \"closed_at\": 3489,\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"string\",\n  \"payments_amount_received\": 5568,\n  \"payments_count_received\": 7926,\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\"\n  },\n  \"created_at\": 7226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0ce63a3-f24a-439d-85ad-3170b89aebfe",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74f6aa53-bdda-44a1-9ed8-13e562b52160",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ff030d3-7e06-4f86-a9cc-49495f69a5f1",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a993ed2e-0c61-4a85-9461-f612b903cf0c",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "296d9589-292b-49e4-9756-e25e4df7aca3",
+          "name": "Close a QR code",
+          "request": {
+            "name": "Close a QR code",
+            "description": {
+              "content": "Deactivate a QR code to stop accepting new payments. Once closed, the QR code cannot be reopened.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                "qr_codes",
+                ":id",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) QR code ID (qr_*)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5506568c-52b7-450c-a923-14b7995272ea",
+              "name": "QR code closed. Status changes to 'closed'.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"qr_code\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image_url\": \"string\",\n  \"payment_amount\": 6864,\n  \"status\": \"closed\",\n  \"usage_type\": \"single_use\",\n  \"close_by\": 1160,\n  \"closed_at\": 3489,\n  \"close_reason\": \"on_demand\",\n  \"customer_id\": \"string\",\n  \"payments_amount_received\": 5568,\n  \"payments_count_received\": 7926,\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\"\n  },\n  \"created_at\": 7226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a83bf951-5c19-4b59-baa8-3592dd7581b3",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0ddb2bb-e865-479b-8a9f-12a80719bc40",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1a54498-3ebb-4f29-8f55-c12432e26c8e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f150ca24-bf2a-4e65-8d57-9e7f390692d6",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "281f5391-2a67-41b5-a6e7-a43bf6988a07",
+          "name": "Fetch payments for a QR code",
+          "request": {
+            "name": "Fetch payments for a QR code",
+            "description": {
+              "content": "Retrieve all payments made against a specific QR code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                "qr_codes",
+                ":id",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "10",
+                  "description": "Number of records to return per call. Maximum 100. Default 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip. Use with count for pagination. Default 0."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) QR code ID (qr_*)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4945feef-322f-4676-94ac-471a33f4479b",
+              "name": "Collection of payments for the QR code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": 650,\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"entity\": \"payment\",\n      \"amount\": 4422,\n      \"currency\": \"string\",\n      \"status\": \"refunded\",\n      \"order_id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"international\": false,\n      \"method\": \"netbanking\",\n      \"amount_refunded\": 4097,\n      \"refund_status\": \"partial\",\n      \"captured\": true,\n      \"description\": \"string\",\n      \"card_id\": \"string\",\n      \"card\": {\n        \"id\": \"string\",\n        \"entity\": \"string\",\n        \"name\": \"string\",\n        \"last4\": \"string\",\n        \"network\": \"string\",\n        \"type\": \"string\",\n        \"issuer\": \"string\",\n        \"emi\": true,\n        \"sub_type\": \"string\"\n      },\n      \"bank\": \"string\",\n      \"wallet\": \"string\",\n      \"vpa\": \"string\",\n      \"upi\": {\n        \"payer_account_type\": \"string\",\n        \"vpa\": \"string\",\n        \"flow\": \"string\"\n      },\n      \"email\": \"string\",\n      \"contact\": \"string\",\n      \"customer_id\": \"string\",\n      \"token_id\": \"string\",\n      \"notes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\",\n        \"key_5\": \"<string>\",\n        \"key_6\": \"<string>\",\n        \"key_7\": \"<string>\",\n        \"key_8\": \"<string>\",\n        \"key_9\": \"<string>\",\n        \"key_10\": \"<string>\",\n        \"key_11\": \"<string>\",\n        \"key_12\": \"<string>\",\n        \"key_13\": \"<string>\",\n        \"key_14\": \"<string>\"\n      },\n      \"fee\": 3369,\n      \"tax\": 4106,\n      \"error_code\": \"string\",\n      \"error_description\": \"string\",\n      \"error_source\": \"string\",\n      \"error_step\": \"string\",\n      \"error_reason\": \"string\",\n      \"acquirer_data\": {\n        \"rrn\": \"string\",\n        \"authentication_reference_number\": \"string\",\n        \"bank_transaction_id\": \"string\",\n        \"transaction_id\": \"string\"\n      },\n      \"created_at\": 4325\n    },\n    {\n      \"id\": \"string\",\n      \"entity\": \"payment\",\n      \"amount\": 9917,\n      \"currency\": \"string\",\n      \"status\": \"refunded\",\n      \"order_id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"international\": false,\n      \"method\": \"emi\",\n      \"amount_refunded\": 1741,\n      \"refund_status\": \"null\",\n      \"captured\": false,\n      \"description\": \"string\",\n      \"card_id\": \"string\",\n      \"card\": {\n        \"id\": \"string\",\n        \"entity\": \"string\",\n        \"name\": \"string\",\n        \"last4\": \"string\",\n        \"network\": \"string\",\n        \"type\": \"string\",\n        \"issuer\": \"string\",\n        \"emi\": true,\n        \"sub_type\": \"string\"\n      },\n      \"bank\": \"string\",\n      \"wallet\": \"string\",\n      \"vpa\": \"string\",\n      \"upi\": {\n        \"payer_account_type\": \"string\",\n        \"vpa\": \"string\",\n        \"flow\": \"string\"\n      },\n      \"email\": \"string\",\n      \"contact\": \"string\",\n      \"customer_id\": \"string\",\n      \"token_id\": \"string\",\n      \"notes\": {\n        \"key_0\": \"<string>\"\n      },\n      \"fee\": 832,\n      \"tax\": 7055,\n      \"error_code\": \"string\",\n      \"error_description\": \"string\",\n      \"error_source\": \"string\",\n      \"error_step\": \"string\",\n      \"error_reason\": \"string\",\n      \"acquirer_data\": {\n        \"rrn\": \"string\",\n        \"authentication_reference_number\": \"string\",\n        \"bank_transaction_id\": \"string\",\n        \"transaction_id\": \"string\"\n      },\n      \"created_at\": 6972\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c334fa4-bf57-4e65-80cc-1df57c3f6bc4",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e5ba4de-bfe6-4861-9c47-1427f5744fb1",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "091d0c48-191a-401c-8857-509975723b64",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    "qr_codes",
+                    ":id",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) QR code ID (qr_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.razorpay.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5eccd6a9-5016-4b3a-938e-a6158d77cb8c",
+    "name": "Razorpay Bills QR Codes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+      "type": "text/plain"
+    }
+  }
+}

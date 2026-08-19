@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Transfers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch transfers for a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payments/:id/transfers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment ID (pay_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve all transfers created from a specific payment."
+        },
+        {
+          "info": {
+            "name": "Create transfers from a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payments/:id/transfers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment ID (pay_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Split a captured payment to one or more Linked Accounts. Amount is deducted from the payment and transferred to the recipient. INR only, minimum ₹100 per transfer."
+        },
+        {
+          "info": {
+            "name": "List transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/transfers",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp filter (start)."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp filter (end)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return. Default: 10. Maximum: 100."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use for pagination. Default: 0."
+              },
+              {
+                "name": "recipient_settlement_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter transfers by settlement ID in the Linked Account."
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Expand recipient_settlement to include full settlement object."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of transfers. Filter by recipient_settlement_id to fetch transfers included in a specific settlement. Use expand[]=recipient_settlement to include settlement details."
+        },
+        {
+          "info": {
+            "name": "Create a direct transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/transfers",
+            "headers": [
+              {
+                "name": "X-Transfer-Idempotency",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an on-demand direct transfer from the merchant account to a Linked Account. Requires the Direct Transfer feature to be enabled on the account. Supports idempotency via the X-Transfer-Idempotency header (unique to direct transfers)."
+        },
+        {
+          "info": {
+            "name": "Fetch a transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/transfers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Transfer ID (trf_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific transfer by ID."
+        },
+        {
+          "info": {
+            "name": "Modify settlement hold on a transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/transfers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Transfer ID (trf_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Put a transfer's settlement on hold or release an existing hold. Use on_hold=true to hold settlement, on_hold=false to release. on_hold_until sets a future timestamp for automatic hold release."
+        },
+        {
+          "info": {
+            "name": "List reversals for a transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/transfers/:id/reversals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Transfer ID (trf_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve all reversals for a specific transfer."
+        },
+        {
+          "info": {
+            "name": "Reverse a transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/transfers/:id/reversals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Transfer ID (trf_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move funds from a Linked Account back to the merchant. Partial reversals are supported. Multiple reversals per transfer are allowed as long as the total reversed amount does not exceed the transfer amount."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

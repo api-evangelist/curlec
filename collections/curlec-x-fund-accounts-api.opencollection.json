@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills X Fund Accounts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "X Fund Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fund accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/fund_accounts",
+            "params": [
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact ID to list fund accounts linked to that contact."
+              },
+              {
+                "name": "account_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by fund account type: `bank_account`, `vpa`, `card`, or `wallet`."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of fund accounts to return. Default: 10. Maximum: 100."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of fund accounts to skip. Use for pagination. Default: 0."
+              }
+            ]
+          },
+          "docs": "List fund accounts linked to contacts. Filter by contact ID and/or account type."
+        },
+        {
+          "info": {
+            "name": "Create a fund account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/fund_accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a bank account, VPA, card, or wallet (Amazon Pay) fund account linked to a contact. Fund accounts are immutable after creation. Returns existing record if contact_id + account details all match."
+        },
+        {
+          "info": {
+            "name": "Fetch a fund account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/fund_accounts/:fund_account_id",
+            "params": [
+              {
+                "name": "fund_account_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the fund account (e.g. `fa_00000000000001`)."
+              }
+            ]
+          },
+          "docs": "Fetch details of a specific fund account by its ID."
+        },
+        {
+          "info": {
+            "name": "Activate or deactivate a fund account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/fund_accounts/:fund_account_id",
+            "params": [
+              {
+                "name": "fund_account_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the fund account (e.g. `fa_00000000000001`)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate or deactivate a fund account. Fund account details are immutable — only the `active` status can be changed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

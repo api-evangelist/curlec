@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Disputes API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Disputes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch all disputes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/disputes",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Expand sub-entities. Supported: payment, transaction.settlement."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all payment disputes. Use expand[]=payment or expand[]=transaction.settlement for additional context."
+        },
+        {
+          "info": {
+            "name": "Fetch dispute by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/disputes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Dispute ID (disp_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve full details of a specific dispute including submitted evidence."
+        },
+        {
+          "info": {
+            "name": "Accept a dispute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/disputes/:id/accept",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Dispute ID (disp_*)."
+              }
+            ]
+          },
+          "docs": "Accept a dispute, acknowledging it as lost. This is irreversible — the dispute status changes to 'lost' and the disputed amount is deducted from your balance. Only accept if you do not wish to contest."
+        },
+        {
+          "info": {
+            "name": "Contest a dispute",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/disputes/:id/contest",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Dispute ID (disp_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit evidence to challenge a dispute. Use action=draft to save without submitting, or action=submit to send for bank review (triggers payment.dispute.under_review webhook). At least one evidence document is required when submitting. You can contest partial amounts by specifying amount."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

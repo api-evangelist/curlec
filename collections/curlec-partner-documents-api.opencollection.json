@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Partner Documents API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Partner Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch KYC documents for a sub-merchant account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/v2/accounts/:account_id/documents",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all KYC documents uploaded for a sub-merchant account. Authentication: OAuth access_token."
+        },
+        {
+          "info": {
+            "name": "Upload KYC documents for a sub-merchant account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/v2/accounts/:account_id/documents",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "document_type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Upload KYC documents for business identity and address verification. Multipart form upload. JPG/PNG max 4MB, PDF max 2MB. Authentication: OAuth access_token."
+        },
+        {
+          "info": {
+            "name": "Fetch KYC documents for a stakeholder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+              },
+              {
+                "name": "stakeholder_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the stakeholder (e.g. `sth_00000000000001`)."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all KYC documents uploaded for a specific stakeholder. Authentication: OAuth access_token."
+        },
+        {
+          "info": {
+            "name": "Upload KYC documents for a stakeholder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/v2/accounts/:account_id/stakeholders/:stakeholder_id/documents",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the linked merchant account (e.g. `acc_00000000000001`)."
+              },
+              {
+                "name": "stakeholder_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the stakeholder (e.g. `sth_00000000000001`)."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "document_type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Upload identity and address verification documents for a stakeholder. Supports PAN, Aadhaar (front/back), passport (front/back), voter ID (front/back). Multipart form upload. JPG/PNG max 4MB, PDF max 2MB. Authentication: OAuth access_token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

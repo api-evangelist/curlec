@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Invoices API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/invoices",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by invoice type."
+              },
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices by the payment ID used to pay them."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by customer ID (cust_*)."
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "query",
+                "description": "Fetch all invoices generated for a subscription (sub_*)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of invoices. Filter by type, status, customer, payment, or subscription. Returns up to 100 per call."
+        },
+        {
+          "info": {
+            "name": "Create an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an invoice or payment page. Set type='invoice' for a formal invoice or type='link' for a simple payment page. The invoice is created in draft state; call POST /invoices/{id}/issue to send it to the customer. Cannot be used to create GST invoices (use the Dashboard for those). Maximum 50 line items per invoice."
+        },
+        {
+          "info": {
+            "name": "Fetch an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID (inv_*)."
+              }
+            ]
+          },
+          "docs": "Get full details of a specific invoice including status, line items, and payment information."
+        },
+        {
+          "info": {
+            "name": "Update an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID (inv_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update invoice fields. Updatable fields depend on current status: draft=all fields; issued=partial_payment, receipt, comment, terms, notes, expire_by; paid/cancelled/expired=notes only."
+        },
+        {
+          "info": {
+            "name": "Delete a draft invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.razorpay.com/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID (inv_*)."
+              }
+            ]
+          },
+          "docs": "Permanently delete a draft invoice. Only invoices in draft status can be deleted."
+        },
+        {
+          "info": {
+            "name": "Issue an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/invoices/:id/issue",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID (inv_*)."
+              }
+            ]
+          },
+          "docs": "Transition a draft invoice to issued status, sending a notification to the customer with the payment link. Once issued, line items cannot be changed."
+        },
+        {
+          "info": {
+            "name": "Cancel an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/invoices/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID (inv_*)."
+              }
+            ]
+          },
+          "docs": "Cancel a draft or issued invoice. Cancelled invoices cannot be paid and cannot be reinstated."
+        },
+        {
+          "info": {
+            "name": "Send invoice notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/invoices/:id/notify_by/:medium",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID (inv_*)."
+              },
+              {
+                "name": "medium",
+                "value": "",
+                "type": "path",
+                "description": "Notification channel."
+              }
+            ]
+          },
+          "docs": "Send or resend the invoice payment link to the customer via SMS or email."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

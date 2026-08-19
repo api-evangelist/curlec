@@ -1,0 +1,848 @@
+{
+  "item": [
+    {
+      "id": "c634e4c6-8004-42c2-b8ce-673f33acd63e",
+      "name": "Instant Settlements",
+      "description": {
+        "content": "On-demand settlements let you transfer your available Razorpay balance to your bank account immediately, outside the normal settlement cycle. Fees apply. Requires Instant Settlements to be enabled on your account.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5652a44c-09e5-42df-8337-db746cb0e9ab",
+          "name": "Create an instant settlement",
+          "request": {
+            "name": "Create an instant settlement",
+            "description": {
+              "content": "Request an on-demand (instant) settlement of your available Razorpay balance to your bank account. Fees apply. Use settle_full_balance=true to settle everything available, or specify an amount.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements",
+                "ondemand"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"settle_full_balance\": false,\n  \"description\": \"<string>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "174f5b5d-fc6b-44ce-a4a6-762f8d131dcf",
+              "name": "Instant settlement initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"settle_full_balance\": false,\n  \"description\": \"<string>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"settlement.ondemand\",\n  \"amount_requested\": 8314,\n  \"amount_settled\": 2148,\n  \"amount_pending\": 4806,\n  \"amount_reversed\": 7687,\n  \"fees\": 1084,\n  \"tax\": 8754,\n  \"currency\": \"string\",\n  \"settle_full_balance\": false,\n  \"status\": \"initiated\",\n  \"description\": \"string\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  },\n  \"created_at\": 6298,\n  \"ondemand_payouts\": {\n    \"entity\": \"collection\",\n    \"count\": 6114,\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"entity\": \"settlement.ondemand_payout\",\n        \"initiated_at\": 6398,\n        \"processed_at\": 6395,\n        \"reversed_at\": 7701,\n        \"amount\": 2712,\n        \"amount_settled\": 3966,\n        \"fees\": 4535,\n        \"tax\": 1695,\n        \"utr\": \"string\",\n        \"status\": \"created\",\n        \"created_at\": 5736\n      },\n      {\n        \"id\": \"string\",\n        \"entity\": \"settlement.ondemand_payout\",\n        \"initiated_at\": 814,\n        \"processed_at\": 92,\n        \"reversed_at\": 5898,\n        \"amount\": 9994,\n        \"amount_settled\": 2396,\n        \"fees\": 582,\n        \"tax\": 9677,\n        \"utr\": \"string\",\n        \"status\": \"processed\",\n        \"created_at\": 9963\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "278cc3ed-69ee-4a89-912f-379e80a1df33",
+              "name": "Bad request. Invalid parameters or missing required fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"settle_full_balance\": false,\n  \"description\": \"<string>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "676584f6-5577-4fef-895d-6666e7c64653",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"settle_full_balance\": false,\n  \"description\": \"<string>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca9f1244-12df-4fa4-be68-24c19708655f",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"settle_full_balance\": false,\n  \"description\": \"<string>\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2afc200a-ea2d-4869-ae6b-ec501d77924a",
+          "name": "Fetch all instant settlements",
+          "request": {
+            "name": "Fetch all instant settlements",
+            "description": {
+              "content": "Retrieve a list of all on-demand instant settlements. Use expand[]=ondemand_payouts to include individual payout records inline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements",
+                "ondemand"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>",
+                  "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "10",
+                  "description": "Number of records to return per call. Maximum 100. Default 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip. Use with count for pagination. Default 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand[]",
+                  "value": "<string>",
+                  "description": "Set to ondemand_payouts to include payout details."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f51f21e2-10e3-4c37-a4f2-07da6c7e35cd",
+              "name": "Collection of instant settlements.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "expand[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"collection\",\n  \"count\": 9897,\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"entity\": \"settlement.ondemand\",\n      \"amount_requested\": 6956,\n      \"amount_settled\": 5028,\n      \"amount_pending\": 5272,\n      \"amount_reversed\": 7978,\n      \"fees\": 4831,\n      \"tax\": 7830,\n      \"currency\": \"string\",\n      \"settle_full_balance\": false,\n      \"status\": \"processed\",\n      \"description\": \"string\",\n      \"notes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\",\n        \"key_5\": \"<string>\",\n        \"key_6\": \"<string>\",\n        \"key_7\": \"<string>\",\n        \"key_8\": \"<string>\",\n        \"key_9\": \"<string>\"\n      },\n      \"created_at\": 9710,\n      \"ondemand_payouts\": {\n        \"entity\": \"collection\",\n        \"count\": 5317,\n        \"items\": [\n          {\n            \"id\": \"string\",\n            \"entity\": \"settlement.ondemand_payout\",\n            \"initiated_at\": 5249,\n            \"processed_at\": 2974,\n            \"reversed_at\": 5688,\n            \"amount\": 6359,\n            \"amount_settled\": 466,\n            \"fees\": 9933,\n            \"tax\": 1304,\n            \"utr\": \"string\",\n            \"status\": \"processed\",\n            \"created_at\": 7509\n          },\n          {\n            \"id\": \"string\",\n            \"entity\": \"settlement.ondemand_payout\",\n            \"initiated_at\": 9056,\n            \"processed_at\": 3892,\n            \"reversed_at\": 6837,\n            \"amount\": 4241,\n            \"amount_settled\": 1516,\n            \"fees\": 2896,\n            \"tax\": 988,\n            \"utr\": \"string\",\n            \"status\": \"processed\",\n            \"created_at\": 7961\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"entity\": \"settlement.ondemand\",\n      \"amount_requested\": 2795,\n      \"amount_settled\": 3285,\n      \"amount_pending\": 6249,\n      \"amount_reversed\": 4081,\n      \"fees\": 5074,\n      \"tax\": 2974,\n      \"currency\": \"string\",\n      \"settle_full_balance\": true,\n      \"status\": \"reversed\",\n      \"description\": \"string\",\n      \"notes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\",\n        \"key_5\": \"<string>\",\n        \"key_6\": \"<string>\",\n        \"key_7\": \"<string>\",\n        \"key_8\": \"<string>\",\n        \"key_9\": \"<string>\",\n        \"key_10\": \"<string>\",\n        \"key_11\": \"<string>\",\n        \"key_12\": \"<string>\",\n        \"key_13\": \"<string>\"\n      },\n      \"created_at\": 8188,\n      \"ondemand_payouts\": {\n        \"entity\": \"collection\",\n        \"count\": 8977,\n        \"items\": [\n          {\n            \"id\": \"string\",\n            \"entity\": \"settlement.ondemand_payout\",\n            \"initiated_at\": 6366,\n            \"processed_at\": 3553,\n            \"reversed_at\": 6056,\n            \"amount\": 2412,\n            \"amount_settled\": 1105,\n            \"fees\": 2547,\n            \"tax\": 9819,\n            \"utr\": \"string\",\n            \"status\": \"initiated\",\n            \"created_at\": 206\n          },\n          {\n            \"id\": \"string\",\n            \"entity\": \"settlement.ondemand_payout\",\n            \"initiated_at\": 5674,\n            \"processed_at\": 2215,\n            \"reversed_at\": 9564,\n            \"amount\": 6686,\n            \"amount_settled\": 234,\n            \"fees\": 5247,\n            \"tax\": 3369,\n            \"utr\": \"string\",\n            \"status\": \"processed\",\n            \"created_at\": 2810\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcfb1faa-cd40-4e2e-a371-de02cfcb1e2a",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "expand[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f61ac97-780b-4584-9ac3-2dd1682cf0a1",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "10"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "expand[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9f4bb6a-9a1f-4c97-b1bb-13441246df49",
+          "name": "Fetch instant settlement by ID",
+          "request": {
+            "name": "Fetch instant settlement by ID",
+            "description": {
+              "content": "Retrieve details of a specific on-demand instant settlement. Use expand[]=ondemand_payouts to include payout records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements",
+                "ondemand",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand[]",
+                  "value": "<string>",
+                  "description": "Set to ondemand_payouts to include payout details."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Instant settlement ID (setlod_*)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47062637-a67c-40bb-b1ca-bf3b0cfb5089",
+              "name": "Instant settlement details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Instant settlement ID (setlod_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"entity\": \"settlement.ondemand\",\n  \"amount_requested\": 1299,\n  \"amount_settled\": 467,\n  \"amount_pending\": 1211,\n  \"amount_reversed\": 2721,\n  \"fees\": 3336,\n  \"tax\": 7582,\n  \"currency\": \"string\",\n  \"settle_full_balance\": true,\n  \"status\": \"partially_processed\",\n  \"description\": \"string\",\n  \"notes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\",\n    \"key_5\": \"<string>\",\n    \"key_6\": \"<string>\",\n    \"key_7\": \"<string>\",\n    \"key_8\": \"<string>\",\n    \"key_9\": \"<string>\",\n    \"key_10\": \"<string>\",\n    \"key_11\": \"<string>\",\n    \"key_12\": \"<string>\"\n  },\n  \"created_at\": 1750,\n  \"ondemand_payouts\": {\n    \"entity\": \"collection\",\n    \"count\": 8782,\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"entity\": \"settlement.ondemand_payout\",\n        \"initiated_at\": 9010,\n        \"processed_at\": 7882,\n        \"reversed_at\": 9659,\n        \"amount\": 6125,\n        \"amount_settled\": 6001,\n        \"fees\": 7006,\n        \"tax\": 4509,\n        \"utr\": \"string\",\n        \"status\": \"created\",\n        \"created_at\": 1658\n      },\n      {\n        \"id\": \"string\",\n        \"entity\": \"settlement.ondemand_payout\",\n        \"initiated_at\": 5835,\n        \"processed_at\": 464,\n        \"reversed_at\": 6836,\n        \"amount\": 7948,\n        \"amount_settled\": 1897,\n        \"fees\": 4905,\n        \"tax\": 4088,\n        \"utr\": \"string\",\n        \"status\": \"reversed\",\n        \"created_at\": 8535\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7158f89f-d507-4f0e-ab5f-42e2b8def56e",
+              "name": "Authentication failed. Invalid or missing API key credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Instant settlement ID (setlod_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63160ab8-0266-4105-828a-20def0c71f2f",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Instant settlement ID (setlod_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91dc1a70-ea65-4a7c-9250-d6a5745871c4",
+              "name": "Rate limit exceeded. Implement exponential backoff with jitter before retrying.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    "ondemand",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Instant settlement ID (setlod_*)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"description\": \"string\",\n    \"source\": \"string\",\n    \"step\": \"string\",\n    \"reason\": \"string\",\n    \"metadata\": {},\n    \"field\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.razorpay.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d72e066b-a4bc-44d0-a00d-2397638b8f64",
+    "name": "Razorpay Bills Instant Settlements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.\n\nContact Support:\n Name: Razorpay Support\n Email: support@razorpay.com",
+      "type": "text/plain"
+    }
+  }
+}

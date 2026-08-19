@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills X Transactions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "X Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List transactions for a RazorpayX account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/transactions",
+            "params": [
+              {
+                "name": "account_number",
+                "value": "",
+                "type": "query",
+                "description": "RazorpayX account number (Customer Identifier from Dashboard). Different for Test and Live mode."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp filter start"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp filter end"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to return. Default: 10. Maximum: 100."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to skip. Use for pagination. Default: 0."
+              }
+            ]
+          },
+          "docs": "Returns all transaction records (credits and debits) for a given RazorpayX account. Use account_number from Dashboard → My Account & Settings → Banking → Customer Identifier."
+        },
+        {
+          "info": {
+            "name": "Fetch a transaction by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/transactions/:transaction_id",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path",
+                "description": "Transaction ID (txn_*)"
+              }
+            ]
+          },
+          "docs": "Fetch details of a specific transaction from a RazorpayX account by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

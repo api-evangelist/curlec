@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Orders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch all orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/orders",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              },
+              {
+                "name": "authorized",
+                "value": "",
+                "type": "query",
+                "description": "1 = orders with authorized payments only. 0 = without."
+              },
+              {
+                "name": "receipt",
+                "value": "",
+                "type": "query",
+                "description": "Filter by receipt value."
+              },
+              {
+                "name": "expand[]",
+                "value": "",
+                "type": "query",
+                "description": "Expand: payments, payments.card, transfers, virtual_account."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of orders. Maximum 100 records per call."
+        },
+        {
+          "info": {
+            "name": "Create an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an order before initiating a payment. The returned order_id must be passed to Razorpay Checkout. An order can have multiple payment attempts but only one successful capture."
+        },
+        {
+          "info": {
+            "name": "Fetch order by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order ID (order_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve the full details and current status of a specific order."
+        },
+        {
+          "info": {
+            "name": "Update an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order ID (order_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the notes field of an existing order. Only notes can be modified after creation."
+        },
+        {
+          "info": {
+            "name": "Fetch payments for an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/orders/:id/payments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order ID (order_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve all authorized and failed payment attempts made against a specific order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

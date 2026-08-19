@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Settlements API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settlements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch all settlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/settlements",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or after this time."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Fetch records created on or before this time."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per call. Maximum 100. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use with count for pagination. Default 0."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of settlements. Each settlement represents a batch transfer to your bank account. Maximum 100 per call."
+        },
+        {
+          "info": {
+            "name": "Fetch settlement by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/settlements/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Settlement ID (setl_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific settlement transaction."
+        },
+        {
+          "info": {
+            "name": "Fetch settlement reconciliation report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/settlements/recon/combined",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Settlement year in YYYY format."
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "query",
+                "description": "Settlement month in MM format (01–12)."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Settlement day in DD format (1–31). Omit to fetch the full month."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Records per call. Maximum 1000. Default 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a detailed transaction-level reconciliation report for a given month (or day). Each record maps a payment, refund, transfer, or adjustment to its settlement. Use for accounting reconciliation. Maximum 1000 records per call."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

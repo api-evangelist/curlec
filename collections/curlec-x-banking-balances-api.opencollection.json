@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills X Banking Balances API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "X Banking Balances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch RazorpayX banking balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/banking_balances",
+            "params": [
+              {
+                "name": "account_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of RazorpayX account to query. Accepted values: `current_account` or `razorpayx_lite`."
+              },
+              {
+                "name": "bank_code",
+                "value": "",
+                "type": "query",
+                "description": "First 4 characters of IFSC"
+              }
+            ]
+          },
+          "docs": "Fetch balance details for RazorpayX current accounts or RazorpayX Lite accounts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

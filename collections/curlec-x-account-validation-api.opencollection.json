@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills X Account Validation API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "X Account Validation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fund account validations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/fund_accounts/validations",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp. Only validations created from this timestamp onwards are returned."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp. Only validations created before this timestamp are returned."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of validation records to return. Default: 10. Maximum: 100."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of validation records to skip. Use for pagination. Default: 0."
+              }
+            ]
+          },
+          "docs": "List all fund account validation records, optionally filtered by date range."
+        },
+        {
+          "info": {
+            "name": "Validate a bank account or VPA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/fund_accounts/validations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Three validation methods: (1) penny drop for bank accounts — sends Re.1 to verify; (2) penny drop for VPA — sends Re.1 to UPI address; (3) reverse penny drop — sends UPI intent URL to customer who initiates payment. Live-mode only, RazorpayX Lite account required. Composite validation (creates Contact + Fund Account inline) supported via validation_type field."
+        },
+        {
+          "info": {
+            "name": "Fetch a fund account validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/fund_accounts/validations/:validation_id",
+            "params": [
+              {
+                "name": "validation_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the fund account validation (e.g. `fav_00000000000001`)."
+              }
+            ]
+          },
+          "docs": "Fetch details of a specific fund account validation by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

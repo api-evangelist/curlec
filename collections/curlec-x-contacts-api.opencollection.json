@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills X Contacts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "X Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/contacts",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact name (partial match supported)."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact email address."
+              },
+              {
+                "name": "contact",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact phone number."
+              },
+              {
+                "name": "reference_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by your unique reference ID for the contact (max 40 chars)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp filter"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp. Only contacts created before this timestamp are returned."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of contacts to return. Default: 10. Maximum: 100."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of contacts to skip. Use for pagination. Default: 0."
+              }
+            ]
+          },
+          "docs": "Filter and list all contacts. Supports filtering by name, email, phone number, reference ID, and active status."
+        },
+        {
+          "info": {
+            "name": "Create a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payout recipient contact. Returns existing contact if all identifying fields (name, email, contact, type) match an existing record."
+        },
+        {
+          "info": {
+            "name": "Fetch a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/contacts/:contact_id",
+            "params": [
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the contact (e.g. `cont_00000000000001`)."
+              }
+            ]
+          },
+          "docs": "Fetch details of a specific contact by its ID."
+        },
+        {
+          "info": {
+            "name": "Update or activate/deactivate a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/contacts/:contact_id",
+            "params": [
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the contact (e.g. `cont_00000000000001`)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update contact details or activate/deactivate a contact. Set `active: false` to deactivate."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Payment Links API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch all payment links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payment_links",
+            "params": [
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by associated payment ID."
+              },
+              {
+                "name": "reference_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by your custom reference number."
+              }
+            ]
+          },
+          "docs": "Retrieve all payment links. Filter by payment_id or reference_id to narrow results."
+        },
+        {
+          "info": {
+            "name": "Create a payment link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payment_links",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a shareable payment link to collect payments via SMS and email. Supports standard links (all payment methods) and UPI-only links (set upi_link=true). UPI links are not available in test mode. Partial payments are not supported for UPI links. Links expire after 6 months by default."
+        },
+        {
+          "info": {
+            "name": "Fetch payment link by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payment_links/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment Link ID (plink_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve full details of a specific payment link."
+        },
+        {
+          "info": {
+            "name": "Update a payment link",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/payment_links/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment Link ID (plink_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing payment link. Updates are only allowed when the link is in 'created' or 'partially_paid' status."
+        },
+        {
+          "info": {
+            "name": "Cancel a payment link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payment_links/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment Link ID (plink_*)."
+              }
+            ]
+          },
+          "docs": "Cancel a payment link. Only links in 'created' status can be cancelled. Paid, partially paid, and already expired links cannot be cancelled."
+        },
+        {
+          "info": {
+            "name": "Send or resend payment link notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payment_links/:id/notify_by/:medium",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment Link ID (plink_*)."
+              },
+              {
+                "name": "medium",
+                "value": "",
+                "type": "path",
+                "description": "Notification medium."
+              }
+            ]
+          },
+          "docs": "Send or resend a payment link notification to the customer via SMS or email."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills X Payout Links API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "X Payout Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payout links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payout-links",
+            "params": [
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter payout links by the contact ID of the recipient."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp. Only payout links created from this timestamp onwards are returned."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp. Only payout links created before this timestamp are returned."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of payout links to return. Default: 10."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of payout links to skip. Use for pagination. Default: 0."
+              }
+            ]
+          },
+          "docs": "List all payout links. Filter by contact ID, status, or date range."
+        },
+        {
+          "info": {
+            "name": "Create a payout link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payout-links",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a payout link to a contact when fund account details are unavailable. expire_by must be at least 15 minutes in the future."
+        },
+        {
+          "info": {
+            "name": "Fetch a payout link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payout-links/:payout_link_id",
+            "params": [
+              {
+                "name": "payout_link_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the payout link (e.g. `poutlk_00000000000001`)."
+              }
+            ]
+          },
+          "docs": "Fetch details of a specific payout link by its ID."
+        },
+        {
+          "info": {
+            "name": "Cancel a payout link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payout-links/:payout_link_id/cancel",
+            "params": [
+              {
+                "name": "payout_link_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the payout link to cancel."
+              }
+            ]
+          },
+          "docs": "Cancel a payout link that is in `issued` or `pending` state."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

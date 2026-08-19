@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills Virtual Accounts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Virtual Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/virtual_accounts",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp filter (start)."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp filter (end)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return. Default: 10. Maximum: 100."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip. Use for pagination. Default: 0."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of virtual accounts with optional filters."
+        },
+        {
+          "info": {
+            "name": "Create a Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/virtual_accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a virtual bank account (and optionally a VPA) for accepting NEFT/RTGS/IMPS/UPI payments. Set amount_expected=0 to accept any amount. Auto-closes after 90 days of inactivity. Maximum close_by timestamp: 2147483647."
+        },
+        {
+          "info": {
+            "name": "Fetch a Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/virtual_accounts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual Account ID (va_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific virtual account."
+        },
+        {
+          "info": {
+            "name": "Update a Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.razorpay.com/v1/virtual_accounts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual Account ID (va_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the amount_expected or close_by timestamp on an active virtual account."
+        },
+        {
+          "info": {
+            "name": "Close a Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/virtual_accounts/:id/close",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual Account ID (va_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Manually close an active virtual account so it no longer accepts payments."
+        },
+        {
+          "info": {
+            "name": "Fetch payments for a Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/virtual_accounts/:id/payments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual Account ID (va_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve all payments received by a virtual account. Returns Payment objects."
+        },
+        {
+          "info": {
+            "name": "Add a VPA receiver to a Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/virtual_accounts/:id/receivers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual Account ID (va_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a UPI VPA receiver to an existing virtual account (Smart Collect 2.0). Requires the VPA receiver feature to be enabled on the merchant account."
+        },
+        {
+          "info": {
+            "name": "Add an allowed payer (TPV)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/virtual_accounts/:va_id/allowed_payers",
+            "params": [
+              {
+                "name": "va_id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual Account ID (va_*)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Whitelist a specific payer bank account or VPA for a virtual account (Smart Collect with Third Party Validation). Only whitelisted payers can successfully pay into this virtual account."
+        },
+        {
+          "info": {
+            "name": "Delete an allowed payer (TPV)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.razorpay.com/v1/virtual_accounts/:va_id/allowed_payers/:id",
+            "params": [
+              {
+                "name": "va_id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual Account ID (va_*)."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Allowed payer ID to remove."
+              }
+            ]
+          },
+          "docs": "Remove a payer from the whitelist of a virtual account (Smart Collect TPV). The payer will no longer be able to make payments to this virtual account."
+        },
+        {
+          "info": {
+            "name": "Fetch bank transfer details for a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payments/:id/bank_transfer",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment ID (pay_*)."
+              }
+            ]
+          },
+          "docs": "Retrieve the BankTransfer entity associated with a payment received via a Virtual Account. Contains the UTR number, payer bank account details, and transfer mode."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

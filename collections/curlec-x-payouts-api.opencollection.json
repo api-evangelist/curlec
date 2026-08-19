@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Razorpay Bills X Payouts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "X Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payouts",
+            "params": [
+              {
+                "name": "account_number",
+                "value": "",
+                "type": "query",
+                "description": "The RazorpayX account number (Customer Identifier from Dashboard → My Account & Settings → Banking). Required to scope results to a specific account."
+              },
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter payouts by the contact ID of the recipient."
+              },
+              {
+                "name": "fund_account_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter payouts by fund account ID."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp. Only payouts created from this timestamp onwards are returned."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp. Only payouts created before this timestamp are returned."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of payouts to return. Default: 10. Maximum: 100."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of payouts to skip. Use for pagination. Default: 0."
+              }
+            ]
+          },
+          "docs": "List payouts for a given RazorpayX account. Filter by contact, fund account, date range, or status."
+        },
+        {
+          "info": {
+            "name": "Create a payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payouts",
+            "headers": [
+              {
+                "name": "X-Payout-Idempotency",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disburse funds via NEFT, RTGS, IMPS, UPI, or card. Supports standard payouts (fund_account_id), composite payouts (contact + fund account inline), card payouts (PCI DSS required), and mobile number payouts (resolved via NPCI mapper). Idempotency header X-Payout-Idempotency (UUID v4, 4–36 chars) is mandatory since March 15, 2025. Never generate a new idempotency key while a payout is in 'processing' state."
+        },
+        {
+          "info": {
+            "name": "Fetch a payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.razorpay.com/v1/payouts/:payout_id",
+            "params": [
+              {
+                "name": "payout_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the payout (e.g. `pout_00000000000001`)."
+              }
+            ]
+          },
+          "docs": "Fetch details of a specific payout by its ID."
+        },
+        {
+          "info": {
+            "name": "Cancel a queued payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payouts/:payout_id/cancel",
+            "params": [
+              {
+                "name": "payout_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the payout to cancel."
+              }
+            ]
+          },
+          "docs": "Only payouts in 'queued' status can be cancelled."
+        },
+        {
+          "info": {
+            "name": "Approve a payout (workflow enabled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payouts/:payout_id/approve",
+            "params": [
+              {
+                "name": "payout_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the payout to approve."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires Payouts Approval workflow enabled and Technology Partner status with OAuth."
+        },
+        {
+          "info": {
+            "name": "Reject a payout (workflow enabled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.razorpay.com/v1/payouts/:payout_id/reject",
+            "params": [
+              {
+                "name": "payout_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the payout to reject."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requires Payouts Approval workflow enabled and Technology Partner status with OAuth."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
