@@ -614,6 +614,9 @@ apis:
   - type: OAuthScopes
     url: scopes/curlec-scopes.yml
 common:
+- type: CapabilityMap
+  url: capabilities/curlec-capability-edges.yml
+  name: Curlec Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/curlec/overview
 - type: AgentCard
