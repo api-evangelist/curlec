@@ -699,6 +699,8 @@ common:
   url: components/curlec-components.yml
 - type: Deprecation
   url: https://curlec.com/docs/api/changelog/
+- type: Contact
+  url: mailto:hello@curlec.com
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
