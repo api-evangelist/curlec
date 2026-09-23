@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Razorpay Bills Partner Documents API
+  title: Razorpay Partner Documents API
   version: 1.0.0
   description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
   termsOfService: https://razorpay.com/terms/
@@ -209,36 +209,38 @@ paths:
         '404':
           $ref: '#/components/responses/404'
 components:
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    AccountDocument:
-      type: object
-      description: KYC documents for a sub-merchant account. Files must be JPG/PNG (max 4MB) or PDF (max 2MB).
-      properties:
-        business_proof_of_identification:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                enum:
-                - business_proof_url
-                - gst_certificate
-                - shop_establishment_certificate
-                - certificate_of_incorporation
-                - trust_deed
-                - society_registration_certificate
-              document_id:
-                type: string
-        business_proof_of_address:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-              document_id:
-                type: string
     StakeholderDocument:
       type: object
       description: KYC documents for a stakeholder. Supports PAN, Aadhaar, passport, and voter ID. Files must be JPG/PNG (max 4MB) or PDF (max 2MB).
@@ -274,6 +276,35 @@ components:
                 type: string
               document_id:
                 type: string
+    AccountDocument:
+      type: object
+      description: KYC documents for a sub-merchant account. Files must be JPG/PNG (max 4MB) or PDF (max 2MB).
+      properties:
+        business_proof_of_identification:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - business_proof_url
+                - gst_certificate
+                - shop_establishment_certificate
+                - certificate_of_incorporation
+                - trust_deed
+                - society_registration_certificate
+              document_id:
+                type: string
+        business_proof_of_address:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              document_id:
+                type: string
     Error:
       type: object
       properties:
@@ -297,37 +328,6 @@ components:
               type: object
             field:
               type: string
-  responses:
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

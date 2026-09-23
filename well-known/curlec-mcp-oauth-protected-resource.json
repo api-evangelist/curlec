@@ -1,0 +1,9 @@
+{
+  "resource": "https://mcp.razorpay.com",
+  "authorization_servers": [
+    "https://mcp.razorpay.com"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ]
+}

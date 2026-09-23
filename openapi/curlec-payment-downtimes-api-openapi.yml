@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Razorpay Bills Payment Downtimes API
+  title: Razorpay Payment Downtimes API
   version: 1.0.0
   description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
   termsOfService: https://razorpay.com/terms/
@@ -83,6 +83,25 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     PaymentDowntime:
       type: object
@@ -126,23 +145,19 @@ components:
           type: integer
         updated_at:
           type: integer
-    DowntimeInstrument:
+    Collection:
       type: object
       properties:
-        bank:
+        entity:
           type: string
-        network:
-          type: string
-        issuer:
-          type: string
-        psp:
-          type: string
-        vpa_handle:
-          type: string
-        card_type:
-          type: string
-        flow:
-          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
     Error:
       type: object
       properties:
@@ -166,38 +181,23 @@ components:
               type: object
             field:
               type: string
-    Collection:
+    DowntimeInstrument:
       type: object
       properties:
-        entity:
+        bank:
           type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-  responses:
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        network:
+          type: string
+        issuer:
+          type: string
+        psp:
+          type: string
+        vpa_handle:
+          type: string
+        card_type:
+          type: string
+        flow:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

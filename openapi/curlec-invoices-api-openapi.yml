@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Razorpay Bills Invoices API
+  title: Razorpay Invoices API
   version: 1.0.0
   description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
   termsOfService: https://razorpay.com/terms/
@@ -387,37 +387,62 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    InvoiceLineItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'Line item ID. Prefix: li_'
-        item_id:
-          type: string
-          description: Referenced catalog item ID (item_*). Null for ad-hoc line items.
-        name:
-          type: string
-        description:
-          type: string
-        amount:
-          type: integer
-          description: Total line amount in paise (unit_amount × quantity).
-        unit_amount:
-          type: integer
-          description: Per-unit price in paise.
-        quantity:
-          type: integer
-          default: 1
-        currency:
-          type: string
-          default: INR
-        type:
-          type: string
-          enum:
-          - invoice
-          - payment_page
     Invoice:
       type: object
       description: An invoice or payment page sent to a customer for payment. Cannot be used to create GST invoices (those must be created via the Dashboard).
@@ -523,6 +548,19 @@ components:
           type: integer
         created_at:
           type: integer
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
     Notes:
       type: object
       description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
@@ -552,74 +590,36 @@ components:
               type: object
             field:
               type: string
-    Collection:
+    InvoiceLineItem:
       type: object
       properties:
-        entity:
+        id:
+          type: string
+          description: 'Line item ID. Prefix: li_'
+        item_id:
+          type: string
+          description: Referenced catalog item ID (item_*). Null for ad-hoc line items.
+        name:
+          type: string
+        description:
+          type: string
+        amount:
+          type: integer
+          description: Total line amount in paise (unit_amount × quantity).
+        unit_amount:
+          type: integer
+          description: Per-unit price in paise.
+        quantity:
+          type: integer
+          default: 1
+        currency:
+          type: string
+          default: INR
+        type:
           type: string
           enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-  parameters:
-    from:
-      name: from
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or after this time.
-      schema:
-        type: integer
-    to:
-      name: to
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or before this time.
-      schema:
-        type: integer
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-  responses:
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          - invoice
+          - payment_page
   securitySchemes:
     basicAuth:
       type: http

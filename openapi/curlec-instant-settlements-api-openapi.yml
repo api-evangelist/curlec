@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Razorpay Bills Instant Settlements API
+  title: Razorpay Instant Settlements API
   version: 1.0.0
   description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
   termsOfService: https://razorpay.com/terms/
@@ -142,69 +142,75 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    InstantSettlement:
+    Collection:
       type: object
       properties:
-        id:
-          type: string
-          description: 'Unique instant settlement identifier. Prefix: setlod_'
         entity:
           type: string
           enum:
-          - settlement.ondemand
-        amount_requested:
+          - collection
+        count:
           type: integer
-          description: Settlement amount requested (paise).
-        amount_settled:
-          type: integer
-          description: Total amount transferred minus fees and tax (paise).
-        amount_pending:
-          type: integer
-          description: Portion of requested amount yet to be settled (paise).
-        amount_reversed:
-          type: integer
-          description: Amount returned to PG balance (paise).
-        fees:
-          type: integer
-          description: Combined fees and tax deducted (paise).
-        tax:
-          type: integer
-          description: Tax on fee component (paise).
-        currency:
-          type: string
-        settle_full_balance:
-          type: boolean
-          description: If true, settles maximum available balance.
-        status:
-          type: string
-          enum:
-          - created
-          - initiated
-          - partially_processed
-          - processed
-          - reversed
-        description:
-          type: string
-          description: Custom reference note. Max 30 alphanumeric characters.
-        notes:
-          $ref: '#/components/schemas/Notes'
-        created_at:
-          type: integer
-        ondemand_payouts:
-          type: object
-          description: Collection of individual payout records for this instant settlement.
-          properties:
-            entity:
-              type: string
-              enum:
-              - collection
-            count:
-              type: integer
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/InstantSettlementPayout'
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
     Notes:
       type: object
       description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
@@ -268,74 +274,68 @@ components:
               type: object
             field:
               type: string
-    Collection:
+    InstantSettlement:
       type: object
       properties:
+        id:
+          type: string
+          description: 'Unique instant settlement identifier. Prefix: setlod_'
         entity:
           type: string
           enum:
-          - collection
-        count:
+          - settlement.ondemand
+        amount_requested:
           type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-  parameters:
-    from:
-      name: from
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or after this time.
-      schema:
-        type: integer
-    to:
-      name: to
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or before this time.
-      schema:
-        type: integer
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-  responses:
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          description: Settlement amount requested (paise).
+        amount_settled:
+          type: integer
+          description: Total amount transferred minus fees and tax (paise).
+        amount_pending:
+          type: integer
+          description: Portion of requested amount yet to be settled (paise).
+        amount_reversed:
+          type: integer
+          description: Amount returned to PG balance (paise).
+        fees:
+          type: integer
+          description: Combined fees and tax deducted (paise).
+        tax:
+          type: integer
+          description: Tax on fee component (paise).
+        currency:
+          type: string
+        settle_full_balance:
+          type: boolean
+          description: If true, settles maximum available balance.
+        status:
+          type: string
+          enum:
+          - created
+          - initiated
+          - partially_processed
+          - processed
+          - reversed
+        description:
+          type: string
+          description: Custom reference note. Max 30 alphanumeric characters.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+        ondemand_payouts:
+          type: object
+          description: Collection of individual payout records for this instant settlement.
+          properties:
+            entity:
+              type: string
+              enum:
+              - collection
+            count:
+              type: integer
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/InstantSettlementPayout'
   securitySchemes:
     basicAuth:
       type: http

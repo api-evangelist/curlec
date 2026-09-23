@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Razorpay Bills Settlements API
+  title: Razorpay Settlements API
   version: 1.0.0
   description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
   termsOfService: https://razorpay.com/terms/
@@ -152,7 +152,92 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Settlement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique settlement identifier. Prefix: setl_'
+        entity:
+          type: string
+          enum:
+          - settlement
+        amount:
+          type: integer
+          description: Settlement amount in paise.
+        status:
+          type: string
+          enum:
+          - created
+          - processed
+          - failed
+        fees:
+          type: integer
+          description: Processing fees charged (typically 0 for normal settlements).
+        tax:
+          type: integer
+          description: Tax on fees (paise).
+        utr:
+          type: string
+          description: Unique Transaction Reference (UTR) number for bank tracking.
+        created_at:
+          type: integer
     SettlementReconRecord:
       type: object
       description: A single transaction line item in the settlement reconciliation report.
@@ -215,36 +300,19 @@ components:
           type: string
         credit_type:
           type: string
-    Settlement:
+    Collection:
       type: object
       properties:
-        id:
-          type: string
-          description: 'Unique settlement identifier. Prefix: setl_'
         entity:
           type: string
           enum:
-          - settlement
-        amount:
+          - collection
+        count:
           type: integer
-          description: Settlement amount in paise.
-        status:
-          type: string
-          enum:
-          - created
-          - processed
-          - failed
-        fees:
-          type: integer
-          description: Processing fees charged (typically 0 for normal settlements).
-        tax:
-          type: integer
-          description: Tax on fees (paise).
-        utr:
-          type: string
-          description: Unique Transaction Reference (UTR) number for bank tracking.
-        created_at:
-          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
     Error:
       type: object
       properties:
@@ -268,74 +336,6 @@ components:
               type: object
             field:
               type: string
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-  parameters:
-    from:
-      name: from
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or after this time.
-      schema:
-        type: integer
-    to:
-      name: to
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or before this time.
-      schema:
-        type: integer
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-  responses:
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

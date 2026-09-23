@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Razorpay Bills Virtual Accounts API
+  title: Razorpay Virtual Accounts API
   version: 1.0.0
   description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
   termsOfService: https://razorpay.com/terms/
@@ -453,211 +453,32 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    UpiDetails:
-      type: object
-      properties:
-        payer_account_type:
-          type: string
-        vpa:
-          type: string
-          description: 'Customer UPI VPA (Virtual Payment Address). Example: user@upi.'
-        flow:
-          type: string
-          description: 'UPI flow used: collect, intent, or in_app.'
-    VirtualAccount:
-      type: object
-      description: 'A virtual bank account or VPA that accepts NEFT/RTGS/IMPS/UPI payments (Smart Collect). Each payment creates a BankTransfer entity. Auto-closes after 90 days of inactivity. Prefix: va_'
-      properties:
-        id:
-          type: string
-          description: 'Virtual account ID. Prefix: va_'
-        name:
-          type: string
-          description: Display name of the virtual account.
-        entity:
-          type: string
-          enum:
-          - virtual_account
-        description:
-          type: string
-          description: Purpose or description of the virtual account.
-        amount_expected:
-          type: integer
-          description: Expected payment amount in paise. 0 means any amount is accepted.
-        amount_paid:
-          type: integer
-          description: Total amount received so far in paise.
-        status:
-          type: string
-          enum:
-          - active
-          - closed
-          description: active = accepting payments; closed = no longer accepting payments.
-        receivers:
-          type: array
-          description: Payment receivers assigned to this virtual account. Can include bank_account (ba_*) and/or vpa (vpa_*) receivers.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: 'Receiver ID. Prefix: ba_ for bank account, vpa_ for VPA.'
-              entity:
-                type: string
-                enum:
-                - bank_account
-                - vpa
-              ifsc:
-                type: string
-                description: IFSC code (bank accounts only).
-              bank_name:
-                type: string
-                description: Bank name (bank accounts only).
-              name:
-                type: string
-                description: Account holder name (bank accounts) or VPA address (VPAs).
-              notes:
-                $ref: '#/components/schemas/Notes'
-              account_number:
-                type: string
-                description: Virtual account number (bank accounts only).
-              username:
-                type: string
-                description: UPI username part of the VPA (VPAs only).
-              handle:
-                type: string
-                description: UPI handle (e.g., razorpay) (VPAs only).
-              flow:
-                type: string
-                enum:
-                - upi_qr
-                description: Flow type for VPA receivers.
-        close_by:
-          type: integer
-          description: 'Unix timestamp by which the account will auto-close. Maximum value: 2147483647.'
-        closed_at:
-          type: integer
-          description: Unix timestamp when the account was closed.
-        customer_id:
-          type: string
-          description: Customer ID linked to this virtual account (cust_*).
-        notes:
-          $ref: '#/components/schemas/Notes'
-        created_at:
-          type: integer
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
-    BankTransfer:
-      type: object
-      description: 'A payment received into a Virtual Account via bank transfer (NEFT/RTGS/IMPS/UPI). Created automatically when a payer sends funds to the virtual account. Prefix: bt_'
-      properties:
-        id:
-          type: string
-          description: 'Bank transfer ID. Prefix: bt_'
-        entity:
-          type: string
-          enum:
-          - bank_transfer
-        payment_id:
-          type: string
-          description: Razorpay payment ID generated for this bank transfer (pay_*).
-        mode:
-          type: string
-          enum:
-          - NEFT
-          - RTGS
-          - IMPS
-          - UPI
-          description: Transfer mode used by the payer.
-        amount:
-          type: integer
-          description: Amount received in paise.
-        payer_bank_account:
-          type: object
-          description: Payer's bank account details.
-          properties:
-            id:
-              type: string
-            entity:
-              type: string
-              enum:
-              - bank_account
-            ifsc:
-              type: string
-            bank_name:
-              type: string
-            name:
-              type: string
-              description: Account holder name.
-            notes:
-              $ref: '#/components/schemas/Notes'
-            account_number:
-              type: string
-        bank_reference:
-          type: string
-          description: UTR (Unique Transaction Reference) number from the bank.
-        virtual_account_id:
-          type: string
-          description: Virtual account that received this transfer (va_*).
-        virtual_account:
-          $ref: '#/components/schemas/VirtualAccount'
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
-    CardDetails:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Card token identifier (card_*).
-        entity:
-          type: string
-        name:
-          type: string
-          description: Cardholder name.
-        last4:
-          type: string
-          description: Last 4 digits of the card number.
-        network:
-          type: string
-          description: 'Card network. Examples: Visa, MasterCard, RuPay, Amex.'
-        type:
-          type: string
-          description: 'Card type: credit or debit.'
-        issuer:
-          type: string
-          description: 4-character code of the issuing bank.
-        emi:
-          type: boolean
-          description: Whether EMI is available on this card.
-        sub_type:
-          type: string
-          description: Card sub-type (e.g. consumer, corporate).
     Payment:
       type: object
       properties:
@@ -754,6 +575,181 @@ components:
           $ref: '#/components/schemas/AcquirerData'
         created_at:
           type: integer
+    BankTransfer:
+      type: object
+      description: 'A payment received into a Virtual Account via bank transfer (NEFT/RTGS/IMPS/UPI). Created automatically when a payer sends funds to the virtual account. Prefix: bt_'
+      properties:
+        id:
+          type: string
+          description: 'Bank transfer ID. Prefix: bt_'
+        entity:
+          type: string
+          enum:
+          - bank_transfer
+        payment_id:
+          type: string
+          description: Razorpay payment ID generated for this bank transfer (pay_*).
+        mode:
+          type: string
+          enum:
+          - NEFT
+          - RTGS
+          - IMPS
+          - UPI
+          description: Transfer mode used by the payer.
+        amount:
+          type: integer
+          description: Amount received in paise.
+        payer_bank_account:
+          type: object
+          description: Payer's bank account details.
+          properties:
+            id:
+              type: string
+            entity:
+              type: string
+              enum:
+              - bank_account
+            ifsc:
+              type: string
+            bank_name:
+              type: string
+            name:
+              type: string
+              description: Account holder name.
+            notes:
+              $ref: '#/components/schemas/Notes'
+            account_number:
+              type: string
+        bank_reference:
+          type: string
+          description: UTR (Unique Transaction Reference) number from the bank.
+        virtual_account_id:
+          type: string
+          description: Virtual account that received this transfer (va_*).
+        virtual_account:
+          $ref: '#/components/schemas/VirtualAccount'
+    VirtualAccount:
+      type: object
+      description: 'A virtual bank account or VPA that accepts NEFT/RTGS/IMPS/UPI payments (Smart Collect). Each payment creates a BankTransfer entity. Auto-closes after 90 days of inactivity. Prefix: va_'
+      properties:
+        id:
+          type: string
+          description: 'Virtual account ID. Prefix: va_'
+        name:
+          type: string
+          description: Display name of the virtual account.
+        entity:
+          type: string
+          enum:
+          - virtual_account
+        description:
+          type: string
+          description: Purpose or description of the virtual account.
+        amount_expected:
+          type: integer
+          description: Expected payment amount in paise. 0 means any amount is accepted.
+        amount_paid:
+          type: integer
+          description: Total amount received so far in paise.
+        status:
+          type: string
+          enum:
+          - active
+          - closed
+          description: active = accepting payments; closed = no longer accepting payments.
+        receivers:
+          type: array
+          description: Payment receivers assigned to this virtual account. Can include bank_account (ba_*) and/or vpa (vpa_*) receivers.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: 'Receiver ID. Prefix: ba_ for bank account, vpa_ for VPA.'
+              entity:
+                type: string
+                enum:
+                - bank_account
+                - vpa
+              ifsc:
+                type: string
+                description: IFSC code (bank accounts only).
+              bank_name:
+                type: string
+                description: Bank name (bank accounts only).
+              name:
+                type: string
+                description: Account holder name (bank accounts) or VPA address (VPAs).
+              notes:
+                $ref: '#/components/schemas/Notes'
+              account_number:
+                type: string
+                description: Virtual account number (bank accounts only).
+              username:
+                type: string
+                description: UPI username part of the VPA (VPAs only).
+              handle:
+                type: string
+                description: UPI handle (e.g., razorpay) (VPAs only).
+              flow:
+                type: string
+                enum:
+                - upi_qr
+                description: Flow type for VPA receivers.
+        close_by:
+          type: integer
+          description: 'Unix timestamp by which the account will auto-close. Maximum value: 2147483647.'
+        closed_at:
+          type: integer
+          description: Unix timestamp when the account was closed.
+        customer_id:
+          type: string
+          description: Customer ID linked to this virtual account (cust_*).
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+    CardDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Card token identifier (card_*).
+        entity:
+          type: string
+        name:
+          type: string
+          description: Cardholder name.
+        last4:
+          type: string
+          description: Last 4 digits of the card number.
+        network:
+          type: string
+          description: 'Card network. Examples: Visa, MasterCard, RuPay, Amex.'
+        type:
+          type: string
+          description: 'Card type: credit or debit.'
+        issuer:
+          type: string
+          description: 4-character code of the issuing bank.
+        emi:
+          type: boolean
+          description: Whether EMI is available on this card.
+        sub_type:
+          type: string
+          description: Card sub-type (e.g. consumer, corporate).
+    UpiDetails:
+      type: object
+      properties:
+        payer_account_type:
+          type: string
+        vpa:
+          type: string
+          description: 'Customer UPI VPA (Virtual Payment Address). Example: user@upi.'
+        flow:
+          type: string
+          description: 'UPI flow used: collect, intent, or in_app.'
     AcquirerData:
       type: object
       properties:
@@ -766,31 +762,35 @@ components:
           type: string
         transaction_id:
           type: string
-  responses:
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
   securitySchemes:
     basicAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Razorpay Bills Orders API
+  title: Razorpay Orders API
   version: 1.0.0
   description: Razorpay payment gateway APIs for accepting payments, managing orders, processing refunds, payouts, and subscriptions. All amounts are in the smallest currency sub-unit (e.g. paise for INR). Supports 180+ payment methods including UPI, cards, netbanking, wallets, and EMI.
   termsOfService: https://razorpay.com/terms/
@@ -241,134 +241,68 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    UpiDetails:
-      type: object
-      properties:
-        payer_account_type:
-          type: string
-        vpa:
-          type: string
-          description: 'Customer UPI VPA (Virtual Payment Address). Example: user@upi.'
-        flow:
-          type: string
-          description: 'UPI flow used: collect, intent, or in_app.'
-    AcquirerData:
-      type: object
-      properties:
-        rrn:
-          type: string
-          description: Bank RRN (Retrieval Reference Number).
-        authentication_reference_number:
-          type: string
-        bank_transaction_id:
-          type: string
-        transaction_id:
-          type: string
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
-    Order:
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'Unique order identifier. Prefix: order_'
-        entity:
-          type: string
-          enum:
-          - order
-        amount:
-          type: integer
-          description: 'Order amount in paise. Example: 50000 = ₹500.'
-        amount_paid:
-          type: integer
-          description: Total amount paid against this order (paise).
-        amount_due:
-          type: integer
-          description: Remaining unpaid amount (paise).
-        currency:
-          type: string
-          description: 'ISO 4217 currency code. Example: INR.'
-        receipt:
-          type: string
-          description: Your internal receipt or order reference number.
-        status:
-          type: string
-          enum:
-          - created
-          - attempted
-          - paid
-          description: 'created: awaiting payment. attempted: payment attempted but not captured. paid: fully paid.'
-        attempts:
-          type: integer
-          description: Number of payment attempts made.
-        notes:
-          $ref: '#/components/schemas/Notes'
-        created_at:
-          type: integer
-          description: Unix timestamp of order creation.
-        offer_id:
-          type: string
-        offers:
-          type: array
-          items:
-            type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
-    CardDetails:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Card token identifier (card_*).
-        entity:
-          type: string
-        name:
-          type: string
-          description: Cardholder name.
-        last4:
-          type: string
-          description: Last 4 digits of the card number.
-        network:
-          type: string
-          description: 'Card network. Examples: Visa, MasterCard, RuPay, Amex.'
-        type:
-          type: string
-          description: 'Card type: credit or debit.'
-        issuer:
-          type: string
-          description: 4-character code of the issuing bank.
-        emi:
-          type: boolean
-          description: Whether EMI is available on this card.
-        sub_type:
-          type: string
-          description: Card sub-type (e.g. consumer, corporate).
     Payment:
       type: object
       properties:
@@ -465,6 +399,58 @@ components:
           $ref: '#/components/schemas/AcquirerData'
         created_at:
           type: integer
+    CardDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Card token identifier (card_*).
+        entity:
+          type: string
+        name:
+          type: string
+          description: Cardholder name.
+        last4:
+          type: string
+          description: Last 4 digits of the card number.
+        network:
+          type: string
+          description: 'Card network. Examples: Visa, MasterCard, RuPay, Amex.'
+        type:
+          type: string
+          description: 'Card type: credit or debit.'
+        issuer:
+          type: string
+          description: 4-character code of the issuing bank.
+        emi:
+          type: boolean
+          description: Whether EMI is available on this card.
+        sub_type:
+          type: string
+          description: Card sub-type (e.g. consumer, corporate).
+    AcquirerData:
+      type: object
+      properties:
+        rrn:
+          type: string
+          description: Bank RRN (Retrieval Reference Number).
+        authentication_reference_number:
+          type: string
+        bank_transaction_id:
+          type: string
+        transaction_id:
+          type: string
+    UpiDetails:
+      type: object
+      properties:
+        payer_account_type:
+          type: string
+        vpa:
+          type: string
+          description: 'Customer UPI VPA (Virtual Payment Address). Example: user@upi.'
+        flow:
+          type: string
+          description: 'UPI flow used: collect, intent, or in_app.'
     Collection:
       type: object
       properties:
@@ -478,67 +464,81 @@ components:
         items:
           type: array
           items: {}
-  parameters:
-    from:
-      name: from
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or after this time.
-      schema:
-        type: integer
-    to:
-      name: to
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or before this time.
-      schema:
-        type: integer
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-  responses:
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique order identifier. Prefix: order_'
+        entity:
+          type: string
+          enum:
+          - order
+        amount:
+          type: integer
+          description: 'Order amount in paise. Example: 50000 = ₹500.'
+        amount_paid:
+          type: integer
+          description: Total amount paid against this order (paise).
+        amount_due:
+          type: integer
+          description: Remaining unpaid amount (paise).
+        currency:
+          type: string
+          description: 'ISO 4217 currency code. Example: INR.'
+        receipt:
+          type: string
+          description: Your internal receipt or order reference number.
+        status:
+          type: string
+          enum:
+          - created
+          - attempted
+          - paid
+          description: 'created: awaiting payment. attempted: payment attempted but not captured. paid: fully paid.'
+        attempts:
+          type: integer
+          description: Number of payment attempts made.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+          description: Unix timestamp of order creation.
+        offer_id:
+          type: string
+        offers:
+          type: array
+          items:
+            type: string
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
   securitySchemes:
     basicAuth:
       type: http

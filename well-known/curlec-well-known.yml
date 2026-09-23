@@ -1,32 +1,77 @@
-generated: '2026-07-18'
+generated: '2026-09-19'
 method: searched
 host: https://curlec.com
-note: >-
-  curlec.com serves the shared Razorpay discovery surface. The api-catalog points at the
-  Razorpay OpenAPI 3.0 spec; the oauth-authorization-server metadata describes the Razorpay
-  MCP server (mcp.razorpay.com), not the REST API (which uses HTTP Basic Auth). The
-  openid-configuration is a stub that explicitly states Razorpay is not an OIDC identity provider.
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 200
-  file: curlec-openid-configuration.json
-- path: /.well-known/oauth-authorization-server
-  status: 200
-  file: curlec-oauth-authorization-server.json
-- path: /.well-known/api-catalog
-  status: 200
-  file: curlec-api-catalog.json
-- path: /.well-known/ai-plugin.json
-  status: 200
-  file: curlec-ai-plugin.json
+note: 'curlec.com serves the shared Razorpay discovery surface. The api-catalog points at the Razorpay
+  OpenAPI 3.0 spec; the oauth-authorization-server metadata describes the Razorpay MCP server (mcp.razorpay.com),
+  not the REST API (which uses HTTP Basic Auth). The openid-configuration is a stub that explicitly states
+  Razorpay is not an OIDC identity provider.
+
+
+  MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s primary
+  hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed and
+  were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
 other_hosts:
 - host: https://api.razorpay.com
-  results: {security.txt: 404, openid-configuration: 404, oauth-authorization-server: 404, api-catalog: 404, ai-plugin.json: 404}
+  results:
+    security.txt: 404
+    openid-configuration: 404
+    oauth-authorization-server: 404
+    api-catalog: 404
+    ai-plugin.json: 404
 - host: https://dashboard.curlec.com
-  results: {security.txt: 405, openid-configuration: 405, oauth-authorization-server: 405, api-catalog: 405, ai-plugin.json: 405}
+  results:
+    security.txt: 405
+    openid-configuration: 405
+    oauth-authorization-server: 405
+    api-catalog: 405
+    ai-plugin.json: 405
 discovered:
   openapi: https://razorpay.com/openapi.json
   mcp_server: https://mcp.razorpay.com/mcp
   agents_md: https://razorpay.com/agents.md
+hosts:
+- host: https://curlec.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: curlec-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: curlec-oauth-authorization-server.json
+  - path: /.well-known/api-catalog
+    status: 200
+    file: curlec-api-catalog.json
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: curlec-ai-plugin.json
+- host: https://mcp.razorpay.com
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: curlec-mcp-oauth-protected-resource.json
+    bytes: 160
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: curlec-mcp-oauth-authorization-server.json
+    bytes: 512
+  path_echo_control: passed
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://mcp.razorpay.com
+    path: /.well-known/oauth-protected-resource
+    file: curlec-mcp-oauth-protected-resource.json
+  - host: https://mcp.razorpay.com
+    path: /.well-known/oauth-authorization-server
+    file: curlec-mcp-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
