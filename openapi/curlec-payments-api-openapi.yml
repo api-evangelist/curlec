@@ -184,6 +184,15 @@ components:
       description: Unix timestamp (seconds). Fetch records created on or after this time.
       schema:
         type: integer
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
     to:
       name: to
       in: query
@@ -198,16 +207,13 @@ components:
         type: integer
         minimum: 0
         default: 0
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
   responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     '404':
       description: Resource not found.
       content:
@@ -222,12 +228,6 @@ components:
             $ref: '#/components/schemas/Error'
     '400':
       description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -358,6 +358,35 @@ components:
         sub_type:
           type: string
           description: Card sub-type (e.g. consumer, corporate).
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
     AcquirerData:
       type: object
       properties:
@@ -394,35 +423,6 @@ components:
         items:
           type: array
           items: {}
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
   securitySchemes:
     basicAuth:
       type: http

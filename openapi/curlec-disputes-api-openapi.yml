@@ -215,6 +215,12 @@ paths:
           $ref: '#/components/responses/429'
 components:
   responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     '404':
       description: Resource not found.
       content:
@@ -233,21 +239,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
     count:
       name: count
       in: query
@@ -257,59 +249,15 @@ components:
         minimum: 1
         maximum: 100
         default: 10
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
   schemas:
-    Dispute:
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'Unique dispute identifier. Prefix: disp_'
-        entity:
-          type: string
-          enum:
-          - dispute
-        payment_id:
-          type: string
-          description: The payment against which the dispute was raised (pay_*).
-        amount:
-          type: integer
-          description: Disputed amount in currency subunits.
-        currency:
-          type: string
-        amount_deducted:
-          type: integer
-          description: Amount deducted from your balance when dispute is lost.
-        reason_code:
-          type: string
-          description: Code identifying the dispute reason.
-        reason_description:
-          type: string
-          description: Human-readable explanation of the dispute cause.
-        respond_by:
-          type: integer
-          description: Unix timestamp by which you must respond. Missing this forfeits the dispute.
-        status:
-          type: string
-          enum:
-          - open
-          - under_review
-          - won
-          - lost
-          - closed
-          description: 'open: action required. under_review: evidence submitted, awaiting bank decision. won: resolved in your favour. lost: resolved against you. closed: resolved without chargeback.'
-        phase:
-          type: string
-          enum:
-          - fraud
-          - retrieval
-          - chargeback
-          - pre_arbitration
-          - arbitration
-          description: Escalation stage of the dispute process.
-        created_at:
-          type: integer
-        evidence:
-          $ref: '#/components/schemas/DisputeEvidence'
     DisputeEvidence:
       type: object
       properties:
@@ -370,19 +318,6 @@ components:
           - integer
           - 'null'
           description: Unix timestamp of last evidence submission. Null for drafts.
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
     Error:
       type: object
       properties:
@@ -406,6 +341,71 @@ components:
               type: object
             field:
               type: string
+    Dispute:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique dispute identifier. Prefix: disp_'
+        entity:
+          type: string
+          enum:
+          - dispute
+        payment_id:
+          type: string
+          description: The payment against which the dispute was raised (pay_*).
+        amount:
+          type: integer
+          description: Disputed amount in currency subunits.
+        currency:
+          type: string
+        amount_deducted:
+          type: integer
+          description: Amount deducted from your balance when dispute is lost.
+        reason_code:
+          type: string
+          description: Code identifying the dispute reason.
+        reason_description:
+          type: string
+          description: Human-readable explanation of the dispute cause.
+        respond_by:
+          type: integer
+          description: Unix timestamp by which you must respond. Missing this forfeits the dispute.
+        status:
+          type: string
+          enum:
+          - open
+          - under_review
+          - won
+          - lost
+          - closed
+          description: 'open: action required. under_review: evidence submitted, awaiting bank decision. won: resolved in your favour. lost: resolved against you. closed: resolved without chargeback.'
+        phase:
+          type: string
+          enum:
+          - fraud
+          - retrieval
+          - chargeback
+          - pre_arbitration
+          - arbitration
+          description: Escalation stage of the dispute process.
+        created_at:
+          type: integer
+        evidence:
+          $ref: '#/components/schemas/DisputeEvidence'
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
   securitySchemes:
     basicAuth:
       type: http

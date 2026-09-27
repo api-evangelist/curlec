@@ -245,6 +245,18 @@ paths:
           $ref: '#/components/responses/404'
 components:
   responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     '404':
       description: Resource not found.
       content:
@@ -259,18 +271,6 @@ components:
             $ref: '#/components/schemas/Error'
     '400':
       description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
       content:
         application/json:
           schema:

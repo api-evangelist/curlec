@@ -406,35 +406,32 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Reversal:
-      type: object
-      description: 'A reversal of a transfer — moves funds back from the Linked Account to the merchant. Partial reversals are supported and multiple reversals per transfer are allowed. Prefix: rvrsl_'
-      properties:
-        id:
-          type: string
-          description: 'Reversal ID. Prefix: rvrsl_'
-        entity:
-          type: string
-          enum:
-          - reversal
-        transfer_id:
-          type: string
-          description: Transfer ID being reversed (trf_*).
-        amount:
-          type: integer
-          description: Reversed amount in paise.
-        currency:
-          type: string
-          enum:
-          - INR
-        notes:
-          $ref: '#/components/schemas/Notes'
-        initiator_id:
-          type: string
-          description: ID of the entity that initiated the reversal.
-        created_at:
-          type: integer
     Transfer:
       type: object
       description: 'A fund transfer from a merchant or captured payment to a Linked Account (Route). Minimum amount is ₹100 (10000 paise). INR only. Prefix: trf_'
@@ -536,31 +533,34 @@ components:
               type: object
             field:
               type: string
-  responses:
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Reversal:
+      type: object
+      description: 'A reversal of a transfer — moves funds back from the Linked Account to the merchant. Partial reversals are supported and multiple reversals per transfer are allowed. Prefix: rvrsl_'
+      properties:
+        id:
+          type: string
+          description: 'Reversal ID. Prefix: rvrsl_'
+        entity:
+          type: string
+          enum:
+          - reversal
+        transfer_id:
+          type: string
+          description: Transfer ID being reversed (trf_*).
+        amount:
+          type: integer
+          description: Reversed amount in paise.
+        currency:
+          type: string
+          enum:
+          - INR
+        notes:
+          $ref: '#/components/schemas/Notes'
+        initiator_id:
+          type: string
+          description: ID of the entity that initiated the reversal.
+        created_at:
+          type: integer
   securitySchemes:
     basicAuth:
       type: http

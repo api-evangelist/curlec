@@ -394,6 +394,15 @@ components:
       description: Unix timestamp (seconds). Fetch records created on or after this time.
       schema:
         type: integer
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
     to:
       name: to
       in: query
@@ -408,16 +417,13 @@ components:
         type: integer
         minimum: 0
         default: 0
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
   responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     '404':
       description: Resource not found.
       content:
@@ -436,13 +442,79 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    InvoiceLineItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Line item ID. Prefix: li_'
+        item_id:
+          type: string
+          description: Referenced catalog item ID (item_*). Null for ad-hoc line items.
+        name:
+          type: string
+        description:
+          type: string
+        amount:
+          type: integer
+          description: Total line amount in paise (unit_amount × quantity).
+        unit_amount:
+          type: integer
+          description: Per-unit price in paise.
+        quantity:
+          type: integer
+          default: 1
+        currency:
+          type: string
+          default: INR
+        type:
+          type: string
+          enum:
+          - invoice
+          - payment_page
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
     Invoice:
       type: object
       description: An invoice or payment page sent to a customer for payment. Cannot be used to create GST invoices (those must be created via the Dashboard).
@@ -548,78 +620,6 @@ components:
           type: integer
         created_at:
           type: integer
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
-    InvoiceLineItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'Line item ID. Prefix: li_'
-        item_id:
-          type: string
-          description: Referenced catalog item ID (item_*). Null for ad-hoc line items.
-        name:
-          type: string
-        description:
-          type: string
-        amount:
-          type: integer
-          description: Total line amount in paise (unit_amount × quantity).
-        unit_amount:
-          type: integer
-          description: Per-unit price in paise.
-        quantity:
-          type: integer
-          default: 1
-        currency:
-          type: string
-          default: INR
-        type:
-          type: string
-          enum:
-          - invoice
-          - payment_page
   securitySchemes:
     basicAuth:
       type: http

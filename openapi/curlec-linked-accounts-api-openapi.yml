@@ -424,7 +424,130 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+    ProductConfiguration:
+      type: object
+      description: 'Route product configuration for a Linked Account. Controls settlement account details and tracks activation status. Prefix: acc_prd_'
+      properties:
+        id:
+          type: string
+          description: 'Product configuration ID. Prefix: acc_prd_'
+        account_id:
+          type: string
+          description: Linked Account ID this configuration belongs to.
+        product_name:
+          type: string
+          enum:
+          - route
+          description: Product name. Always 'route' for Route product.
+        activation_status:
+          type: string
+          enum:
+          - requested
+          - needs_clarification
+          - under_review
+          - activated
+          - suspended
+          description: Current activation status. Progresses from requested → under_review → activated. needs_clarification requires additional info from the merchant.
+        tnc:
+          type: object
+          properties:
+            id:
+              type: string
+            accepted:
+              type: boolean
+            accepted_at:
+              type: integer
+              description: Unix timestamp when TnC was accepted.
+        requested_configuration:
+          type: object
+          description: Configuration details provided during activation request.
+        active_configuration:
+          type: object
+          properties:
+            settlements:
+              type: object
+              properties:
+                account_number:
+                  type: string
+                  description: Bank account number for settlements.
+                ifsc_code:
+                  type: string
+                  description: IFSC code of the settlement bank.
+                beneficiary_name:
+                  type: string
+                  description: Account holder name.
+        requirements:
+          type: array
+          description: List of pending requirements needed for activation.
+          items:
+            type: object
+            properties:
+              field_reference:
+                type: string
+              resolution_url:
+                type: string
+              status:
+                type: string
+              reason_code:
+                type: string
+        requested_at:
+          type: integer
+          description: Unix timestamp when product was requested.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
     Stakeholder:
       type: object
       description: 'A business owner or director associated with a Linked Account. Only one stakeholder is allowed per Route Linked Account. Prefix: sth_'
@@ -497,104 +620,6 @@ components:
           $ref: '#/components/schemas/Notes'
         created_at:
           type: integer
-    ProductConfiguration:
-      type: object
-      description: 'Route product configuration for a Linked Account. Controls settlement account details and tracks activation status. Prefix: acc_prd_'
-      properties:
-        id:
-          type: string
-          description: 'Product configuration ID. Prefix: acc_prd_'
-        account_id:
-          type: string
-          description: Linked Account ID this configuration belongs to.
-        product_name:
-          type: string
-          enum:
-          - route
-          description: Product name. Always 'route' for Route product.
-        activation_status:
-          type: string
-          enum:
-          - requested
-          - needs_clarification
-          - under_review
-          - activated
-          - suspended
-          description: Current activation status. Progresses from requested → under_review → activated. needs_clarification requires additional info from the merchant.
-        tnc:
-          type: object
-          properties:
-            id:
-              type: string
-            accepted:
-              type: boolean
-            accepted_at:
-              type: integer
-              description: Unix timestamp when TnC was accepted.
-        requested_configuration:
-          type: object
-          description: Configuration details provided during activation request.
-        active_configuration:
-          type: object
-          properties:
-            settlements:
-              type: object
-              properties:
-                account_number:
-                  type: string
-                  description: Bank account number for settlements.
-                ifsc_code:
-                  type: string
-                  description: IFSC code of the settlement bank.
-                beneficiary_name:
-                  type: string
-                  description: Account holder name.
-        requirements:
-          type: array
-          description: List of pending requirements needed for activation.
-          items:
-            type: object
-            properties:
-              field_reference:
-                type: string
-              resolution_url:
-                type: string
-              status:
-                type: string
-              reason_code:
-                type: string
-        requested_at:
-          type: integer
-          description: Unix timestamp when product was requested.
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
     LinkedAccount:
       type: object
       description: 'A sub-merchant (Linked Account) created under a Route marketplace account. Linked Accounts can receive transfers and settlements. Prefix: acc_'
@@ -740,31 +765,6 @@ components:
           $ref: '#/components/schemas/Notes'
         created_at:
           type: integer
-  responses:
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

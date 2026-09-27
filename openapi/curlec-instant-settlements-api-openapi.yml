@@ -149,20 +149,6 @@ components:
       description: Unix timestamp (seconds). Fetch records created on or after this time.
       schema:
         type: integer
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    to:
-      name: to
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or before this time.
-      schema:
-        type: integer
     count:
       name: count
       in: query
@@ -172,7 +158,27 @@ components:
         minimum: 1
         maximum: 100
         default: 10
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
   responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     '404':
       description: Resource not found.
       content:
@@ -191,32 +197,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
     InstantSettlementPayout:
       type: object
       properties:
@@ -251,6 +232,12 @@ components:
           - reversed
         created_at:
           type: integer
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
     Error:
       type: object
       properties:
@@ -274,6 +261,19 @@ components:
               type: object
             field:
               type: string
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
     InstantSettlement:
       type: object
       properties:

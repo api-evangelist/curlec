@@ -179,6 +179,12 @@ paths:
           $ref: '#/components/responses/429'
 components:
   responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     '404':
       description: Resource not found.
       content:
@@ -197,21 +203,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
     count:
       name: count
       in: query
@@ -221,20 +213,15 @@ components:
         minimum: 1
         maximum: 100
         default: 10
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
   schemas:
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
     Notes:
       type: object
       description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
@@ -291,6 +278,19 @@ components:
         created_at:
           type: integer
           description: Unix timestamp of customer creation.
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
   securitySchemes:
     basicAuth:
       type: http
