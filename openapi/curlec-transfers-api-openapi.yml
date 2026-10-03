@@ -413,8 +413,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
       content:
         application/json:
           schema:
@@ -425,13 +425,70 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Reversal:
+      type: object
+      description: 'A reversal of a transfer — moves funds back from the Linked Account to the merchant. Partial reversals are supported and multiple reversals per transfer are allowed. Prefix: rvrsl_'
+      properties:
+        id:
+          type: string
+          description: 'Reversal ID. Prefix: rvrsl_'
+        entity:
+          type: string
+          enum:
+          - reversal
+        transfer_id:
+          type: string
+          description: Transfer ID being reversed (trf_*).
+        amount:
+          type: integer
+          description: Reversed amount in paise.
+        currency:
+          type: string
+          enum:
+          - INR
+        notes:
+          $ref: '#/components/schemas/Notes'
+        initiator_id:
+          type: string
+          description: ID of the entity that initiated the reversal.
+        created_at:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
     Transfer:
       type: object
       description: 'A fund transfer from a merchant or captured payment to a Linked Account (Route). Minimum amount is ₹100 (10000 paise). INR only. Prefix: trf_'
@@ -504,63 +561,6 @@ components:
         processed_at:
           type: integer
           description: Unix timestamp when the transfer was processed.
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
-    Reversal:
-      type: object
-      description: 'A reversal of a transfer — moves funds back from the Linked Account to the merchant. Partial reversals are supported and multiple reversals per transfer are allowed. Prefix: rvrsl_'
-      properties:
-        id:
-          type: string
-          description: 'Reversal ID. Prefix: rvrsl_'
-        entity:
-          type: string
-          enum:
-          - reversal
-        transfer_id:
-          type: string
-          description: Transfer ID being reversed (trf_*).
-        amount:
-          type: integer
-          description: Reversed amount in paise.
-        currency:
-          type: string
-          enum:
-          - INR
-        notes:
-          $ref: '#/components/schemas/Notes'
-        initiator_id:
-          type: string
-          description: ID of the entity that initiated the reversal.
-        created_at:
-          type: integer
   securitySchemes:
     basicAuth:
       type: http

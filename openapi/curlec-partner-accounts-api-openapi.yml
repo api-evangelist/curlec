@@ -158,14 +158,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
+    '500':
+      description: Internal server error.
       content:
         application/json:
           schema:
@@ -176,19 +176,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
     Error:
       type: object
       properties:
@@ -212,6 +206,12 @@ components:
               type: object
             field:
               type: string
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
     LinkedAccount:
       type: object
       description: 'A sub-merchant (Linked Account) created under a Route marketplace account. Linked Accounts can receive transfers and settlements. Prefix: acc_'

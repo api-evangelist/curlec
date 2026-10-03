@@ -156,37 +156,32 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
+  responses:
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Item:
-      type: object
-      description: A reusable catalog item used in invoice line items.
-      properties:
-        id:
-          type: string
-          description: 'Item ID. Prefix: item_'
-        entity:
-          type: string
-          enum:
-          - item
-        active:
-          type: boolean
-          description: Whether the item is active and available for use in new invoices.
-        amount:
-          type: integer
-          description: Item price in paise (smallest INR unit).
-        unit_amount:
-          type: integer
-          description: Per-unit price in paise.
-        currency:
-          type: string
-          default: INR
-        name:
-          type: string
-          description: Display name of the item.
-        description:
-          type: string
-        created_at:
-          type: integer
     Plan:
       type: object
       description: A billing plan defining the recurring charge amount and frequency. Reusable across multiple subscriptions.
@@ -217,12 +212,19 @@ components:
           $ref: '#/components/schemas/Notes'
         created_at:
           type: integer
-    Notes:
+    Collection:
       type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
     Error:
       type: object
       properties:
@@ -246,44 +248,42 @@ components:
               type: object
             field:
               type: string
-    Collection:
+    Item:
       type: object
+      description: A reusable catalog item used in invoice line items.
       properties:
+        id:
+          type: string
+          description: 'Item ID. Prefix: item_'
         entity:
           type: string
           enum:
-          - collection
-        count:
+          - item
+        active:
+          type: boolean
+          description: Whether the item is active and available for use in new invoices.
+        amount:
           type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-  responses:
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          description: Item price in paise (smallest INR unit).
+        unit_amount:
+          type: integer
+          description: Per-unit price in paise.
+        currency:
+          type: string
+          default: INR
+        name:
+          type: string
+          description: Display name of the item.
+        description:
+          type: string
+        created_at:
+          type: integer
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
   parameters:
     count:
       name: count

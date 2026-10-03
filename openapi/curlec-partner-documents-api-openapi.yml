@@ -216,14 +216,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
+    '500':
+      description: Internal server error.
       content:
         application/json:
           schema:
@@ -234,13 +234,48 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    StakeholderDocument:
+      type: object
+      description: KYC documents for a stakeholder. Supports PAN, Aadhaar, passport, and voter ID. Files must be JPG/PNG (max 4MB) or PDF (max 2MB).
+      properties:
+        individual_proof_of_address:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - aadhar_front
+                - aadhar_back
+                - passport_front
+                - passport_back
+                - voter_id_front
+                - voter_id_back
+              url:
+                type: string
+              document_id:
+                type: string
+        individual_proof_of_identification:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - personal_pan
+              url:
+                type: string
+              document_id:
+                type: string
     Error:
       type: object
       properties:
@@ -290,41 +325,6 @@ components:
             type: object
             properties:
               type:
-                type: string
-              document_id:
-                type: string
-    StakeholderDocument:
-      type: object
-      description: KYC documents for a stakeholder. Supports PAN, Aadhaar, passport, and voter ID. Files must be JPG/PNG (max 4MB) or PDF (max 2MB).
-      properties:
-        individual_proof_of_address:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                enum:
-                - aadhar_front
-                - aadhar_back
-                - passport_front
-                - passport_back
-                - voter_id_front
-                - voter_id_back
-              url:
-                type: string
-              document_id:
-                type: string
-        individual_proof_of_identification:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                enum:
-                - personal_pan
-              url:
                 type: string
               document_id:
                 type: string

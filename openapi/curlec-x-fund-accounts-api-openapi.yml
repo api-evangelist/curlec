@@ -251,14 +251,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
+    '500':
+      description: Internal server error.
       content:
         application/json:
           schema:
@@ -269,8 +269,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
