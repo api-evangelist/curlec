@@ -424,32 +424,30 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
-  responses:
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
     ProductConfiguration:
       type: object
       description: 'Route product configuration for a Linked Account. Controls settlement account details and tracks activation status. Prefix: acc_prd_'
@@ -519,101 +517,6 @@ components:
         requested_at:
           type: integer
           description: Unix timestamp when product was requested.
-    Stakeholder:
-      type: object
-      description: 'A business owner or director associated with a Linked Account. Only one stakeholder is allowed per Route Linked Account. Prefix: sth_'
-      properties:
-        id:
-          type: string
-          description: 'Stakeholder ID. Prefix: sth_'
-        entity:
-          type: string
-          enum:
-          - stakeholder
-        name:
-          type: string
-          description: Full name of the stakeholder.
-        email:
-          type: string
-          description: Email address.
-        percentage_ownership:
-          type: number
-          description: Ownership percentage (0-100).
-        relationship:
-          type: object
-          properties:
-            director:
-              type: boolean
-              description: True if the stakeholder is a company director.
-            executive:
-              type: boolean
-              description: True if the stakeholder is an executive.
-        phone:
-          type: object
-          properties:
-            primary:
-              type: object
-              properties:
-                number:
-                  type: string
-                country_code:
-                  type: string
-            secondary:
-              type: object
-              properties:
-                number:
-                  type: string
-                country_code:
-                  type: string
-        addresses:
-          type: object
-          properties:
-            residential:
-              type: object
-              properties:
-                street:
-                  type: string
-                city:
-                  type: string
-                state:
-                  type: string
-                postal_code:
-                  type: string
-                country:
-                  type: string
-        kyc:
-          type: object
-          properties:
-            pan:
-              type: string
-              description: Individual PAN. 4th character must be 'P'.
-        notes:
-          $ref: '#/components/schemas/Notes'
-        created_at:
-          type: integer
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
     Notes:
       type: object
       description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
@@ -765,6 +668,103 @@ components:
           $ref: '#/components/schemas/Notes'
         created_at:
           type: integer
+    Stakeholder:
+      type: object
+      description: 'A business owner or director associated with a Linked Account. Only one stakeholder is allowed per Route Linked Account. Prefix: sth_'
+      properties:
+        id:
+          type: string
+          description: 'Stakeholder ID. Prefix: sth_'
+        entity:
+          type: string
+          enum:
+          - stakeholder
+        name:
+          type: string
+          description: Full name of the stakeholder.
+        email:
+          type: string
+          description: Email address.
+        percentage_ownership:
+          type: number
+          description: Ownership percentage (0-100).
+        relationship:
+          type: object
+          properties:
+            director:
+              type: boolean
+              description: True if the stakeholder is a company director.
+            executive:
+              type: boolean
+              description: True if the stakeholder is an executive.
+        phone:
+          type: object
+          properties:
+            primary:
+              type: object
+              properties:
+                number:
+                  type: string
+                country_code:
+                  type: string
+            secondary:
+              type: object
+              properties:
+                number:
+                  type: string
+                country_code:
+                  type: string
+        addresses:
+          type: object
+          properties:
+            residential:
+              type: object
+              properties:
+                street:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                postal_code:
+                  type: string
+                country:
+                  type: string
+        kyc:
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Individual PAN. 4th character must be 'P'.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

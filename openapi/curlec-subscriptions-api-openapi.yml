@@ -459,44 +459,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
-  responses:
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    to:
-      name: to
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or before this time.
-      schema:
-        type: integer
-    from:
-      name: from
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or after this time.
-      schema:
-        type: integer
     count:
       name: count
       in: query
@@ -514,6 +477,18 @@ components:
         type: integer
         minimum: 0
         default: 0
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
   schemas:
     Collection:
       type: object
@@ -528,29 +503,6 @@ components:
         items:
           type: array
           items: {}
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
     Subscription:
       type: object
       description: A recurring billing subscription linking a customer to a plan. Requires customer mandate authorization via short_url before charges can be collected.
@@ -643,12 +595,60 @@ components:
           description: Unix timestamp by which the customer must authorize the mandate.
         created_at:
           type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
     Notes:
       type: object
       description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
       additionalProperties:
         type: string
       maxProperties: 15
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

@@ -329,8 +329,14 @@ paths:
           $ref: '#/components/responses/500'
 components:
   responses:
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
@@ -341,20 +347,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     '429':
       description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -442,6 +442,29 @@ components:
               minLength: 4
               maxLength: 120
               description: 'Wallet holder name. Case-sensitive. Supported: a-z, A-Z, 0-9, space, '', -, _, /, (, ), .'
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
     Payout:
       type: object
       description: RazorpayX payout disbursement. Idempotency header X-Payout-Idempotency required since March 15, 2025.
@@ -530,29 +553,6 @@ components:
         queue_if_low_balance:
           type: boolean
           description: 'true: queue payout when account balance is insufficient. false (default): fail immediately.'
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
   securitySchemes:
     basicAuth:
       type: http

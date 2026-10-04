@@ -178,50 +178,34 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
-  responses:
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
   schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Unique customer identifier. Prefix: cust_'
+        entity:
+          type: string
+          enum:
+          - customer
+        name:
+          type: string
+          description: 'Customer name. 3-50 characters. Allowed: alphanumeric, period, apostrophe, forward slash, @, parentheses.'
+        contact:
+          type: string
+          description: Phone number. Max 15 characters. Include country code (e.g. +919876543210). Minimum 8 digits.
+        email:
+          type: string
+          description: Email address. Max 64 characters.
+        gstin:
+          type: string
+          description: Goods and Services Tax Identification Number (optional).
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
+          description: Unix timestamp of customer creation.
     Collection:
       type: object
       properties:
@@ -264,33 +248,49 @@ components:
       additionalProperties:
         type: string
       maxProperties: 15
-    Customer:
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'Unique customer identifier. Prefix: cust_'
-        entity:
-          type: string
-          enum:
-          - customer
-        name:
-          type: string
-          description: 'Customer name. 3-50 characters. Allowed: alphanumeric, period, apostrophe, forward slash, @, parentheses.'
-        contact:
-          type: string
-          description: Phone number. Max 15 characters. Include country code (e.g. +919876543210). Minimum 8 digits.
-        email:
-          type: string
-          description: Email address. Max 64 characters.
-        gstin:
-          type: string
-          description: Goods and Services Tax Identification Number (optional).
-        notes:
-          $ref: '#/components/schemas/Notes'
-        created_at:
-          type: integer
-          description: Unix timestamp of customer creation.
+  parameters:
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+  responses:
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

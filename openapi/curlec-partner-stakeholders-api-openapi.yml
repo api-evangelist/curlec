@@ -192,26 +192,8 @@ paths:
           $ref: '#/components/responses/429'
 components:
   responses:
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     '500':
       description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
       content:
         application/json:
           schema:
@@ -222,79 +204,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Stakeholder:
-      type: object
-      description: 'A business owner or director associated with a Linked Account. Only one stakeholder is allowed per Route Linked Account. Prefix: sth_'
-      properties:
-        id:
-          type: string
-          description: 'Stakeholder ID. Prefix: sth_'
-        entity:
-          type: string
-          enum:
-          - stakeholder
-        name:
-          type: string
-          description: Full name of the stakeholder.
-        email:
-          type: string
-          description: Email address.
-        percentage_ownership:
-          type: number
-          description: Ownership percentage (0-100).
-        relationship:
-          type: object
-          properties:
-            director:
-              type: boolean
-              description: True if the stakeholder is a company director.
-            executive:
-              type: boolean
-              description: True if the stakeholder is an executive.
-        phone:
-          type: object
-          properties:
-            primary:
-              type: object
-              properties:
-                number:
-                  type: string
-                country_code:
-                  type: string
-            secondary:
-              type: object
-              properties:
-                number:
-                  type: string
-                country_code:
-                  type: string
-        addresses:
-          type: object
-          properties:
-            residential:
-              type: object
-              properties:
-                street:
-                  type: string
-                city:
-                  type: string
-                state:
-                  type: string
-                postal_code:
-                  type: string
-                country:
-                  type: string
-        kyc:
-          type: object
-          properties:
-            pan:
-              type: string
-              description: Individual PAN. 4th character must be 'P'.
-        notes:
-          $ref: '#/components/schemas/Notes'
-        created_at:
-          type: integer
     PartnerStakeholder:
       type: object
       description: A stakeholder (director/executive) associated with a sub-merchant account. Multiple stakeholders allowed per account (unlike Route which allows only 1).
@@ -378,6 +306,78 @@ components:
       additionalProperties:
         type: string
       maxProperties: 15
+    Stakeholder:
+      type: object
+      description: 'A business owner or director associated with a Linked Account. Only one stakeholder is allowed per Route Linked Account. Prefix: sth_'
+      properties:
+        id:
+          type: string
+          description: 'Stakeholder ID. Prefix: sth_'
+        entity:
+          type: string
+          enum:
+          - stakeholder
+        name:
+          type: string
+          description: Full name of the stakeholder.
+        email:
+          type: string
+          description: Email address.
+        percentage_ownership:
+          type: number
+          description: Ownership percentage (0-100).
+        relationship:
+          type: object
+          properties:
+            director:
+              type: boolean
+              description: True if the stakeholder is a company director.
+            executive:
+              type: boolean
+              description: True if the stakeholder is an executive.
+        phone:
+          type: object
+          properties:
+            primary:
+              type: object
+              properties:
+                number:
+                  type: string
+                country_code:
+                  type: string
+            secondary:
+              type: object
+              properties:
+                number:
+                  type: string
+                country_code:
+                  type: string
+        addresses:
+          type: object
+          properties:
+            residential:
+              type: object
+              properties:
+                street:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                postal_code:
+                  type: string
+                country:
+                  type: string
+        kyc:
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Individual PAN. 4th character must be 'P'.
+        notes:
+          $ref: '#/components/schemas/Notes'
+        created_at:
+          type: integer
   securitySchemes:
     basicAuth:
       type: http

@@ -195,8 +195,14 @@ paths:
           $ref: '#/components/responses/404'
 components:
   responses:
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
@@ -207,20 +213,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     '429':
       description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
