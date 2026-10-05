@@ -1,0 +1,12 @@
+{
+ "url": "https://curlec.com/openapi.json",
+ "requested_url": "https://curlec.com/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 402421,
+ "sha256": "824ca9e6faef0f08da4670d219931a842a68e6c88a4015160e5f4815a5e6a9a4",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
