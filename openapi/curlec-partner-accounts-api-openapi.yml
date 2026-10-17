@@ -151,37 +151,6 @@ paths:
         '404':
           $ref: '#/components/responses/404'
 components:
-  responses:
-    '500':
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -206,12 +175,6 @@ components:
               type: object
             field:
               type: string
-    Notes:
-      type: object
-      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
-      additionalProperties:
-        type: string
-      maxProperties: 15
     LinkedAccount:
       type: object
       description: 'A sub-merchant (Linked Account) created under a Route marketplace account. Linked Accounts can receive transfers and settlements. Prefix: acc_'
@@ -357,6 +320,43 @@ components:
           $ref: '#/components/schemas/Notes'
         created_at:
           type: integer
+    Notes:
+      type: object
+      description: Key-value pairs for storing custom metadata. Maximum 15 pairs. Each key and value must not exceed 256 characters.
+      additionalProperties:
+        type: string
+      maxProperties: 15
+  responses:
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

@@ -183,8 +183,8 @@ components:
           type: integer
           description: Unix timestamp of upload.
   responses:
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -201,8 +201,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:

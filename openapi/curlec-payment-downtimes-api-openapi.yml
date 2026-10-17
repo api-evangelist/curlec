@@ -84,59 +84,6 @@ paths:
           $ref: '#/components/responses/429'
 components:
   schemas:
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
-    DowntimeInstrument:
-      type: object
-      properties:
-        bank:
-          type: string
-        network:
-          type: string
-        issuer:
-          type: string
-        psp:
-          type: string
-        vpa_handle:
-          type: string
-        card_type:
-          type: string
-        flow:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
     PaymentDowntime:
       type: object
       properties:
@@ -179,9 +126,62 @@ components:
           type: integer
         updated_at:
           type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    DowntimeInstrument:
+      type: object
+      properties:
+        bank:
+          type: string
+        network:
+          type: string
+        issuer:
+          type: string
+        psp:
+          type: string
+        vpa_handle:
+          type: string
+        card_type:
+          type: string
+        flow:
+          type: string
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
   responses:
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -192,8 +192,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:

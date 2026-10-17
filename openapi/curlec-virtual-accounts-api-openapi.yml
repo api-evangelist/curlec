@@ -454,89 +454,6 @@ paths:
           $ref: '#/components/responses/429'
 components:
   schemas:
-    CardDetails:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Card token identifier (card_*).
-        entity:
-          type: string
-        name:
-          type: string
-          description: Cardholder name.
-        last4:
-          type: string
-          description: Last 4 digits of the card number.
-        network:
-          type: string
-          description: 'Card network. Examples: Visa, MasterCard, RuPay, Amex.'
-        type:
-          type: string
-          description: 'Card type: credit or debit.'
-        issuer:
-          type: string
-          description: 4-character code of the issuing bank.
-        emi:
-          type: boolean
-          description: Whether EMI is available on this card.
-        sub_type:
-          type: string
-          description: Card sub-type (e.g. consumer, corporate).
-    BankTransfer:
-      type: object
-      description: 'A payment received into a Virtual Account via bank transfer (NEFT/RTGS/IMPS/UPI). Created automatically when a payer sends funds to the virtual account. Prefix: bt_'
-      properties:
-        id:
-          type: string
-          description: 'Bank transfer ID. Prefix: bt_'
-        entity:
-          type: string
-          enum:
-          - bank_transfer
-        payment_id:
-          type: string
-          description: Razorpay payment ID generated for this bank transfer (pay_*).
-        mode:
-          type: string
-          enum:
-          - NEFT
-          - RTGS
-          - IMPS
-          - UPI
-          description: Transfer mode used by the payer.
-        amount:
-          type: integer
-          description: Amount received in paise.
-        payer_bank_account:
-          type: object
-          description: Payer's bank account details.
-          properties:
-            id:
-              type: string
-            entity:
-              type: string
-              enum:
-              - bank_account
-            ifsc:
-              type: string
-            bank_name:
-              type: string
-            name:
-              type: string
-              description: Account holder name.
-            notes:
-              $ref: '#/components/schemas/Notes'
-            account_number:
-              type: string
-        bank_reference:
-          type: string
-          description: UTR (Unique Transaction Reference) number from the bank.
-        virtual_account_id:
-          type: string
-          description: Virtual account that received this transfer (va_*).
-        virtual_account:
-          $ref: '#/components/schemas/VirtualAccount'
     VirtualAccount:
       type: object
       description: 'A virtual bank account or VPA that accepts NEFT/RTGS/IMPS/UPI payments (Smart Collect). Each payment creates a BankTransfer entity. Auto-closes after 90 days of inactivity. Prefix: va_'
@@ -618,18 +535,29 @@ components:
           $ref: '#/components/schemas/Notes'
         created_at:
           type: integer
-    AcquirerData:
+    Error:
       type: object
       properties:
-        rrn:
-          type: string
-          description: Bank RRN (Retrieval Reference Number).
-        authentication_reference_number:
-          type: string
-        bank_transaction_id:
-          type: string
-        transaction_id:
-          type: string
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
     Payment:
       type: object
       properties:
@@ -726,29 +654,72 @@ components:
           $ref: '#/components/schemas/AcquirerData'
         created_at:
           type: integer
-    Error:
+    BankTransfer:
+      type: object
+      description: 'A payment received into a Virtual Account via bank transfer (NEFT/RTGS/IMPS/UPI). Created automatically when a payer sends funds to the virtual account. Prefix: bt_'
+      properties:
+        id:
+          type: string
+          description: 'Bank transfer ID. Prefix: bt_'
+        entity:
+          type: string
+          enum:
+          - bank_transfer
+        payment_id:
+          type: string
+          description: Razorpay payment ID generated for this bank transfer (pay_*).
+        mode:
+          type: string
+          enum:
+          - NEFT
+          - RTGS
+          - IMPS
+          - UPI
+          description: Transfer mode used by the payer.
+        amount:
+          type: integer
+          description: Amount received in paise.
+        payer_bank_account:
+          type: object
+          description: Payer's bank account details.
+          properties:
+            id:
+              type: string
+            entity:
+              type: string
+              enum:
+              - bank_account
+            ifsc:
+              type: string
+            bank_name:
+              type: string
+            name:
+              type: string
+              description: Account holder name.
+            notes:
+              $ref: '#/components/schemas/Notes'
+            account_number:
+              type: string
+        bank_reference:
+          type: string
+          description: UTR (Unique Transaction Reference) number from the bank.
+        virtual_account_id:
+          type: string
+          description: Virtual account that received this transfer (va_*).
+        virtual_account:
+          $ref: '#/components/schemas/VirtualAccount'
+    AcquirerData:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
+        rrn:
+          type: string
+          description: Bank RRN (Retrieval Reference Number).
+        authentication_reference_number:
+          type: string
+        bank_transaction_id:
+          type: string
+        transaction_id:
+          type: string
     UpiDetails:
       type: object
       properties:
@@ -766,9 +737,38 @@ components:
       additionalProperties:
         type: string
       maxProperties: 15
+    CardDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Card token identifier (card_*).
+        entity:
+          type: string
+        name:
+          type: string
+          description: Cardholder name.
+        last4:
+          type: string
+          description: Last 4 digits of the card number.
+        network:
+          type: string
+          description: 'Card network. Examples: Visa, MasterCard, RuPay, Amex.'
+        type:
+          type: string
+          description: 'Card type: credit or debit.'
+        issuer:
+          type: string
+          description: 4-character code of the issuing bank.
+        emi:
+          type: boolean
+          description: Whether EMI is available on this card.
+        sub_type:
+          type: string
+          description: Card sub-type (e.g. consumer, corporate).
   responses:
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -785,8 +785,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:

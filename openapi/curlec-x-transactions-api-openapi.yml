@@ -126,37 +126,6 @@ paths:
           $ref: '#/components/responses/404'
       description: Fetch details of a specific transaction from a RazorpayX account by its ID.
 components:
-  responses:
-    '500':
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -265,6 +234,37 @@ components:
         created_at:
           type: integer
           description: Unix timestamp
+  responses:
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

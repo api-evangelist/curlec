@@ -176,6 +176,29 @@ paths:
       description: Fetch details of a specific fund account validation by its ID.
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
     FundAccountValidation:
       type: object
       description: Bank/VPA account validation result. Live-mode only, RazorpayX Lite only.
@@ -248,29 +271,6 @@ components:
               type: string
         created_at:
           type: integer
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
   responses:
     '500':
       description: Internal server error.
@@ -278,8 +278,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -296,8 +296,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:

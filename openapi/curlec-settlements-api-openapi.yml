@@ -183,19 +183,6 @@ components:
           description: Unique Transaction Reference (UTR) number for bank tracking.
         created_at:
           type: integer
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
     Error:
       type: object
       properties:
@@ -281,39 +268,22 @@ components:
           type: string
         credit_type:
           type: string
-  parameters:
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    to:
-      name: to
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or before this time.
-      schema:
-        type: integer
-    from:
-      name: from
-      in: query
-      description: Unix timestamp (seconds). Fetch records created on or after this time.
-      schema:
-        type: integer
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
   responses:
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -330,12 +300,42 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    from:
+      name: from
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or after this time.
+      schema:
+        type: integer
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    to:
+      name: to
+      in: query
+      description: Unix timestamp (seconds). Fetch records created on or before this time.
+      schema:
+        type: integer
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
   securitySchemes:
     basicAuth:
       type: http

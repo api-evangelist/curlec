@@ -214,38 +214,7 @@ paths:
         '429':
           $ref: '#/components/responses/429'
 components:
-  parameters:
-    count:
-      name: count
-      in: query
-      description: Number of records to return per call. Maximum 100. Default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    skip:
-      name: skip
-      in: query
-      description: Number of records to skip. Use with count for pagination. Default 0.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
   schemas:
-    Collection:
-      type: object
-      properties:
-        entity:
-          type: string
-          enum:
-          - collection
-        count:
-          type: integer
-          description: Number of items in the current page.
-        items:
-          type: array
-          items: {}
     Dispute:
       type: object
       properties:
@@ -298,29 +267,6 @@ components:
           type: integer
         evidence:
           $ref: '#/components/schemas/DisputeEvidence'
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
-            description:
-              type: string
-            source:
-              type: string
-              description: Where the error originated (e.g. business, gateway).
-            step:
-              type: string
-            reason:
-              type: string
-              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
-            metadata:
-              type: object
-            field:
-              type: string
     DisputeEvidence:
       type: object
       properties:
@@ -381,9 +327,45 @@ components:
           - integer
           - 'null'
           description: Unix timestamp of last evidence submission. Null for drafts.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: 'Error code. Examples: BAD_REQUEST_ERROR, GATEWAY_ERROR, SERVER_ERROR.'
+            description:
+              type: string
+            source:
+              type: string
+              description: Where the error originated (e.g. business, gateway).
+            step:
+              type: string
+            reason:
+              type: string
+              description: 'Machine-readable reason. Examples: insufficient_funds, invalid_expiry_date, declined_by_bank.'
+            metadata:
+              type: object
+            field:
+              type: string
+    Collection:
+      type: object
+      properties:
+        entity:
+          type: string
+          enum:
+          - collection
+        count:
+          type: integer
+          description: Number of items in the current page.
+        items:
+          type: array
+          items: {}
   responses:
-    '404':
-      description: Resource not found.
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
       content:
         application/json:
           schema:
@@ -400,12 +382,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
+    '404':
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    skip:
+      name: skip
+      in: query
+      description: Number of records to skip. Use with count for pagination. Default 0.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    count:
+      name: count
+      in: query
+      description: Number of records to return per call. Maximum 100. Default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
   securitySchemes:
     basicAuth:
       type: http

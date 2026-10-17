@@ -328,120 +328,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 components:
-  responses:
-    '500':
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '400':
-      description: Bad request. Invalid parameters or missing required fields.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: Authentication failed. Invalid or missing API key credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    FundAccount:
-      type: object
-      description: Payout destination linked to a Contact. Immutable after creation.
-      properties:
-        id:
-          type: string
-          description: Fund account ID (fa_*)
-        entity:
-          type: string
-          enum:
-          - fund_account
-        contact_id:
-          type: string
-        account_type:
-          type: string
-          enum:
-          - bank_account
-          - vpa
-          - card
-          - wallet
-        active:
-          type: boolean
-        batch_id:
-          type: string
-        bank_account:
-          type: object
-          properties:
-            ifsc:
-              type: string
-            bank_name:
-              type: string
-            name:
-              type: string
-            account_number:
-              type: string
-        vpa:
-          type: object
-          properties:
-            username:
-              type: string
-            handle:
-              type: string
-            address:
-              type: string
-        card:
-          type: object
-          properties:
-            last4:
-              type: string
-            network:
-              type: string
-            type:
-              type: string
-            issuer:
-              type: string
-            input_type:
-              type: string
-              enum:
-              - razorpay_token
-              - service_provider_token
-              - raw
-        created_at:
-          type: integer
-        wallet:
-          type: object
-          description: Amazon Pay wallet details. Required when account_type=wallet.
-          properties:
-            provider:
-              type: string
-              enum:
-              - amazonpay
-            phone:
-              type: string
-              description: 10-digit phone with country code, e.g. +919876543210
-            email:
-              type: string
-              format: email
-            name:
-              type: string
-              minLength: 4
-              maxLength: 120
-              description: 'Wallet holder name. Case-sensitive. Supported: a-z, A-Z, 0-9, space, '', -, _, /, (, ), .'
     Error:
       type: object
       properties:
@@ -553,6 +440,119 @@ components:
         queue_if_low_balance:
           type: boolean
           description: 'true: queue payout when account balance is insufficient. false (default): fail immediately.'
+    FundAccount:
+      type: object
+      description: Payout destination linked to a Contact. Immutable after creation.
+      properties:
+        id:
+          type: string
+          description: Fund account ID (fa_*)
+        entity:
+          type: string
+          enum:
+          - fund_account
+        contact_id:
+          type: string
+        account_type:
+          type: string
+          enum:
+          - bank_account
+          - vpa
+          - card
+          - wallet
+        active:
+          type: boolean
+        batch_id:
+          type: string
+        bank_account:
+          type: object
+          properties:
+            ifsc:
+              type: string
+            bank_name:
+              type: string
+            name:
+              type: string
+            account_number:
+              type: string
+        vpa:
+          type: object
+          properties:
+            username:
+              type: string
+            handle:
+              type: string
+            address:
+              type: string
+        card:
+          type: object
+          properties:
+            last4:
+              type: string
+            network:
+              type: string
+            type:
+              type: string
+            issuer:
+              type: string
+            input_type:
+              type: string
+              enum:
+              - razorpay_token
+              - service_provider_token
+              - raw
+        created_at:
+          type: integer
+        wallet:
+          type: object
+          description: Amazon Pay wallet details. Required when account_type=wallet.
+          properties:
+            provider:
+              type: string
+              enum:
+              - amazonpay
+            phone:
+              type: string
+              description: 10-digit phone with country code, e.g. +919876543210
+            email:
+              type: string
+              format: email
+            name:
+              type: string
+              minLength: 4
+              maxLength: 120
+              description: 'Wallet holder name. Case-sensitive. Supported: a-z, A-Z, 0-9, space, '', -, _, /, (, ), .'
+  responses:
+    '500':
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Authentication failed. Invalid or missing API key credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '400':
+      description: Bad request. Invalid parameters or missing required fields.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Rate limit exceeded. Implement exponential backoff with jitter before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
