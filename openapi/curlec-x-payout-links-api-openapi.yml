@@ -415,3 +415,9 @@ x-pagination:
   example: GET /payments?from=1700000000&to=1700086400&count=100&skip=100
 x-amountEncoding:
   description: 'All monetary amounts are in the smallest currency sub-unit. For INR: 1 rupee = 100 paise, so ₹500 = 50000. Minimum for INR is 100 paise (₹1). Three-decimal currencies (KWD, BHD, OMR): drop last decimal digit. Zero-decimal currencies (JPY): pass value as-is.'
+x-provenance:
+  method: harvested
+  publisher: Curlec
+  source: https://curlec.com/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
